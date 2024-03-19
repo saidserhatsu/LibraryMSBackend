@@ -12,7 +12,7 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20240319000454_AddEntities")]
+    [Migration("20240319003402_AddEntities")]
     partial class AddEntities
     {
         /// <inheritdoc />
@@ -1301,12 +1301,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("38e77adf-28fc-4def-bad1-1afb22e266ff"),
+                            Id = new Guid("b0645c80-513e-4398-abdc-7388327b06e9"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 103, 48, 99, 109, 111, 0, 63, 127, 194, 119, 101, 85, 25, 91, 111, 114, 167, 184, 208, 176, 219, 40, 172, 145, 188, 99, 162, 150, 76, 20, 72, 212, 186, 96, 5, 76, 240, 130, 20, 110, 15, 186, 96, 38, 138, 38, 20, 100, 105, 77, 241, 174, 38, 213, 117, 172, 235, 88, 53, 49, 83, 64, 223, 192 },
-                            PasswordSalt = new byte[] { 158, 4, 61, 157, 42, 197, 44, 199, 232, 52, 121, 196, 20, 2, 219, 35, 136, 190, 99, 17, 169, 133, 127, 231, 71, 13, 183, 243, 154, 44, 230, 179, 81, 113, 254, 180, 195, 96, 151, 186, 216, 226, 2, 19, 209, 98, 143, 189, 225, 249, 119, 237, 44, 162, 161, 205, 146, 60, 83, 143, 235, 102, 55, 108, 176, 116, 215, 23, 62, 222, 208, 94, 22, 36, 127, 61, 228, 166, 121, 219, 154, 253, 35, 20, 217, 230, 132, 210, 88, 248, 236, 35, 101, 250, 242, 42, 207, 126, 173, 217, 234, 190, 191, 249, 17, 222, 220, 3, 185, 173, 204, 177, 138, 154, 97, 206, 148, 164, 190, 12, 37, 60, 111, 1, 161, 184, 112, 19 }
+                            PasswordHash = new byte[] { 114, 97, 55, 16, 50, 6, 86, 34, 57, 244, 199, 136, 227, 116, 147, 218, 210, 174, 241, 204, 62, 56, 114, 240, 189, 241, 224, 164, 227, 0, 231, 154, 22, 32, 180, 178, 27, 213, 100, 77, 204, 49, 255, 181, 196, 116, 5, 140, 159, 202, 212, 179, 19, 81, 1, 182, 204, 138, 134, 249, 190, 254, 120, 210 },
+                            PasswordSalt = new byte[] { 135, 159, 145, 10, 180, 106, 106, 20, 179, 244, 111, 82, 55, 245, 3, 184, 155, 93, 124, 90, 70, 255, 70, 124, 93, 16, 33, 105, 219, 31, 193, 187, 185, 164, 181, 31, 66, 245, 17, 59, 58, 152, 42, 8, 179, 40, 206, 145, 38, 63, 237, 32, 40, 127, 247, 154, 143, 152, 111, 150, 131, 22, 79, 2, 35, 36, 161, 234, 156, 73, 134, 85, 232, 14, 127, 203, 105, 136, 120, 228, 187, 93, 85, 149, 34, 6, 6, 50, 108, 90, 86, 252, 0, 17, 119, 53, 87, 111, 250, 216, 179, 212, 223, 142, 48, 242, 139, 227, 98, 126, 208, 226, 11, 15, 134, 162, 34, 216, 169, 155, 127, 170, 211, 164, 101, 184, 41, 241 }
                         });
                 });
 
@@ -1348,10 +1348,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b01fe4e2-582e-4c15-ade0-cbf7b21f0f3e"),
+                            Id = new Guid("a89484e6-8dd3-421a-a5b6-a7fd055a05ed"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("38e77adf-28fc-4def-bad1-1afb22e266ff")
+                            UserId = new Guid("b0645c80-513e-4398-abdc-7388327b06e9")
                         });
                 });
 
@@ -1431,13 +1431,13 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.BookReservation", b =>
                 {
                     b.HasOne("Domain.Entities.Book", "Book")
-                        .WithMany("BookReserves")
+                        .WithMany("BookReservations")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Member", "Member")
-                        .WithMany("BookReserves")
+                        .WithMany("BookReservations")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1532,7 +1532,7 @@ namespace Persistence.Migrations
 
                     b.Navigation("BookIssues");
 
-                    b.Navigation("BookReserves");
+                    b.Navigation("BookReservations");
                 });
 
             modelBuilder.Entity("Domain.Entities.BookIssue", b =>
@@ -1559,7 +1559,7 @@ namespace Persistence.Migrations
                 {
                     b.Navigation("BookIssues");
 
-                    b.Navigation("BookReserves");
+                    b.Navigation("BookReservations");
 
                     b.Navigation("FinePayments");
                 });
