@@ -1,4 +1,4 @@
-﻿using Application.Services.Repositories;
+using Application.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +12,7 @@ public static class PersistenceServiceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        sservices.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("BaseDb")));
+        services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("BaseDb")));
         services.AddDbMigrationApplier(buildServices => buildServices.GetRequiredService<BaseDbContext>());
 
         services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();
@@ -22,6 +22,18 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
 
+        services.AddScoped<IMemberRepository, MemberRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
+        services.AddScoped<IBookIssueRepository, BookIssueRepository>();
+        services.AddScoped<IBookReservationRepository, BookReservationRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IFineDueRepository, FineDueRepository>();
+        services.AddScoped<IFinePaymentRepository, FinePaymentRepository>();
+        services.AddScoped<ILibraryStaffRepository, LibraryStaffRepository>();
+        services.AddScoped<ILocationRepository, LocationRepository>();
+        services.AddScoped<IPublisherRepository, PublisherRepository>();
         return services;
     }
 }

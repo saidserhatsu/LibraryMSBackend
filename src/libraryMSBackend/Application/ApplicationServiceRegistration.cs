@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Application.Services.AuthenticatorService;
 using Application.Services.AuthService;
 using Application.Services.UsersService;
@@ -19,6 +19,18 @@ using NArchitecture.Core.Localization.Resource.Yaml.DependencyInjection;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
+using Application.Services.Authors;
+using Application.Services.Books;
+using Application.Services.BookAuthors;
+using Application.Services.BookIssues;
+using Application.Services.BookReservations;
+using Application.Services.Categories;
+using Application.Services.FineDues;
+using Application.Services.FinePayments;
+using Application.Services.LibraryStaffs;
+using Application.Services.Locations;
+using Application.Services.Members;
+using Application.Services.Publishers;
 
 namespace Application;
 
@@ -59,6 +71,18 @@ public static class ApplicationServiceRegistration
 
         services.AddSecurityServices<Guid, int>();
 
+        services.AddScoped<IAuthorService, AuthorManager>();
+        services.AddScoped<IBookService, BookManager>();
+        services.AddScoped<IBookAuthorService, BookAuthorManager>();
+        services.AddScoped<IBookIssueService, BookIssueManager>();
+        services.AddScoped<IBookReservationService, BookReservationManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<IFineDueService, FineDueManager>();
+        services.AddScoped<IFinePaymentService, FinePaymentManager>();
+        services.AddScoped<ILibraryStaffService, LibraryStaffManager>();
+        services.AddScoped<ILocationService, LocationManager>();
+        services.AddScoped<IMemberService, MemberManager>();
+        services.AddScoped<IPublisherService, PublisherManager>();
         return services;
     }
 
