@@ -34,6 +34,19 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ILibraryStaffRepository, LibraryStaffRepository>();
         services.AddScoped<ILocationRepository, LocationRepository>();
         services.AddScoped<IPublisherRepository, PublisherRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IBookAuthorRepository, BookAuthorRepository>();
+        services.AddScoped<IBookIssueRepository, BookIssueRepository>();
+        services.AddScoped<IBookReservationRepository, BookReservationRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IFineDueRepository, FineDueRepository>();
+        services.AddScoped<IFinePaymentRepository, FinePaymentRepository>();
+        services.AddScoped<ILibraryStaffRepository, LibraryStaffRepository>();
+        services.AddScoped<ILibraryStaffRepository, LibraryStaffRepository>();
+        services.AddScoped<ILocationRepository, LocationRepository>();
+        services.AddScoped<IMemberRepository, MemberRepository>();
+        services.AddScoped<IPublisherRepository, PublisherRepository>();
         return services;
     }
 }

@@ -15,9 +15,8 @@ namespace Application.Features.FineDues.Commands.Update;
 public class UpdateFineDueCommand : IRequest<UpdatedFineDueResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
-    public string FineTotal { get; set; }
-    public Guid RegistrationId { get; set; }
-    public Guid MemberId { get; set; }
+    public decimal FineTotal { get; set; }
+    public Guid BookIssueId { get; set; }
     public DateTime FineDate { get; set; }
 
     public string[] Roles => [Admin, Write, FineDuesOperationClaims.Update];

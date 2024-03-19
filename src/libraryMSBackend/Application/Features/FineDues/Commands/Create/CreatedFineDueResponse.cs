@@ -5,7 +5,7 @@ namespace Application.Features.FineDues.Commands.Create;
 public class CreatedFineDueResponse : IResponse
 {
     public Guid Id { get; set; }
-    public string FineTotal { get; set; }
-    public Guid RegistrationId { get; set; }
+    public decimal FineTotal { get; set; }
+    public Guid BookIssueId { get; set; }
     public DateTime FineDate { get; set; }
 }

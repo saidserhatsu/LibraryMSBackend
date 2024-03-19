@@ -9,7 +9,6 @@ public class UpdateBookReservationCommandValidator : AbstractValidator<UpdateBoo
         RuleFor(c => c.Id).NotEmpty();
         RuleFor(c => c.BookId).NotEmpty();
         RuleFor(c => c.MemberId).NotEmpty();
-        RuleFor(c => c.AvaibleStatus).NotEmpty();
         RuleFor(c => c.NearestAvailableDate).NotEmpty();
         RuleFor(c => c.RequestDate).NotEmpty();
     }

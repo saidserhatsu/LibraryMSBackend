@@ -17,8 +17,8 @@ public class UpdateLibraryStaffCommand : IRequest<UpdatedLibraryStaffResponse>, 
     public Guid Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string ImageUrl { get; set; }
     public DateTime BirthDate { get; set; }
-    public string Image { get; set; }
 
     public string[] Roles => [Admin, Write, LibraryStaffsOperationClaims.Update];
 

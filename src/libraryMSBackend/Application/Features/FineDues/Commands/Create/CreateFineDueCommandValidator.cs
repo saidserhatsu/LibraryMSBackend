@@ -7,8 +7,7 @@ public class CreateFineDueCommandValidator : AbstractValidator<CreateFineDueComm
     public CreateFineDueCommandValidator()
     {
         RuleFor(c => c.FineTotal).NotEmpty();
-        RuleFor(c => c.RegistrationId).NotEmpty();
-        RuleFor(c => c.MemberId).NotEmpty();
+        RuleFor(c => c.BookIssueId).NotEmpty();
         RuleFor(c => c.FineDate).NotEmpty();
     }
 }

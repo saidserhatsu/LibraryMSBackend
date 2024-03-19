@@ -14,9 +14,8 @@ namespace Application.Features.FineDues.Commands.Create;
 
 public class CreateFineDueCommand : IRequest<CreatedFineDueResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
-    public string FineTotal { get; set; }
-    public Guid RegistrationId { get; set; }
-    public Guid MemberId { get; set; }
+    public decimal FineTotal { get; set; }
+    public Guid BookIssueId { get; set; }
     public DateTime FineDate { get; set; }
 
     public string[] Roles => [Admin, Write, FineDuesOperationClaims.Create];

@@ -8,7 +8,7 @@ public class CreateLibraryStaffCommandValidator : AbstractValidator<CreateLibrar
     {
         RuleFor(c => c.FirstName).NotEmpty();
         RuleFor(c => c.LastName).NotEmpty();
+        RuleFor(c => c.ImageUrl).NotEmpty();
         RuleFor(c => c.BirthDate).NotEmpty();
-        RuleFor(c => c.Image).NotEmpty();
     }
 }

@@ -83,6 +83,19 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ILocationService, LocationManager>();
         services.AddScoped<IMemberService, MemberManager>();
         services.AddScoped<IPublisherService, PublisherManager>();
+        services.AddScoped<IAuthorService, AuthorManager>();
+        services.AddScoped<IBookService, BookManager>();
+        services.AddScoped<IBookAuthorService, BookAuthorManager>();
+        services.AddScoped<IBookIssueService, BookIssueManager>();
+        services.AddScoped<IBookReservationService, BookReservationManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<IFineDueService, FineDueManager>();
+        services.AddScoped<IFinePaymentService, FinePaymentManager>();
+        services.AddScoped<ILibraryStaffService, LibraryStaffManager>();
+        services.AddScoped<ILibraryStaffService, LibraryStaffManager>();
+        services.AddScoped<ILocationService, LocationManager>();
+        services.AddScoped<IMemberService, MemberManager>();
+        services.AddScoped<IPublisherService, PublisherManager>();
         return services;
     }
 

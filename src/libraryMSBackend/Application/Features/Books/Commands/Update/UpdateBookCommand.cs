@@ -8,6 +8,7 @@ using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
+using Domain.Enums;
 using static Application.Features.Books.Constants.BooksOperationClaims;
 
 namespace Application.Features.Books.Commands.Update;
@@ -15,14 +16,14 @@ namespace Application.Features.Books.Commands.Update;
 public class UpdateBookCommand : IRequest<UpdatedBookResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
-    public int ISBNCode { get; set; }
+    public string ISBNCode { get; set; }
     public string BookTitle { get; set; }
     public int BookEdition { get; set; }
     public int ReleaseDate { get; set; }
+    public BookStatus Status { get; set; }
     public Guid PublisherId { get; set; }
     public Guid CategoryId { get; set; }
     public Guid LocationId { get; set; }
-    public bool Status { get; set; }
 
     public string[] Roles => [Admin, Write, BooksOperationClaims.Update];
 
