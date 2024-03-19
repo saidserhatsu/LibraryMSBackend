@@ -22,6 +22,6 @@ public class Book : Entity<Guid>
     public virtual Location Location { get; set; }
     public virtual Publisher Publisher { get; set; }
     public virtual ICollection<BookAuthor> Authors { get; set; }
-    public virtual ICollection<BookReservation> BookReserves { get; set; }
+    public virtual ICollection<BookReservation> BookReservations { get; set; }
     public virtual ICollection<BookIssue> BookIssues { get; set; }
 }

@@ -14,7 +14,7 @@ public class Member : Entity<Guid>
     public DateTime DateOfBirth { get; set; }
     public bool Subscribe { get; set; }
 
-    public virtual ICollection<BookReservation> BookReserves { get; set; }
+    public virtual ICollection<BookReservation> BookReservations { get; set; }
     public virtual ICollection<BookIssue> BookIssues { get; set; }
     public virtual ICollection<FinePayment> FinePayments { get; set; }
 }

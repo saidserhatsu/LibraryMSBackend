@@ -20,11 +20,11 @@ public class BookReservationConfiguration : IEntityTypeConfiguration<BookReserva
         builder.Property(br => br.DeletedDate).HasColumnName("DeletedDate");
 
         builder.HasOne(br => br.Book)
-               .WithMany(m => m.BookReserves)
+               .WithMany(m => m.BookReservations)
                .HasForeignKey(br => br.BookId);
 
         builder.HasOne(br => br.Member)
-               .WithMany(m => m.BookReserves)
+               .WithMany(m => m.BookReservations)
                .HasForeignKey(br => br.MemberId);
 
         builder.HasQueryFilter(br => !br.DeletedDate.HasValue);
