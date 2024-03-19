@@ -33,8 +33,9 @@ namespace Persistence.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -176,13 +177,13 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ISBN_Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ISBNCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BookTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BookEdition = table.Column<int>(type: "int", nullable: false),
                     ReleaseDate = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     PublisherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     LocationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -529,18 +530,36 @@ namespace Persistence.Migrations
                     { 92, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Publishers.Write", null },
                     { 93, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Publishers.Create", null },
                     { 94, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Publishers.Update", null },
-                    { 95, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Publishers.Delete", null }
+                    { 95, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Publishers.Delete", null },
+                    { 96, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Admin", null },
+                    { 97, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Read", null },
+                    { 98, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Write", null },
+                    { 99, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Create", null },
+                    { 100, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Update", null },
+                    { 101, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Delete", null },
+                    { 102, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Admin", null },
+                    { 103, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Read", null },
+                    { 104, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Write", null },
+                    { 105, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Create", null },
+                    { 106, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Update", null },
+                    { 107, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Categories.Delete", null },
+                    { 108, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Admin", null },
+                    { 109, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Read", null },
+                    { 110, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Write", null },
+                    { 111, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Create", null },
+                    { 112, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Update", null },
+                    { 113, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Delete", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AuthenticatorType", "CreatedDate", "DeletedDate", "Email", "PasswordHash", "PasswordSalt", "UpdatedDate" },
-                values: new object[] { new Guid("b0645c80-513e-4398-abdc-7388327b06e9"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "narch@kodlama.io", new byte[] { 114, 97, 55, 16, 50, 6, 86, 34, 57, 244, 199, 136, 227, 116, 147, 218, 210, 174, 241, 204, 62, 56, 114, 240, 189, 241, 224, 164, 227, 0, 231, 154, 22, 32, 180, 178, 27, 213, 100, 77, 204, 49, 255, 181, 196, 116, 5, 140, 159, 202, 212, 179, 19, 81, 1, 182, 204, 138, 134, 249, 190, 254, 120, 210 }, new byte[] { 135, 159, 145, 10, 180, 106, 106, 20, 179, 244, 111, 82, 55, 245, 3, 184, 155, 93, 124, 90, 70, 255, 70, 124, 93, 16, 33, 105, 219, 31, 193, 187, 185, 164, 181, 31, 66, 245, 17, 59, 58, 152, 42, 8, 179, 40, 206, 145, 38, 63, 237, 32, 40, 127, 247, 154, 143, 152, 111, 150, 131, 22, 79, 2, 35, 36, 161, 234, 156, 73, 134, 85, 232, 14, 127, 203, 105, 136, 120, 228, 187, 93, 85, 149, 34, 6, 6, 50, 108, 90, 86, 252, 0, 17, 119, 53, 87, 111, 250, 216, 179, 212, 223, 142, 48, 242, 139, 227, 98, 126, 208, 226, 11, 15, 134, 162, 34, 216, 169, 155, 127, 170, 211, 164, 101, 184, 41, 241 }, null });
+                values: new object[] { new Guid("085304ad-85e0-4869-9c3a-9b7d178e015e"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "narch@kodlama.io", new byte[] { 130, 59, 41, 193, 7, 79, 143, 181, 146, 164, 219, 200, 128, 165, 128, 30, 86, 44, 9, 55, 78, 233, 218, 240, 104, 183, 102, 33, 2, 215, 89, 30, 148, 139, 247, 254, 118, 95, 70, 151, 126, 242, 134, 159, 8, 99, 35, 221, 21, 42, 187, 26, 124, 87, 59, 141, 241, 86, 120, 15, 134, 205, 177, 247 }, new byte[] { 158, 231, 72, 195, 254, 225, 255, 196, 150, 71, 81, 160, 61, 139, 170, 38, 77, 73, 191, 243, 250, 88, 168, 61, 75, 70, 107, 14, 73, 153, 82, 90, 9, 245, 81, 246, 54, 134, 218, 72, 9, 91, 225, 165, 211, 169, 59, 51, 104, 158, 214, 11, 215, 16, 82, 93, 76, 219, 178, 151, 146, 176, 236, 141, 0, 211, 79, 60, 78, 165, 188, 60, 86, 196, 198, 34, 10, 22, 187, 167, 176, 95, 164, 222, 162, 75, 221, 51, 130, 39, 79, 193, 38, 145, 146, 187, 172, 109, 103, 202, 46, 33, 100, 144, 109, 59, 114, 89, 110, 154, 37, 65, 150, 140, 197, 168, 211, 157, 183, 244, 133, 189, 67, 4, 206, 247, 82, 218 }, null });
 
             migrationBuilder.InsertData(
                 table: "UserOperationClaims",
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "OperationClaimId", "UpdatedDate", "UserId" },
-                values: new object[] { new Guid("a89484e6-8dd3-421a-a5b6-a7fd055a05ed"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("b0645c80-513e-4398-abdc-7388327b06e9") });
+                values: new object[] { new Guid("7a1cf438-9759-4062-a877-406803d297b3"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("085304ad-85e0-4869-9c3a-9b7d178e015e") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookAuthors_AuthorId",

@@ -11,7 +11,7 @@ namespace Application.Features.Categories.Queries.GetById;
 
 public class GetByIdCategoryQuery : IRequest<GetByIdCategoryResponse>, ISecuredRequest
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     public string[] Roles => [Admin, Read];
 

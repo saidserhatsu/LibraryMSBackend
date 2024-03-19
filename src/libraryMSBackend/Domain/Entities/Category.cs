@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities;
-public class Category : Entity<Guid> 
+public class Category : Entity<int> 
 {
-    public string CategoryName { get; set; }
+    public string Name { get; set; }
 
     public virtual ICollection<Book> Books { get; set; }
 }

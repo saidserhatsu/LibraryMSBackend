@@ -30,7 +30,7 @@ public class CategoryBusinessRules : BaseBusinessRules
             await throwBusinessException(CategoriesBusinessMessages.CategoryNotExists);
     }
 
-    public async Task CategoryIdShouldExistWhenSelected(Guid id, CancellationToken cancellationToken)
+    public async Task CategoryIdShouldExistWhenSelected(int id, CancellationToken cancellationToken)
     {
         Category? category = await _categoryRepository.GetAsync(
             predicate: c => c.Id == id,

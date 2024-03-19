@@ -96,6 +96,9 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ILocationService, LocationManager>();
         services.AddScoped<IMemberService, MemberManager>();
         services.AddScoped<IPublisherService, PublisherManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<IBookService, BookManager>();
         return services;
     }
 

@@ -30,7 +30,7 @@ public class CategoriesController : BaseController
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         DeletedCategoryResponse response = await Mediator.Send(new DeleteCategoryCommand { Id = id });
 
@@ -38,7 +38,7 @@ public class CategoriesController : BaseController
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    public async Task<IActionResult> GetById([FromRoute] int id)
     {
         GetByIdCategoryResponse response = await Mediator.Send(new GetByIdCategoryQuery { Id = id });
         return Ok(response);

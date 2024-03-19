@@ -14,8 +14,8 @@ namespace Application.Features.Categories.Commands.Update;
 
 public class UpdateCategoryCommand : IRequest<UpdatedCategoryResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
-    public Guid Id { get; set; }
-    public string CategoryName { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
 
     public string[] Roles => [Admin, Write, CategoriesOperationClaims.Update];
 

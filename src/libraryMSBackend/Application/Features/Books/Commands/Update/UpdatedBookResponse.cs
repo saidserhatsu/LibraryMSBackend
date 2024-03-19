@@ -12,6 +12,6 @@ public class UpdatedBookResponse : IResponse
     public int ReleaseDate { get; set; }
     public BookStatus Status { get; set; }
     public Guid PublisherId { get; set; }
-    public Guid CategoryId { get; set; }
+    public int CategoryId { get; set; }
     public Guid LocationId { get; set; }
 }

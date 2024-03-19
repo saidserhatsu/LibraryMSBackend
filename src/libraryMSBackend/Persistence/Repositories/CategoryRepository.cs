@@ -5,7 +5,7 @@ using Persistence.Contexts;
 
 namespace Persistence.Repositories;
 
-public class CategoryRepository : EfRepositoryBase<Category, Guid, BaseDbContext>, ICategoryRepository
+public class CategoryRepository : EfRepositoryBase<Category, int, BaseDbContext>, ICategoryRepository
 {
     public CategoryRepository(BaseDbContext context) : base(context)
     {

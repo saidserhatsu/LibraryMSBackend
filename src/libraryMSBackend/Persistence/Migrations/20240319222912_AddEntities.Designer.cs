@@ -12,7 +12,7 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20240319003402_AddEntities")]
+    [Migration("20240319222912_AddEntities")]
     partial class AddEntities
     {
         /// <inheritdoc />
@@ -75,8 +75,8 @@ namespace Persistence.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("BookTitle");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int")
                         .HasColumnName("CategoryId");
 
                     b.Property<DateTime>("CreatedDate")
@@ -87,10 +87,10 @@ namespace Persistence.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DeletedDate");
 
-                    b.Property<string>("ISBN_Code")
+                    b.Property<string>("ISBNCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ISBN_Code");
+                        .HasColumnName("ISBNCode");
 
                     b.Property<Guid>("LocationId")
                         .HasColumnType("uniqueidentifier")
@@ -251,15 +251,12 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("Id");
 
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("CategoryName");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2")
@@ -268,6 +265,11 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("DeletedDate");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Name");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2")
@@ -1120,6 +1122,114 @@ namespace Persistence.Migrations
                             Id = 95,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Publishers.Delete"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Admin"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Read"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Write"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Create"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Update"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Delete"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Admin"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Read"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Write"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Create"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Update"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Categories.Delete"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Books.Admin"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Books.Read"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Books.Write"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Books.Create"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Books.Update"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Books.Delete"
                         });
                 });
 
@@ -1301,12 +1411,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b0645c80-513e-4398-abdc-7388327b06e9"),
+                            Id = new Guid("085304ad-85e0-4869-9c3a-9b7d178e015e"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 114, 97, 55, 16, 50, 6, 86, 34, 57, 244, 199, 136, 227, 116, 147, 218, 210, 174, 241, 204, 62, 56, 114, 240, 189, 241, 224, 164, 227, 0, 231, 154, 22, 32, 180, 178, 27, 213, 100, 77, 204, 49, 255, 181, 196, 116, 5, 140, 159, 202, 212, 179, 19, 81, 1, 182, 204, 138, 134, 249, 190, 254, 120, 210 },
-                            PasswordSalt = new byte[] { 135, 159, 145, 10, 180, 106, 106, 20, 179, 244, 111, 82, 55, 245, 3, 184, 155, 93, 124, 90, 70, 255, 70, 124, 93, 16, 33, 105, 219, 31, 193, 187, 185, 164, 181, 31, 66, 245, 17, 59, 58, 152, 42, 8, 179, 40, 206, 145, 38, 63, 237, 32, 40, 127, 247, 154, 143, 152, 111, 150, 131, 22, 79, 2, 35, 36, 161, 234, 156, 73, 134, 85, 232, 14, 127, 203, 105, 136, 120, 228, 187, 93, 85, 149, 34, 6, 6, 50, 108, 90, 86, 252, 0, 17, 119, 53, 87, 111, 250, 216, 179, 212, 223, 142, 48, 242, 139, 227, 98, 126, 208, 226, 11, 15, 134, 162, 34, 216, 169, 155, 127, 170, 211, 164, 101, 184, 41, 241 }
+                            PasswordHash = new byte[] { 130, 59, 41, 193, 7, 79, 143, 181, 146, 164, 219, 200, 128, 165, 128, 30, 86, 44, 9, 55, 78, 233, 218, 240, 104, 183, 102, 33, 2, 215, 89, 30, 148, 139, 247, 254, 118, 95, 70, 151, 126, 242, 134, 159, 8, 99, 35, 221, 21, 42, 187, 26, 124, 87, 59, 141, 241, 86, 120, 15, 134, 205, 177, 247 },
+                            PasswordSalt = new byte[] { 158, 231, 72, 195, 254, 225, 255, 196, 150, 71, 81, 160, 61, 139, 170, 38, 77, 73, 191, 243, 250, 88, 168, 61, 75, 70, 107, 14, 73, 153, 82, 90, 9, 245, 81, 246, 54, 134, 218, 72, 9, 91, 225, 165, 211, 169, 59, 51, 104, 158, 214, 11, 215, 16, 82, 93, 76, 219, 178, 151, 146, 176, 236, 141, 0, 211, 79, 60, 78, 165, 188, 60, 86, 196, 198, 34, 10, 22, 187, 167, 176, 95, 164, 222, 162, 75, 221, 51, 130, 39, 79, 193, 38, 145, 146, 187, 172, 109, 103, 202, 46, 33, 100, 144, 109, 59, 114, 89, 110, 154, 37, 65, 150, 140, 197, 168, 211, 157, 183, 244, 133, 189, 67, 4, 206, 247, 82, 218 }
                         });
                 });
 
@@ -1348,10 +1458,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a89484e6-8dd3-421a-a5b6-a7fd055a05ed"),
+                            Id = new Guid("7a1cf438-9759-4062-a877-406803d297b3"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("b0645c80-513e-4398-abdc-7388327b06e9")
+                            UserId = new Guid("085304ad-85e0-4869-9c3a-9b7d178e015e")
                         });
                 });
 

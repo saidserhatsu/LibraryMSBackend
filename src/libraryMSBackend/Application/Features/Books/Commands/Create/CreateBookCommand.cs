@@ -10,6 +10,10 @@ using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using Domain.Enums;
 using static Application.Features.Books.Constants.BooksOperationClaims;
+using Application.Services.Categories;
+using Application.Services.Locations;
+using Application.Services.Publishers;
+using Application.Features.Categories.Rules;
 
 namespace Application.Features.Books.Commands.Create;
 
@@ -21,7 +25,7 @@ public class CreateBookCommand : IRequest<CreatedBookResponse>, ISecuredRequest,
     public int ReleaseDate { get; set; }
     public BookStatus Status { get; set; }
     public Guid PublisherId { get; set; }
-    public Guid CategoryId { get; set; }
+    public int CategoryId { get; set; }
     public Guid LocationId { get; set; }
 
     public string[] Roles => [Admin, Write, BooksOperationClaims.Create];

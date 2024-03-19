@@ -15,7 +15,7 @@ namespace Application.Features.Categories.Commands.Delete;
 
 public class DeleteCategoryCommand : IRequest<DeletedCategoryResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     public string[] Roles => [Admin, Write, CategoriesOperationClaims.Delete];
 
