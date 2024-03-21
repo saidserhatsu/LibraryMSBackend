@@ -39,4 +39,10 @@ public class FinePaymentBusinessRules : BaseBusinessRules
         );
         await FinePaymentShouldExistWhenSelected(finePayment);
     }
+
+    //todo: BusinessRules -> Ödeme Onayý ve Kayýt: Kullanýcýnýn ödemesi yapýldýktan sonra sistemde bu ödemenin doðrulanmasý ve kaydedilmesi gerekir. Bu iþlem, kullanýcýnýn ödemesinin baþarýyla tamamlandýðýndan emin olmak için önemlidir.
+
+    //todo: BusinessRules -> Ödeme Bildirimi: Kullanýcýya ödemenin baþarýyla alýndýðýna dair bir bildirim gönderilmesi gerekir. Bu bildirim, kullanýcýnýn ödemenin tamamlandýðýna dair bir onay almasýný saðlar ve iþlem hakkýnda bilgilendirir.
+
+    //todo: BusinessRules -> Ödeme Geçmiþi: Kullanýcýlarýn ödeme geçmiþi tutulmalý. Bu, kullanýcýlarýn ödeme geçmiþlerini izlemelerine ve gerektiðinde ödeme yapmalarýna yardýmcý olur.
 }

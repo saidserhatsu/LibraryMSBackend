@@ -2,6 +2,8 @@ using Application.Services.Repositories;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Repositories;
 using Persistence.Contexts;
+using System.Data;
+using System.Linq.Expressions;
 
 namespace Persistence.Repositories;
 

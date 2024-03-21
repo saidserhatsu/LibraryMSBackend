@@ -9,8 +9,12 @@ public class UpdateMemberCommandValidator : AbstractValidator<UpdateMemberComman
         RuleFor(c => c.Id).NotEmpty();
         RuleFor(c => c.FirstName).NotEmpty();
         RuleFor(c => c.LastName).NotEmpty();
-        RuleFor(c => c.PhoneNumber).NotEmpty();
-        RuleFor(c => c.DateOfBirth).NotEmpty();
+        RuleFor(m => m.PhoneNumber).NotEmpty()
+            .Matches(@"^\d{10}$") // Telefon numarasý 10 basamaklý olmalý ve yalnýzca rakamlar içermelidir.
+            .WithMessage("Telefon numarasý geçerli bir formatta olmalýdýr. (örn: 5551234567)");
+        RuleFor(m => m.DateOfBirth).NotEmpty()
+            .LessThan(DateTime.Today.AddYears(-7)) // En az 7 yýl önce doðmuþ olmalý.
+            .WithMessage("Doðum tarihi en az 7 yýl önce olmalýdýr.");
         RuleFor(c => c.Subscribe).NotEmpty();
     }
 }

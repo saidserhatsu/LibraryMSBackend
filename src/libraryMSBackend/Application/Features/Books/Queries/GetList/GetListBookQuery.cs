@@ -9,6 +9,9 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.Books.Constants.BooksOperationClaims;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Domain.Enums;
 
 namespace Application.Features.Books.Queries.GetList;
 
@@ -37,8 +40,9 @@ public class GetListBookQuery : IRequest<GetListResponse<GetListBookListItemDto>
         public async Task<GetListResponse<GetListBookListItemDto>> Handle(GetListBookQuery request, CancellationToken cancellationToken)
         {
             IPaginate<Book> books = await _bookRepository.GetListAsync(
+                include: b => b.Include(b => b.Category).Include(b => b.Location).Include(b => b.Publisher),
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
             );
 
