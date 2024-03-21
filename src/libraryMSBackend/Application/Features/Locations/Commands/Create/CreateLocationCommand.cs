@@ -14,10 +14,10 @@ namespace Application.Features.Locations.Commands.Create;
 
 public class CreateLocationCommand : IRequest<CreatedLocationResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
+    public string Name { get; set; }
     public int ShelfNo { get; set; }
     public int FloorNo { get; set; }
     public string ShelfName { get; set; }
-    public string LibraryName { get; set; }
 
     public string[] Roles => [Admin, Write, LocationsOperationClaims.Create];
 

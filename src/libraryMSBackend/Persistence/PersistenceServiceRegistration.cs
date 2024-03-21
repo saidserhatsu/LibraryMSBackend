@@ -50,6 +50,7 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<ILocationRepository, LocationRepository>();
         return services;
     }
 }

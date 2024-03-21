@@ -6,9 +6,9 @@ public class CreateLocationCommandValidator : AbstractValidator<CreateLocationCo
 {
     public CreateLocationCommandValidator()
     {
+        RuleFor(c => c.Name).NotEmpty();
         RuleFor(c => c.ShelfNo).NotEmpty();
         RuleFor(c => c.FloorNo).NotEmpty();
         RuleFor(c => c.ShelfName).NotEmpty();
-        RuleFor(c => c.LibraryName).NotEmpty();
     }
 }

@@ -15,10 +15,10 @@ namespace Application.Features.Locations.Commands.Update;
 public class UpdateLocationCommand : IRequest<UpdatedLocationResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
+    public string Name { get; set; }
     public int ShelfNo { get; set; }
     public int FloorNo { get; set; }
     public string ShelfName { get; set; }
-    public string LibraryName { get; set; }
 
     public string[] Roles => [Admin, Write, LocationsOperationClaims.Update];
 

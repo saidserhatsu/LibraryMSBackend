@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20240319222912_AddEntities")]
-    partial class AddEntities
+    [Migration("20240321220125_AddAllEntities")]
+    partial class AddAllEntities
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -452,10 +452,10 @@ namespace Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("FloorNo");
 
-                    b.Property<string>("LibraryName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("LibraryName");
+                        .HasColumnName("Name");
 
                     b.Property<string>("ShelfName")
                         .IsRequired()
@@ -1411,12 +1411,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("085304ad-85e0-4869-9c3a-9b7d178e015e"),
+                            Id = new Guid("15348339-6814-4b86-959b-226dd82afdc5"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 130, 59, 41, 193, 7, 79, 143, 181, 146, 164, 219, 200, 128, 165, 128, 30, 86, 44, 9, 55, 78, 233, 218, 240, 104, 183, 102, 33, 2, 215, 89, 30, 148, 139, 247, 254, 118, 95, 70, 151, 126, 242, 134, 159, 8, 99, 35, 221, 21, 42, 187, 26, 124, 87, 59, 141, 241, 86, 120, 15, 134, 205, 177, 247 },
-                            PasswordSalt = new byte[] { 158, 231, 72, 195, 254, 225, 255, 196, 150, 71, 81, 160, 61, 139, 170, 38, 77, 73, 191, 243, 250, 88, 168, 61, 75, 70, 107, 14, 73, 153, 82, 90, 9, 245, 81, 246, 54, 134, 218, 72, 9, 91, 225, 165, 211, 169, 59, 51, 104, 158, 214, 11, 215, 16, 82, 93, 76, 219, 178, 151, 146, 176, 236, 141, 0, 211, 79, 60, 78, 165, 188, 60, 86, 196, 198, 34, 10, 22, 187, 167, 176, 95, 164, 222, 162, 75, 221, 51, 130, 39, 79, 193, 38, 145, 146, 187, 172, 109, 103, 202, 46, 33, 100, 144, 109, 59, 114, 89, 110, 154, 37, 65, 150, 140, 197, 168, 211, 157, 183, 244, 133, 189, 67, 4, 206, 247, 82, 218 }
+                            PasswordHash = new byte[] { 240, 234, 59, 61, 15, 16, 237, 127, 246, 227, 241, 79, 42, 121, 38, 248, 169, 199, 143, 220, 167, 149, 201, 40, 246, 3, 238, 11, 15, 125, 17, 229, 134, 118, 193, 72, 40, 42, 46, 168, 195, 236, 39, 166, 8, 5, 46, 75, 87, 129, 148, 46, 233, 61, 24, 138, 31, 115, 101, 52, 198, 148, 112, 179 },
+                            PasswordSalt = new byte[] { 226, 151, 129, 122, 251, 1, 47, 232, 169, 178, 60, 75, 115, 22, 155, 97, 163, 42, 14, 161, 40, 60, 224, 12, 217, 42, 220, 132, 66, 216, 153, 27, 16, 189, 95, 106, 254, 250, 32, 156, 211, 210, 161, 155, 159, 7, 126, 65, 13, 45, 10, 94, 224, 129, 222, 206, 74, 49, 150, 198, 26, 158, 244, 39, 169, 122, 194, 45, 110, 24, 58, 117, 120, 120, 57, 84, 213, 85, 25, 166, 181, 107, 134, 220, 195, 1, 60, 162, 85, 85, 127, 110, 6, 51, 52, 118, 61, 36, 233, 139, 246, 3, 90, 180, 206, 56, 118, 32, 61, 4, 17, 114, 205, 127, 232, 162, 135, 130, 178, 46, 22, 56, 219, 36, 38, 8, 111, 248 }
                         });
                 });
 
@@ -1458,10 +1458,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7a1cf438-9759-4062-a877-406803d297b3"),
+                            Id = new Guid("2cd4c05c-bdd2-406c-963d-ee1420662937"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("085304ad-85e0-4869-9c3a-9b7d178e015e")
+                            UserId = new Guid("15348339-6814-4b86-959b-226dd82afdc5")
                         });
                 });
 

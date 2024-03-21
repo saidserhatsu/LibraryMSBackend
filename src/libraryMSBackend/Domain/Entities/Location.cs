@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace Domain.Entities;
 public class Location : Entity<Guid>
 {
+    public string Name { get; set; }
     public int ShelfNo { get; set; }
     public int FloorNo { get; set; }
     public string ShelfName { get; set; }
-    public string LibraryName { get; set; }
-
+    
     public virtual ICollection<Book> Books { get; set; }
 }
