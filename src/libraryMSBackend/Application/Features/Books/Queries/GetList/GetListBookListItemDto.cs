@@ -1,6 +1,7 @@
 using NArchitecture.Core.Application.Dtos;
 using Domain.Enums;
 using Domain.Entities;
+using Application.Features.Locations.Queries.GetById;
 
 namespace Application.Features.Books.Queries.GetList;
 
@@ -15,4 +16,5 @@ public class GetListBookListItemDto : IDto
     public string CategoryName { get; set; }
     public string PublisherName { get; set; }
     public string LocationName { get; set; }
+    public GetByIdLocationResponse Location { get; set; }
 }

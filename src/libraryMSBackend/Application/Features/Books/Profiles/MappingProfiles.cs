@@ -22,6 +22,8 @@ public class MappingProfiles : Profile
         CreateMap<Book, DeletedBookResponse>().ReverseMap();
         CreateMap<Book, GetByIdBookResponse>().ReverseMap();
         CreateMap<Book, GetListBookListItemDto>().ReverseMap();
+        CreateMap<GetListBookListItemDto, Book>().ForMember(dest=>dest.Location,act=>act.MapFrom(src=>src.LocationName));
+
         CreateMap<IPaginate<Book>, GetListResponse<GetListBookListItemDto>>().ReverseMap();
     }
 }
