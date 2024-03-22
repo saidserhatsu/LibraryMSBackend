@@ -11,5 +11,5 @@ public class Author : Entity<Guid>
     public string FirstName { get; set; }
     public string LastName { get; set; }
 
-    public virtual ICollection<BookAuthor> Books { get; set; }
+    public virtual ICollection<BookAuthor> BookAuthors { get; set; }
 }

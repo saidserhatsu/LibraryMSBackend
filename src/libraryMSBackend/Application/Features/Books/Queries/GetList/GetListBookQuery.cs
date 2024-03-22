@@ -41,7 +41,8 @@ public class GetListBookQuery : IRequest<GetListResponse<GetListBookListItemDto>
         public async Task<GetListResponse<GetListBookListItemDto>> Handle(GetListBookQuery request, CancellationToken cancellationToken)
         {
             IPaginate<Book> books = await _bookRepository.GetListAsync(
-                include: b => b.Include(b => b.Category).Include(b => b.Location).Include(b => b.Publisher),
+                include: b => b.Include(b => b.Category).Include(b => b.Location).Include(b => b.Publisher)
+                .Include(b=>b.BookAuthors).ThenInclude(b => b.Author),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken

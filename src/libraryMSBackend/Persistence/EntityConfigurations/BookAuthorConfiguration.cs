@@ -8,7 +8,7 @@ public class BookAuthorConfiguration : IEntityTypeConfiguration<BookAuthor>
 {
     public void Configure(EntityTypeBuilder<BookAuthor> builder)
     {
-        builder.ToTable("BookAuthors").HasKey(ba => ba.Id);
+        builder.ToTable("BookAuthors").HasKey(ba => new {ba.BookId,ba.AuthorId});
 
         builder.Property(ba => ba.Id).HasColumnName("Id").IsRequired();
         builder.Property(ba => ba.BookId).HasColumnName("BookId");
@@ -19,12 +19,12 @@ public class BookAuthorConfiguration : IEntityTypeConfiguration<BookAuthor>
 
         builder
             .HasOne(ba => ba.Book)
-            .WithMany(a => a.Authors)
+            .WithMany(a => a.BookAuthors)
             .HasForeignKey(ba => ba.BookId);
 
         builder
             .HasOne(ba => ba.Author)
-            .WithMany(a => a.Books)
+            .WithMany(a => a.BookAuthors)
             .HasForeignKey(ba => ba.AuthorId);
 
         builder.HasQueryFilter(ba => !ba.DeletedDate.HasValue);
