@@ -1,5 +1,5 @@
-using Application.Features.Authors.Queries.GetById;
-using Application.Features.Locations.Queries.GetById;
+using Application.Features.Authors.Queries.GetList;
+using Application.Features.Locations.Queries.GetList;
 using NArchitecture.Core.Application.Dtos;
 
 namespace Application.Features.Books.Queries.GetList;
@@ -16,6 +16,6 @@ public class GetListBookListItemDto : IDto
     public string PublisherName { get; set; }
     public string LocationName { get; set; }
 
-    public GetByIdLocationResponse Location { get; set; }
-    public ICollection<GetByIdAuthorResponse> AuthorsDto { get; set; }
+    public GetListLocationListItemDto Location { get; set; }
+    public List<GetListAuthorListItemDto> Authors { get; set; }
 }

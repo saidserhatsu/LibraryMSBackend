@@ -45,31 +45,6 @@ public class GetListBookQuery : IRequest<GetListResponse<GetListBookListItemDto>
             );
 
             GetListResponse<GetListBookListItemDto> response = _mapper.Map<GetListResponse<GetListBookListItemDto>>(books);
-            //var response = new GetListResponse<GetListBookListItemDto>
-            //{
-            //    Items = books.Items.Select(book =>
-            //    {
-            //        return new GetListBookListItemDto
-            //        {
-            //            Id = book.Id,
-            //            ISBNCode = book.ISBNCode,
-            //            BookTitle = book.BookTitle,
-            //            BookEdition = book.BookEdition,
-            //            ReleaseDate = book.ReleaseDate,
-            //            Status = book.Status.ToString(),
-            //            CategoryName = book.Category?.Name,
-            //            PublisherName = book.Publisher?.Name,
-
-            //            Location = new GetByIdLocationResponse
-            //            {
-            //                Id = book.Location?.Id ?? Guid.Empty,
-            //                Name = book.Location?.Name,
-            //                ShelfName = book.Location?.ShelfName
-            //            },
-
-            //        };
-            //    }).ToList()
-            //};
             return response;
         }
     }
