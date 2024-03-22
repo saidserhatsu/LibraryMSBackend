@@ -1,8 +1,6 @@
-using NArchitecture.Core.Application.Dtos;
-using Domain.Enums;
-using Domain.Entities;
-using Application.Features.Locations.Queries.GetById;
 using Application.Features.Authors.Queries.GetById;
+using Application.Features.Locations.Queries.GetById;
+using NArchitecture.Core.Application.Dtos;
 
 namespace Application.Features.Books.Queries.GetList;
 
@@ -19,5 +17,5 @@ public class GetListBookListItemDto : IDto
     public string LocationName { get; set; }
 
     public GetByIdLocationResponse Location { get; set; }
-    public GetByIdAuthorResponse AuthorsDto { get; set; }
+    public ICollection<GetByIdAuthorResponse> AuthorsDto { get; set; }
 }

@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20240321220125_AddAllEntities")]
-    partial class AddAllEntities
+    [Migration("20240322114026_mig_!")]
+    partial class mig_
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,18 +125,13 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.BookAuthor", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("BookId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("BookId");
 
                     b.Property<Guid>("AuthorId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("AuthorId");
-
-                    b.Property<Guid>("BookId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("BookId");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2")
@@ -146,15 +141,17 @@ namespace Persistence.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DeletedDate");
 
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("UpdatedDate");
 
-                    b.HasKey("Id");
+                    b.HasKey("BookId", "AuthorId");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("BookId");
 
                     b.ToTable("BookAuthors", (string)null);
                 });
@@ -1230,6 +1227,42 @@ namespace Persistence.Migrations
                             Id = 113,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Books.Delete"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Locations.Admin"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Locations.Read"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Locations.Write"
+                        },
+                        new
+                        {
+                            Id = 117,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Locations.Create"
+                        },
+                        new
+                        {
+                            Id = 118,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Locations.Update"
+                        },
+                        new
+                        {
+                            Id = 119,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Locations.Delete"
                         });
                 });
 
@@ -1411,12 +1444,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("15348339-6814-4b86-959b-226dd82afdc5"),
+                            Id = new Guid("c906b394-a899-4cb9-bae2-c449ab39542a"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 240, 234, 59, 61, 15, 16, 237, 127, 246, 227, 241, 79, 42, 121, 38, 248, 169, 199, 143, 220, 167, 149, 201, 40, 246, 3, 238, 11, 15, 125, 17, 229, 134, 118, 193, 72, 40, 42, 46, 168, 195, 236, 39, 166, 8, 5, 46, 75, 87, 129, 148, 46, 233, 61, 24, 138, 31, 115, 101, 52, 198, 148, 112, 179 },
-                            PasswordSalt = new byte[] { 226, 151, 129, 122, 251, 1, 47, 232, 169, 178, 60, 75, 115, 22, 155, 97, 163, 42, 14, 161, 40, 60, 224, 12, 217, 42, 220, 132, 66, 216, 153, 27, 16, 189, 95, 106, 254, 250, 32, 156, 211, 210, 161, 155, 159, 7, 126, 65, 13, 45, 10, 94, 224, 129, 222, 206, 74, 49, 150, 198, 26, 158, 244, 39, 169, 122, 194, 45, 110, 24, 58, 117, 120, 120, 57, 84, 213, 85, 25, 166, 181, 107, 134, 220, 195, 1, 60, 162, 85, 85, 127, 110, 6, 51, 52, 118, 61, 36, 233, 139, 246, 3, 90, 180, 206, 56, 118, 32, 61, 4, 17, 114, 205, 127, 232, 162, 135, 130, 178, 46, 22, 56, 219, 36, 38, 8, 111, 248 }
+                            PasswordHash = new byte[] { 190, 164, 2, 66, 74, 254, 140, 181, 61, 161, 201, 42, 190, 226, 49, 210, 115, 225, 254, 172, 144, 134, 0, 241, 154, 48, 132, 156, 250, 160, 105, 110, 71, 176, 110, 147, 228, 169, 245, 160, 174, 72, 214, 66, 161, 103, 221, 28, 165, 159, 90, 4, 109, 94, 22, 239, 205, 8, 85, 29, 108, 25, 144, 72 },
+                            PasswordSalt = new byte[] { 15, 140, 162, 156, 151, 32, 221, 45, 143, 162, 137, 99, 234, 16, 190, 57, 58, 120, 200, 235, 37, 223, 118, 30, 97, 174, 192, 45, 24, 213, 144, 104, 50, 248, 129, 78, 168, 212, 122, 113, 16, 138, 200, 88, 127, 197, 119, 108, 98, 222, 92, 42, 82, 255, 111, 143, 186, 139, 126, 254, 158, 136, 190, 43, 84, 198, 98, 214, 208, 255, 206, 63, 51, 11, 167, 247, 253, 115, 173, 117, 120, 149, 200, 191, 157, 227, 175, 38, 254, 227, 245, 2, 84, 175, 70, 115, 38, 131, 159, 91, 123, 63, 144, 239, 71, 151, 97, 40, 96, 238, 189, 142, 81, 143, 194, 214, 203, 45, 5, 241, 65, 220, 173, 38, 58, 76, 245, 94 }
                         });
                 });
 
@@ -1458,10 +1491,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2cd4c05c-bdd2-406c-963d-ee1420662937"),
+                            Id = new Guid("3d700e1d-36d5-4133-b79a-cf7d7349aa95"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("15348339-6814-4b86-959b-226dd82afdc5")
+                            UserId = new Guid("c906b394-a899-4cb9-bae2-c449ab39542a")
                         });
                 });
 
@@ -1495,13 +1528,13 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.BookAuthor", b =>
                 {
                     b.HasOne("Domain.Entities.Author", "Author")
-                        .WithMany("Books")
+                        .WithMany("BookAuthors")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Book", "Book")
-                        .WithMany("Authors")
+                        .WithMany("BookAuthors")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1633,12 +1666,12 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Author", b =>
                 {
-                    b.Navigation("Books");
+                    b.Navigation("BookAuthors");
                 });
 
             modelBuilder.Entity("Domain.Entities.Book", b =>
                 {
-                    b.Navigation("Authors");
+                    b.Navigation("BookAuthors");
 
                     b.Navigation("BookIssues");
 

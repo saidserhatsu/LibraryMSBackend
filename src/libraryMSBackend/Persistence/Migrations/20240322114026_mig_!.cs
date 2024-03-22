@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAllEntities : Migration
+    public partial class mig_ : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -318,16 +318,16 @@ namespace Persistence.Migrations
                 name: "BookAuthors",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AuthorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookAuthors", x => x.Id);
+                    table.PrimaryKey("PK_BookAuthors", x => new { x.BookId, x.AuthorId });
                     table.ForeignKey(
                         name: "FK_BookAuthors_Authors_AuthorId",
                         column: x => x.AuthorId,
@@ -548,28 +548,29 @@ namespace Persistence.Migrations
                     { 110, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Write", null },
                     { 111, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Create", null },
                     { 112, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Update", null },
-                    { 113, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Delete", null }
+                    { 113, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Books.Delete", null },
+                    { 114, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Locations.Admin", null },
+                    { 115, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Locations.Read", null },
+                    { 116, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Locations.Write", null },
+                    { 117, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Locations.Create", null },
+                    { 118, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Locations.Update", null },
+                    { 119, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Locations.Delete", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AuthenticatorType", "CreatedDate", "DeletedDate", "Email", "PasswordHash", "PasswordSalt", "UpdatedDate" },
-                values: new object[] { new Guid("15348339-6814-4b86-959b-226dd82afdc5"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "narch@kodlama.io", new byte[] { 240, 234, 59, 61, 15, 16, 237, 127, 246, 227, 241, 79, 42, 121, 38, 248, 169, 199, 143, 220, 167, 149, 201, 40, 246, 3, 238, 11, 15, 125, 17, 229, 134, 118, 193, 72, 40, 42, 46, 168, 195, 236, 39, 166, 8, 5, 46, 75, 87, 129, 148, 46, 233, 61, 24, 138, 31, 115, 101, 52, 198, 148, 112, 179 }, new byte[] { 226, 151, 129, 122, 251, 1, 47, 232, 169, 178, 60, 75, 115, 22, 155, 97, 163, 42, 14, 161, 40, 60, 224, 12, 217, 42, 220, 132, 66, 216, 153, 27, 16, 189, 95, 106, 254, 250, 32, 156, 211, 210, 161, 155, 159, 7, 126, 65, 13, 45, 10, 94, 224, 129, 222, 206, 74, 49, 150, 198, 26, 158, 244, 39, 169, 122, 194, 45, 110, 24, 58, 117, 120, 120, 57, 84, 213, 85, 25, 166, 181, 107, 134, 220, 195, 1, 60, 162, 85, 85, 127, 110, 6, 51, 52, 118, 61, 36, 233, 139, 246, 3, 90, 180, 206, 56, 118, 32, 61, 4, 17, 114, 205, 127, 232, 162, 135, 130, 178, 46, 22, 56, 219, 36, 38, 8, 111, 248 }, null });
+                values: new object[] { new Guid("c906b394-a899-4cb9-bae2-c449ab39542a"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "narch@kodlama.io", new byte[] { 190, 164, 2, 66, 74, 254, 140, 181, 61, 161, 201, 42, 190, 226, 49, 210, 115, 225, 254, 172, 144, 134, 0, 241, 154, 48, 132, 156, 250, 160, 105, 110, 71, 176, 110, 147, 228, 169, 245, 160, 174, 72, 214, 66, 161, 103, 221, 28, 165, 159, 90, 4, 109, 94, 22, 239, 205, 8, 85, 29, 108, 25, 144, 72 }, new byte[] { 15, 140, 162, 156, 151, 32, 221, 45, 143, 162, 137, 99, 234, 16, 190, 57, 58, 120, 200, 235, 37, 223, 118, 30, 97, 174, 192, 45, 24, 213, 144, 104, 50, 248, 129, 78, 168, 212, 122, 113, 16, 138, 200, 88, 127, 197, 119, 108, 98, 222, 92, 42, 82, 255, 111, 143, 186, 139, 126, 254, 158, 136, 190, 43, 84, 198, 98, 214, 208, 255, 206, 63, 51, 11, 167, 247, 253, 115, 173, 117, 120, 149, 200, 191, 157, 227, 175, 38, 254, 227, 245, 2, 84, 175, 70, 115, 38, 131, 159, 91, 123, 63, 144, 239, 71, 151, 97, 40, 96, 238, 189, 142, 81, 143, 194, 214, 203, 45, 5, 241, 65, 220, 173, 38, 58, 76, 245, 94 }, null });
 
             migrationBuilder.InsertData(
                 table: "UserOperationClaims",
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "OperationClaimId", "UpdatedDate", "UserId" },
-                values: new object[] { new Guid("2cd4c05c-bdd2-406c-963d-ee1420662937"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("15348339-6814-4b86-959b-226dd82afdc5") });
+                values: new object[] { new Guid("3d700e1d-36d5-4133-b79a-cf7d7349aa95"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("c906b394-a899-4cb9-bae2-c449ab39542a") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookAuthors_AuthorId",
                 table: "BookAuthors",
                 column: "AuthorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BookAuthors_BookId",
-                table: "BookAuthors",
-                column: "BookId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookIssues_BookId",

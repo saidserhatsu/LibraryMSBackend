@@ -1,18 +1,14 @@
-using Application.Features.Books.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.Books.Constants.BooksOperationClaims;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Domain.Enums;
-using Application.Features.Locations.Queries.GetById;
 
 namespace Application.Features.Books.Queries.GetList;
 
@@ -42,7 +38,7 @@ public class GetListBookQuery : IRequest<GetListResponse<GetListBookListItemDto>
         {
             IPaginate<Book> books = await _bookRepository.GetListAsync(
                 include: b => b.Include(b => b.Category).Include(b => b.Location).Include(b => b.Publisher)
-                .Include(b=>b.BookAuthors).ThenInclude(b => b.Author),
+                .Include(b => b.BookAuthors).ThenInclude(b => b.Author),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
