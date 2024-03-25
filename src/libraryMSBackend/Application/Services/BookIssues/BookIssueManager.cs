@@ -4,6 +4,7 @@ using NArchitecture.Core.Persistence.Paging;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services.BookIssues;
 
@@ -74,4 +75,6 @@ public class BookIssueManager : IBookIssueService
 
         return deletedBookIssue;
     }
+
+
 }

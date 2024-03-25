@@ -39,6 +39,12 @@ public class BookIssueBusinessRules : BaseBusinessRules
         );
         await BookIssueShouldExistWhenSelected(bookIssue);
     }
+    //------------------------------------------------------------------------
+   
+
+
+   
+
 
     //todo: BusinessRules -> Bir kullanýcý ayný anda en fazla 2-3 kitap alabilir.
     //todo: BusinessRules -> Bir kullanýcý bir kitabý 2 hafta içinde iade etmesi gerekir. Aksi taktirde cezai iþlem uygulanýr.

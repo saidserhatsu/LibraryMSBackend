@@ -1,5 +1,6 @@
 using Application.Features.Authors.Queries.GetList;
 using Application.Features.Locations.Queries.GetList;
+using Domain.Enums;
 using NArchitecture.Core.Application.Dtos;
 
 namespace Application.Features.Books.Queries.GetList;
@@ -11,7 +12,7 @@ public class GetListBookListItemDto : IDto
     public string BookTitle { get; set; }
     public int BookEdition { get; set; }
     public int ReleaseDate { get; set; }
-    public string Status { get; set; }
+    public BookStatus Status { get; set; }
     public string CategoryName { get; set; }
     public string PublisherName { get; set; }
     public string LocationName { get; set; }

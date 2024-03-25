@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.Members.Constants.MembersOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Members.Queries.GetList;
 
@@ -37,10 +38,13 @@ public class GetListMemberQuery : IRequest<GetListResponse<GetListMemberListItem
         public async Task<GetListResponse<GetListMemberListItemDto>> Handle(GetListMemberQuery request, CancellationToken cancellationToken)
         {
             IPaginate<Member> members = await _memberRepository.GetListAsync(
-                index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
-                cancellationToken: cancellationToken
-            );
+                 include: b => b.Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Category)
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher),
+                 index: request.PageRequest.PageIndex,
+                 size: request.PageRequest.PageSize,
+                 cancellationToken: cancellationToken
+             );
 
             GetListResponse<GetListMemberListItemDto> response = _mapper.Map<GetListResponse<GetListMemberListItemDto>>(members);
             return response;

@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.Members.Constants.MembersOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Members.Queries.GetById;
 
@@ -30,7 +31,11 @@ public class GetByIdMemberQuery : IRequest<GetByIdMemberResponse>, ISecuredReque
 
         public async Task<GetByIdMemberResponse> Handle(GetByIdMemberQuery request, CancellationToken cancellationToken)
         {
-            Member? member = await _memberRepository.GetAsync(predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
+            Member? member = await _memberRepository.GetAsync(
+                 include: b => b.Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Category)
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher),
+                predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
             await _memberBusinessRules.MemberShouldExistWhenSelected(member);
 
             GetByIdMemberResponse response = _mapper.Map<GetByIdMemberResponse>(member);
