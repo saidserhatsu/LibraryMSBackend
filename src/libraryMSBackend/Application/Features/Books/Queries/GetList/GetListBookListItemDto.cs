@@ -15,7 +15,6 @@ public class GetListBookListItemDto : IDto
     public BookStatus Status { get; set; }
     public string CategoryName { get; set; }
     public string PublisherName { get; set; }
-    public string LocationName { get; set; }
 
     public GetListLocationListItemDto Location { get; set; }
     public List<GetListAuthorListItemDto> Authors { get; set; }

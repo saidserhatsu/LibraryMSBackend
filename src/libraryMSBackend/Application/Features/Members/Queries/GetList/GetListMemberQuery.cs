@@ -40,7 +40,8 @@ public class GetListMemberQuery : IRequest<GetListResponse<GetListMemberListItem
             IPaginate<Member> members = await _memberRepository.GetListAsync(
                  include: b => b.Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Category)
-                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher),
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher)
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.BookAuthors).ThenInclude(b => b.Author),
                  index: request.PageRequest.PageIndex,
                  size: request.PageRequest.PageSize,
                  cancellationToken: cancellationToken

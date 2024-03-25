@@ -18,13 +18,9 @@ public class GetListMemberListItemDto : IDto
     public Guid Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string PhoneNumber { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    public bool Subscribe { get; set; }
 
-
-
-
-    public ICollection<GetListBookListItemDto> Books { get; set; }
-    public ICollection<GetListLocationListItemDto> Locations { get; set; }
-    public ICollection<GetListCategoryListItemDto> Categories { get; set; }
-    public ICollection<GetListPublisherListItemDto> Publishers { get; set; }
-
+    public List<GetListBookListItemDto> Books { get; set; }
 }

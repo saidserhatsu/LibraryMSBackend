@@ -16,6 +16,7 @@ using Application.Features.Categories.Queries.GetById;
 using Application.Features.Publishers.Queries.GetList;
 using Application.Features.Locations.Queries.GetList;
 using Application.Features.Categories.Queries.GetList;
+using Application.Features.Authors.Queries.GetList;
 
 namespace Application.Features.Members.Profiles;
 
@@ -33,76 +34,33 @@ public class MappingProfiles : Profile
         CreateMap<Member, GetListMemberListItemDto>().ReverseMap();
 
         CreateMap<Member, GetListMemberListItemDto>()
-              .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListBookListItemDto
+              .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues
+              .Select(a => new GetListBookListItemDto
               {
                   Id = a.BookId,
                   ISBNCode = a.Book.ISBNCode,
                   BookTitle = a.Book.BookTitle,
                   BookEdition = a.Book.BookEdition,
                   ReleaseDate = a.Book.ReleaseDate,
-                  Status = a.Book.Status
-              })))
-              .ForMember(dest => dest.Publishers, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListPublisherListItemDto
-              {
-                  Id = a.Book.Publisher.Id,
-                  Name = a.Book.Publisher.Name,
-                  Language = a.Book.Publisher.Language
+                  Status = a.Book.Status,
+                  CategoryName = a.Book.Category.Name,
+                  PublisherName = a.Book.Publisher.Name,
+                  Location = new GetListLocationListItemDto
+                  {
+                      Id = a.Book.Id,
+                      Name = a.Book.Location.Name,
+                      ShelfName = a.Book.Location.ShelfName,
+                      FloorNo = a.Book.Location.FloorNo,
+                      ShelfNo = a.Book.Location.ShelfNo
+                  },
+                  Authors = new List<GetListAuthorListItemDto>
+                  {
+                      new GetListAuthorListItemDto
+                      {
 
-              })))
-              .ForMember(dest => dest.Locations, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListLocationListItemDto
-              {
-                  Id = a.Book.LocationId,
-                  Name = a.Book.Location.Name,
-                  FloorNo = a.Book.Location.FloorNo,
-                  ShelfNo = a.Book.Location.ShelfNo,
-                  ShelfName = a.Book.Location.ShelfName
-
-              })))
-              .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListCategoryListItemDto
-              {
-                  Id = a.Book.Category.Id,
-                  Name = a.Book.Category.Name
-
+                      }
+                  }
               })));
-
-        CreateMap<Member, GetByIdMemberResponse>()
-             .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListBookListItemDto
-             {
-                 Id = a.BookId,
-                 ISBNCode = a.Book.ISBNCode,
-                 BookTitle = a.Book.BookTitle,
-                 BookEdition = a.Book.BookEdition,
-                 ReleaseDate = a.Book.ReleaseDate,
-                 Status = a.Book.Status
-             })))
-             .ForMember(dest => dest.Publishers, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListPublisherListItemDto
-             {
-                 Id = a.Book.Publisher.Id,
-                 Name = a.Book.Publisher.Name,
-                 Language = a.Book.Publisher.Language
-
-             })))
-             .ForMember(dest => dest.Locations, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListLocationListItemDto
-             {
-                 Id = a.Book.LocationId,
-                 Name = a.Book.Location.Name,
-                 FloorNo = a.Book.Location.FloorNo,
-                 ShelfNo = a.Book.Location.ShelfNo,
-                 ShelfName = a.Book.Location.ShelfName
-
-             })))
-             .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.BookIssues.Select(a => new GetListCategoryListItemDto
-             {
-                 Id = a.Book.Category.Id,
-                 Name = a.Book.Category.Name
-
-             })));
-
-
-
-
-
         CreateMap<IPaginate<Member>, GetListResponse<GetListMemberListItemDto>>().ReverseMap();
-        CreateMap<IPaginate<Member>, GetListResponse<GetByIdMemberResponse>>().ReverseMap();
     }
 }
