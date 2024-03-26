@@ -26,6 +26,7 @@ public class BaseDbContext : DbContext
     public DbSet<Location> Locations { get; set; }
     public DbSet<Member> Members { get; set; }
     public DbSet<Publisher> Publishers { get; set; }
+    public DbSet<Announcement> Announcements { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

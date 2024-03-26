@@ -18,6 +18,7 @@ using Application.Features.LibraryStaffs.Constants;
 using Application.Features.Locations.Constants;
 using Application.Features.Members.Constants;
 using Application.Features.Publishers.Constants;
+using Application.Features.Announcements.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -329,6 +330,20 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
                 new() { Id = ++lastId, Name = LocationsOperationClaims.Create },
                 new() { Id = ++lastId, Name = LocationsOperationClaims.Update },
                 new() { Id = ++lastId, Name = LocationsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Announcements
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Read },
+                new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Write },
+                new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Create },
+                new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Update },
+                new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Delete },
             ]
         );
         #endregion

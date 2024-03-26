@@ -31,6 +31,7 @@ using Application.Services.LibraryStaffs;
 using Application.Services.Locations;
 using Application.Services.Members;
 using Application.Services.Publishers;
+using Application.Services.Announcements;
 
 namespace Application;
 
@@ -100,6 +101,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ICategoryService, CategoryManager>();
         services.AddScoped<IBookService, BookManager>();
         services.AddScoped<ILocationService, LocationManager>();
+        services.AddScoped<IAnnouncementService, AnnouncementManager>();
         return services;
     }
 
