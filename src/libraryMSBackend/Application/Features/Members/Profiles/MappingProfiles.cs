@@ -7,16 +7,10 @@ using AutoMapper;
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
-using Application.Features.Authors.Queries.GetById;
 using Application.Features.Books.Queries.GetList;
-using Application.Features.Locations.Queries.GetById;
-using Application.Features.Books.Queries.GetById;
-using Application.Features.Publishers.Queries.GetById;
-using Application.Features.Categories.Queries.GetById;
-using Application.Features.Publishers.Queries.GetList;
 using Application.Features.Locations.Queries.GetList;
-using Application.Features.Categories.Queries.GetList;
 using Application.Features.Authors.Queries.GetList;
+using System.Linq;
 
 namespace Application.Features.Members.Profiles;
 
@@ -35,31 +29,30 @@ public class MappingProfiles : Profile
 
         CreateMap<Member, GetListMemberListItemDto>()
               .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues
-              .Select(a => new GetListBookListItemDto
+              .Select(m => new GetListBookListItemDto
               {
-                  Id = a.BookId,
-                  ISBNCode = a.Book.ISBNCode,
-                  BookTitle = a.Book.BookTitle,
-                  BookEdition = a.Book.BookEdition,
-                  ReleaseDate = a.Book.ReleaseDate,
-                  Status = a.Book.Status,
-                  CategoryName = a.Book.Category.Name,
-                  PublisherName = a.Book.Publisher.Name,
+                  Id = m.BookId,
+                  ISBNCode = m.Book.ISBNCode,
+                  BookTitle = m.Book.BookTitle,
+                  BookEdition = m.Book.BookEdition,
+                  ReleaseDate = m.Book.ReleaseDate,
+                  Status = m.Book.Status,
+                  CategoryName = m.Book.Category.Name,
+                  PublisherName = m.Book.Publisher.Name,
                   Location = new GetListLocationListItemDto
                   {
-                      Id = a.Book.Id,
-                      Name = a.Book.Location.Name,
-                      ShelfName = a.Book.Location.ShelfName,
-                      FloorNo = a.Book.Location.FloorNo,
-                      ShelfNo = a.Book.Location.ShelfNo
+                      Id = m.Book.Id,
+                      Name = m.Book.Location.Name,
+                      ShelfName = m.Book.Location.ShelfName,
+                      FloorNo = m.Book.Location.FloorNo,
+                      ShelfNo = m.Book.Location.ShelfNo
                   },
-                  Authors = new List<GetListAuthorListItemDto>
+                  Authors = m.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
                   {
-                      new GetListAuthorListItemDto
-                      {
-
-                      }
-                  }
+                      Id = ba.Author.Id,
+                      FirstName = ba.Author.FirstName,
+                      LastName = ba.Author.LastName
+                  }).ToList()
               })));
         CreateMap<IPaginate<Member>, GetListResponse<GetListMemberListItemDto>>().ReverseMap();
     }

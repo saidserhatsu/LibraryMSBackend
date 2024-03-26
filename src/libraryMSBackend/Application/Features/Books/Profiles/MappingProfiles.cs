@@ -27,11 +27,11 @@ public class MappingProfiles : Profile
         CreateMap<Book, GetListBookListItemDto>()
                 .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
                 .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.BookAuthors
-                .Select(a => new GetListAuthorListItemDto
+                .Select(ba => new GetListAuthorListItemDto
                 {
-                    Id = a.Author.Id,
-                    FirstName = a.Author.FirstName,
-                    LastName = a.Author.LastName
+                    Id = ba.Author.Id,
+                    FirstName = ba.Author.FirstName,
+                    LastName = ba.Author.LastName
                 })));
         CreateMap<IPaginate<Book>, GetListResponse<GetListBookListItemDto>>().ReverseMap();
     }
