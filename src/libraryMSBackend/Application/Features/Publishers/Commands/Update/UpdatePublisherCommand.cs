@@ -43,6 +43,7 @@ public class UpdatePublisherCommand : IRequest<UpdatedPublisherResponse>, ISecur
             Publisher? publisher = await _publisherRepository.GetAsync(predicate: p => p.Id == request.Id, cancellationToken: cancellationToken);
             await _publisherBusinessRules.PublisherShouldExistWhenSelected(publisher);
             publisher = _mapper.Map(request, publisher);
+            await _publisherBusinessRules.PublisherNameCanNotBeDuplicatedWhenUpdated(publisher);
 
             await _publisherRepository.UpdateAsync(publisher!);
 

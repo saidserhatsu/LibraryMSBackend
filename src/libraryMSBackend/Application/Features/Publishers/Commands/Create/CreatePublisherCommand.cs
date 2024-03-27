@@ -39,6 +39,7 @@ public class CreatePublisherCommand : IRequest<CreatedPublisherResponse>, ISecur
 
         public async Task<CreatedPublisherResponse> Handle(CreatePublisherCommand request, CancellationToken cancellationToken)
         {
+           await  _publisherBusinessRules.PublisherNameCanNotBeDuplicatedWhenInserted(request.Name);
             Publisher publisher = _mapper.Map<Publisher>(request);
 
             await _publisherRepository.AddAsync(publisher);

@@ -48,6 +48,7 @@ public class UpdateMemberCommand : IRequest<UpdatedMemberResponse>, ISecuredRequ
             member = _mapper.Map(request, member);
 
             await _memberRepository.UpdateAsync(member!);
+            await _memberBusinessRules.MemberNumberCanNotBeDuplicatedWhenUpdated(member);
 
             UpdatedMemberResponse response = _mapper.Map<UpdatedMemberResponse>(member);
             return response;

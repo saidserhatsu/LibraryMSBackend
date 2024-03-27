@@ -38,6 +38,7 @@ public class CreateCategoryCommand : IRequest<CreatedCategoryResponse>, ISecured
 
         public async Task<CreatedCategoryResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
+            await _categoryBusinessRules.CategoryNameCanNotBeDuplicatedWhenInserted(request.Name);
             Category category = _mapper.Map<Category>(request);
 
             await _categoryRepository.AddAsync(category);

@@ -42,7 +42,7 @@ public class UpdateCategoryCommand : IRequest<UpdatedCategoryResponse>, ISecured
             Category? category = await _categoryRepository.GetAsync(predicate: c => c.Id == request.Id, cancellationToken: cancellationToken);
             await _categoryBusinessRules.CategoryShouldExistWhenSelected(category);
             category = _mapper.Map(request, category);
-
+            await _categoryBusinessRules.CategoryNameCanNotBeDuplicatedWhenUpdated(category);
             await _categoryRepository.UpdateAsync(category!);
 
             UpdatedCategoryResponse response = _mapper.Map<UpdatedCategoryResponse>(category);

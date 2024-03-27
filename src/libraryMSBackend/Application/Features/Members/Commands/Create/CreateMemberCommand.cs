@@ -42,6 +42,7 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ISecuredRequ
 
         public async Task<CreatedMemberResponse> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
         {
+            await _memberBusinessRules.MemberNumberCanNotBeDuplicatedWhenInserted(request.PhoneNumber);
             Member member = _mapper.Map<Member>(request);
 
             await _memberRepository.AddAsync(member);

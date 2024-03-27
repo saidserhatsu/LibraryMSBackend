@@ -50,6 +50,7 @@ public class CreateBookCommand : IRequest<CreatedBookResponse>, ISecuredRequest,
 
         public async Task<CreatedBookResponse> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
+            await _bookBusinessRules.BookISBNCodeCanNotBeDuplicatedWhenInserted(request.ISBNCode);
             Book book = _mapper.Map<Book>(request);
 
             await _bookRepository.AddAsync(book);

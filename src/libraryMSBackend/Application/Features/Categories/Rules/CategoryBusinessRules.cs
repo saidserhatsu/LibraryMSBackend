@@ -30,6 +30,8 @@ public class CategoryBusinessRules : BaseBusinessRules
             await throwBusinessException(CategoriesBusinessMessages.CategoryNotExists);
     }
 
+
+
     public async Task CategoryIdShouldExistWhenSelected(int id, CancellationToken cancellationToken)
     {
         Category? category = await _categoryRepository.GetAsync(
@@ -38,5 +40,19 @@ public class CategoryBusinessRules : BaseBusinessRules
             cancellationToken: cancellationToken
         );
         await CategoryShouldExistWhenSelected(category);
+    }
+
+    public async Task CategoryNameCanNotBeDuplicatedWhenInserted(string name)
+    {
+        Category? result = await _categoryRepository.GetAsync(x => x.Name.ToLower() == name.ToLower());
+        if (result != null)
+            throw new BusinessException(CategoriesBusinessMessages.CategoryNameExists);
+    }
+
+    public async Task CategoryNameCanNotBeDuplicatedWhenUpdated(Category category)
+    {
+        Category? result = await _categoryRepository.GetAsync(x => x.Id != category.Id && x.Name.ToLower() == category.Name.ToLower());
+        if (result != null)
+            throw new BusinessException(CategoriesBusinessMessages.CategoryNameExistsUpdate);
     }
 }

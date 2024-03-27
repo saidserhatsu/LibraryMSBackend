@@ -50,9 +50,9 @@ public class UpdateBookCommand : IRequest<UpdatedBookResponse>, ISecuredRequest,
             Book? book = await _bookRepository.GetAsync(predicate: b => b.Id == request.Id, cancellationToken: cancellationToken);
             await _bookBusinessRules.BookShouldExistWhenSelected(book);
             book = _mapper.Map(request, book);
-
+            await _bookBusinessRules.BookISBNCodeCanNotBeDuplicatedWhenUpdated(book);
             await _bookRepository.UpdateAsync(book!);
-
+           
             UpdatedBookResponse response = _mapper.Map<UpdatedBookResponse>(book);
             return response;
         }

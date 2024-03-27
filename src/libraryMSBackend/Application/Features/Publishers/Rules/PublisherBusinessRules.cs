@@ -4,6 +4,7 @@ using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
+using static Org.BouncyCastle.Asn1.Cmp.Challenge;
 
 namespace Application.Features.Publishers.Rules;
 
@@ -38,5 +39,19 @@ public class PublisherBusinessRules : BaseBusinessRules
             cancellationToken: cancellationToken
         );
         await PublisherShouldExistWhenSelected(publisher);
+    }
+
+    public async Task PublisherNameCanNotBeDuplicatedWhenInserted(string name)
+    {
+        Publisher? result = await _publisherRepository.GetAsync(x => x.Name.ToLower() == name.ToLower());
+        if (result != null)
+            throw new BusinessException(PublishersBusinessMessages.PublisherNameExists);
+    }
+
+    public async Task PublisherNameCanNotBeDuplicatedWhenUpdated(Publisher publisher)
+    {
+        Publisher? result = await _publisherRepository.GetAsync(x => x.Id != publisher.Id && x.Name.ToLower() == publisher.Name.ToLower());
+        if (result != null)
+            throw new BusinessException(PublishersBusinessMessages.PublisherNameExists);
     }
 }
