@@ -24,6 +24,12 @@ public class BaseController : ControllerBase
 
     protected Guid getUserIdFromRequest() //todo authentication behavior?
     {
+        // Access token my be not valid or expired so we need to handle this case
+
+        if (!HttpContext.User.Identity?.IsAuthenticated ?? true)
+        {
+            throw new InvalidOperationException("User is not authenticated.");
+        }
         var userId = Guid.Parse(HttpContext.User.GetUserId().ToString()!);
         return userId;
     }
