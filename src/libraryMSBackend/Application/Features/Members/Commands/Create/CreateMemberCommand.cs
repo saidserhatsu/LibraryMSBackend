@@ -1,3 +1,4 @@
+using Application.Features.Members.Constants;
 using Application.Features.Members.Rules;
 using Application.Services.OperationClaims;
 using Application.Services.Repositories;
@@ -50,15 +51,19 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
         {
             await _memberBusinessRules.MemberNumberCanNotBeDuplicatedWhenInserted(request.PhoneNumber);
             User user = await _userService.Register(new UserForRegisterDto() { Email = request.Email, Password = request.Password });
+            string[] Roles = UserDefaultRoles.Roles;
 
-            OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == "BookIssuesOperationClaims.Create"); //Ornek yetki
+            for (int i = 0; i < Roles.Length; i++)
+            {
+                OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == Roles[i]);
+                await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
 
-            // TODO: Kullaniciyla ilgili temel yetkilerin oldugu bir array olusturulacak. sonra da bu yetkiler Handle icinte otomatik verilecek
+            }
 
-            await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
 
             Member member = _mapper.Map<Member>(request);
             member.UserId = user.Id;
+            await _memberRepository.AddAsync(member);
 
 
             CreatedMemberResponse response = _mapper.Map<CreatedMemberResponse>(member);
