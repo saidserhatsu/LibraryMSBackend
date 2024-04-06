@@ -1,5 +1,7 @@
 using Application.Features.Members.Rules;
+using Application.Services.OperationClaims;
 using Application.Services.Repositories;
+using Application.Services.UserOperationClaims;
 using Application.Services.UsersService;
 using AutoMapper;
 using Domain.Entities;
@@ -31,13 +33,17 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
         private readonly IMemberRepository _memberRepository;
         private readonly MemberBusinessRules _memberBusinessRules;
         private readonly IUserService _userService;
+        private readonly IUserOperationClaimService _userOperationClaimService;
+        private readonly IOperationClaimService _operationClaimService;
         public CreateMemberCommandHandler(IMapper mapper, IMemberRepository memberRepository,
-                                         MemberBusinessRules memberBusinessRules, IUserService userService)
+                                         MemberBusinessRules memberBusinessRules, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService)
         {
             _mapper = mapper;
             _memberRepository = memberRepository;
             _memberBusinessRules = memberBusinessRules;
             _userService = userService;
+            _userOperationClaimService = userOperationClaimService;
+            _operationClaimService = operationClaimService;
         }
 
         public async Task<CreatedMemberResponse> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
@@ -45,26 +51,18 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
             await _memberBusinessRules.MemberNumberCanNotBeDuplicatedWhenInserted(request.PhoneNumber);
             User user = await _userService.Register(new UserForRegisterDto() { Email = request.Email, Password = request.Password });
 
+            OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == "BookIssuesOperationClaims.Create"); //Ornek yetki
+
+            // TODO: Kullaniciyla ilgili temel yetkilerin oldugu bir array olusturulacak. sonra da bu yetkiler Handle icinte otomatik verilecek
+
+            await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
+
             Member member = _mapper.Map<Member>(request);
             member.UserId = user.Id;
-
-            await _memberRepository.AddAsync(member);
 
 
             CreatedMemberResponse response = _mapper.Map<CreatedMemberResponse>(member);
             return response;
-
-
-            //Contact contact = await _contactService.AddAsync(new Contact() { Email = request.Email });
-            //Author author = _mapper.Map<Author>(request);
-
-            //author.UserId = user.Id;
-            //author.ContactId = contact.Id;
-
-            //await _authorRepository.AddAsync(author);
-
-            //CreatedAuthorResponse response = _mapper.Map<CreatedAuthorResponse>(author);
-            //return response;
         }
     }
 }

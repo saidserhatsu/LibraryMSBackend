@@ -1,6 +1,20 @@
-using System.Reflection;
+using Application.Services.Announcements;
 using Application.Services.AuthenticatorService;
+using Application.Services.Authors;
 using Application.Services.AuthService;
+using Application.Services.BookAuthors;
+using Application.Services.BookIssues;
+using Application.Services.BookReservations;
+using Application.Services.Books;
+using Application.Services.Categories;
+using Application.Services.FineDues;
+using Application.Services.FinePayments;
+using Application.Services.LibraryStaffs;
+using Application.Services.Locations;
+using Application.Services.Members;
+using Application.Services.OperationClaims;
+using Application.Services.Publishers;
+using Application.Services.UserOperationClaims;
 using Application.Services.UsersService;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,19 +33,7 @@ using NArchitecture.Core.Localization.Resource.Yaml.DependencyInjection;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
-using Application.Services.Authors;
-using Application.Services.Books;
-using Application.Services.BookAuthors;
-using Application.Services.BookIssues;
-using Application.Services.BookReservations;
-using Application.Services.Categories;
-using Application.Services.FineDues;
-using Application.Services.FinePayments;
-using Application.Services.LibraryStaffs;
-using Application.Services.Locations;
-using Application.Services.Members;
-using Application.Services.Publishers;
-using Application.Services.Announcements;
+using System.Reflection;
 
 namespace Application;
 
@@ -102,6 +104,8 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IBookService, BookManager>();
         services.AddScoped<ILocationService, LocationManager>();
         services.AddScoped<IAnnouncementService, AnnouncementManager>();
+        services.AddScoped<IOperationClaimService, OperationClaimManager>();
+        services.AddScoped<IUserOperationClaimService, UserUserOperationClaimManager>();
         return services;
     }
 
