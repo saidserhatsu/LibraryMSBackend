@@ -6,11 +6,15 @@ using Application.Services.UserOperationClaims;
 using Application.Services.UsersService;
 using AutoMapper;
 using Domain.Entities;
+using MailKit;
 using MediatR;
+using MimeKit;
 using NArchitecture.Core.Application.Dtos;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
+using NArchitecture.Core.Mailing;
+using System.Security.Cryptography;
 
 namespace Application.Features.Members.Commands.Create;
 
@@ -36,8 +40,9 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
         private readonly IUserService _userService;
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IOperationClaimService _operationClaimService;
+        private readonly NArchitecture.Core.Mailing.IMailService _mailService;
         public CreateMemberCommandHandler(IMapper mapper, IMemberRepository memberRepository,
-                                         MemberBusinessRules memberBusinessRules, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService)
+                                         MemberBusinessRules memberBusinessRules, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService, NArchitecture.Core.Mailing.IMailService mailService)
         {
             _mapper = mapper;
             _memberRepository = memberRepository;
@@ -45,6 +50,7 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
             _userService = userService;
             _userOperationClaimService = userOperationClaimService;
             _operationClaimService = operationClaimService;
+            _mailService = mailService;
         }
 
         public async Task<CreatedMemberResponse> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
@@ -57,13 +63,15 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
             {
                 OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == Roles[i]);
                 await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
-
             }
-
-
+            //as
             Member member = _mapper.Map<Member>(request);
             member.UserId = user.Id;
             await _memberRepository.AddAsync(member);
+
+            //email config
+            _mailService.SendMail(new NArchitecture.Core.Mailing.Mail { Subject = "aaa",
+                HtmlBody = "dsadsa", ToList = [new MailboxAddress("asdsdas", "asdsa@hotmail")] });
 
 
             CreatedMemberResponse response = _mapper.Map<CreatedMemberResponse>(member);
