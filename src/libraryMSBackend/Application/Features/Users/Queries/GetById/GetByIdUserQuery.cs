@@ -1,5 +1,6 @@
 using Application.Features.Users.Constants;
 using Application.Features.Users.Rules;
+using Application.Services.Members;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
@@ -19,12 +20,15 @@ public class GetByIdUserQuery : IRequest<GetByIdUserResponse>, ISecuredRequest
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly UserBusinessRules _userBusinessRules;
+        private readonly IMemberService _memberService;
 
-        public GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper, UserBusinessRules userBusinessRules)
+        public GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper, UserBusinessRules userBusinessRules, IMemberService memberService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _userBusinessRules = userBusinessRules;
+            _memberService = memberService;
+
         }
 
         public async Task<GetByIdUserResponse> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
@@ -34,9 +38,18 @@ public class GetByIdUserQuery : IRequest<GetByIdUserResponse>, ISecuredRequest
                 enableTracking: false,
                 cancellationToken: cancellationToken
             );
+
             await _userBusinessRules.UserShouldBeExistsWhenSelected(user);
 
             GetByIdUserResponse response = _mapper.Map<GetByIdUserResponse>(user);
+
+            Member? member = await _memberService.GetAsync(m => m.UserId == user!.Id);
+
+            if (member != null)
+            {
+                response.MemberId = member.Id;
+            }
+
             return response;
         }
     }
