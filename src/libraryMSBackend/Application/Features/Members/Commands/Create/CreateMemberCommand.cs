@@ -6,15 +6,12 @@ using Application.Services.UserOperationClaims;
 using Application.Services.UsersService;
 using AutoMapper;
 using Domain.Entities;
-using MailKit;
 using MediatR;
 using MimeKit;
 using NArchitecture.Core.Application.Dtos;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using NArchitecture.Core.Mailing;
-using System.Security.Cryptography;
 
 namespace Application.Features.Members.Commands.Create;
 
@@ -70,8 +67,12 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
             await _memberRepository.AddAsync(member);
 
             //email config
-            _mailService.SendMail(new NArchitecture.Core.Mailing.Mail { Subject = "aaa",
-                HtmlBody = "dsadsa", ToList = [new MailboxAddress("asdsdas", "asdsa@hotmail")] });
+            _mailService.SendMail(new NArchitecture.Core.Mailing.Mail
+            {
+                Subject = "aaa",
+                HtmlBody = "dsadsa",
+                ToList = [new MailboxAddress("asdsdas", "asdsa@hotmail")]
+            });
 
 
             CreatedMemberResponse response = _mapper.Map<CreatedMemberResponse>(member);
