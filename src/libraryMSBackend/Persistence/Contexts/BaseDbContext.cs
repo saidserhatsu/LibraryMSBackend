@@ -27,6 +27,13 @@ public class BaseDbContext : DbContext
     public DbSet<Member> Members { get; set; }
     public DbSet<Publisher> Publishers { get; set; }
     public DbSet<Announcement> Announcements { get; set; }
+    public DbSet<Material> Materials { get; set; }
+    public DbSet<MaterialAuthor> MaterialAuthors { get; set; }
+    public DbSet<Catalog> Catalogs { get; set; }
+    public DbSet<EBook> EBooks { get; set; }
+    public DbSet<Magazine> Magazines { get; set; }
+    public DbSet<MagazineAuthor> MagazineAuthors { get; set; }
+    public DbSet<MemberSetting> MemberSettings { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

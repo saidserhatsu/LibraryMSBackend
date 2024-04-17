@@ -19,6 +19,13 @@ using Application.Features.Locations.Constants;
 using Application.Features.Members.Constants;
 using Application.Features.Publishers.Constants;
 using Application.Features.Announcements.Constants;
+using Application.Features.Materials.Constants;
+using Application.Features.MaterialAuthors.Constants;
+using Application.Features.Catalogs.Constants;
+using Application.Features.EBooks.Constants;
+using Application.Features.Magazines.Constants;
+using Application.Features.MagazineAuthors.Constants;
+using Application.Features.MemberSettings.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -344,6 +351,314 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
                 new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Create },
                 new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Update },
                 new() { Id = ++lastId, Name = AnnouncementsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Materials
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Materials
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region MaterialAuthors
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Catalogs
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Catalogs
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Books
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = BooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = BooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = BooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = BooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = BooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = BooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Catalogs
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region EBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Magazines
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Read },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Write },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Create },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Update },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Materials
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region MagazineAuthors
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region MaterialAuthors
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region EBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Catalogs
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Categories
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Read },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Write },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Create },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Update },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region EBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Magazines
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Read },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Write },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Create },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Update },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region MagazineAuthors
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MagazineAuthorsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Materials
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region MaterialAuthors
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialAuthorsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region MemberSettings
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region MemberSettings
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Delete },
             ]
         );
         #endregion

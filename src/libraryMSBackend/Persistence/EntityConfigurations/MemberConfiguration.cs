@@ -17,6 +17,7 @@ public class MemberConfiguration : IEntityTypeConfiguration<Member>
         builder.Property(m => m.DateOfBirth).HasColumnName("DateOfBirth");
         builder.Property(m => m.Subscribe).HasColumnName("Subscribe");
         builder.Property(m => m.UserId).HasColumnName("UserId");
+        builder.Property(m => m.UserId).HasColumnName("MemberSettingId");
         builder.Property(m => m.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(m => m.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(m => m.DeletedDate).HasColumnName("DeletedDate");

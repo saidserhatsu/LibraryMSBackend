@@ -12,6 +12,7 @@ public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
         RuleFor(b => b.ReleaseDate).NotEmpty()
             .LessThanOrEqualTo(DateTime.Now.Year) // Geçerli yýl veya önceki bir yýl olmalý
             .WithMessage("Yayýn tarihi bu yýl veya önceki bir yýl olmalýdýr.");
+        RuleFor(b => b.PageCount).NotEmpty();
         RuleFor(c => c.Status).NotEmpty();
         RuleFor(c => c.PublisherId).NotEmpty();
         RuleFor(c => c.CategoryId).NotEmpty();

@@ -34,6 +34,13 @@ using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
 using System.Reflection;
+using Application.Services.Catalogs;
+using Application.Services.EBooks;
+using Application.Services.Magazines;
+using Application.Services.Materials;
+using Application.Services.MagazineAuthors;
+using Application.Services.MaterialAuthors;
+using Application.Services.MemberSettings;
 
 namespace Application;
 
@@ -106,6 +113,22 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IAnnouncementService, AnnouncementManager>();
         services.AddScoped<IOperationClaimService, OperationClaimManager>();
         services.AddScoped<IUserOperationClaimService, UserUserOperationClaimManager>();
+        services.AddScoped<ICatalogService, CatalogManager>();
+        services.AddScoped<IEBookService, EBookManager>();
+        services.AddScoped<IMagazineService, MagazineManager>();
+        services.AddScoped<IMaterialService, MaterialManager>();
+        services.AddScoped<IMagazineAuthorService, MagazineAuthorManager>();
+        services.AddScoped<IMaterialAuthorService, MaterialAuthorManager>();
+        services.AddScoped<IEBookService, EBookManager>();
+        services.AddScoped<ICatalogService, CatalogManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<IEBookService, EBookManager>();
+        services.AddScoped<IMagazineService, MagazineManager>();
+        services.AddScoped<IMagazineAuthorService, MagazineAuthorManager>();
+        services.AddScoped<IMaterialService, MaterialManager>();
+        services.AddScoped<IMaterialAuthorService, MaterialAuthorManager>();
+        services.AddScoped<IMemberSettingService, MemberSettingManager>();
+        services.AddScoped<IMemberSettingService, MemberSettingManager>();
         return services;
     }
 

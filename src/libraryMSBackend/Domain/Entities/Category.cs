@@ -11,4 +11,6 @@ public class Category : Entity<int>
     public string Name { get; set; }
 
     public virtual ICollection<Book> Books { get; set; }
+    public virtual ICollection<Magazine> Magazines { get; set; } = null;
+    public virtual ICollection<Material> Materials { get; set; } = null;
 }

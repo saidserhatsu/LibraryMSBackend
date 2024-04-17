@@ -52,6 +52,28 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IBookRepository, BookRepository>();
         services.AddScoped<ILocationRepository, LocationRepository>();
         services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+        services.AddScoped<IMaterialRepository, MaterialRepository>();
+        services.AddScoped<IMaterialRepository, MaterialRepository>();
+        services.AddScoped<IMaterialAuthorRepository, MaterialAuthorRepository>();
+        services.AddScoped<ICatalogRepository, CatalogRepository>();
+        services.AddScoped<ICatalogRepository, CatalogRepository>();
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<ICatalogRepository, CatalogRepository>();
+        services.AddScoped<IEBookRepository, EBookRepository>();
+        services.AddScoped<IMagazineRepository, MagazineRepository>();
+        services.AddScoped<IMaterialRepository, MaterialRepository>();
+        services.AddScoped<IMagazineAuthorRepository, MagazineAuthorRepository>();
+        services.AddScoped<IMaterialAuthorRepository, MaterialAuthorRepository>();
+        services.AddScoped<IEBookRepository, EBookRepository>();
+        services.AddScoped<ICatalogRepository, CatalogRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IEBookRepository, EBookRepository>();
+        services.AddScoped<IMagazineRepository, MagazineRepository>();
+        services.AddScoped<IMagazineAuthorRepository, MagazineAuthorRepository>();
+        services.AddScoped<IMaterialRepository, MaterialRepository>();
+        services.AddScoped<IMaterialAuthorRepository, MaterialAuthorRepository>();
+        services.AddScoped<IMemberSettingRepository, MemberSettingRepository>();
+        services.AddScoped<IMemberSettingRepository, MemberSettingRepository>();
         return services;
     }
 }
