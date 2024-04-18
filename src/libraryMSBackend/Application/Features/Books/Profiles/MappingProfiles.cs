@@ -23,7 +23,14 @@ public class MappingProfiles : Profile
         CreateMap<Book, UpdatedBookResponse>().ReverseMap();
         CreateMap<Book, DeleteBookCommand>().ReverseMap();
         CreateMap<Book, DeletedBookResponse>().ReverseMap();
-        CreateMap<Book, GetByIdBookResponse>().ReverseMap();
+        CreateMap<Book, GetByIdBookResponse>().ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
+                .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.BookAuthors
+                .Select(ba => new GetListAuthorListItemDto
+                {
+                    Id = ba.Author.Id,
+                    FirstName = ba.Author.FirstName,
+                    LastName = ba.Author.LastName
+                }))).ReverseMap();
         CreateMap<Book, GetListBookListItemDto>()
                 .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
                 .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.BookAuthors
