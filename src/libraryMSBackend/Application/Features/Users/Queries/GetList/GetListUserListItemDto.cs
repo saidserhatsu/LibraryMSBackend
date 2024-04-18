@@ -5,24 +5,20 @@ namespace Application.Features.Users.Queries.GetList;
 public class GetListUserListItemDto : IDto
 {
     public Guid Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public Guid MemberId { get; set; }
     public string Email { get; set; }
     public bool Status { get; set; }
 
     public GetListUserListItemDto()
     {
-        FirstName = string.Empty;
-        LastName = string.Empty;
+        MemberId = Guid.Empty;
         Email = string.Empty;
     }
 
-    public GetListUserListItemDto(Guid id, string firstName, string lastName, string email, bool status)
+    public GetListUserListItemDto(Guid id, Guid memberId, string email)
     {
         Id = id;
-        FirstName = firstName;
-        LastName = lastName;
+        MemberId = memberId;
         Email = email;
-        Status = status;
     }
 }

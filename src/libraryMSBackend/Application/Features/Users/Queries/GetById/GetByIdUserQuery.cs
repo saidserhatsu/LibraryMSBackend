@@ -23,6 +23,13 @@ public class GetByIdUserQuery : IRequest<GetByIdUserResponse>, ISecuredRequest
         private readonly UserBusinessRules _userBusinessRules;
         private readonly IMemberService _memberService;
 
+        public GetByIdUserQueryHandler(IUserRepository @object, IMapper mapper, UserBusinessRules businessRules)
+        {
+            Object = @object;
+            _mapper = mapper;
+            BusinessRules = businessRules;
+        }
+
         public GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper, UserBusinessRules userBusinessRules, IMemberService memberService)
         {
             _userRepository = userRepository;
@@ -31,6 +38,9 @@ public class GetByIdUserQuery : IRequest<GetByIdUserResponse>, ISecuredRequest
             _memberService = memberService;
 
         }
+
+        public IUserRepository Object { get; }
+        public UserBusinessRules BusinessRules { get; }
 
         public async Task<GetByIdUserResponse> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
         {

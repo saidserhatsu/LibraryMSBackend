@@ -1,5 +1,6 @@
 using Application.Features.Members.Constants;
 using Application.Features.Members.Rules;
+using Application.Services.MemberSettings;
 using Application.Services.OperationClaims;
 using Application.Services.Repositories;
 using Application.Services.UserOperationClaims;
@@ -38,8 +39,9 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IOperationClaimService _operationClaimService;
         private readonly NArchitecture.Core.Mailing.IMailService _mailService;
+        private readonly IMemberSettingService _memberSettingService;
         public CreateMemberCommandHandler(IMapper mapper, IMemberRepository memberRepository,
-                                         MemberBusinessRules memberBusinessRules, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService, NArchitecture.Core.Mailing.IMailService mailService)
+                                         MemberBusinessRules memberBusinessRules, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService, NArchitecture.Core.Mailing.IMailService mailService, IMemberSettingService memberSettingService)
         {
             _mapper = mapper;
             _memberRepository = memberRepository;
@@ -48,6 +50,7 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
             _userOperationClaimService = userOperationClaimService;
             _operationClaimService = operationClaimService;
             _mailService = mailService;
+            _memberSettingService = memberSettingService;
         }
 
         public async Task<CreatedMemberResponse> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
@@ -61,17 +64,20 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
                 OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == Roles[i]);
                 await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
             }
-            //as
+
             Member member = _mapper.Map<Member>(request);
             member.UserId = user.Id;
+
+            MemberSetting memberSetting = await _memberSettingService.AddAsync(new MemberSetting() { UiTheme = "light", Language = "en" });
+            member.MemberSettingId = memberSetting.Id;
+
             await _memberRepository.AddAsync(member);
 
-            //email config
             _mailService.SendMail(new NArchitecture.Core.Mailing.Mail
             {
-                Subject = "aaa",
-                HtmlBody = "dsadsa",
-                ToList = [new MailboxAddress("asdsdas", "asdsa@hotmail")]
+                Subject = "Test Mail",
+                HtmlBody = "Welcome to the Tobeto Public Library",
+                ToList = [new MailboxAddress($"{member.FirstName} {member.LastName}", $"{member.Email}")]
             });
 
 
