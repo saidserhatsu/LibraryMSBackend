@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAllEntities : Migration
+    public partial class sss : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -111,23 +111,6 @@ namespace Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Locations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MemberSettings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UiTheme = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Language = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MemberSettings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -331,10 +314,10 @@ namespace Persistence.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Subscribe = table.Column<bool>(type: "bit", nullable: false),
                     MemberSettingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MemberSettingId1 = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -342,12 +325,6 @@ namespace Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Members", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Members_MemberSettings_MemberSettingId1",
-                        column: x => x.MemberSettingId1,
-                        principalTable: "MemberSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Members_Users_MemberSettingId",
                         column: x => x.MemberSettingId,
@@ -629,6 +606,30 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MemberSettings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UiTheme = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Language = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MemberId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MemberSettings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MemberSettings_Members_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "Members",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FineDues",
                 columns: table => new
                 {
@@ -656,12 +657,12 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "Content", "CreatedDate", "DeletedDate", "Tag", "Title", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("0e19a5be-6546-4c5a-9340-cf1e1748b1b1"), "Content 1", new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(2936), null, 0, "Kütüphane Üyelikleri", null },
-                    { new Guid("7085aa16-5230-42ca-941b-6d73c692053b"), "Content 6", new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(2950), null, 0, "Kütüphane Açılış Saatleri", null },
-                    { new Guid("9c6c985f-b331-4a85-bee5-c7d2a9d57073"), "Content 5", new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(2947), null, 1, "Bayramlaşma", null },
-                    { new Guid("bf3669a9-a784-4941-bf6e-4893374abb2b"), "Content 4", new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(2945), null, 1, "Yeni Yıl Etkinliği", null },
-                    { new Guid("e014efc4-0973-4fc1-80bb-464b4d791173"), "Content 2", new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(2941), null, 1, "Hıdırellez Yarışması", null },
-                    { new Guid("f4710162-5b4a-4dfe-9bcf-8951ec64b55e"), "Content 3", new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(2943), null, 2, "Yeni Kitaplar", null }
+                    { new Guid("0e19a5be-6546-4c5a-9340-cf1e1748b1b1"), "Content 1", new DateTime(2024, 4, 18, 9, 8, 28, 569, DateTimeKind.Utc).AddTicks(7886), null, 0, "Kütüphane Üyelikleri", null },
+                    { new Guid("7085aa16-5230-42ca-941b-6d73c692053b"), "Content 6", new DateTime(2024, 4, 18, 9, 8, 28, 569, DateTimeKind.Utc).AddTicks(7896), null, 0, "Kütüphane Açılış Saatleri", null },
+                    { new Guid("9c6c985f-b331-4a85-bee5-c7d2a9d57073"), "Content 5", new DateTime(2024, 4, 18, 9, 8, 28, 569, DateTimeKind.Utc).AddTicks(7895), null, 1, "Bayramlaşma", null },
+                    { new Guid("bf3669a9-a784-4941-bf6e-4893374abb2b"), "Content 4", new DateTime(2024, 4, 18, 9, 8, 28, 569, DateTimeKind.Utc).AddTicks(7893), null, 1, "Yeni Yıl Etkinliği", null },
+                    { new Guid("e014efc4-0973-4fc1-80bb-464b4d791173"), "Content 2", new DateTime(2024, 4, 18, 9, 8, 28, 569, DateTimeKind.Utc).AddTicks(7890), null, 1, "Hıdırellez Yarışması", null },
+                    { new Guid("f4710162-5b4a-4dfe-9bcf-8951ec64b55e"), "Content 3", new DateTime(2024, 4, 18, 9, 8, 28, 569, DateTimeKind.Utc).AddTicks(7892), null, 2, "Yeni Kitaplar", null }
                 });
 
             migrationBuilder.InsertData(
@@ -669,11 +670,11 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "FirstName", "LastName", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("0a0a0651-d2f9-4c37-a91d-334d850c23db"), new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(6314), null, "Burak", "Turna", null },
-                    { new Guid("24a402a9-46e6-42f7-9d18-27ed258b8418"), new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(6307), null, "Fyodor", "Dostoyevski", null },
-                    { new Guid("999b5ec6-5d88-437c-a6a8-8f397772acd3"), new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(6204), null, "Mustafa Kemal", "Atatürk", null },
-                    { new Guid("bfcb46ec-fce6-4305-84fd-8453a0c032c2"), new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(6312), null, "Orkun", "Uçar", null },
-                    { new Guid("f52bd761-cef2-4728-b3a3-b8e1aaa86710"), new DateTime(2024, 4, 17, 15, 14, 56, 372, DateTimeKind.Utc).AddTicks(6310), null, "Sun", "Tzu", null }
+                    { new Guid("0a0a0651-d2f9-4c37-a91d-334d850c23db"), new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(218), null, "Burak", "Turna", null },
+                    { new Guid("24a402a9-46e6-42f7-9d18-27ed258b8418"), new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(213), null, "Fyodor", "Dostoyevski", null },
+                    { new Guid("999b5ec6-5d88-437c-a6a8-8f397772acd3"), new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(186), null, "Mustafa Kemal", "Atatürk", null },
+                    { new Guid("bfcb46ec-fce6-4305-84fd-8453a0c032c2"), new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(216), null, "Orkun", "Uçar", null },
+                    { new Guid("f52bd761-cef2-4728-b3a3-b8e1aaa86710"), new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(215), null, "Sun", "Tzu", null }
                 });
 
             migrationBuilder.InsertData(
@@ -681,10 +682,10 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 4, 17, 15, 14, 56, 376, DateTimeKind.Utc).AddTicks(36), null, "Edebiyat", null },
-                    { 2, new DateTime(2024, 4, 17, 15, 14, 56, 376, DateTimeKind.Utc).AddTicks(38), null, "Tarih", null },
-                    { 3, new DateTime(2024, 4, 17, 15, 14, 56, 376, DateTimeKind.Utc).AddTicks(40), null, "Roman", null },
-                    { 4, new DateTime(2024, 4, 17, 15, 14, 56, 376, DateTimeKind.Utc).AddTicks(41), null, "Psikoloji", null }
+                    { 1, new DateTime(2024, 4, 18, 9, 8, 28, 572, DateTimeKind.Utc).AddTicks(2470), null, "Edebiyat", null },
+                    { 2, new DateTime(2024, 4, 18, 9, 8, 28, 572, DateTimeKind.Utc).AddTicks(2471), null, "Tarih", null },
+                    { 3, new DateTime(2024, 4, 18, 9, 8, 28, 572, DateTimeKind.Utc).AddTicks(2472), null, "Roman", null },
+                    { 4, new DateTime(2024, 4, 18, 9, 8, 28, 572, DateTimeKind.Utc).AddTicks(2473), null, "Psikoloji", null }
                 });
 
             migrationBuilder.InsertData(
@@ -692,10 +693,10 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "BirthDate", "CreatedDate", "DeletedDate", "FirstName", "ImageUrl", "LastName", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("22027a43-0eb7-40d2-bca6-3184563c4813"), new DateTime(1976, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(1320), null, "Irem", "...", "Balcı", null },
-                    { new Guid("5f1f04fb-c293-431d-bd8f-7b021416d048"), new DateTime(1974, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(1326), null, "Kader", "...", "Ergin", null },
-                    { new Guid("7be672cf-558f-4513-98a3-cdf0b2a22d5c"), new DateTime(1978, 6, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(1312), null, "Halit Enes", "...", "Kalaycı", null },
-                    { new Guid("f9206bc5-cf90-4623-a942-598395cb431e"), new DateTime(1980, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(1301), null, "Ahmet", "...", "Çetinkaya", null }
+                    { new Guid("22027a43-0eb7-40d2-bca6-3184563c4813"), new DateTime(1976, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(6197), null, "Irem", "...", "Balcı", null },
+                    { new Guid("5f1f04fb-c293-431d-bd8f-7b021416d048"), new DateTime(1974, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(6201), null, "Kader", "...", "Ergin", null },
+                    { new Guid("7be672cf-558f-4513-98a3-cdf0b2a22d5c"), new DateTime(1978, 6, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(6193), null, "Halit Enes", "...", "Kalaycı", null },
+                    { new Guid("f9206bc5-cf90-4623-a942-598395cb431e"), new DateTime(1980, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(6185), null, "Ahmet", "...", "Çetinkaya", null }
                 });
 
             migrationBuilder.InsertData(
@@ -703,10 +704,10 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "FloorNo", "Name", "ShelfName", "ShelfNo", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(4686), null, 1, "Merkez Kütüphane", "Roman Kitapları", 4, null },
-                    { new Guid("6347179f-64d6-4c1d-a3ec-62bc02147d73"), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(4681), null, 1, "Merkez Kütüphane", "Psikoloji Kitapları", 2, null },
-                    { new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(4677), null, 1, "Merkez Kütüphane", "Tarih Kitapları", 1, null },
-                    { new Guid("6e3709bf-803e-42d6-818c-c82cf15be93b"), new DateTime(2024, 4, 17, 15, 14, 56, 378, DateTimeKind.Utc).AddTicks(4684), null, 1, "Merkez Kütüphane", "Edebiyat Kitapları", 3, null }
+                    { new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(8276), null, 1, "Merkez Kütüphane", "Roman Kitapları", 4, null },
+                    { new Guid("6347179f-64d6-4c1d-a3ec-62bc02147d73"), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(8272), null, 1, "Merkez Kütüphane", "Psikoloji Kitapları", 2, null },
+                    { new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(8270), null, 1, "Merkez Kütüphane", "Tarih Kitapları", 1, null },
+                    { new Guid("6e3709bf-803e-42d6-818c-c82cf15be93b"), new DateTime(2024, 4, 18, 9, 8, 28, 573, DateTimeKind.Utc).AddTicks(8274), null, 1, "Merkez Kütüphane", "Edebiyat Kitapları", 3, null }
                 });
 
             migrationBuilder.InsertData(
@@ -978,33 +979,33 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "Language", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"), new DateTime(2024, 4, 17, 15, 14, 56, 383, DateTimeKind.Utc).AddTicks(1637), null, "TR", "Kapra Yayıncılık", null },
-                    { new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"), new DateTime(2024, 4, 17, 15, 14, 56, 383, DateTimeKind.Utc).AddTicks(1640), null, "TR", "Alfa Yayınları", null },
-                    { new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"), new DateTime(2024, 4, 17, 15, 14, 56, 383, DateTimeKind.Utc).AddTicks(1642), null, "TR", "Timaş Yayınları", null },
-                    { new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"), new DateTime(2024, 4, 17, 15, 14, 56, 383, DateTimeKind.Utc).AddTicks(1632), null, "TR", "Can Yayınları", null }
+                    { new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"), new DateTime(2024, 4, 18, 9, 8, 28, 576, DateTimeKind.Utc).AddTicks(8162), null, "TR", "Kapra Yayıncılık", null },
+                    { new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"), new DateTime(2024, 4, 18, 9, 8, 28, 576, DateTimeKind.Utc).AddTicks(8164), null, "TR", "Alfa Yayınları", null },
+                    { new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"), new DateTime(2024, 4, 18, 9, 8, 28, 576, DateTimeKind.Utc).AddTicks(8165), null, "TR", "Timaş Yayınları", null },
+                    { new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"), new DateTime(2024, 4, 18, 9, 8, 28, 576, DateTimeKind.Utc).AddTicks(8160), null, "TR", "Can Yayınları", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AuthenticatorType", "CreatedDate", "DeletedDate", "Email", "PasswordHash", "PasswordSalt", "UpdatedDate" },
-                values: new object[] { new Guid("e8541b6f-a163-457d-843f-c47ef5e15c52"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "narch@kodlama.io", new byte[] { 71, 37, 165, 118, 22, 237, 214, 88, 38, 167, 38, 234, 78, 63, 225, 233, 161, 90, 0, 155, 74, 177, 183, 163, 19, 147, 6, 187, 155, 22, 85, 124, 192, 174, 144, 212, 31, 47, 101, 250, 247, 10, 118, 208, 205, 55, 251, 99, 198, 16, 148, 84, 59, 94, 7, 25, 88, 254, 125, 132, 223, 205, 108, 115 }, new byte[] { 30, 230, 192, 34, 92, 148, 203, 42, 55, 245, 18, 143, 126, 150, 252, 140, 180, 43, 119, 3, 19, 2, 125, 22, 27, 236, 11, 123, 167, 112, 188, 13, 247, 128, 13, 25, 84, 208, 21, 30, 101, 110, 146, 241, 90, 137, 18, 240, 151, 30, 95, 35, 153, 55, 17, 227, 44, 163, 214, 56, 253, 137, 162, 142, 149, 97, 162, 90, 159, 173, 94, 207, 148, 218, 81, 89, 215, 160, 72, 203, 244, 81, 134, 45, 187, 138, 247, 26, 78, 174, 8, 56, 184, 170, 216, 78, 67, 74, 202, 229, 19, 234, 42, 89, 44, 48, 190, 170, 232, 199, 49, 18, 153, 22, 18, 63, 220, 29, 58, 69, 198, 155, 89, 6, 22, 33, 220, 204 }, null });
+                values: new object[] { new Guid("1c07a215-1737-40a6-a686-9bd8c887e276"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "narch@kodlama.io", new byte[] { 150, 196, 102, 9, 237, 122, 139, 72, 119, 118, 24, 67, 38, 128, 181, 239, 91, 99, 69, 65, 11, 174, 185, 220, 123, 204, 29, 71, 161, 86, 83, 186, 12, 209, 165, 47, 3, 175, 65, 89, 117, 79, 190, 216, 172, 168, 72, 228, 141, 127, 46, 219, 63, 223, 76, 123, 73, 251, 30, 242, 81, 211, 79, 97 }, new byte[] { 1, 109, 65, 70, 195, 64, 1, 75, 64, 252, 91, 137, 234, 218, 95, 4, 192, 233, 185, 84, 51, 88, 235, 34, 15, 250, 46, 203, 153, 177, 120, 255, 65, 99, 29, 118, 53, 154, 70, 30, 139, 241, 121, 87, 245, 113, 216, 59, 72, 231, 214, 246, 169, 73, 184, 110, 253, 56, 48, 120, 16, 14, 3, 82, 36, 80, 90, 133, 191, 214, 159, 180, 116, 89, 78, 139, 191, 42, 69, 124, 131, 227, 43, 204, 154, 160, 240, 205, 118, 163, 190, 90, 164, 172, 113, 157, 241, 127, 22, 10, 174, 168, 46, 152, 0, 68, 255, 161, 163, 120, 219, 231, 43, 119, 115, 186, 218, 139, 245, 16, 170, 133, 183, 201, 20, 129, 33, 39 }, null });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "BookEdition", "BookTitle", "CatalogId", "CategoryId", "CreatedDate", "DeletedDate", "ISBNCode", "LocationId", "PageCount", "PublisherId", "ReleaseDate", "Status", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("224b200d-a4cb-4ad0-8957-662dd965794c"), 21, "Yeraltından Notlar", null, 1, new DateTime(2024, 4, 17, 15, 14, 56, 373, DateTimeKind.Utc).AddTicks(9762), null, "9472837462176", new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), 300, new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"), 2000, 1, null },
-                    { new Guid("55349e9b-304e-4ede-b5d3-b82d2eb2fbc7"), 10, "Nutuk", null, 2, new DateTime(2024, 4, 17, 15, 14, 56, 373, DateTimeKind.Utc).AddTicks(9750), null, "9781234567897", new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"), 100, new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"), 1927, 1, null },
-                    { new Guid("9c5fad3d-7630-4dc5-80f5-4647ceb50830"), 9, "Suç ve Ceza", null, 3, new DateTime(2024, 4, 17, 15, 14, 56, 373, DateTimeKind.Utc).AddTicks(9766), null, "6482901846372", new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), 220, new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"), 1983, 1, null },
-                    { new Guid("c16ce715-40b7-4bf8-9b7e-f34e21b8e99c"), 15, "Savaş Sanatı", null, 2, new DateTime(2024, 4, 17, 15, 14, 56, 373, DateTimeKind.Utc).AddTicks(9758), null, "4373695632743", new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"), 200, new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"), 1959, 1, null },
-                    { new Guid("cbcaea85-df78-4fb5-9219-13bcc50dc1fa"), 14, "Metal Fırtına", null, 3, new DateTime(2024, 4, 17, 15, 14, 56, 373, DateTimeKind.Utc).AddTicks(9770), null, "9473284657234", new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), 110, new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"), 2004, 1, null }
+                    { new Guid("224b200d-a4cb-4ad0-8957-662dd965794c"), 21, "Yeraltından Notlar", null, 1, new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(9042), null, "9472837462176", new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), 300, new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"), 2000, 1, null },
+                    { new Guid("55349e9b-304e-4ede-b5d3-b82d2eb2fbc7"), 10, "Nutuk", null, 2, new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(9008), null, "9781234567897", new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"), 100, new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"), 1927, 1, null },
+                    { new Guid("9c5fad3d-7630-4dc5-80f5-4647ceb50830"), 9, "Suç ve Ceza", null, 3, new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(9044), null, "6482901846372", new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), 220, new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"), 1983, 1, null },
+                    { new Guid("c16ce715-40b7-4bf8-9b7e-f34e21b8e99c"), 15, "Savaş Sanatı", null, 2, new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(9039), null, "4373695632743", new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"), 200, new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"), 1959, 1, null },
+                    { new Guid("cbcaea85-df78-4fb5-9219-13bcc50dc1fa"), 14, "Metal Fırtına", null, 3, new DateTime(2024, 4, 18, 9, 8, 28, 570, DateTimeKind.Utc).AddTicks(9047), null, "9473284657234", new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"), 110, new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"), 2004, 1, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "UserOperationClaims",
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "OperationClaimId", "UpdatedDate", "UserId" },
-                values: new object[] { new Guid("85be2225-042e-4e2e-a04c-7833784a37dc"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("e8541b6f-a163-457d-843f-c47ef5e15c52") });
+                values: new object[] { new Guid("f4703664-3452-49fd-a7ab-86ce00127a86"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("1c07a215-1737-40a6-a686-9bd8c887e276") });
 
             migrationBuilder.InsertData(
                 table: "BookAuthors",
@@ -1132,15 +1133,15 @@ namespace Persistence.Migrations
                 column: "PublisherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Members_MemberSettingId1",
-                table: "Members",
-                column: "MemberSettingId1",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "Member_UserID_UK",
                 table: "Members",
                 column: "MemberSettingId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "UK_MemberSettings_MemberId",
+                table: "MemberSettings",
+                column: "MemberId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -1195,6 +1196,9 @@ namespace Persistence.Migrations
                 name: "MaterialAuthors");
 
             migrationBuilder.DropTable(
+                name: "MemberSettings");
+
+            migrationBuilder.DropTable(
                 name: "OtpAuthenticators");
 
             migrationBuilder.DropTable(
@@ -1238,9 +1242,6 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Publishers");
-
-            migrationBuilder.DropTable(
-                name: "MemberSettings");
 
             migrationBuilder.DropTable(
                 name: "Users");

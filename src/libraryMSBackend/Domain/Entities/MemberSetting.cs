@@ -10,6 +10,6 @@ public class MemberSetting : Entity<int>
 {
     public string UiTheme { get; set; } = "light";
     public string Language { get; set; } = "en";
-
+    public Guid MemberId { get; set; }
     public virtual Member Member { get; set; }
 }

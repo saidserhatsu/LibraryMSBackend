@@ -17,6 +17,9 @@ public class MemberSettingConfiguration : IEntityTypeConfiguration<MemberSetting
         builder.Property(ms => ms.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(ms => ms.DeletedDate).HasColumnName("DeletedDate");
 
+        builder.HasIndex(indexExpression: i => i.MemberId, name: "UK_MemberSettings_MemberId").IsUnique();
+        builder.HasOne(m => m.Member);
+
         builder.HasQueryFilter(ms => !ms.DeletedDate.HasValue);
     }
 }

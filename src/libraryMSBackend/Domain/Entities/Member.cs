@@ -10,8 +10,6 @@ public class Member : Entity<Guid>
     public DateTime DateOfBirth { get; set; }
     public bool Subscribe { get; set; }
     public Guid UserId { get; set; }
-    public int MemberSettingId { get; set; }
-
     public virtual User User { get; set; }
     public virtual MemberSetting MemberSetting { get; set; }
     public virtual ICollection<BookReservation> BookReservations { get; set; }
