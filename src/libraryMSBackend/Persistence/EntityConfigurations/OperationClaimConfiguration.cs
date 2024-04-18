@@ -26,6 +26,7 @@ using Application.Features.EBooks.Constants;
 using Application.Features.Magazines.Constants;
 using Application.Features.MagazineAuthors.Constants;
 using Application.Features.MemberSettings.Constants;
+using Application.Features.CatalogManagements.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -659,6 +660,62 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
                 new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Create },
                 new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Update },
                 new() { Id = ++lastId, Name = MemberSettingsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Catalogs
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region CatalogManagements
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Magazines
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Read },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Write },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Create },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Update },
+                new() { Id = ++lastId, Name = MagazinesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Materials
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Read },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Write },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Create },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Update },
+                new() { Id = ++lastId, Name = MaterialsOperationClaims.Delete },
             ]
         );
         #endregion

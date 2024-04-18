@@ -13,6 +13,5 @@ public class UpdateMagazineCommandValidator : AbstractValidator<UpdateMagazineCo
         RuleFor(c => c.Number).NotEmpty();
         RuleFor(c => c.PublisherId).NotEmpty();
         RuleFor(c => c.CategoryId).NotEmpty();
-        RuleFor(c => c.CatalogId).NotEmpty();
     }
 }

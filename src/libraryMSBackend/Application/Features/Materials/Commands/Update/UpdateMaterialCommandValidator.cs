@@ -12,6 +12,5 @@ public class UpdateMaterialCommandValidator : AbstractValidator<UpdateMaterialCo
         RuleFor(c => c.ReleaseDate).NotEmpty();
         RuleFor(c => c.PublisherId).NotEmpty();
         RuleFor(c => c.CategoryId).NotEmpty();
-        RuleFor(c => c.CatalogId).NotEmpty();
     }
 }

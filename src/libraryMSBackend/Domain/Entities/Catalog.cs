@@ -10,7 +10,5 @@ public class Catalog : Entity<Guid>
 {
     public string Name { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; } = null;
-    public virtual ICollection<Magazine> Magazines { get; set; } = null;
-    public virtual ICollection<Material> Materials { get; set; } = null;
+    public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
 }

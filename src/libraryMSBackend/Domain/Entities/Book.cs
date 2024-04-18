@@ -18,14 +18,15 @@ public class Book : Entity<Guid>
     public Guid PublisherId { get; set; }
     public int CategoryId { get; set; }
     public Guid LocationId { get; set; }
-    public Guid? CatalogId { get; set; }
+ 
 
     public virtual Category Category { get; set; }
     public virtual Location Location { get; set; }
     public virtual Publisher Publisher { get; set; }
     public virtual EBook? EBook { get; set; }
-    public virtual Catalog? Catalog { get; set; }
+    
     public virtual ICollection<BookAuthor> BookAuthors { get; set; }
+    public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
     public virtual ICollection<BookReservation> BookReservations { get; set; }
     public virtual ICollection<BookIssue> BookIssues { get; set; }
 }

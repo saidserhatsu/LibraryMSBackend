@@ -41,6 +41,7 @@ using Application.Services.Materials;
 using Application.Services.MagazineAuthors;
 using Application.Services.MaterialAuthors;
 using Application.Services.MemberSettings;
+using Application.Services.CatalogManagements;
 
 namespace Application;
 
@@ -129,6 +130,10 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IMaterialAuthorService, MaterialAuthorManager>();
         services.AddScoped<IMemberSettingService, MemberSettingManager>();
         services.AddScoped<IMemberSettingService, MemberSettingManager>();
+        services.AddScoped<ICatalogService, CatalogManager>();
+        services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
+        services.AddScoped<IMagazineService, MagazineManager>();
+        services.AddScoped<IMaterialService, MaterialManager>();
         return services;
     }
 

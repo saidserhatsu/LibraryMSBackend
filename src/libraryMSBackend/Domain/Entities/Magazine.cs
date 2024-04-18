@@ -14,10 +14,9 @@ public class Magazine : Entity<Guid>
     public int Number { get; set; }
     public Guid PublisherId { get; set; }
     public int? CategoryId { get; set; }
-    public Guid? CatalogId { get; set; }
 
     public virtual Publisher Publisher { get; set; }
     public virtual Category? Category { get; set; }
-    public virtual Catalog? Catalog { get; set; }
+    public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
     public virtual ICollection<MagazineAuthor> MagazineAuthors { get; set; }
 }

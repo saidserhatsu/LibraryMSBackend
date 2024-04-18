@@ -21,7 +21,6 @@ public class UpdateMaterialCommand : IRequest<UpdatedMaterialResponse>, ISecured
     public int ReleaseDate { get; set; }
     public Guid PublisherId { get; set; }
     public int? CategoryId { get; set; }
-    public Guid? CatalogId { get; set; }
 
     public string[] Roles => [Admin, Write, MaterialsOperationClaims.Update];
 

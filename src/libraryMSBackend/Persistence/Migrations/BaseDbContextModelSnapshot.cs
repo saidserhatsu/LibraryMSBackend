@@ -64,7 +64,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0e19a5be-6546-4c5a-9340-cf1e1748b1b1"),
                             Content = "Content 1",
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(1109),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 847, DateTimeKind.Utc).AddTicks(9965),
                             Tag = 0,
                             Title = "Kütüphane Üyelikleri"
                         },
@@ -72,7 +72,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e014efc4-0973-4fc1-80bb-464b4d791173"),
                             Content = "Content 2",
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(1113),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 847, DateTimeKind.Utc).AddTicks(9968),
                             Tag = 1,
                             Title = "Hıdırellez Yarışması"
                         },
@@ -80,7 +80,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f4710162-5b4a-4dfe-9bcf-8951ec64b55e"),
                             Content = "Content 3",
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(1115),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 847, DateTimeKind.Utc).AddTicks(9970),
                             Tag = 2,
                             Title = "Yeni Kitaplar"
                         },
@@ -88,7 +88,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bf3669a9-a784-4941-bf6e-4893374abb2b"),
                             Content = "Content 4",
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(1116),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 847, DateTimeKind.Utc).AddTicks(9971),
                             Tag = 1,
                             Title = "Yeni Yıl Etkinliği"
                         },
@@ -96,7 +96,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9c6c985f-b331-4a85-bee5-c7d2a9d57073"),
                             Content = "Content 5",
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(1118),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 847, DateTimeKind.Utc).AddTicks(9972),
                             Tag = 1,
                             Title = "Bayramlaşma"
                         },
@@ -104,7 +104,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7085aa16-5230-42ca-941b-6d73c692053b"),
                             Content = "Content 6",
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(1120),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 847, DateTimeKind.Utc).AddTicks(9974),
                             Tag = 0,
                             Title = "Kütüphane Açılış Saatleri"
                         });
@@ -147,35 +147,35 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("999b5ec6-5d88-437c-a6a8-8f397772acd3"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(3353),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 848, DateTimeKind.Utc).AddTicks(2348),
                             FirstName = "Mustafa Kemal",
                             LastName = "Atatürk"
                         },
                         new
                         {
                             Id = new Guid("24a402a9-46e6-42f7-9d18-27ed258b8418"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(3356),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 848, DateTimeKind.Utc).AddTicks(2351),
                             FirstName = "Fyodor",
                             LastName = "Dostoyevski"
                         },
                         new
                         {
                             Id = new Guid("f52bd761-cef2-4728-b3a3-b8e1aaa86710"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(3357),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 848, DateTimeKind.Utc).AddTicks(2352),
                             FirstName = "Sun",
                             LastName = "Tzu"
                         },
                         new
                         {
                             Id = new Guid("bfcb46ec-fce6-4305-84fd-8453a0c032c2"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(3359),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 848, DateTimeKind.Utc).AddTicks(2353),
                             FirstName = "Orkun",
                             LastName = "Uçar"
                         },
                         new
                         {
                             Id = new Guid("0a0a0651-d2f9-4c37-a91d-334d850c23db"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 379, DateTimeKind.Utc).AddTicks(3360),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 848, DateTimeKind.Utc).AddTicks(2354),
                             FirstName = "Burak",
                             LastName = "Turna"
                         });
@@ -196,10 +196,6 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("BookTitle");
-
-                    b.Property<Guid?>("CatalogId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CatalogId");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int")
@@ -244,8 +240,6 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CatalogId");
-
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("LocationId");
@@ -261,7 +255,7 @@ namespace Persistence.Migrations
                             BookEdition = 10,
                             BookTitle = "Nutuk",
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 380, DateTimeKind.Utc).AddTicks(2147),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 849, DateTimeKind.Utc).AddTicks(774),
                             ISBNCode = "9781234567897",
                             LocationId = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
                             PageCount = 100,
@@ -275,7 +269,7 @@ namespace Persistence.Migrations
                             BookEdition = 15,
                             BookTitle = "Savaş Sanatı",
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 380, DateTimeKind.Utc).AddTicks(2151),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 849, DateTimeKind.Utc).AddTicks(779),
                             ISBNCode = "4373695632743",
                             LocationId = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
                             PageCount = 200,
@@ -289,7 +283,7 @@ namespace Persistence.Migrations
                             BookEdition = 21,
                             BookTitle = "Yeraltından Notlar",
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 380, DateTimeKind.Utc).AddTicks(2153),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 849, DateTimeKind.Utc).AddTicks(781),
                             ISBNCode = "9472837462176",
                             LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
                             PageCount = 300,
@@ -303,7 +297,7 @@ namespace Persistence.Migrations
                             BookEdition = 9,
                             BookTitle = "Suç ve Ceza",
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 380, DateTimeKind.Utc).AddTicks(2175),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 849, DateTimeKind.Utc).AddTicks(784),
                             ISBNCode = "6482901846372",
                             LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
                             PageCount = 220,
@@ -317,7 +311,7 @@ namespace Persistence.Migrations
                             BookEdition = 14,
                             BookTitle = "Metal Fırtına",
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 380, DateTimeKind.Utc).AddTicks(2178),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 849, DateTimeKind.Utc).AddTicks(787),
                             ISBNCode = "9473284657234",
                             LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
                             PageCount = 110,
@@ -519,6 +513,53 @@ namespace Persistence.Migrations
                     b.ToTable("Catalogs", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.CatalogManagement", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("BookId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("BookId");
+
+                    b.Property<Guid>("CatalogId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CatalogId");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedDate");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletedDate");
+
+                    b.Property<Guid?>("MagazineId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("MagazineId");
+
+                    b.Property<Guid?>("MaterialId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("MaterialId");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("CatalogId");
+
+                    b.HasIndex("MagazineId");
+
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("CatalogManagements", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -553,25 +594,25 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 381, DateTimeKind.Utc).AddTicks(5221),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 850, DateTimeKind.Utc).AddTicks(9256),
                             Name = "Edebiyat"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 381, DateTimeKind.Utc).AddTicks(5223),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 850, DateTimeKind.Utc).AddTicks(9257),
                             Name = "Tarih"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 381, DateTimeKind.Utc).AddTicks(5223),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 850, DateTimeKind.Utc).AddTicks(9258),
                             Name = "Roman"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 381, DateTimeKind.Utc).AddTicks(5224),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 850, DateTimeKind.Utc).AddTicks(9259),
                             Name = "Psikoloji"
                         });
                 });
@@ -770,7 +811,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f9206bc5-cf90-4623-a942-598395cb431e"),
                             BirthDate = new DateTime(1980, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(7908),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(1950),
                             FirstName = "Ahmet",
                             ImageUrl = "...",
                             LastName = "Çetinkaya"
@@ -779,7 +820,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7be672cf-558f-4513-98a3-cdf0b2a22d5c"),
                             BirthDate = new DateTime(1978, 6, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(7915),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(1960),
                             FirstName = "Halit Enes",
                             ImageUrl = "...",
                             LastName = "Kalaycı"
@@ -788,7 +829,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("22027a43-0eb7-40d2-bca6-3184563c4813"),
                             BirthDate = new DateTime(1976, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(7919),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(1964),
                             FirstName = "Irem",
                             ImageUrl = "...",
                             LastName = "Balcı"
@@ -797,7 +838,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5f1f04fb-c293-431d-bd8f-7b021416d048"),
                             BirthDate = new DateTime(1974, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(7923),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(1967),
                             FirstName = "Kader",
                             ImageUrl = "...",
                             LastName = "Ergin"
@@ -849,7 +890,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(9982),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(4050),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Tarih Kitapları",
@@ -858,7 +899,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("6347179f-64d6-4c1d-a3ec-62bc02147d73"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(9985),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(4052),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Psikoloji Kitapları",
@@ -867,7 +908,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("6e3709bf-803e-42d6-818c-c82cf15be93b"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(9986),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(4054),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Edebiyat Kitapları",
@@ -876,7 +917,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 382, DateTimeKind.Utc).AddTicks(9988),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 852, DateTimeKind.Utc).AddTicks(4056),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Roman Kitapları",
@@ -890,10 +931,6 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
-
-                    b.Property<Guid?>("CatalogId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CatalogId");
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int")
@@ -934,8 +971,6 @@ namespace Persistence.Migrations
                         .HasColumnName("UpdatedDate");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CatalogId");
 
                     b.HasIndex("CategoryId");
 
@@ -980,10 +1015,6 @@ namespace Persistence.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
 
-                    b.Property<Guid?>("CatalogId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CatalogId");
-
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int")
                         .HasColumnName("CategoryId");
@@ -1018,8 +1049,6 @@ namespace Persistence.Migrations
                         .HasColumnName("UpdatedDate");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CatalogId");
 
                     b.HasIndex("CategoryId");
 
@@ -2729,6 +2758,150 @@ namespace Persistence.Migrations
                             Id = 257,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "MemberSettings.Delete"
+                        },
+                        new
+                        {
+                            Id = 258,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Catalogs.Admin"
+                        },
+                        new
+                        {
+                            Id = 259,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Catalogs.Read"
+                        },
+                        new
+                        {
+                            Id = 260,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Catalogs.Write"
+                        },
+                        new
+                        {
+                            Id = 261,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Catalogs.Create"
+                        },
+                        new
+                        {
+                            Id = 262,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Catalogs.Update"
+                        },
+                        new
+                        {
+                            Id = 263,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Catalogs.Delete"
+                        },
+                        new
+                        {
+                            Id = 264,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Admin"
+                        },
+                        new
+                        {
+                            Id = 265,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Read"
+                        },
+                        new
+                        {
+                            Id = 266,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Write"
+                        },
+                        new
+                        {
+                            Id = 267,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Create"
+                        },
+                        new
+                        {
+                            Id = 268,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Update"
+                        },
+                        new
+                        {
+                            Id = 269,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Delete"
+                        },
+                        new
+                        {
+                            Id = 270,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Magazines.Admin"
+                        },
+                        new
+                        {
+                            Id = 271,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Magazines.Read"
+                        },
+                        new
+                        {
+                            Id = 272,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Magazines.Write"
+                        },
+                        new
+                        {
+                            Id = 273,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Magazines.Create"
+                        },
+                        new
+                        {
+                            Id = 274,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Magazines.Update"
+                        },
+                        new
+                        {
+                            Id = 275,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Magazines.Delete"
+                        },
+                        new
+                        {
+                            Id = 276,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Materials.Admin"
+                        },
+                        new
+                        {
+                            Id = 277,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Materials.Read"
+                        },
+                        new
+                        {
+                            Id = 278,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Materials.Write"
+                        },
+                        new
+                        {
+                            Id = 279,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Materials.Create"
+                        },
+                        new
+                        {
+                            Id = 280,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Materials.Update"
+                        },
+                        new
+                        {
+                            Id = 281,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Materials.Delete"
                         });
                 });
 
@@ -2808,28 +2981,28 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 386, DateTimeKind.Utc).AddTicks(4890),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 855, DateTimeKind.Utc).AddTicks(3558),
                             Language = "TR",
                             Name = "Can Yayınları"
                         },
                         new
                         {
                             Id = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 386, DateTimeKind.Utc).AddTicks(4893),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 855, DateTimeKind.Utc).AddTicks(3561),
                             Language = "TR",
                             Name = "Kapra Yayıncılık"
                         },
                         new
                         {
                             Id = new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 386, DateTimeKind.Utc).AddTicks(4895),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 855, DateTimeKind.Utc).AddTicks(3562),
                             Language = "TR",
                             Name = "Alfa Yayınları"
                         },
                         new
                         {
                             Id = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
-                            CreatedDate = new DateTime(2024, 4, 18, 9, 36, 35, 386, DateTimeKind.Utc).AddTicks(4897),
+                            CreatedDate = new DateTime(2024, 4, 18, 13, 48, 58, 855, DateTimeKind.Utc).AddTicks(3567),
                             Language = "TR",
                             Name = "Timaş Yayınları"
                         });
@@ -2940,12 +3113,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b444381a-1d36-49bd-b84b-e16e28fb2845"),
+                            Id = new Guid("c0a247f4-ae86-47eb-a823-6be648421fe5"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 26, 178, 63, 92, 247, 197, 116, 191, 149, 62, 91, 70, 61, 200, 208, 132, 174, 207, 12, 19, 79, 174, 51, 151, 209, 42, 57, 240, 10, 37, 12, 88, 38, 162, 202, 140, 14, 245, 83, 150, 92, 36, 90, 157, 176, 46, 101, 243, 113, 9, 172, 121, 8, 153, 39, 133, 27, 110, 179, 60, 184, 11, 200, 249 },
-                            PasswordSalt = new byte[] { 94, 27, 33, 28, 148, 135, 115, 82, 157, 173, 243, 9, 244, 97, 92, 122, 60, 3, 56, 142, 69, 112, 55, 138, 242, 204, 28, 140, 121, 32, 70, 99, 81, 137, 252, 165, 186, 13, 255, 69, 7, 70, 166, 202, 175, 27, 100, 30, 188, 58, 136, 135, 79, 171, 200, 98, 244, 243, 29, 86, 154, 176, 159, 113, 102, 108, 5, 123, 39, 251, 22, 14, 89, 237, 115, 44, 86, 6, 70, 227, 164, 73, 168, 45, 65, 156, 74, 192, 244, 191, 94, 148, 83, 248, 40, 241, 103, 164, 197, 92, 116, 84, 121, 4, 39, 103, 39, 174, 133, 170, 39, 181, 132, 227, 98, 136, 208, 87, 175, 252, 160, 228, 248, 219, 212, 218, 51, 204 }
+                            PasswordHash = new byte[] { 23, 116, 74, 221, 50, 208, 57, 41, 183, 51, 205, 160, 174, 186, 174, 35, 177, 215, 45, 230, 48, 56, 42, 239, 37, 23, 142, 9, 188, 25, 111, 71, 67, 187, 30, 191, 228, 169, 34, 39, 187, 135, 223, 201, 68, 190, 176, 47, 10, 5, 171, 28, 124, 55, 167, 169, 46, 49, 92, 158, 225, 131, 24, 72 },
+                            PasswordSalt = new byte[] { 72, 242, 70, 52, 124, 191, 51, 244, 175, 123, 45, 68, 57, 2, 30, 204, 20, 241, 11, 155, 6, 218, 195, 149, 52, 141, 224, 52, 120, 119, 199, 252, 27, 247, 43, 125, 180, 195, 110, 12, 146, 128, 71, 109, 51, 148, 214, 213, 178, 5, 23, 220, 183, 173, 149, 23, 30, 159, 179, 165, 57, 250, 95, 33, 202, 146, 144, 229, 3, 110, 168, 59, 180, 102, 251, 26, 192, 174, 166, 75, 109, 245, 54, 195, 107, 57, 252, 141, 207, 1, 238, 207, 79, 145, 241, 171, 12, 186, 157, 252, 111, 76, 165, 243, 76, 88, 113, 96, 185, 111, 17, 107, 68, 226, 157, 121, 131, 200, 168, 210, 54, 128, 181, 20, 91, 110, 112, 148 }
                         });
                 });
 
@@ -2987,19 +3160,15 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("82fd1d77-1ba3-4c62-9739-017145324819"),
+                            Id = new Guid("b8d6bb70-4ef5-4cd4-856d-b3884f0a144b"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("b444381a-1d36-49bd-b84b-e16e28fb2845")
+                            UserId = new Guid("c0a247f4-ae86-47eb-a823-6be648421fe5")
                         });
                 });
 
             modelBuilder.Entity("Domain.Entities.Book", b =>
                 {
-                    b.HasOne("Domain.Entities.Catalog", "Catalog")
-                        .WithMany("Books")
-                        .HasForeignKey("CatalogId");
-
                     b.HasOne("Domain.Entities.Category", "Category")
                         .WithMany("Books")
                         .HasForeignKey("CategoryId")
@@ -3017,8 +3186,6 @@ namespace Persistence.Migrations
                         .HasForeignKey("PublisherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Catalog");
 
                     b.Navigation("Category");
 
@@ -3092,6 +3259,35 @@ namespace Persistence.Migrations
                     b.Navigation("Member");
                 });
 
+            modelBuilder.Entity("Domain.Entities.CatalogManagement", b =>
+                {
+                    b.HasOne("Domain.Entities.Book", "Book")
+                        .WithMany("CatalogManagements")
+                        .HasForeignKey("BookId");
+
+                    b.HasOne("Domain.Entities.Catalog", "Catalog")
+                        .WithMany("CatalogManagements")
+                        .HasForeignKey("CatalogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Magazine", "Magazine")
+                        .WithMany("CatalogManagements")
+                        .HasForeignKey("MagazineId");
+
+                    b.HasOne("Domain.Entities.Material", "Material")
+                        .WithMany("CatalogManagements")
+                        .HasForeignKey("MaterialId");
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Catalog");
+
+                    b.Navigation("Magazine");
+
+                    b.Navigation("Material");
+                });
+
             modelBuilder.Entity("Domain.Entities.EBook", b =>
                 {
                     b.HasOne("Domain.Entities.Book", "Book")
@@ -3136,10 +3332,6 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Magazine", b =>
                 {
-                    b.HasOne("Domain.Entities.Catalog", "Catalog")
-                        .WithMany("Magazines")
-                        .HasForeignKey("CatalogId");
-
                     b.HasOne("Domain.Entities.Category", "Category")
                         .WithMany("Magazines")
                         .HasForeignKey("CategoryId");
@@ -3149,8 +3341,6 @@ namespace Persistence.Migrations
                         .HasForeignKey("PublisherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Catalog");
 
                     b.Navigation("Category");
 
@@ -3178,10 +3368,6 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Material", b =>
                 {
-                    b.HasOne("Domain.Entities.Catalog", "Catalog")
-                        .WithMany("Materials")
-                        .HasForeignKey("CatalogId");
-
                     b.HasOne("Domain.Entities.Category", "Category")
                         .WithMany("Materials")
                         .HasForeignKey("CategoryId");
@@ -3191,8 +3377,6 @@ namespace Persistence.Migrations
                         .HasForeignKey("PublisherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Catalog");
 
                     b.Navigation("Category");
 
@@ -3298,6 +3482,8 @@ namespace Persistence.Migrations
 
                     b.Navigation("BookReservations");
 
+                    b.Navigation("CatalogManagements");
+
                     b.Navigation("EBook");
                 });
 
@@ -3308,11 +3494,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Catalog", b =>
                 {
-                    b.Navigation("Books");
-
-                    b.Navigation("Magazines");
-
-                    b.Navigation("Materials");
+                    b.Navigation("CatalogManagements");
                 });
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
@@ -3336,11 +3518,15 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Magazine", b =>
                 {
+                    b.Navigation("CatalogManagements");
+
                     b.Navigation("MagazineAuthors");
                 });
 
             modelBuilder.Entity("Domain.Entities.Material", b =>
                 {
+                    b.Navigation("CatalogManagements");
+
                     b.Navigation("MaterialAuthors");
                 });
 

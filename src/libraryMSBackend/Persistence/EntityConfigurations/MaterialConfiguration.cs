@@ -16,7 +16,6 @@ public class MaterialConfiguration : IEntityTypeConfiguration<Material>
         builder.Property(m => m.ReleaseDate).HasColumnName("ReleaseDate");
         builder.Property(m => m.PublisherId).HasColumnName("PublisherId");
         builder.Property(m => m.CategoryId).HasColumnName("CategoryId");
-        builder.Property(m => m.CatalogId).HasColumnName("CatalogId");
         builder.Property(m => m.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(m => m.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(m => m.DeletedDate).HasColumnName("DeletedDate");

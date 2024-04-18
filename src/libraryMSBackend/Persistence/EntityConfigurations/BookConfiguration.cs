@@ -21,7 +21,6 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
         builder.Property(b => b.PublisherId).HasColumnName("PublisherId");
         builder.Property(b => b.CategoryId).HasColumnName("CategoryId");
         builder.Property(b => b.LocationId).HasColumnName("LocationId");
-        builder.Property(b => b.CatalogId).HasColumnName("CatalogId");
         builder.Property(b => b.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(b => b.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(b => b.DeletedDate).HasColumnName("DeletedDate");

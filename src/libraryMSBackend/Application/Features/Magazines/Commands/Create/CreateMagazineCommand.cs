@@ -19,8 +19,7 @@ public class CreateMagazineCommand : IRequest<CreatedMagazineResponse>, ISecured
     public int ReleaseDate { get; set; }
     public int Number { get; set; }
     public Guid PublisherId { get; set; }
-    public int CategoryId { get; set; }
-    public Guid? CatalogId { get; set; }
+    public int? CategoryId { get; set; }
 
     public string[] Roles => [Admin, Write, MagazinesOperationClaims.Create];
 

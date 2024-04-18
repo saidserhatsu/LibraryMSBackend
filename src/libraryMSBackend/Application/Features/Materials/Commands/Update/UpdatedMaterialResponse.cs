@@ -11,5 +11,4 @@ public class UpdatedMaterialResponse : IResponse
     public int ReleaseDate { get; set; }
     public Guid PublisherId { get; set; }
     public int? CategoryId { get; set; }
-    public Guid? CatalogId { get; set; }
 }

@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.Catalogs.Constants.CatalogsOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Catalogs.Queries.GetList;
 
@@ -37,6 +38,9 @@ public class GetListCatalogQuery : IRequest<GetListResponse<GetListCatalogListIt
         public async Task<GetListResponse<GetListCatalogListItemDto>> Handle(GetListCatalogQuery request, CancellationToken cancellationToken)
         {
             IPaginate<Catalog> catalogs = await _catalogRepository.GetListAsync(
+                include: cm => cm.Include(cm=>cm.CatalogManagements).ThenInclude(cm=>cm.Book).ThenInclude(cm => cm.BookAuthors).ThenInclude(cm => cm.Author)
+                .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Magazine)
+                .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Material),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize, 
                 cancellationToken: cancellationToken
