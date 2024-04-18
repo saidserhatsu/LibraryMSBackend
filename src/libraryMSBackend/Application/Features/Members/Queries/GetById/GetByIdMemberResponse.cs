@@ -1,6 +1,7 @@
 using Application.Features.Books.Queries.GetList;
 using Application.Features.Categories.Queries.GetList;
 using Application.Features.Locations.Queries.GetList;
+using Application.Features.MemberSettings.Queries.GetList;
 using Application.Features.Publishers.Queries.GetList;
 using NArchitecture.Core.Application.Responses;
 
@@ -17,6 +18,7 @@ public class GetByIdMemberResponse : IResponse
     public DateTime DateOfBirth { get; set; }
     public bool Subscribe { get; set; }
 
+    public GetListMemberSettingListItemDto MemberSetting { get; set; }
     public ICollection<GetListBookListItemDto> Books { get; set; }
     public ICollection<GetListLocationListItemDto> Locations { get; set; }
     public ICollection<GetListCategoryListItemDto> Categories { get; set; }

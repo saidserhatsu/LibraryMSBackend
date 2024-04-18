@@ -1,12 +1,11 @@
-using Application.Features.Members.Constants;
 using Application.Features.Members.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
-using static Application.Features.Members.Constants.MembersOperationClaims;
 using Microsoft.EntityFrameworkCore;
+using NArchitecture.Core.Application.Pipelines.Authorization;
+using static Application.Features.Members.Constants.MembersOperationClaims;
 
 namespace Application.Features.Members.Queries.GetById;
 
@@ -34,7 +33,8 @@ public class GetByIdMemberQuery : IRequest<GetByIdMemberResponse>, ISecuredReque
             Member? member = await _memberRepository.GetAsync(
                  include: b => b.Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Category)
-                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher),
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher)
+                 .Include(b => b.MemberSetting),
                 predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
             await _memberBusinessRules.MemberShouldExistWhenSelected(member);
 
