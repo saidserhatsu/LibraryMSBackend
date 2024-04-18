@@ -1,4 +1,6 @@
 using Application.Features.Authors.Queries.GetById;
+using Application.Features.Authors.Queries.GetList;
+using Application.Features.Locations.Queries.GetList;
 using Domain.Enums;
 using NArchitecture.Core.Application.Responses;
 
@@ -15,6 +17,6 @@ public class GetByIdBookResponse : IResponse
     public BookStatus Status { get; set; }
     public Guid PublisherId { get; set; }
     public int CategoryId { get; set; }
-    public Guid LocationId { get; set; }
-    public ICollection<GetByIdAuthorResponse> BookAuthors { get; set; }
+    public GetListLocationListItemDto Location { get; set; }
+    public List<GetListAuthorListItemDto> Authors { get; set; }
 }
