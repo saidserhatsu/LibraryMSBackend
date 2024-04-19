@@ -3,20 +3,16 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using static Application.Features.Books.Constants.BooksOperationClaims;
 
 namespace Application.Features.Books.Queries.GetList;
 
-public class GetListBookQuery : IRequest<GetListResponse<GetListBookListItemDto>>, ISecuredRequest, ICachableRequest
+public class GetListBookQuery : IRequest<GetListResponse<GetListBookListItemDto>>, ICachableRequest
 {
     public PageRequest PageRequest { get; set; }
-
-    public string[] Roles => [Admin, Read];
 
     public bool BypassCache { get; }
     public string? CacheKey => $"GetListBooks({PageRequest.PageIndex},{PageRequest.PageSize})";
