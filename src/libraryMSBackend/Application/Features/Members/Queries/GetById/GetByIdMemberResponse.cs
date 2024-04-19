@@ -19,8 +19,6 @@ public class GetByIdMemberResponse : IResponse
     public bool Subscribe { get; set; }
 
     public GetListMemberSettingListItemDto MemberSetting { get; set; }
-    public ICollection<GetListBookListItemDto> Books { get; set; }
-    public ICollection<GetListLocationListItemDto> Locations { get; set; }
-    public ICollection<GetListCategoryListItemDto> Categories { get; set; }
-    public ICollection<GetListPublisherListItemDto> Publishers { get; set; }
+    public List<GetListBookListItemDto> Books { get; set; }
+
 }

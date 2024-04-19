@@ -54,6 +54,33 @@ public class MappingProfiles : Profile
                       LastName = ba.Author.LastName
                   }).ToList()
               })));
+        CreateMap<Member, GetByIdMemberResponse>()
+             .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues
+             .Select(m => new GetListBookListItemDto
+             {
+                 Id = m.BookId,
+                 ISBNCode = m.Book.ISBNCode,
+                 BookTitle = m.Book.BookTitle,
+                 BookEdition = m.Book.BookEdition,
+                 ReleaseDate = m.Book.ReleaseDate,
+                 Status = m.Book.Status,
+                 CategoryName = m.Book.Category.Name,
+                 PublisherName = m.Book.Publisher.Name,
+                 Location = new GetListLocationListItemDto
+                 {
+                     Id = m.Book.Id,
+                     Name = m.Book.Location.Name,
+                     ShelfName = m.Book.Location.ShelfName,
+                     FloorNo = m.Book.Location.FloorNo,
+                     ShelfNo = m.Book.Location.ShelfNo
+                 },
+                 Authors = m.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
+                 {
+                     Id = ba.Author.Id,
+                     FirstName = ba.Author.FirstName,
+                     LastName = ba.Author.LastName
+                 }).ToList()
+             })));
         CreateMap<IPaginate<Member>, GetListResponse<GetListMemberListItemDto>>().ReverseMap();
     }
 }

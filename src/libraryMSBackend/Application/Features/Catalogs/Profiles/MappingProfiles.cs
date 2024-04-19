@@ -27,11 +27,11 @@ public class MappingProfiles : Profile
         CreateMap<Catalog, DeleteCatalogCommand>().ReverseMap();
         CreateMap<Catalog, DeletedCatalogResponse>().ReverseMap();
         CreateMap<Catalog, GetByIdCatalogResponse>().ReverseMap();
-        CreateMap<Book, GetListCatalogBook>().ReverseMap();
+        //CreateMap<Book, GetListCatalogBook>().ReverseMap();
         CreateMap<Catalog, GetListCatalogListItemDto>()
                 .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.CatalogManagements
                     .Where(cm => cm.Book != null)
-                    .Select(cm => new GetListCatalogBook
+                    .Select(cm => new GetListBookListItemDto
                     {
                         Id = cm.Book.Id,
                         ISBNCode = cm.Book.ISBNCode,
