@@ -1,16 +1,11 @@
 ﻿using NArchitecture.Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities;
 public class Magazine : Entity<Guid>
 {
     public string ISSNCode { get; set; }
     public string MagazineTitle { get; set; }
-    public int ReleaseDate { get; set; }
+    public DateTime ReleaseDate { get; set; }
     public int Number { get; set; }
     public Guid PublisherId { get; set; }
     public int? CategoryId { get; set; }
