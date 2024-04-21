@@ -22,15 +22,15 @@ public class BaseController : ControllerBase
         return ipAddress;
     }
 
-    protected Guid getUserIdFromRequest() //todo authentication behavior?
+    protected Guid? getUserIdFromRequest()
     {
-        // Access token my be not valid or expired so we need to handle this case
-
         if (!HttpContext.User.Identity?.IsAuthenticated ?? true)
         {
-            throw new InvalidOperationException("User is not authenticated.");
+            return null;
         }
+
         var userId = Guid.Parse(HttpContext.User.GetUserId().ToString()!);
         return userId;
     }
+
 }

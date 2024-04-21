@@ -24,10 +24,18 @@ public class UsersController : BaseController
     [HttpGet("GetFromAuth")]
     public async Task<IActionResult> GetFromAuth()
     {
-        GetByIdUserQuery getByIdUserQuery = new() { Id = getUserIdFromRequest() };
+        Guid? userId = getUserIdFromRequest();
+
+        if (!userId.HasValue)
+        {
+            return Unauthorized();
+        }
+
+        GetByIdUserQuery getByIdUserQuery = new() { Id = userId.Value };
         GetByIdUserResponse result = await Mediator.Send(getByIdUserQuery);
         return Ok(result);
     }
+
 
     [HttpGet]
     public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
@@ -54,10 +62,20 @@ public class UsersController : BaseController
     [HttpPut("FromAuth")]
     public async Task<IActionResult> UpdateFromAuth([FromBody] UpdateUserFromAuthCommand updateUserFromAuthCommand)
     {
-        updateUserFromAuthCommand.Id = getUserIdFromRequest();
+        Guid? userId = getUserIdFromRequest();
+
+        if (!userId.HasValue)
+        {
+            return Unauthorized();
+        }
+
+        updateUserFromAuthCommand.Id = userId.Value;
+
         UpdatedUserFromAuthResponse result = await Mediator.Send(updateUserFromAuthCommand);
+
         return Ok(result);
     }
+
 
     [HttpDelete]
     public async Task<IActionResult> Delete([FromBody] DeleteUserCommand deleteUserCommand)
