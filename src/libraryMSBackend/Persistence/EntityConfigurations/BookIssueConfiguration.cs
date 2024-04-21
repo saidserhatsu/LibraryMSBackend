@@ -31,6 +31,7 @@ public class BookIssueConfiguration : IEntityTypeConfiguration<BookIssue>
               .WithMany(b => b.BookIssues)
               .HasForeignKey(r => r.LibraryStaffId);
 
+
         builder.HasQueryFilter(bi => !bi.DeletedDate.HasValue);
     }
 }

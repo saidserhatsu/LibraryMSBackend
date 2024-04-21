@@ -10,6 +10,11 @@ public class Publisher : Entity<Guid>
 {
     public string Name { get; set; }
     public string Language { get; set; }
-
+    public Publisher()
+    {
+        Books = new HashSet<Book>();
+    }
     public virtual ICollection<Book> Books { get; set; }
+
+    
 }

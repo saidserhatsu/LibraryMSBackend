@@ -14,9 +14,15 @@ public class Material : Entity<Guid>
     public int ReleaseDate { get; set; }
     public Guid PublisherId { get; set; }
     public int? CategoryId { get; set; }
-
+    public Material()
+    {
+        MaterialAuthors = new HashSet<MaterialAuthor>();
+        CatalogManagements = new HashSet<CatalogManagement>();
+    }
     public virtual Publisher Publisher { get; set; }
     public virtual Category? Category { get; set; }
     public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
     public virtual ICollection<MaterialAuthor> MaterialAuthors { get; set; }
+
+   
 }

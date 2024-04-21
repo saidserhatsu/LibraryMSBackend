@@ -12,5 +12,6 @@ public class FineDue : Entity<Guid>
     public Guid BookIssueId { get; set; }
     public DateTime FineDate { get; set; }
 
+
     public virtual BookIssue BookIssue { get; set; }
 }

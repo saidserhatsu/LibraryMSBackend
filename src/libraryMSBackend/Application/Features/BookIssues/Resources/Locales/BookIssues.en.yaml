@@ -1,1 +1,2 @@
-BookIssueNotExists: "Book issue don't exists."
+BookIssueNotExists: "Book issue doesn't exist."
+BookIssueMaxLimitReached: "Book issue max limit reached."

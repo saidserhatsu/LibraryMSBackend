@@ -12,6 +12,11 @@ public class LibraryStaff : Entity<Guid>
     public string LastName { get; set; }
     public string ImageUrl { get; set; }
     public DateTime BirthDate { get; set; }
-
+    public LibraryStaff()
+    {
+        BookIssues = new HashSet<BookIssue>();
+    }
     public virtual ICollection<BookIssue> BookIssues { get; set; }
+
+   
 }

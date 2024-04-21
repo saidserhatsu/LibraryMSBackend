@@ -24,9 +24,18 @@ public class Book : Entity<Guid>
     public virtual Location Location { get; set; }
     public virtual Publisher Publisher { get; set; }
     public virtual EBook? EBook { get; set; }
-    
+    public Book()
+    {
+        BookAuthors = new HashSet<BookAuthor>();
+        CatalogManagements = new HashSet<CatalogManagement>();
+        BookReservations = new HashSet<BookReservation>();
+        BookIssues = new HashSet<BookIssue>();
+    }
+
     public virtual ICollection<BookAuthor> BookAuthors { get; set; }
     public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
     public virtual ICollection<BookReservation> BookReservations { get; set; }
     public virtual ICollection<BookIssue> BookIssues { get; set; }
+
+    
 }

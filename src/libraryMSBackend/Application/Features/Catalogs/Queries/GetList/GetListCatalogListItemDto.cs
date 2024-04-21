@@ -12,7 +12,7 @@ public class GetListCatalogListItemDto : IDto
     public string Name { get; set; }
 
 
-    public List<GetListCatalogBook> Books { get; set; }
+    public List<GetListBookListItemDto> Books { get; set; }
     public List<GetListMagazineListItemDto> Magazines { get; set; }
     public List<GetListMaterialListItemDto> Materials { get; set; }
 }

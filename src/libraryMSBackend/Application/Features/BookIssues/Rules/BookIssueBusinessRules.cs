@@ -4,6 +4,7 @@ using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
+using Application.Features.Auth.Constants;
 
 namespace Application.Features.BookIssues.Rules;
 
@@ -22,6 +23,8 @@ public class BookIssueBusinessRules : BaseBusinessRules
     {
         string message = await _localizationService.GetLocalizedAsync(messageKey, BookIssuesBusinessMessages.SectionName);
         throw new BusinessException(message);
+
+        
     }
 
     public async Task BookIssueShouldExistWhenSelected(BookIssue? bookIssue)
@@ -39,13 +42,25 @@ public class BookIssueBusinessRules : BaseBusinessRules
         );
         await BookIssueShouldExistWhenSelected(bookIssue);
     }
+
+    public async Task CheckIfMemberHasExceededBookLimit(Guid memberId)
+    {
+        int maxBookLimit = 3;  // Belirlediðiniz maksimum kitap sayýsý
+        var currentBookCount = await _bookIssueRepository.GetBookCountByMemberIdAsync(memberId);
+
+        if (currentBookCount >= maxBookLimit)
+        {
+            await throwBusinessException(BookIssuesBusinessMessages.BookIssueMaxLimitReached);
+        }
+    }
     //------------------------------------------------------------------------
-   
 
 
-   
 
 
-    //todo: BusinessRules -> Bir kullanýcý ayný anda en fazla 2-3 kitap alabilir.
+
+
+    //todo: BusinessRules -> Bir kullanýcý ayný anda en fazla 2-3 kitap alabilir
+    
     //todo: BusinessRules -> Bir kullanýcý bir kitabý 2 hafta içinde iade etmesi gerekir. Aksi taktirde cezai iþlem uygulanýr.
 }

@@ -41,6 +41,8 @@ public class CreateBookIssueCommand : IRequest<CreatedBookIssueResponse>, ISecur
 
         public async Task<CreatedBookIssueResponse> Handle(CreateBookIssueCommand request, CancellationToken cancellationToken)
         {
+            await _bookIssueBusinessRules.CheckIfMemberHasExceededBookLimit(request.MemberId);
+
             BookIssue bookIssue = _mapper.Map<BookIssue>(request);
 
             await _bookIssueRepository.AddAsync(bookIssue);

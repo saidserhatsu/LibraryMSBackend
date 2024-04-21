@@ -9,6 +9,11 @@ namespace Domain.Entities;
 public class Catalog : Entity<Guid>
 {
     public string Name { get; set; }
-
+    public Catalog()
+    {
+        CatalogManagements = new HashSet<CatalogManagement>();
+    }
     public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
+
+   
 }

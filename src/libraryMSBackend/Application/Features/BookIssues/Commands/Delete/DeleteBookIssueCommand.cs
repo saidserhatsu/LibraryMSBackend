@@ -28,6 +28,7 @@ public class DeleteBookIssueCommand : IRequest<DeletedBookIssueResponse>, ISecur
         private readonly IMapper _mapper;
         private readonly IBookIssueRepository _bookIssueRepository;
         private readonly BookIssueBusinessRules _bookIssueBusinessRules;
+        
 
         public DeleteBookIssueCommandHandler(IMapper mapper, IBookIssueRepository bookIssueRepository,
                                          BookIssueBusinessRules bookIssueBusinessRules)

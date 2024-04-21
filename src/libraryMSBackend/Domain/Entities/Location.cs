@@ -12,6 +12,11 @@ public class Location : Entity<Guid>
     public int ShelfNo { get; set; }
     public int FloorNo { get; set; }
     public string ShelfName { get; set; }
-    
+    public Location()
+    {
+        Books = new HashSet<Book>();
+    }
     public virtual ICollection<Book> Books { get; set; }
+
+    
 }

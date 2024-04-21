@@ -10,8 +10,15 @@ public class Author : Entity<Guid>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
-
+    public Author()
+    {
+        BookAuthors = new HashSet<BookAuthor>();
+        MaterialAuthors = new HashSet<MaterialAuthor>();
+        MagazineAuthors = new HashSet<MagazineAuthor>();
+    }
     public virtual ICollection<BookAuthor> BookAuthors { get; set; }
     public virtual ICollection<MaterialAuthor> MaterialAuthors { get; set; }
     public virtual ICollection<MagazineAuthor> MagazineAuthors { get; set; }
+
+   
 }

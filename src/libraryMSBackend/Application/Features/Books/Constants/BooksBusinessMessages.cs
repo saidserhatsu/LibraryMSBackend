@@ -6,5 +6,5 @@ public static class BooksBusinessMessages
 
     public const string BookNotExists = "BookNotExists";
 
-    public const string Mevcutdegil = "Ayný ISBN koduna ait baþka bir kitap var.";
+    public const string SameIsbnCode = "SameIsbnCode";
 }

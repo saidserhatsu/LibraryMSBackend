@@ -9,7 +9,7 @@ using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
 using Application.Features.Authors.Queries.GetList;
 using Application.Features.Books.Queries.GetList;
-
+using Application.Features.Locations.Queries.GetList;
 using Application.Features.CatalogManagements.Queries.GetList;
 using Application.Features.Magazines.Queries.GetList;
 using Application.Features.Materials.Queries.GetList;
@@ -27,7 +27,6 @@ public class MappingProfiles : Profile
         CreateMap<Catalog, DeleteCatalogCommand>().ReverseMap();
         CreateMap<Catalog, DeletedCatalogResponse>().ReverseMap();
         CreateMap<Catalog, GetByIdCatalogResponse>().ReverseMap();
-        //CreateMap<Book, GetListCatalogBook>().ReverseMap();
         CreateMap<Catalog, GetListCatalogListItemDto>()
                 .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.CatalogManagements
                     .Where(cm => cm.Book != null)
@@ -36,8 +35,6 @@ public class MappingProfiles : Profile
                         Id = cm.Book.Id,
                         ISBNCode = cm.Book.ISBNCode,
                         BookTitle = cm.Book.BookTitle,
-                        CategoryName = cm.Book.Category.Name,
-
                         Authors = cm.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
                         {
                             Id = ba.Author.Id,
@@ -48,14 +45,18 @@ public class MappingProfiles : Profile
 
 
                     })))
-                 .IgnoreAllSourcePropertiesWithAnInaccessibleSetter()
+
                 .ForMember(dest => dest.Magazines, opt => opt.MapFrom(src => src.CatalogManagements
                     .Where(cm => cm.Magazine != null)
                     .Select(cm => new GetListMagazineListItemDto
                     {
                         Id = cm.Magazine.Id,
+                        ISSNCode=cm.Magazine.ISSNCode,
                         MagazineTitle = cm.Magazine.MagazineTitle,
-                        ReleaseDate = cm.Magazine.ReleaseDate
+                        ReleaseDate = cm.Magazine.ReleaseDate,
+                        PublisherId=cm.Magazine.PublisherId,
+                        Number=cm.Magazine.Number
+                        
 
 
                     })))

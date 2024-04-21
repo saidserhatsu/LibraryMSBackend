@@ -39,6 +39,7 @@ public class FineDueBusinessRules : BaseBusinessRules
         );
         await FineDueShouldExistWhenSelected(fineDue);
     }
+   
 
     //todo: BusinessRules -> Gecikme Ücretleri: Kullanıcıların kitapları belirlenen iade tarihinden sonra geri getirmeleri durumunda gecikme ücretleri uygulanabilir. Bu ücretler genellikle günlük veya haftalık bir ücret üzerinden hesaplanır ve kitabın iade tarihine kadar olan gecikme süresine göre değişebilir.
 

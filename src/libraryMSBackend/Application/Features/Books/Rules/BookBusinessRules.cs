@@ -45,13 +45,13 @@ public class BookBusinessRules : BaseBusinessRules
     {
         Book? result = await _bookRepository.GetAsync(x => x.ISBNCode == bookýsnbCode);
         if (result != null)
-            throw new BusinessException(BooksBusinessMessages.Mevcutdegil);
+            throw new BusinessException(BooksBusinessMessages.SameIsbnCode);
     }
 
     public async Task BookISBNCodeCanNotBeDuplicatedWhenUpdated(Book book)
     {
         Book? result = await _bookRepository.GetAsync(x => x.Id != book.Id && x.ISBNCode == book.ISBNCode);
         if (result != null)
-            throw new BusinessException(BooksBusinessMessages.Mevcutdegil);
+            throw new BusinessException(BooksBusinessMessages.SameIsbnCode);
     }
 }

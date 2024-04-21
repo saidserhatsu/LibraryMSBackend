@@ -9,9 +9,15 @@ public class Magazine : Entity<Guid>
     public int Number { get; set; }
     public Guid PublisherId { get; set; }
     public int? CategoryId { get; set; }
-
+    public Magazine()
+    {
+        CatalogManagements = new HashSet<CatalogManagement>();
+        MagazineAuthors = new HashSet<MagazineAuthor>();
+    }
     public virtual Publisher Publisher { get; set; }
     public virtual Category? Category { get; set; }
     public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
     public virtual ICollection<MagazineAuthor> MagazineAuthors { get; set; }
+
+   
 }

@@ -5,4 +5,5 @@ namespace Application.Services.Repositories;
 
 public interface IBookIssueRepository : IAsyncRepository<BookIssue, Guid>, IRepository<BookIssue, Guid>
 {
+    Task<int> GetBookCountByMemberIdAsync(Guid memberId);
 }
