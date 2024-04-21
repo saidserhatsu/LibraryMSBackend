@@ -70,10 +70,17 @@ public class AuthController : BaseController
     [HttpGet("EnableEmailAuthenticator")]
     public async Task<IActionResult> EnableEmailAuthenticator()
     {
+        Guid? userId = getUserIdFromRequest();
+
+        if (!userId.HasValue)
+        {
+            return Unauthorized();
+        }
+
         EnableEmailAuthenticatorCommand enableEmailAuthenticatorCommand =
             new()
             {
-                UserId = getUserIdFromRequest(),
+                UserId = userId.Value,
                 VerifyEmailUrlPrefix = $"{_configuration.ApiDomain}/Auth/VerifyEmailAuthenticator"
             };
         await Mediator.Send(enableEmailAuthenticatorCommand);
@@ -84,11 +91,19 @@ public class AuthController : BaseController
     [HttpGet("EnableOtpAuthenticator")]
     public async Task<IActionResult> EnableOtpAuthenticator()
     {
-        EnableOtpAuthenticatorCommand enableOtpAuthenticatorCommand = new() { UserId = getUserIdFromRequest() };
+        Guid? userId = getUserIdFromRequest();
+
+        if (!userId.HasValue)
+        {
+            return Unauthorized();
+        }
+
+        EnableOtpAuthenticatorCommand enableOtpAuthenticatorCommand = new() { UserId = userId.Value };
         EnabledOtpAuthenticatorResponse result = await Mediator.Send(enableOtpAuthenticatorCommand);
 
         return Ok(result);
     }
+
 
     [HttpGet("VerifyEmailAuthenticator")]
     public async Task<IActionResult> VerifyEmailAuthenticator(
@@ -102,12 +117,20 @@ public class AuthController : BaseController
     [HttpPost("VerifyOtpAuthenticator")]
     public async Task<IActionResult> VerifyOtpAuthenticator([FromBody] string authenticatorCode)
     {
-        VerifyOtpAuthenticatorCommand verifyEmailAuthenticatorCommand =
-            new() { UserId = getUserIdFromRequest(), ActivationCode = authenticatorCode };
+        Guid? userId = getUserIdFromRequest();
 
-        await Mediator.Send(verifyEmailAuthenticatorCommand);
+        if (!userId.HasValue)
+        {
+            return Unauthorized();
+        }
+
+        VerifyOtpAuthenticatorCommand verifyOtpAuthenticatorCommand =
+            new() { UserId = userId.Value, ActivationCode = authenticatorCode };
+
+        await Mediator.Send(verifyOtpAuthenticatorCommand);
         return Ok();
     }
+
 
     private string getRefreshTokenFromCookies()
     {
