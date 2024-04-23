@@ -23,7 +23,7 @@ public class Book : Entity<Guid>
     public virtual Category Category { get; set; }
     public virtual Location Location { get; set; }
     public virtual Publisher Publisher { get; set; }
-    public virtual EBook? EBook { get; set; }
+
     public Book()
     {
         BookAuthors = new HashSet<BookAuthor>();

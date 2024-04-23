@@ -8,5 +8,6 @@ public class UpdatedCatalogManagementResponse : IResponse
     public Guid? MaterialId { get; set; }
     public Guid? BookId { get; set; }
     public Guid? MagazineId { get; set; }
+    public Guid? EBookId { get; set; }
     public Guid CatalogId { get; set; }
 }

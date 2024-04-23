@@ -108,6 +108,10 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
 
         services.AddScoped<ISearchCriteriaService, SearchCriteriaManager>();
+        services.AddScoped<IEBookService, EBookManager>();
+        services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
+        services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
+        services.AddScoped<IEBookService, EBookManager>();
         return services;
     }
 

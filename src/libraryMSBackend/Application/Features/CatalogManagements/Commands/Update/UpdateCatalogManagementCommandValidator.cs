@@ -10,6 +10,7 @@ public class UpdateCatalogManagementCommandValidator : AbstractValidator<UpdateC
         RuleFor(c => c.MaterialId).NotEmpty();
         RuleFor(c => c.BookId).NotEmpty();
         RuleFor(c => c.MagazineId).NotEmpty();
+        RuleFor(c => c.EBookId).NotEmpty();
         RuleFor(c => c.CatalogId).NotEmpty();
     }
 }

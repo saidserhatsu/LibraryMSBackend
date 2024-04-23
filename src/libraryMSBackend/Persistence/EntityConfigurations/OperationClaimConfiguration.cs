@@ -749,6 +749,62 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
         
+        
+        #region EBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region CatalogManagements
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region CatalogManagements
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region EBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed

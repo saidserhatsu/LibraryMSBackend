@@ -18,6 +18,7 @@ public class UpdateCatalogManagementCommand : IRequest<UpdatedCatalogManagementR
     public Guid? MaterialId { get; set; }
     public Guid? BookId { get; set; }
     public Guid? MagazineId { get; set; }
+    public Guid? EBookId { get; set; }
     public Guid CatalogId { get; set; }
 
     public string[] Roles => [Admin, Write, CatalogManagementsOperationClaims.Update];
