@@ -35,6 +35,7 @@ public class BaseDbContext : DbContext
     public DbSet<MagazineAuthor> MagazineAuthors { get; set; }
     public DbSet<MemberSetting> MemberSettings { get; set; }
     public DbSet<CatalogManagement> CatalogManagements { get; set; }
+    public DbSet<SearchCriteria> SearchCriterias { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

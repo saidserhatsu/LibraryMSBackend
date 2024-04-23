@@ -21,6 +21,8 @@ public class MagazineConfiguration : IEntityTypeConfiguration<Magazine>
         builder.Property(m => m.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(m => m.DeletedDate).HasColumnName("DeletedDate");
 
+
+
         builder.HasData(
         new Magazine
         {

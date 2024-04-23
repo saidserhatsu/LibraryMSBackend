@@ -6,6 +6,7 @@ using Application.Features.Books.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Entities;
 
 namespace WebAPI.Controllers;
 
@@ -51,4 +52,17 @@ public class BooksController : BaseController
         GetListResponse<GetListBookListItemDto> response = await Mediator.Send(getListBookQuery);
         return Ok(response);
     }
+
+
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchBooks([FromQuery] SearchCriteria criteria, [FromQuery] PageRequest pageRequest)
+    {
+        // MediatR query'sini çaðýrýn
+        var query = new SearchBooksQuery(criteria, pageRequest);
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
+    }
+ 
 }

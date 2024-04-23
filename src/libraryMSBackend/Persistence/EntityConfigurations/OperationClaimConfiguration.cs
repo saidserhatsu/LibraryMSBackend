@@ -27,6 +27,7 @@ using Application.Features.Magazines.Constants;
 using Application.Features.MagazineAuthors.Constants;
 using Application.Features.MemberSettings.Constants;
 using Application.Features.CatalogManagements.Constants;
+using Application.Features.SearchCriterias.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -730,6 +731,20 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
                 new() { Id = ++lastId, Name = MagazinesOperationClaims.Create },
                 new() { Id = ++lastId, Name = MagazinesOperationClaims.Update },
                 new() { Id = ++lastId, Name = MagazinesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region SearchCriterias
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Admin },
+                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Read },
+                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Write },
+                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Create },
+                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Update },
+                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Delete },
             ]
         );
         #endregion

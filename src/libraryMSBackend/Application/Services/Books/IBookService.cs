@@ -27,4 +27,5 @@ public interface IBookService
     Task<Book> AddAsync(Book book);
     Task<Book> UpdateAsync(Book book);
     Task<Book> DeleteAsync(Book book, bool permanent = false);
+    Task<IQueryable<Book>> SearchBooksAsync(SearchCriteria criteria);
 }

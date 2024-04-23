@@ -21,15 +21,18 @@ public class BookIssueConfiguration : IEntityTypeConfiguration<BookIssue>
 
         builder.HasOne(r => r.Book)
               .WithMany(b => b.BookIssues)
-              .HasForeignKey(r => r.BookId);
+              .HasForeignKey(r => r.BookId)
+              .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(r => r.Member)
               .WithMany(b => b.BookIssues)
-              .HasForeignKey(r => r.MemberId);
+              .HasForeignKey(r => r.MemberId)
+              .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(r => r.LibraryStaff)
               .WithMany(b => b.BookIssues)
-              .HasForeignKey(r => r.LibraryStaffId);
+              .HasForeignKey(r => r.LibraryStaffId)
+              .OnDelete(DeleteBehavior.Cascade);
 
 
         builder.HasQueryFilter(bi => !bi.DeletedDate.HasValue);

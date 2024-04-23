@@ -42,6 +42,7 @@ using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
 using System.Reflection;
+using Application.Services.SearchCriterias;
 
 namespace Application;
 
@@ -106,6 +107,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IMemberSettingService, MemberSettingManager>();
         services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
 
+        services.AddScoped<ISearchCriteriaService, SearchCriteriaManager>();
         return services;
     }
 

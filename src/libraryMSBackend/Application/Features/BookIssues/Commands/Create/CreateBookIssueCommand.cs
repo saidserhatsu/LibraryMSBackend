@@ -17,7 +17,7 @@ public class CreateBookIssueCommand : IRequest<CreatedBookIssueResponse>, ISecur
     public Guid BookId { get; set; }
     public Guid MemberId { get; set; }
     public Guid LibraryStaffId { get; set; }
-    public DateTime ReturnDate { get; set; }
+    //public DateTime ReturnDate { get; set; }
 
     public string[] Roles => [Admin, Write, BookIssuesOperationClaims.Create];
 

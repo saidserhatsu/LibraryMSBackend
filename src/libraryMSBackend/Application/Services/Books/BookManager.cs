@@ -74,4 +74,27 @@ public class BookManager : IBookService
 
         return deletedBook;
     }
+
+    public Task<IQueryable<Book>> SearchBooksAsync(SearchCriteria criteria)
+    {
+        var query = _bookRepository.Table;
+
+        if (!string.IsNullOrEmpty(criteria.BookTitle))
+        {
+            query = query.Where(b => b.BookTitle.Contains(criteria.BookTitle));
+        }
+
+        if (!string.IsNullOrEmpty(criteria.BookISBNCode))
+        {
+            query = query.Where(b => b.ISBNCode.Contains(criteria.BookISBNCode));
+        }
+
+        if (!string.IsNullOrEmpty(criteria.AuthorName))
+        {
+            query = query.Where(b => b.BookAuthors.Any(ba => ba.Author.FirstName.Contains(criteria.AuthorName)));
+        }
+
+        // Task<IQueryable> döndüren metod için, sonucu Task içine sarýyoruz
+        return Task.FromResult(query);
+    }
 }

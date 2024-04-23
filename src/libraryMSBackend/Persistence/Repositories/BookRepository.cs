@@ -1,5 +1,6 @@
 using Application.Services.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Persistence.Repositories;
 using Persistence.Contexts;
 
@@ -10,4 +11,8 @@ public class BookRepository : EfRepositoryBase<Book, Guid, BaseDbContext>, IBook
     public BookRepository(BaseDbContext context) : base(context)
     {
     }
+
+    private DbSet<Book> Books => Context.Set<Book>(); // DbSet eriþimi
+
+    public IQueryable<Book> Table => Books.AsQueryable(); // IQueryable eriþimi
 }

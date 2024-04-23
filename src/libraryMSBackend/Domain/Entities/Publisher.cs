@@ -15,6 +15,8 @@ public class Publisher : Entity<Guid>
         Books = new HashSet<Book>();
     }
     public virtual ICollection<Book> Books { get; set; }
+    public virtual ICollection<Magazine> Magazines { get; set; }
+    public virtual ICollection<Material> Materials { get; set; }
 
-    
+
 }

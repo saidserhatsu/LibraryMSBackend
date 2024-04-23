@@ -16,7 +16,7 @@ public class BookIssue : Entity<Guid>
     public BookIssue()
     {
         // ReturnDate'i şu anki tarihin bir ay sonrası olarak varsayılan olarak ayarladık
-        //ReturnDate = DateTime.Now.AddMonths(1);
+        ReturnDate = DateTime.Now.AddMonths(1);
         FineDues = new HashSet<FineDue>();
     }
     public virtual Book Book { get; set; }
@@ -24,11 +24,5 @@ public class BookIssue : Entity<Guid>
     public virtual LibraryStaff LibraryStaff { get; set; }
 
     public virtual ICollection<FineDue> FineDues { get; set; }
-
-
-   
-
-    
-
 
 }
