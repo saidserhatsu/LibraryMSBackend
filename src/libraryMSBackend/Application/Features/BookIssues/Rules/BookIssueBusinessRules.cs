@@ -5,6 +5,7 @@ using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
 using Application.Features.Auth.Constants;
+using Domain.Enums;
 
 namespace Application.Features.BookIssues.Rules;
 
@@ -12,11 +13,13 @@ public class BookIssueBusinessRules : BaseBusinessRules
 {
     private readonly IBookIssueRepository _bookIssueRepository;
     private readonly ILocalizationService _localizationService;
+    private readonly IBookRepository _bookRepository;
 
-    public BookIssueBusinessRules(IBookIssueRepository bookIssueRepository, ILocalizationService localizationService)
+    public BookIssueBusinessRules(IBookIssueRepository bookIssueRepository, ILocalizationService localizationService, IBookRepository bookRepository)
     {
         _bookIssueRepository = bookIssueRepository;
         _localizationService = localizationService;
+        _bookRepository = bookRepository;
     }
 
     private async Task throwBusinessException(string messageKey)
@@ -55,12 +58,25 @@ public class BookIssueBusinessRules : BaseBusinessRules
     }
     //------------------------------------------------------------------------
 
+    public async Task EnsureBookIsAvailable(Guid bookId)
+    {
+        var book = await _bookRepository.GetByIdAsync(bookId);
 
+        if (book == null)
+        {
+            throw new KeyNotFoundException($"Book with ID {bookId} does not exist.");
+        }
+
+        if (book.Status == BookStatus.Borrowed || book.Status == BookStatus.Reserved)
+        {
+            throw new Exception($"The book is currently {book.Status}."); // Replace with a custom exception
+        }
+    }
 
 
 
 
     //todo: BusinessRules -> Bir kullanýcý ayný anda en fazla 2-3 kitap alabilir
-    
+
     //todo: BusinessRules -> Bir kullanýcý bir kitabý 2 hafta içinde iade etmesi gerekir. Aksi taktirde cezai iþlem uygulanýr.
 }

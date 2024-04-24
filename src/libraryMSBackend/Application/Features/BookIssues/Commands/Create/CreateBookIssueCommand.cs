@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using static Application.Features.BookIssues.Constants.BookIssuesOperationClaims;
+using Domain.Enums;
 
 namespace Application.Features.BookIssues.Commands.Create;
 
@@ -30,20 +31,29 @@ public class CreateBookIssueCommand : IRequest<CreatedBookIssueResponse>, ISecur
         private readonly IMapper _mapper;
         private readonly IBookIssueRepository _bookIssueRepository;
         private readonly BookIssueBusinessRules _bookIssueBusinessRules;
+        private readonly IBookRepository _bookRepository;
 
         public CreateBookIssueCommandHandler(IMapper mapper, IBookIssueRepository bookIssueRepository,
-                                         BookIssueBusinessRules bookIssueBusinessRules)
+                                         BookIssueBusinessRules bookIssueBusinessRules,IBookRepository bookRepository)
         {
             _mapper = mapper;
             _bookIssueRepository = bookIssueRepository;
             _bookIssueBusinessRules = bookIssueBusinessRules;
+            _bookRepository = bookRepository;
         }
 
         public async Task<CreatedBookIssueResponse> Handle(CreateBookIssueCommand request, CancellationToken cancellationToken)
         {
             await _bookIssueBusinessRules.CheckIfMemberHasExceededBookLimit(request.MemberId);
 
+            await _bookIssueBusinessRules.EnsureBookIsAvailable(request.BookId);
+
             BookIssue bookIssue = _mapper.Map<BookIssue>(request);
+
+            // Book is being issued, so set the status to Borrowed
+            var book = await _bookRepository.GetByIdAsync(request.BookId);
+            book.Status = BookStatus.Borrowed; // Change the status to Borrowed
+            await _bookRepository.UpdateAsync(book); // Save the status change
 
             await _bookIssueRepository.AddAsync(bookIssue);
 

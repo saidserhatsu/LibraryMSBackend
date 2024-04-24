@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.BookIssues.Constants.BookIssuesOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.BookIssues.Queries.GetList;
 
@@ -37,11 +38,12 @@ public class GetListBookIssueQuery : IRequest<GetListResponse<GetListBookIssueLi
         public async Task<GetListResponse<GetListBookIssueListItemDto>> Handle(GetListBookIssueQuery request, CancellationToken cancellationToken)
         {
             IPaginate<BookIssue> bookIssues = await _bookIssueRepository.GetListAsync(
+                include: bi => bi.Include(bi => bi.Book).Include(bi=>bi.Member),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize, 
                 cancellationToken: cancellationToken
             );
-
+            
             GetListResponse<GetListBookIssueListItemDto> response = _mapper.Map<GetListResponse<GetListBookIssueListItemDto>>(bookIssues);
             return response;
         }

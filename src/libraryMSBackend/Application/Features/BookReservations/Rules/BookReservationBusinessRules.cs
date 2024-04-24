@@ -4,6 +4,7 @@ using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
+using Domain.Enums;
 
 namespace Application.Features.BookReservations.Rules;
 
@@ -11,11 +12,13 @@ public class BookReservationBusinessRules : BaseBusinessRules
 {
     private readonly IBookReservationRepository _bookReservationRepository;
     private readonly ILocalizationService _localizationService;
+    private readonly IBookRepository _bookRepository;
 
-    public BookReservationBusinessRules(IBookReservationRepository bookReservationRepository, ILocalizationService localizationService)
+    public BookReservationBusinessRules(IBookReservationRepository bookReservationRepository, ILocalizationService localizationService, IBookRepository bookRepository)
     {
         _bookReservationRepository = bookReservationRepository;
         _localizationService = localizationService;
+        _bookRepository = bookRepository;
     }
 
     private async Task throwBusinessException(string messageKey)
@@ -38,6 +41,28 @@ public class BookReservationBusinessRules : BaseBusinessRules
             cancellationToken: cancellationToken
         );
         await BookReservationShouldExistWhenSelected(bookReservation);
+    }
+    public async Task EnsureBookCanBeReserved(Guid bookId)
+    {
+        // Kitabý alýn
+        var book = await _bookRepository.GetByIdAsync(bookId);
+
+        // Eðer kitap rezerve edilmiþse, yeni rezervasyona izin verme
+        var existingReservation = _bookReservationRepository.Table
+            .FirstOrDefault(br => br.BookId == bookId);
+
+        if (existingReservation != null)
+        {
+            throw new Exception($"This book is already reserved by another user.");
+        }
+
+        // Eðer kitap ödünç alýnmýþsa, rezervasyon yapýlabilir
+        if (book.Status == BookStatus.Borrowed)
+        {
+            return; // Rezervasyon yapýlabilir
+        }
+
+        // Diðer durumlar için herhangi bir engel yoktur
     }
 
     //todo: BusinessRules -> Rezervasyon Süresi: Bir kullanýcýnýn bir kitabý ne kadar süreyle rezerve edebileceði belirlenmelidir. Örneðin, her kullanýcýya belirli bir süre için rezervasyon hakký verilebilir, bu süre genellikle birkaç gün ile bir hafta arasýnda olabilir.

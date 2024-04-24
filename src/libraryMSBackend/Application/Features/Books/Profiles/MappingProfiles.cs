@@ -35,7 +35,7 @@ public class MappingProfiles : Profile
                     LastName = ba.Author.LastName
                 }))).ReverseMap();
         CreateMap<Book, GetListBookListItemDto>()
-                .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
+                .ForMember(dest => dest.Locations, opt => opt.MapFrom(src => src.Location))
                 .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.BookAuthors
                 .Select(ba => new GetListAuthorListItemDto
                 {

@@ -64,7 +64,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0e19a5be-6546-4c5a-9340-cf1e1748b1b1"),
                             Content = "Content 1",
-                            CreatedDate = new DateTime(2024, 4, 23, 20, 47, 19, 138, DateTimeKind.Utc).AddTicks(2053),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(3410),
                             Tag = 0,
                             Title = "Kütüphane Üyelikleri"
                         },
@@ -72,7 +72,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e014efc4-0973-4fc1-80bb-464b4d791173"),
                             Content = "Content 2",
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(2500),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(3413),
                             Tag = 1,
                             Title = "Hıdırellez Yarışması"
                         },
@@ -80,7 +80,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f4710162-5b4a-4dfe-9bcf-8951ec64b55e"),
                             Content = "Content 3",
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(2503),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(3415),
                             Tag = 2,
                             Title = "Yeni Kitaplar"
                         },
@@ -88,7 +88,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bf3669a9-a784-4941-bf6e-4893374abb2b"),
                             Content = "Content 4",
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(2505),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(3416),
                             Tag = 1,
                             Title = "Yeni Yıl Etkinliği"
                         },
@@ -96,7 +96,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9c6c985f-b331-4a85-bee5-c7d2a9d57073"),
                             Content = "Content 5",
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(2507),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(3417),
                             Tag = 1,
                             Title = "Bayramlaşma"
                         },
@@ -104,7 +104,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7085aa16-5230-42ca-941b-6d73c692053b"),
                             Content = "Content 6",
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(2508),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(3419),
                             Tag = 0,
                             Title = "Kütüphane Açılış Saatleri"
                         });
@@ -147,35 +147,35 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("999b5ec6-5d88-437c-a6a8-8f397772acd3"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(5038),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(6007),
                             FirstName = "Mustafa Kemal",
                             LastName = "Atatürk"
                         },
                         new
                         {
                             Id = new Guid("24a402a9-46e6-42f7-9d18-27ed258b8418"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(5041),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(6010),
                             FirstName = "Fyodor",
                             LastName = "Dostoyevski"
                         },
                         new
                         {
                             Id = new Guid("f52bd761-cef2-4728-b3a3-b8e1aaa86710"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(5044),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(6012),
                             FirstName = "Sun",
                             LastName = "Tzu"
                         },
                         new
                         {
                             Id = new Guid("bfcb46ec-fce6-4305-84fd-8453a0c032c2"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(5046),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(6014),
                             FirstName = "Orkun",
                             LastName = "Uçar"
                         },
                         new
                         {
                             Id = new Guid("0a0a0651-d2f9-4c37-a91d-334d850c23db"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 71, DateTimeKind.Utc).AddTicks(5048),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 40, DateTimeKind.Utc).AddTicks(6015),
                             FirstName = "Burak",
                             LastName = "Turna"
                         });
@@ -255,7 +255,7 @@ namespace Persistence.Migrations
                             BookEdition = 10,
                             BookTitle = "Nutuk",
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 72, DateTimeKind.Utc).AddTicks(3783),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 41, DateTimeKind.Utc).AddTicks(4380),
                             ISBNCode = "9781234567897",
                             LocationId = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
                             PageCount = 100,
@@ -269,7 +269,7 @@ namespace Persistence.Migrations
                             BookEdition = 15,
                             BookTitle = "Savaş Sanatı",
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 72, DateTimeKind.Utc).AddTicks(3811),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 41, DateTimeKind.Utc).AddTicks(4384),
                             ISBNCode = "4373695632743",
                             LocationId = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
                             PageCount = 200,
@@ -283,7 +283,7 @@ namespace Persistence.Migrations
                             BookEdition = 21,
                             BookTitle = "Yeraltından Notlar",
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 72, DateTimeKind.Utc).AddTicks(3815),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 41, DateTimeKind.Utc).AddTicks(4388),
                             ISBNCode = "9472837462176",
                             LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
                             PageCount = 300,
@@ -297,7 +297,7 @@ namespace Persistence.Migrations
                             BookEdition = 9,
                             BookTitle = "Suç ve Ceza",
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 72, DateTimeKind.Utc).AddTicks(3819),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 41, DateTimeKind.Utc).AddTicks(4391),
                             ISBNCode = "6482901846372",
                             LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
                             PageCount = 220,
@@ -311,7 +311,7 @@ namespace Persistence.Migrations
                             BookEdition = 14,
                             BookTitle = "Metal Fırtına",
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 72, DateTimeKind.Utc).AddTicks(3822),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 41, DateTimeKind.Utc).AddTicks(4395),
                             ISBNCode = "9473284657234",
                             LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
                             PageCount = 110,
@@ -601,25 +601,25 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 74, DateTimeKind.Utc).AddTicks(1907),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 43, DateTimeKind.Utc).AddTicks(4177),
                             Name = "Edebiyat"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 74, DateTimeKind.Utc).AddTicks(1909),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 43, DateTimeKind.Utc).AddTicks(4180),
                             Name = "Tarih"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 74, DateTimeKind.Utc).AddTicks(1911),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 43, DateTimeKind.Utc).AddTicks(4181),
                             Name = "Roman"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 74, DateTimeKind.Utc).AddTicks(1912),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 43, DateTimeKind.Utc).AddTicks(4183),
                             Name = "Psikoloji"
                         });
                 });
@@ -718,6 +718,42 @@ namespace Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("EmailAuthenticators", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.FavoriteBook", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("BookId");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedDate");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletedDate");
+
+                    b.Property<Guid>("MemberId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("MemberId");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("FavoriteBooks", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.FineDue", b =>
@@ -839,7 +875,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f9206bc5-cf90-4623-a942-598395cb431e"),
                             BirthDate = new DateTime(1980, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(4193),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 44, DateTimeKind.Utc).AddTicks(8948),
                             FirstName = "Ahmet",
                             ImageUrl = "...",
                             LastName = "Çetinkaya"
@@ -848,7 +884,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7be672cf-558f-4513-98a3-cdf0b2a22d5c"),
                             BirthDate = new DateTime(1978, 6, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(4201),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 44, DateTimeKind.Utc).AddTicks(8957),
                             FirstName = "Halit Enes",
                             ImageUrl = "...",
                             LastName = "Kalaycı"
@@ -857,7 +893,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("22027a43-0eb7-40d2-bca6-3184563c4813"),
                             BirthDate = new DateTime(1976, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(4205),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 44, DateTimeKind.Utc).AddTicks(8961),
                             FirstName = "Irem",
                             ImageUrl = "...",
                             LastName = "Balcı"
@@ -866,7 +902,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5f1f04fb-c293-431d-bd8f-7b021416d048"),
                             BirthDate = new DateTime(1974, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(4208),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 44, DateTimeKind.Utc).AddTicks(8966),
                             FirstName = "Kader",
                             ImageUrl = "...",
                             LastName = "Ergin"
@@ -918,7 +954,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(6340),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(1099),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Tarih Kitapları",
@@ -927,7 +963,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("6347179f-64d6-4c1d-a3ec-62bc02147d73"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(6343),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(1104),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Psikoloji Kitapları",
@@ -936,7 +972,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("6e3709bf-803e-42d6-818c-c82cf15be93b"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(6345),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(1106),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Edebiyat Kitapları",
@@ -945,7 +981,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 75, DateTimeKind.Utc).AddTicks(6346),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(1108),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Roman Kitapları",
@@ -1011,7 +1047,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("8d9c7bb2-6baf-4319-a3a3-a2ac3092c8f1"),
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 3, 23, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4166),
+                            CreatedDate = new DateTime(2024, 3, 25, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9245),
                             ISSNCode = "ISSN1234-5678",
                             MagazineTitle = "Tech Insights",
                             Number = 1,
@@ -1022,7 +1058,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("33ec09e7-b0fa-4f0d-ad57-168fbaf7797d"),
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 4, 2, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4215),
+                            CreatedDate = new DateTime(2024, 4, 4, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9253),
                             ISSNCode = "ISSN9876-5432",
                             MagazineTitle = "Health & Wellness",
                             Number = 2,
@@ -1033,7 +1069,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c5939743-2f35-48f8-9858-51f4c1556bf0"),
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 7, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4219),
+                            CreatedDate = new DateTime(2024, 4, 9, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9256),
                             ISSNCode = "ISSN5555-1234",
                             MagazineTitle = "Finance Focus",
                             Number = 3,
@@ -1044,7 +1080,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3bb08885-5ea5-405d-bcff-3ae7ec0b1911"),
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 4, 12, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4222),
+                            CreatedDate = new DateTime(2024, 4, 14, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9260),
                             ISSNCode = "ISSN7777-4321",
                             MagazineTitle = "Travel Trends",
                             Number = 4,
@@ -1055,7 +1091,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0126025b-b09b-443b-9cb0-f28d61a34a3c"),
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 3, 28, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4224),
+                            CreatedDate = new DateTime(2024, 3, 30, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9263),
                             ISSNCode = "ISSN8888-9999",
                             MagazineTitle = "Foodie Finds",
                             Number = 5,
@@ -1066,7 +1102,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("44519209-e844-4908-9d92-75db10400dcc"),
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 4, 17, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4227),
+                            CreatedDate = new DateTime(2024, 4, 19, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9266),
                             ISSNCode = "ISSN4444-3333",
                             MagazineTitle = "Artistic Expressions",
                             Number = 6,
@@ -1077,7 +1113,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("46a33882-534b-4c1e-8049-14dd03f7a7fa"),
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 10, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4229),
+                            CreatedDate = new DateTime(2024, 4, 12, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9269),
                             ISSNCode = "ISSN2222-1111",
                             MagazineTitle = "Fashion Forward",
                             Number = 7,
@@ -1088,7 +1124,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a6df0f9e-9aa2-49c6-bf84-2033ae97355f"),
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 4, 14, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4231),
+                            CreatedDate = new DateTime(2024, 4, 16, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9271),
                             ISSNCode = "ISSN9999-8888",
                             MagazineTitle = "Sports Spectacle",
                             Number = 8,
@@ -1099,7 +1135,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ba3158f1-2c48-47a6-8c64-be115d0b02e1"),
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 19, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4234),
+                            CreatedDate = new DateTime(2024, 4, 21, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9274),
                             ISSNCode = "ISSN3333-4444",
                             MagazineTitle = "Science Scopes",
                             Number = 9,
@@ -1110,7 +1146,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f24b9d85-f392-45b1-a8c6-9a42edde0d6a"),
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 21, 15, 56, 23, 76, DateTimeKind.Utc).AddTicks(4237),
+                            CreatedDate = new DateTime(2024, 4, 23, 9, 51, 10, 45, DateTimeKind.Utc).AddTicks(9277),
                             ISSNCode = "ISSN6666-5555",
                             MagazineTitle = "Music Monthly",
                             Number = 10,
@@ -3114,6 +3150,186 @@ namespace Persistence.Migrations
                             Id = 293,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "SearchCriterias.Delete"
+                        },
+                        new
+                        {
+                            Id = 294,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Admin"
+                        },
+                        new
+                        {
+                            Id = 295,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Read"
+                        },
+                        new
+                        {
+                            Id = 296,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Write"
+                        },
+                        new
+                        {
+                            Id = 297,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Create"
+                        },
+                        new
+                        {
+                            Id = 298,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Update"
+                        },
+                        new
+                        {
+                            Id = 299,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Delete"
+                        },
+                        new
+                        {
+                            Id = 300,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Admin"
+                        },
+                        new
+                        {
+                            Id = 301,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Read"
+                        },
+                        new
+                        {
+                            Id = 302,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Write"
+                        },
+                        new
+                        {
+                            Id = 303,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Create"
+                        },
+                        new
+                        {
+                            Id = 304,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Update"
+                        },
+                        new
+                        {
+                            Id = 305,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Delete"
+                        },
+                        new
+                        {
+                            Id = 306,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Admin"
+                        },
+                        new
+                        {
+                            Id = 307,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Read"
+                        },
+                        new
+                        {
+                            Id = 308,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Write"
+                        },
+                        new
+                        {
+                            Id = 309,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Create"
+                        },
+                        new
+                        {
+                            Id = 310,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Update"
+                        },
+                        new
+                        {
+                            Id = 311,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CatalogManagements.Delete"
+                        },
+                        new
+                        {
+                            Id = 312,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Admin"
+                        },
+                        new
+                        {
+                            Id = 313,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Read"
+                        },
+                        new
+                        {
+                            Id = 314,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Write"
+                        },
+                        new
+                        {
+                            Id = 315,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Create"
+                        },
+                        new
+                        {
+                            Id = 316,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Update"
+                        },
+                        new
+                        {
+                            Id = 317,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "EBooks.Delete"
+                        },
+                        new
+                        {
+                            Id = 318,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "FavoriteBooks.Admin"
+                        },
+                        new
+                        {
+                            Id = 319,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "FavoriteBooks.Read"
+                        },
+                        new
+                        {
+                            Id = 320,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "FavoriteBooks.Write"
+                        },
+                        new
+                        {
+                            Id = 321,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "FavoriteBooks.Create"
+                        },
+                        new
+                        {
+                            Id = 322,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "FavoriteBooks.Update"
+                        },
+                        new
+                        {
+                            Id = 323,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "FavoriteBooks.Delete"
                         });
                 });
 
@@ -3193,28 +3409,28 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 78, DateTimeKind.Utc).AddTicks(6110),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 48, DateTimeKind.Utc).AddTicks(896),
                             Language = "TR",
                             Name = "Can Yayınları"
                         },
                         new
                         {
                             Id = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 78, DateTimeKind.Utc).AddTicks(6182),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 48, DateTimeKind.Utc).AddTicks(899),
                             Language = "TR",
                             Name = "Kapra Yayıncılık"
                         },
                         new
                         {
                             Id = new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 78, DateTimeKind.Utc).AddTicks(6185),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 48, DateTimeKind.Utc).AddTicks(901),
                             Language = "TR",
                             Name = "Alfa Yayınları"
                         },
                         new
                         {
                             Id = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
-                            CreatedDate = new DateTime(2024, 4, 22, 15, 56, 23, 78, DateTimeKind.Utc).AddTicks(6187),
+                            CreatedDate = new DateTime(2024, 4, 24, 9, 51, 10, 48, DateTimeKind.Utc).AddTicks(903),
                             Language = "TR",
                             Name = "Timaş Yayınları"
                         });
@@ -3377,12 +3593,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1a9dda45-5920-4ec1-9bfb-581deb76fe8e"),
+                            Id = new Guid("6b0824a9-2121-4696-965f-a30a28aff90b"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 64, 92, 111, 230, 147, 114, 156, 2, 179, 53, 118, 89, 1, 225, 142, 193, 178, 113, 26, 77, 32, 99, 93, 177, 193, 214, 198, 157, 180, 7, 123, 189, 128, 106, 120, 21, 74, 9, 87, 149, 75, 120, 147, 68, 68, 245, 68, 135, 101, 250, 141, 84, 151, 223, 66, 122, 196, 77, 139, 188, 240, 183, 200, 169 },
-                            PasswordSalt = new byte[] { 155, 116, 91, 107, 231, 160, 38, 12, 50, 124, 172, 13, 61, 128, 254, 80, 60, 89, 78, 43, 50, 24, 94, 118, 25, 117, 200, 232, 90, 106, 157, 204, 136, 47, 79, 39, 95, 207, 144, 191, 218, 164, 231, 208, 246, 42, 244, 240, 222, 6, 31, 33, 158, 66, 71, 71, 186, 84, 176, 85, 109, 164, 240, 174, 13, 148, 85, 83, 39, 86, 51, 114, 53, 189, 115, 243, 135, 247, 246, 37, 129, 191, 101, 1, 141, 85, 140, 160, 97, 40, 113, 51, 14, 109, 114, 0, 121, 6, 207, 228, 170, 202, 145, 24, 35, 17, 150, 199, 143, 200, 191, 214, 118, 188, 50, 126, 149, 218, 103, 212, 217, 227, 138, 162, 172, 135, 217, 33 }
+                            PasswordHash = new byte[] { 102, 18, 247, 218, 49, 70, 223, 247, 115, 112, 25, 202, 43, 246, 104, 201, 133, 185, 4, 136, 129, 223, 171, 186, 3, 174, 100, 42, 38, 122, 109, 79, 126, 242, 72, 101, 84, 226, 217, 248, 57, 197, 173, 171, 209, 8, 231, 197, 137, 92, 182, 104, 74, 179, 34, 127, 193, 55, 242, 34, 12, 208, 35, 167 },
+                            PasswordSalt = new byte[] { 83, 86, 128, 96, 87, 31, 169, 106, 231, 176, 185, 9, 4, 140, 20, 223, 150, 91, 52, 183, 25, 51, 19, 20, 4, 147, 48, 144, 104, 170, 123, 182, 102, 62, 29, 20, 7, 120, 125, 130, 211, 72, 110, 77, 132, 44, 109, 170, 43, 233, 67, 49, 241, 85, 148, 197, 115, 254, 125, 93, 82, 206, 90, 188, 10, 19, 106, 110, 238, 255, 34, 228, 226, 218, 170, 23, 221, 22, 95, 102, 38, 233, 9, 92, 107, 128, 93, 66, 251, 237, 193, 152, 231, 44, 140, 202, 181, 222, 116, 100, 46, 136, 174, 240, 127, 246, 133, 93, 242, 234, 62, 106, 237, 82, 155, 112, 50, 155, 207, 195, 106, 231, 93, 71, 31, 132, 193, 250 }
                         });
                 });
 
@@ -3424,10 +3640,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e27c8b57-b444-425a-ac9c-54daaf4eb01c"),
+                            Id = new Guid("8e63cc8b-bf28-463b-b5a3-5a57976e6a6f"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("1a9dda45-5920-4ec1-9bfb-581deb76fe8e")
+                            UserId = new Guid("6b0824a9-2121-4696-965f-a30a28aff90b")
                         });
                 });
 
@@ -3578,6 +3794,25 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.FavoriteBook", b =>
+                {
+                    b.HasOne("Domain.Entities.Book", "Book")
+                        .WithMany("FavoriteBooks")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Member", "Member")
+                        .WithMany("FavoriteBooks")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Member");
                 });
 
             modelBuilder.Entity("Domain.Entities.FineDue", b =>
@@ -3755,6 +3990,8 @@ namespace Persistence.Migrations
                     b.Navigation("BookReservations");
 
                     b.Navigation("CatalogManagements");
+
+                    b.Navigation("FavoriteBooks");
                 });
 
             modelBuilder.Entity("Domain.Entities.BookIssue", b =>
@@ -3812,6 +4049,8 @@ namespace Persistence.Migrations
                     b.Navigation("BookIssues");
 
                     b.Navigation("BookReservations");
+
+                    b.Navigation("FavoriteBooks");
 
                     b.Navigation("FinePayments");
 

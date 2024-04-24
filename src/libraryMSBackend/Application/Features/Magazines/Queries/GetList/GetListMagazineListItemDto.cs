@@ -13,4 +13,6 @@ public class GetListMagazineListItemDto : IDto
     public int? CategoryId { get; set; }
     public string PublisherName { get; set; }
     public string CategoryName { get; set; }
+
+
 }

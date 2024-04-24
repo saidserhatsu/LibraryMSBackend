@@ -30,23 +30,35 @@ public class CreateBookReservationCommand : IRequest<CreatedBookReservationRespo
         private readonly IMapper _mapper;
         private readonly IBookReservationRepository _bookReservationRepository;
         private readonly BookReservationBusinessRules _bookReservationBusinessRules;
+        private readonly IBookRepository _bookRepository;
 
-        public CreateBookReservationCommandHandler(IMapper mapper, IBookReservationRepository bookReservationRepository,
+        public CreateBookReservationCommandHandler(IMapper mapper, IBookReservationRepository bookReservationRepository,IBookRepository bookRepository,
                                          BookReservationBusinessRules bookReservationBusinessRules)
         {
             _mapper = mapper;
             _bookReservationRepository = bookReservationRepository;
             _bookReservationBusinessRules = bookReservationBusinessRules;
+            _bookRepository = bookRepository;
         }
 
         public async Task<CreatedBookReservationResponse> Handle(CreateBookReservationCommand request, CancellationToken cancellationToken)
         {
-            BookReservation bookReservation = _mapper.Map<BookReservation>(request);
+            // Kitap zaten rezerve edilmiþ mi kontrol et
+            bool alreadyReserved = _bookReservationRepository.Table.Any(br => br.BookId == request.BookId);
 
+            if (alreadyReserved)
+            {
+                throw new Exception("Kitap zaten rezerve edilmiþ."); // Bu durumu özel bir hata mesajý ile bildir
+            }
+
+            // Kitap rezerve edilmemiþse, devam et
+            BookReservation bookReservation = _mapper.Map<BookReservation>(request);
             await _bookReservationRepository.AddAsync(bookReservation);
 
             CreatedBookReservationResponse response = _mapper.Map<CreatedBookReservationResponse>(bookReservation);
             return response;
         }
     }
+    
 }
+

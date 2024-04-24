@@ -39,7 +39,7 @@ public class MappingProfiles : Profile
                   Status = m.Book.Status,
                   CategoryName = m.Book.Category.Name,
                   PublisherName = m.Book.Publisher.Name,
-                  Location = new GetListLocationListItemDto
+                  Locations = new GetListLocationListItemDto
                   {
                       Id = m.Book.Id,
                       Name = m.Book.Location.Name,
@@ -66,7 +66,7 @@ public class MappingProfiles : Profile
                  Status = m.Book.Status,
                  CategoryName = m.Book.Category.Name,
                  PublisherName = m.Book.Publisher.Name,
-                 Location = new GetListLocationListItemDto
+                 Locations = new GetListLocationListItemDto
                  {
                      Id = m.Book.Id,
                      Name = m.Book.Location.Name,

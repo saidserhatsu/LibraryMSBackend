@@ -10,4 +10,6 @@ public class BookReservationRepository : EfRepositoryBase<BookReservation, Guid,
     public BookReservationRepository(BaseDbContext context) : base(context)
     {
     }
+
+    public IQueryable<BookReservation> Table => Context.Set<BookReservation>();
 }

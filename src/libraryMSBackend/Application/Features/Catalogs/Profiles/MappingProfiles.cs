@@ -13,6 +13,9 @@ using Application.Features.Locations.Queries.GetList;
 using Application.Features.CatalogManagements.Queries.GetList;
 using Application.Features.Magazines.Queries.GetList;
 using Application.Features.Materials.Queries.GetList;
+using Application.Features.Categories.Queries.GetList;
+using Application.Features.Publishers.Queries.GetList;
+using System.Runtime.CompilerServices;
 
 namespace Application.Features.Catalogs.Profiles;
 
@@ -35,6 +38,20 @@ public class MappingProfiles : Profile
                         Id = cm.Book.Id,
                         ISBNCode = cm.Book.ISBNCode,
                         BookTitle = cm.Book.BookTitle,
+                        BookEdition=cm.Book.BookEdition,
+                        PageCount=cm.Book.PageCount,
+                        ReleaseDate=cm.Book.ReleaseDate,
+                        Status=cm.Book.Status,
+                        CategoryName=cm.Book.Category.Name,
+                        PublisherName=cm.Book.Publisher.Name,
+                        Locations = new GetListLocationListItemDto
+                        {
+                            Id = cm.Book.Id,
+                            Name = cm.Book.Location.Name,
+                            ShelfName = cm.Book.Location.ShelfName,
+                            FloorNo = cm.Book.Location.FloorNo,
+                            ShelfNo = cm.Book.Location.ShelfNo
+                        },
                         Authors = cm.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
                         {
                             Id = ba.Author.Id,
@@ -42,10 +59,10 @@ public class MappingProfiles : Profile
                             LastName = ba.Author.LastName
 
                         }).ToList()
+                        
 
 
                     })))
-
                 .ForMember(dest => dest.Magazines, opt => opt.MapFrom(src => src.CatalogManagements
                     .Where(cm => cm.Magazine != null)
                     .Select(cm => new GetListMagazineListItemDto
@@ -55,8 +72,11 @@ public class MappingProfiles : Profile
                         MagazineTitle = cm.Magazine.MagazineTitle,
                         ReleaseDate = cm.Magazine.ReleaseDate,
                         PublisherId=cm.Magazine.PublisherId,
-                        Number=cm.Magazine.Number
-                        
+                        Number=cm.Magazine.Number,
+                        CategoryId = cm.Book.Category.Id,
+                        CategoryName = cm.Book.Category.Name,
+                        PublisherName = cm.Book.Publisher.Name,
+                      
 
 
                     })))
@@ -67,6 +87,12 @@ public class MappingProfiles : Profile
                         Id = cm.Material.Id,
                         Name = cm.Material.Name,
                         MaterialType = cm.Material.MaterialType,
+                        ReleaseDate=cm.Material.ReleaseDate,
+                        CategoryId = cm.Book.Category.Id,
+                        CategoryName = cm.Book.Category.Name,
+                        PublisherId= cm.Book.Publisher.Id, 
+                        PublisherName = cm.Book.Publisher.Name
+
                     })));
 
 
