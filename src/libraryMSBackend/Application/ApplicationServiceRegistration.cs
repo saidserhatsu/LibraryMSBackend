@@ -108,6 +108,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
 
         services.AddScoped<ISearchCriteriaService, SearchCriteriaManager>();
+        services.AddScoped<ISearchCriteriaService, SearchCriteriaManager>();
         return services;
     }
 

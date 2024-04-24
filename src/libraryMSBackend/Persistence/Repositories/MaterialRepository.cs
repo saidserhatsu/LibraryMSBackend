@@ -1,5 +1,6 @@
 using Application.Services.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Persistence.Repositories;
 using Persistence.Contexts;
 
@@ -10,4 +11,8 @@ public class MaterialRepository : EfRepositoryBase<Material, Guid, BaseDbContext
     public MaterialRepository(BaseDbContext context) : base(context)
     {
     }
+
+    private DbSet<Material> Materials => Context.Set<Material>(); // DbSet eriþimi
+
+    public IQueryable<Material> Table => Materials.AsQueryable(); // IQueryable eriþimi
 }

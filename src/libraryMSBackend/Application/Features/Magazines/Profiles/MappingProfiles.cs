@@ -7,6 +7,8 @@ using AutoMapper;
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
+using Application.Features.Magazines.Queries.FilterSearch;
+using Application.Features.Publishers.Queries.GetList;
 
 namespace Application.Features.Magazines.Profiles;
 
@@ -22,6 +24,13 @@ public class MappingProfiles : Profile
         CreateMap<Magazine, DeletedMagazineResponse>().ReverseMap();
         CreateMap<Magazine, GetByIdMagazineResponse>().ReverseMap();
         CreateMap<Magazine, GetListMagazineListItemDto>().ReverseMap();
+
+        CreateMap<Magazine, SearchMagazinesResponse>()
+             .ForMember(dest => dest.MagazineISSNCode, opt => opt.MapFrom(src => src.ISSNCode))
+             .ForMember(dest => dest.MagazineTitle, opt => opt.MapFrom(src => src.MagazineTitle));
+
+
         CreateMap<IPaginate<Magazine>, GetListResponse<GetListMagazineListItemDto>>().ReverseMap();
+
     }
 }

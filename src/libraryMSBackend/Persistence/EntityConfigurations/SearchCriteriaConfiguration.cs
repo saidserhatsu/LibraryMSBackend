@@ -13,7 +13,7 @@ public class SearchCriteriaConfiguration : IEntityTypeConfiguration<SearchCriter
         builder.Property(sc => sc.Id).HasColumnName("Id").IsRequired();
         builder.Property(sc => sc.BookTitle).HasColumnName("BookTitle");
         builder.Property(sc => sc.MagazineTitle).HasColumnName("MagazineTitle");
-        builder.Property(sc => sc.MaterialType).HasColumnName("MaterialType");
+        builder.Property(sc => sc.MaterialName).HasColumnName("MaterialName");
         builder.Property(sc => sc.AuthorName).HasColumnName("AuthorName");
         builder.Property(sc => sc.AuthorSurname).HasColumnName("AuthorSurname");
         builder.Property(sc => sc.MagazineISSNCode).HasColumnName("MagazineISSNCode");

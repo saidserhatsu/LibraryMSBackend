@@ -55,14 +55,35 @@ public class BooksController : BaseController
 
 
 
+    //[HttpGet("search")]
+    //public async Task<IActionResult> SearchBooks([FromQuery] SearchCriteria criteria, [FromQuery] PageRequest pageRequest)
+    //{
+    //    // MediatR query'sini çaðýrýn
+    //    var query = new SearchBooksQuery(criteria, pageRequest);
+    //    var result = await Mediator.Send(query);
+
+    //    return Ok(result);
+    //}
     [HttpGet("search")]
-    public async Task<IActionResult> SearchBooks([FromQuery] SearchCriteria criteria, [FromQuery] PageRequest pageRequest)
+    public async Task<IActionResult> SearchBooks(
+        [FromQuery] string? bookTitle,  // Nullable
+        [FromQuery] string? authorName,  // Nullable
+        [FromQuery] string? authorSurname,  // Nullable
+        [FromQuery] string? isbnCode,  // Nullable
+        [FromQuery] PageRequest pageRequest)  // Sayfalama için
     {
-        // MediatR query'sini çaðýrýn
-        var query = new SearchBooksQuery(criteria, pageRequest);
+        var searchCriteria = new SearchCriteria
+        {
+            BookTitle = bookTitle,
+            AuthorName = authorName,
+            AuthorSurname = authorSurname,
+            BookISBNCode = isbnCode
+        };
+
+        var query = new SearchBooksQuery(searchCriteria, pageRequest);
         var result = await Mediator.Send(query);
 
         return Ok(result);
     }
- 
+
 }

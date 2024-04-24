@@ -31,5 +31,6 @@ public class BookAuthorConfiguration : IEntityTypeConfiguration<BookAuthor>
             new BookAuthor() { BookId = Guid.Parse("cbcaea85-df78-4fb5-9219-13bcc50dc1fa"), AuthorId = Guid.Parse("bfcb46ec-fce6-4305-84fd-8453a0c032c2") },
             new BookAuthor() { BookId = Guid.Parse("cbcaea85-df78-4fb5-9219-13bcc50dc1fa"), AuthorId = Guid.Parse("0a0a0651-d2f9-4c37-a91d-334d850c23db") }
             );
+      
     }
 }

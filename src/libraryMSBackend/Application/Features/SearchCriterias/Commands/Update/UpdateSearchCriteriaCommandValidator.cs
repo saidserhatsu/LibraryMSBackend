@@ -9,7 +9,7 @@ public class UpdateSearchCriteriaCommandValidator : AbstractValidator<UpdateSear
         RuleFor(c => c.Id).NotEmpty();
         RuleFor(c => c.BookTitle).NotEmpty();
         RuleFor(c => c.MagazineTitle).NotEmpty();
-        RuleFor(c => c.MaterialType).NotEmpty();
+        RuleFor(c => c.MaterialName).NotEmpty();
         RuleFor(c => c.AuthorName).NotEmpty();
         RuleFor(c => c.AuthorSurname).NotEmpty();
         RuleFor(c => c.MagazineISSNCode).NotEmpty();

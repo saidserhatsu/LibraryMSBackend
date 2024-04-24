@@ -6,6 +6,8 @@ using Application.Features.Materials.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Entities;
+using Application.Features.Materials.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -51,4 +53,26 @@ public class MaterialsController : BaseController
         GetListResponse<GetListMaterialListItemDto> response = await Mediator.Send(getListMaterialQuery);
         return Ok(response);
     }
+
+    //[HttpGet("search")]
+    //public async Task<IActionResult> SearchMaterials([FromQuery] SearchCriteria criteria, [FromQuery] PageRequest pageRequest)
+    //{
+    //    // MediatR query'sini çaðýrýn
+    //    var query = new SearchMaterialsQuery(criteria, pageRequest);
+    //    var result = await Mediator.Send(query);
+
+    //    return Ok(result);
+    //}
+
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchMaterials([FromQuery(Name = "MaterialName")] string materialName, [FromQuery] PageRequest pageRequest)
+    {
+        // Sadece MaterialName ve PageRequest parametreleriyle arama yapýn
+        SearchMaterialsQuery query = new SearchMaterialsQuery(new SearchCriteria { MaterialName = materialName }, pageRequest);
+
+        var result = await Mediator.Send(query);
+        return Ok(result);
+    }
+
 }
