@@ -35,7 +35,8 @@ public class GetByIdMemberQuery : IRequest<GetByIdMemberResponse>, ISecuredReque
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Category)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.BookAuthors).ThenInclude(b => b.Author)
-                 .Include(b => b.MemberSetting),
+                 .Include(b => b.MemberSetting)
+                 .Include(b => b.FavoriteBooks).ThenInclude(fb => fb.Book),
                 predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
             await _memberBusinessRules.MemberShouldExistWhenSelected(member);
 
