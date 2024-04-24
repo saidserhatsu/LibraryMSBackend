@@ -16,6 +16,7 @@ public class Member : Entity<Guid>
         BookReservations = new HashSet<BookReservation>();
         BookIssues = new HashSet<BookIssue>();
         FinePayments = new HashSet<FinePayment>();
+        FavoriteBooks = new HashSet<FavoriteBook>();
     }
 
     public virtual User User { get; set; }
@@ -23,6 +24,5 @@ public class Member : Entity<Guid>
     public virtual ICollection<BookReservation> BookReservations { get; set; }
     public virtual ICollection<BookIssue> BookIssues { get; set; }
     public virtual ICollection<FinePayment> FinePayments { get; set; }
-
-   
+    public virtual ICollection<FavoriteBook> FavoriteBooks { get; set; }
 }

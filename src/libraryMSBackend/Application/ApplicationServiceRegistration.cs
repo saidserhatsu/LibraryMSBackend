@@ -43,6 +43,7 @@ using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
 using System.Reflection;
 using Application.Services.SearchCriterias;
+using Application.Services.FavoriteBooks;
 
 namespace Application;
 
@@ -112,6 +113,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
         services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
         services.AddScoped<IEBookService, EBookManager>();
+        services.AddScoped<IFavoriteBookService, FavoriteBookManager>();
         return services;
     }
 

@@ -47,6 +47,7 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ICatalogManagementRepository, CatalogManagementRepository>();
         services.AddScoped<ICatalogManagementRepository, CatalogManagementRepository>();
         services.AddScoped<IEBookRepository, EBookRepository>();
+        services.AddScoped<IFavoriteBookRepository, FavoriteBookRepository>();
         return services;
     }
 }

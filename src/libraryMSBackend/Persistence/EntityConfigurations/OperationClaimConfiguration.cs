@@ -28,6 +28,7 @@ using Application.Features.MagazineAuthors.Constants;
 using Application.Features.MemberSettings.Constants;
 using Application.Features.CatalogManagements.Constants;
 using Application.Features.SearchCriterias.Constants;
+using Application.Features.FavoriteBooks.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -801,6 +802,20 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
                 new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
                 new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
                 new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region FavoriteBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Delete },
             ]
         );
         #endregion
