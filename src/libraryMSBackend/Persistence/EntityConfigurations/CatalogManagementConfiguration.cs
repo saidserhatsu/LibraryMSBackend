@@ -10,10 +10,11 @@ public class CatalogManagementConfiguration : IEntityTypeConfiguration<CatalogMa
     {
         builder.ToTable("CatalogManagements").HasKey(cm => cm.Id);
 
-        
+        builder.Property(cm => cm.Id).HasColumnName("Id").IsRequired();
         builder.Property(cm => cm.MaterialId).HasColumnName("MaterialId");
         builder.Property(cm => cm.BookId).HasColumnName("BookId");
         builder.Property(cm => cm.MagazineId).HasColumnName("MagazineId");
+        builder.Property(cm => cm.EBookId).HasColumnName("EBookId");
         builder.Property(cm => cm.CatalogId).HasColumnName("CatalogId");
         builder.Property(cm => cm.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(cm => cm.UpdatedDate).HasColumnName("UpdatedDate");
@@ -33,6 +34,11 @@ public class CatalogManagementConfiguration : IEntityTypeConfiguration<CatalogMa
             .HasOne(cm => cm.Material)
             .WithMany(m => m.CatalogManagements)
             .HasForeignKey(cm => cm.MaterialId);
+
+        builder
+            .HasOne(cm => cm.EBook)
+            .WithMany(m => m.CatalogManagements)
+            .HasForeignKey(cm => cm.EBookId);
 
         builder.HasQueryFilter(cm => !cm.DeletedDate.HasValue);
     }

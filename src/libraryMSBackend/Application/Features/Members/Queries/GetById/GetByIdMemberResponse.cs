@@ -1,8 +1,6 @@
 using Application.Features.Books.Queries.GetList;
-using Application.Features.Categories.Queries.GetList;
-using Application.Features.Locations.Queries.GetList;
+using Application.Features.FavoriteBooks.Queries.GetList;
 using Application.Features.MemberSettings.Queries.GetList;
-using Application.Features.Publishers.Queries.GetList;
 using NArchitecture.Core.Application.Responses;
 
 namespace Application.Features.Members.Queries.GetById;
@@ -20,5 +18,6 @@ public class GetByIdMemberResponse : IResponse
 
     public GetListMemberSettingListItemDto MemberSetting { get; set; }
     public List<GetListBookListItemDto> Books { get; set; }
+    public List<GetListFavoriteBookListItemDto> FavoriteBooks { get; set; }
 
 }

@@ -36,6 +36,7 @@ public class BaseDbContext : DbContext
     public DbSet<MemberSetting> MemberSettings { get; set; }
     public DbSet<CatalogManagement> CatalogManagements { get; set; }
     public DbSet<SearchCriteria> SearchCriterias { get; set; }
+    public DbSet<FavoriteBook> FavoriteBooks { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

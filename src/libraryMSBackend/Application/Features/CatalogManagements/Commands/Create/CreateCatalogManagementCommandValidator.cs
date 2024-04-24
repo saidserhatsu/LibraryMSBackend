@@ -6,7 +6,6 @@ public class CreateCatalogManagementCommandValidator : AbstractValidator<CreateC
 {
     public CreateCatalogManagementCommandValidator()
     {
-
         RuleFor(c => c.CatalogId).NotEmpty();
     }
 }

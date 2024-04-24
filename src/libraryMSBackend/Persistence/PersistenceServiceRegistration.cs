@@ -43,7 +43,11 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IMagazineRepository, MagazineRepository>();
         services.AddScoped<IMaterialRepository, MaterialRepository>();
         services.AddScoped<ISearchCriteriaRepository, SearchCriteriaRepository>();
-        services.AddScoped<ISearchCriteriaRepository, SearchCriteriaRepository>();
+        services.AddScoped<IEBookRepository, EBookRepository>();
+        services.AddScoped<ICatalogManagementRepository, CatalogManagementRepository>();
+        services.AddScoped<ICatalogManagementRepository, CatalogManagementRepository>();
+        services.AddScoped<IEBookRepository, EBookRepository>();
+        services.AddScoped<IFavoriteBookRepository, FavoriteBookRepository>();
         return services;
     }
 }

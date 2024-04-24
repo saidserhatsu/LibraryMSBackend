@@ -15,8 +15,13 @@ namespace Application.Features.EBooks.Commands.Update;
 public class UpdateEBookCommand : IRequest<UpdatedEBookResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
+    public string ISBNCode { get; set; }
+    public string EBookTitle { get; set; }
+    public string AuthorName { get; set; }
+    public int ReleaseDate { get; set; }
+    public int PageCount { get; set; }
+    public int CategoryId { get; set; }
     public string FileUrl { get; set; }
-    public Guid? BookId { get; set; }
 
     public string[] Roles => [Admin, Write, EBooksOperationClaims.Update];
 

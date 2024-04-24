@@ -28,6 +28,7 @@ using Application.Features.MagazineAuthors.Constants;
 using Application.Features.MemberSettings.Constants;
 using Application.Features.CatalogManagements.Constants;
 using Application.Features.SearchCriterias.Constants;
+using Application.Features.FavoriteBooks.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -750,15 +751,71 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         #endregion
         
         
-        #region SearchCriterias
+        #region EBooks
         featureOperationClaims.AddRange(
             [
-                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Admin },
-                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Read },
-                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Write },
-                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Create },
-                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Update },
-                new() { Id = ++lastId, Name = SearchCriteriasOperationClaims.Delete },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region CatalogManagements
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region CatalogManagements
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CatalogManagementsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region EBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = EBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region FavoriteBooks
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Read },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Write },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Create },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Update },
+                new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Delete },
             ]
         );
         #endregion
