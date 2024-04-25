@@ -1,9 +1,12 @@
+using Application.Features.Auth.Constants;
 using FluentValidation;
+using NArchitecture.Core.Localization.Abstraction;
 
 namespace Application.Features.Books.Commands.Create;
 
 public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
 {
+    private ILocalizationService _localizationService;
     public CreateBookCommandValidator()
     {
         RuleFor(c => c.ISBNCode).NotEmpty();
@@ -17,5 +20,10 @@ public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
         RuleFor(c => c.PublisherId).NotEmpty();
         RuleFor(c => c.CategoryId).NotEmpty();
         RuleFor(c => c.LocationId).NotEmpty();
+    }
+
+    public async Task<string> GetLocalized(string key)
+    {
+        return await _localizationService.GetLocalizedAsync(key,AuthMessages.SectionName);
     }
 }

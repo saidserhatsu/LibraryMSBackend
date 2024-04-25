@@ -48,7 +48,7 @@ public class BookIssueBusinessRules : BaseBusinessRules
 
     public async Task CheckIfMemberHasExceededBookLimit(Guid memberId)
     {
-        int maxBookLimit = 3;  // Belirlediðiniz maksimum kitap sayýsý
+        int maxBookLimit = 3;  
         var currentBookCount = await _bookIssueRepository.GetBookCountByMemberIdAsync(memberId);
 
         if (currentBookCount >= maxBookLimit)
