@@ -45,13 +45,13 @@ public class MemberBusinessRules : BaseBusinessRules
     {
         Member? result = await _memberRepository.GetAsync(x => x.PhoneNumber == phoneNumber);
         if (result != null)
-            throw new BusinessException(MembersBusinessMessages.Mevcutdegil);
+            throw new BusinessException(MembersBusinessMessages.Anotheruserexistswiththisphonenumber);
     }
 
     public async Task MemberNumberCanNotBeDuplicatedWhenUpdated(Member member)
     {
         Member? result = await _memberRepository.GetAsync(x => x.Id != member.Id && x.PhoneNumber == member.PhoneNumber);
         if (result != null)
-            throw new BusinessException(MembersBusinessMessages.Mevcutdegil);
+            throw new BusinessException(MembersBusinessMessages.Anotheruserexistswiththisphonenumber);
     }
 }

@@ -1,2 +1,4 @@
 MemberNotExists: "Member don't exists."
 Anotheruserexistswiththisphonenumber: "Another user exists with this phone number."
+ThePhoneNumberMustBeInAValidFormat: "The phone number must be in a valid format. (orn: +905551234567)"
+TheBirthdateMustBeAtLeast7YearsAgo: "The birthdate must be at least 7 years ago."

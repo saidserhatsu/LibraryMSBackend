@@ -1,2 +1,4 @@
 MemberNotExists: "Üye mevcut deðil."
 Anotheruserexistswiththisphonenumber: "Bu telefon numarasýna ait baþka bir kullanýcý var."
+ThePhoneNumberMustBeInAValidFormat: "Telefon numarasý geçerli bir formatta olmalýdýr. (örn: +905551234567)"
+TheBirthdateMustBeAtLeast7YearsAgo: "Doðum tarihi en az 7 yýl önce olmalýdýr."
