@@ -1,8 +1,5 @@
-using NArchitecture.Core.Security.Attributes;
-
 namespace Application.Features.FineDues.Constants;
 
-[OperationClaimConstants]
 public static class FineDuesOperationClaims
 {
     private const string _section = "FineDues";

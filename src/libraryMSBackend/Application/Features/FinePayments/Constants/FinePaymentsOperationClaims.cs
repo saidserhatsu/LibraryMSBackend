@@ -1,8 +1,5 @@
-using NArchitecture.Core.Security.Attributes;
-
 namespace Application.Features.FinePayments.Constants;
 
-[OperationClaimConstants]
 public static class FinePaymentsOperationClaims
 {
     private const string _section = "FinePayments";

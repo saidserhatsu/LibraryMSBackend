@@ -1,8 +1,5 @@
-using NArchitecture.Core.Security.Attributes;
-
 namespace Application.Features.MagazineAuthors.Constants;
 
-[OperationClaimConstants]
 public static class MagazineAuthorsOperationClaims
 {
     private const string _section = "MagazineAuthors";

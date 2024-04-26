@@ -31,6 +31,8 @@ public class LoginTests
     private readonly LoginCommandHandler _loginCommandHandler;
     private readonly LoginCommandValidator _validator;
     private readonly IConfiguration _configuration;
+    //private readonly ITokenOpt
+    private readonly TokenOptions _tokenOptions;
 
     public LoginTests(
         OperationClaimFakeData operationClaimFakeData,
@@ -52,7 +54,7 @@ public class LoginTests
         IUserRepository _userRepository = new MockUserRepository(userFakeData).GetUserMockRepository();
         #endregion
         #region Mock Helpers
-        ITokenHelper<Guid, int> tokenHelper = new JwtHelper<Guid, int>(_configuration);
+        ITokenHelper<Guid, int, Guid> tokenHelper = new JwtHelper<Guid, int, Guid>(_tokenOptions);
         IEmailAuthenticatorHelper emailAuthenticatorHelper = new EmailAuthenticatorHelper();
         MailSettings mailSettings =
             _configuration.GetSection("MailSettings").Get<MailSettings>() ?? throw new Exception("Mail settings not found.");

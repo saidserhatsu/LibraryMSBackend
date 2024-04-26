@@ -1,8 +1,5 @@
-using NArchitecture.Core.Security.Attributes;
-
 namespace Application.Features.BookReservations.Constants;
 
-[OperationClaimConstants]
 public static class BookReservationsOperationClaims
 {
     private const string _section = "BookReservations";

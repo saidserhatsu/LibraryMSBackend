@@ -1,8 +1,5 @@
-using NArchitecture.Core.Security.Attributes;
-
 namespace Application.Features.FavoriteBooks.Constants;
 
-[OperationClaimConstants]
 public static class FavoriteBooksOperationClaims
 {
     private const string _section = "FavoriteBooks";

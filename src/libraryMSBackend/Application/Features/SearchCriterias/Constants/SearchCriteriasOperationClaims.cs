@@ -1,8 +1,5 @@
-using NArchitecture.Core.Security.Attributes;
-
 namespace Application.Features.SearchCriterias.Constants;
 
-[OperationClaimConstants]
 public static class SearchCriteriasOperationClaims
 {
     private const string _section = "SearchCriterias";

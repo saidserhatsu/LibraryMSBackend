@@ -1,8 +1,6 @@
-using NArchitecture.Core.Security.Attributes;
 
 namespace Application.Features.CatalogManagements.Constants;
 
-[OperationClaimConstants]
 public static class CatalogManagementsOperationClaims
 {
     private const string _section = "CatalogManagements";

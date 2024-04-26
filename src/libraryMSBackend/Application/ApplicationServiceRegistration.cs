@@ -10,6 +10,7 @@ using Application.Services.CatalogManagements;
 using Application.Services.Catalogs;
 using Application.Services.Categories;
 using Application.Services.EBooks;
+using Application.Services.FavoriteBooks;
 using Application.Services.FineDues;
 using Application.Services.FinePayments;
 using Application.Services.LibraryStaffs;
@@ -22,6 +23,7 @@ using Application.Services.Members;
 using Application.Services.MemberSettings;
 using Application.Services.OperationClaims;
 using Application.Services.Publishers;
+using Application.Services.SearchCriterias;
 using Application.Services.UserOperationClaims;
 using Application.Services.UsersService;
 using FluentValidation;
@@ -41,9 +43,8 @@ using NArchitecture.Core.Localization.Resource.Yaml.DependencyInjection;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
+using NArchitecture.Core.Security.JWT;
 using System.Reflection;
-using Application.Services.SearchCriterias;
-using Application.Services.FavoriteBooks;
 
 namespace Application;
 
@@ -53,7 +54,8 @@ public static class ApplicationServiceRegistration
         this IServiceCollection services,
         MailSettings mailSettings,
         FileLogConfiguration fileLogConfiguration,
-        ElasticSearchConfig elasticSearchConfig
+        ElasticSearchConfig elasticSearchConfig,
+        TokenOptions tokenOptions
     )
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
@@ -82,7 +84,10 @@ public static class ApplicationServiceRegistration
 
         services.AddYamlResourceLocalization();
 
-        services.AddSecurityServices<Guid, int>();
+        //services.AddSecurityServices<Guid, int>();
+        services.AddSecurityServices<Guid, int, Guid>(tokenOptions);
+
+        //services.AddSecurityServices
 
         services.AddScoped<IAuthorService, AuthorManager>();
         services.AddScoped<IBookService, BookManager>();
