@@ -7,6 +7,8 @@ using AutoMapper;
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
+using Application.Features.Magazines.Queries.FilterSearch;
+using Application.Features.Categories.Queries.FilterSearch;
 
 namespace Application.Features.Categories.Profiles;
 
@@ -22,6 +24,11 @@ public class MappingProfiles : Profile
         CreateMap<Category, DeletedCategoryResponse>().ReverseMap();
         CreateMap<Category, GetByIdCategoryResponse>().ReverseMap();
         CreateMap<Category, GetListCategoryListItemDto>().ReverseMap();
+
+        CreateMap<Category, SearchCategoriesResponse>()
+             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+     
+
         CreateMap<IPaginate<Category>, GetListResponse<GetListCategoryListItemDto>>().ReverseMap();
     }
 }

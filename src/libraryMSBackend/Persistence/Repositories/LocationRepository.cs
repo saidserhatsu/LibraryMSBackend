@@ -1,5 +1,6 @@
 using Application.Services.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Persistence.Repositories;
 using Persistence.Contexts;
 
@@ -10,4 +11,8 @@ public class LocationRepository : EfRepositoryBase<Location, Guid, BaseDbContext
     public LocationRepository(BaseDbContext context) : base(context)
     {
     }
+
+    private DbSet<Location> Locations => Context.Set<Location>(); // DbSet eriþimi
+
+    public IQueryable<Location> Table => Locations.AsQueryable(); // IQueryable eriþimi
 }

@@ -6,6 +6,9 @@ using Application.Features.Locations.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Publishers.Queries.FilterSearch;
+using Domain.Entities;
+using Application.Features.Locations.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +53,27 @@ public class LocationsController : BaseController
         GetListLocationQuery getListLocationQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListLocationListItemDto> response = await Mediator.Send(getListLocationQuery);
         return Ok(response);
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchLocations(
+    [FromQuery(Name = "LocationsName")] string? locationsName,  // nullable
+    [FromQuery(Name = "LocationsShelfName")] string? locationsShelfName,  // nullable
+    [FromQuery] PageRequest pageRequest)
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria
+        {
+             LocationsName = locationsName,
+             LocationsShelfName = locationsShelfName,
+        };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchLocationsQuery(searchCriteria, pageRequest); 
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

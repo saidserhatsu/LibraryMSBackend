@@ -6,6 +6,9 @@ using Application.Features.Members.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Categories.Queries.FilterSearch;
+using Domain.Entities;
+using Application.Features.Members.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +53,25 @@ public class MembersController : BaseController
         GetListMemberQuery getListMemberQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListMemberListItemDto> response = await Mediator.Send(getListMemberQuery);
         return Ok(response);
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchMembers(
+    [FromQuery(Name = "Email")] string? email,  // nullable
+    [FromQuery] PageRequest pageRequest)
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria
+        {
+            MembersEmail = email,
+        };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchMembersQuery(searchCriteria, pageRequest); 
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

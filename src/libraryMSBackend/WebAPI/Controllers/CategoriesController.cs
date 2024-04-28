@@ -6,6 +6,8 @@ using Application.Features.Categories.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Entities;
+using Application.Features.Categories.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +52,25 @@ public class CategoriesController : BaseController
         GetListCategoryQuery getListCategoryQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListCategoryListItemDto> response = await Mediator.Send(getListCategoryQuery);
         return Ok(response);
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchCategories(
+    [FromQuery(Name = "Name")] string? name,  // nullable
+    [FromQuery] PageRequest pageRequest)
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria
+        {
+             CategoryName=name
+        };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchCategoriesQuery(searchCriteria, pageRequest);
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

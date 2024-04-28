@@ -17,5 +17,13 @@ public class SearchCriteria:Entity<Guid>
     public string? AuthorSurname { get; set; }
     public string? MagazineISSNCode { get; set; }
     public string? BookISBNCode { get; set; }
+    public string? CategoryName { get; set; }
+    public string? PublisherName { get; set; }
+    public string? PublisherLanguage { get; set; }
+    public string? LocationsName { get; set; }
+    public string? LocationsShelfName { get; set; }
+    public string? MembersEmail { get; set; }
+
+
 }
 

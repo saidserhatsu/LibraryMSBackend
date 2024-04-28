@@ -11,6 +11,8 @@ using Application.Features.Books.Queries.GetList;
 using Application.Features.Locations.Queries.GetList;
 using Application.Features.Authors.Queries.GetList;
 using System.Linq;
+using Application.Features.Magazines.Queries.FilterSearch;
+using Application.Features.Members.Queries.FilterSearch;
 
 namespace Application.Features.Members.Profiles;
 
@@ -81,6 +83,36 @@ public class MappingProfiles : Profile
                      LastName = ba.Author.LastName
                  }).ToList()
              })));
+        CreateMap<Member, SearchMembersResponse>()
+         .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+         .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues
+             .Select(m => new GetListBookListItemDto
+             {
+                 Id = m.BookId,
+                 ISBNCode = m.Book.ISBNCode,
+                 BookTitle = m.Book.BookTitle,
+                 BookEdition = m.Book.BookEdition,
+                 ReleaseDate = m.Book.ReleaseDate,
+                 Status = m.Book.Status,
+                 CategoryName = m.Book.Category.Name,
+                 PublisherName = m.Book.Publisher.Name,
+                 Locations = new GetListLocationListItemDto
+                 {
+                     Id = m.Book.Id,
+                     Name = m.Book.Location.Name,
+                     ShelfName = m.Book.Location.ShelfName,
+                     FloorNo = m.Book.Location.FloorNo,
+                     ShelfNo = m.Book.Location.ShelfNo
+                 },
+                 Authors = m.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
+                 {
+                     Id = ba.Author.Id,
+                     FirstName = ba.Author.FirstName,
+                     LastName = ba.Author.LastName
+                 }).ToList()
+             })));
+
+
         CreateMap<IPaginate<Member>, GetListResponse<GetListMemberListItemDto>>().ReverseMap();
     }
 }

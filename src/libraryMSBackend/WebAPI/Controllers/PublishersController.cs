@@ -6,6 +6,8 @@ using Application.Features.Publishers.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Entities;
+using Application.Features.Publishers.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +52,27 @@ public class PublishersController : BaseController
         GetListPublisherQuery getListPublisherQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListPublisherListItemDto> response = await Mediator.Send(getListPublisherQuery);
         return Ok(response);
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchPublishers(
+    [FromQuery(Name = "PublisherName")] string? publisherName,  // nullable
+    [FromQuery(Name = "PublisherLanguage")] string? publisherLanguage,  // nullable
+    [FromQuery] PageRequest pageRequest)
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria
+        {
+             PublisherName = publisherName,
+             PublisherLanguage = publisherLanguage,
+        };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchPublishersQuery(searchCriteria, pageRequest);
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }
