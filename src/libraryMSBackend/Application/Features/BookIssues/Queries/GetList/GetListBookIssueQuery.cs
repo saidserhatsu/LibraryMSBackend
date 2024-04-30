@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.BookIssues.Queries.GetList;
 
-public class GetListBookIssueQuery : IRequest<GetListResponse<GetListBookIssueListItemDto>>, ISecuredRequest, ICachableRequest
+public class GetListBookIssueQuery : IRequest<GetListResponse<GetListBookIssueListItemDto>>, ICachableRequest
 {
     public PageRequest PageRequest { get; set; }
 

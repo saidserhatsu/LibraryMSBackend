@@ -9,4 +9,5 @@ public class GetByIdLibraryStaffResponse : IResponse
     public string LastName { get; set; }
     public string ImageUrl { get; set; }
     public DateTime BirthDate { get; set; }
+    public string Email { get; set; }
 }

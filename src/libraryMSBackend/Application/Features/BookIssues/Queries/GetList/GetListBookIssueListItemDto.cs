@@ -1,3 +1,5 @@
+using Application.Features.Authors.Queries.GetList;
+using Application.Features.FineDues.Queries.GetList;
 using NArchitecture.Core.Application.Dtos;
 
 namespace Application.Features.BookIssues.Queries.GetList;
@@ -15,4 +17,8 @@ public class GetListBookIssueListItemDto : IDto
     public string LibraryStaffFirstName { get; set; }
     public string LibraryStaffLastName { get; set; }
     public DateTime ReturnDate { get; set; }
+    public Guid FineDueId { get; set; }
+
+    public List<GetListFineDueListItemDto> FineDues { get; set; }
+
 }

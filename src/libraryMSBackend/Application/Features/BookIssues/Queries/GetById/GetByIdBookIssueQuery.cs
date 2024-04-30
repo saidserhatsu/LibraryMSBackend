@@ -6,10 +6,11 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.BookIssues.Constants.BookIssuesOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.BookIssues.Queries.GetById;
 
-public class GetByIdBookIssueQuery : IRequest<GetByIdBookIssueResponse>, ISecuredRequest
+public class GetByIdBookIssueQuery : IRequest<GetByIdBookIssueResponse>
 {
     public Guid Id { get; set; }
 
@@ -30,7 +31,9 @@ public class GetByIdBookIssueQuery : IRequest<GetByIdBookIssueResponse>, ISecure
 
         public async Task<GetByIdBookIssueResponse> Handle(GetByIdBookIssueQuery request, CancellationToken cancellationToken)
         {
-            BookIssue? bookIssue = await _bookIssueRepository.GetAsync(predicate: bi => bi.Id == request.Id, cancellationToken: cancellationToken);
+            BookIssue? bookIssue = await _bookIssueRepository.GetAsync(predicate: bi => bi.Id == request.Id, cancellationToken: cancellationToken,
+                include: bi => bi.Include(bi => bi.FineDues)
+                );
             await _bookIssueBusinessRules.BookIssueShouldExistWhenSelected(bookIssue);
 
             GetByIdBookIssueResponse response = _mapper.Map<GetByIdBookIssueResponse>(bookIssue);

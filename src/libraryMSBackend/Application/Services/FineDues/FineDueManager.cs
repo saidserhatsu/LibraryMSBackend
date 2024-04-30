@@ -10,12 +10,10 @@ namespace Application.Services.FineDues;
 public class FineDueManager : IFineDueService
 {
     private readonly IFineDueRepository _fineDueRepository;
-    private readonly FineDueBusinessRules _fineDueBusinessRules;
 
-    public FineDueManager(IFineDueRepository fineDueRepository, FineDueBusinessRules fineDueBusinessRules)
+    public FineDueManager(IFineDueRepository fineDueRepository)
     {
         _fineDueRepository = fineDueRepository;
-        _fineDueBusinessRules = fineDueBusinessRules;
     }
 
     public async Task<FineDue?> GetAsync(
@@ -75,3 +73,4 @@ public class FineDueManager : IFineDueService
         return deletedFineDue;
     }
 }
+  

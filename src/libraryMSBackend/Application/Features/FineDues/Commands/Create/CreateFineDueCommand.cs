@@ -12,7 +12,7 @@ using static Application.Features.FineDues.Constants.FineDuesOperationClaims;
 
 namespace Application.Features.FineDues.Commands.Create;
 
-public class CreateFineDueCommand : IRequest<CreatedFineDueResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class CreateFineDueCommand : IRequest<CreatedFineDueResponse>, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public decimal FineTotal { get; set; }
     public Guid BookIssueId { get; set; }

@@ -13,12 +13,12 @@ using Domain.Enums;
 
 namespace Application.Features.BookIssues.Commands.Create;
 
-public class CreateBookIssueCommand : IRequest<CreatedBookIssueResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class CreateBookIssueCommand : IRequest<CreatedBookIssueResponse> , ISecuredRequest,  ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid BookId { get; set; }
     public Guid MemberId { get; set; }
     public Guid LibraryStaffId { get; set; }
-    //public DateTime ReturnDate { get; set; }
+    public DateTime ReturnDate { get; set; }
 
     public string[] Roles => [Admin, Write, BookIssuesOperationClaims.Create];
 

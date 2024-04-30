@@ -9,7 +9,7 @@ using static Application.Features.FineDues.Constants.FineDuesOperationClaims;
 
 namespace Application.Features.FineDues.Queries.GetById;
 
-public class GetByIdFineDueQuery : IRequest<GetByIdFineDueResponse>, ISecuredRequest
+public class GetByIdFineDueQuery : IRequest<GetByIdFineDueResponse>
 {
     public Guid Id { get; set; }
 

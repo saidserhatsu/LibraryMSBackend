@@ -20,19 +20,19 @@ public class BookIssueConfiguration : IEntityTypeConfiguration<BookIssue>
         builder.Property(bi => bi.DeletedDate).HasColumnName("DeletedDate");
 
         builder.HasOne(r => r.Book)
-              .WithMany(b => b.BookIssues)
-              .HasForeignKey(r => r.BookId)
-              .OnDelete(DeleteBehavior.Cascade);
+               .WithMany(b => b.BookIssues)
+               .HasForeignKey(r => r.BookId)
+               .OnDelete(DeleteBehavior.NoAction); // Kaskad silmeyi engelle
 
         builder.HasOne(r => r.Member)
               .WithMany(b => b.BookIssues)
               .HasForeignKey(r => r.MemberId)
-              .OnDelete(DeleteBehavior.Cascade);
+              .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasOne(r => r.LibraryStaff)
               .WithMany(b => b.BookIssues)
               .HasForeignKey(r => r.LibraryStaffId)
-              .OnDelete(DeleteBehavior.Cascade);
+              .OnDelete(DeleteBehavior.NoAction);
 
 
         builder.HasQueryFilter(bi => !bi.DeletedDate.HasValue);

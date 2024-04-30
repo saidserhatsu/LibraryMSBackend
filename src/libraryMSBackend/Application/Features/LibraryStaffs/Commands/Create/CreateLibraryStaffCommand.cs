@@ -9,6 +9,10 @@ using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using static Application.Features.LibraryStaffs.Constants.LibraryStaffsOperationClaims;
+using Application.Services.UsersService;
+using NArchitecture.Core.Application.Dtos;
+using Application.Services.OperationClaims;
+using Application.Services.UserOperationClaims;
 
 namespace Application.Features.LibraryStaffs.Commands.Create;
 
@@ -17,6 +21,8 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string ImageUrl { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
     public DateTime BirthDate { get; set; }
 
     public string[] Roles => [Admin, Write, LibraryStaffsOperationClaims.Create];
@@ -30,18 +36,34 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
         private readonly IMapper _mapper;
         private readonly ILibraryStaffRepository _libraryStaffRepository;
         private readonly LibraryStaffBusinessRules _libraryStaffBusinessRules;
+        private readonly IUserService _userService;
+        private readonly IUserOperationClaimService _userOperationClaimService;
+        private readonly IOperationClaimService _operationClaimService;
 
         public CreateLibraryStaffCommandHandler(IMapper mapper, ILibraryStaffRepository libraryStaffRepository,
-                                         LibraryStaffBusinessRules libraryStaffBusinessRules)
+                                         LibraryStaffBusinessRules libraryStaffBusinessRules, IUserService userService, IOperationClaimService operationClaimService,IUserOperationClaimService userOperationClaimService)
         {
             _mapper = mapper;
             _libraryStaffRepository = libraryStaffRepository;
             _libraryStaffBusinessRules = libraryStaffBusinessRules;
+            _userService = userService;
+            _userOperationClaimService = userOperationClaimService;
+            _operationClaimService = operationClaimService;
         }
 
         public async Task<CreatedLibraryStaffResponse> Handle(CreateLibraryStaffCommand request, CancellationToken cancellationToken)
         {
+            User user = await _userService.Register(new UserForRegisterDto() { Email = request.Email, Password = request.Password });
+            string[] Roles = UserDefaultRoles.Roles;
+            for (int i = 0; i < Roles.Length; i++)
+            {
+                OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == Roles[i]);
+                await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
+            }
+
             LibraryStaff libraryStaff = _mapper.Map<LibraryStaff>(request);
+            libraryStaff.UserId= user.Id;
+            
 
             await _libraryStaffRepository.AddAsync(libraryStaff);
 

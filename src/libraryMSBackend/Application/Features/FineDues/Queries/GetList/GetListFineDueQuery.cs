@@ -12,7 +12,7 @@ using static Application.Features.FineDues.Constants.FineDuesOperationClaims;
 
 namespace Application.Features.FineDues.Queries.GetList;
 
-public class GetListFineDueQuery : IRequest<GetListResponse<GetListFineDueListItemDto>>, ISecuredRequest, ICachableRequest
+public class GetListFineDueQuery : IRequest<GetListResponse<GetListFineDueListItemDto>>,  ICachableRequest
 {
     public PageRequest PageRequest { get; set; }
 
