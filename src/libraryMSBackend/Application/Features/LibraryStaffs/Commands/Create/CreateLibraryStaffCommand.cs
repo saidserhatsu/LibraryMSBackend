@@ -15,6 +15,7 @@ using Application.Services.OperationClaims;
 using Application.Services.UserOperationClaims;
 using Microsoft.AspNetCore.Http;
 using Application.Services.ImageService;
+using AutoMapper.Execution;
 
 namespace Application.Features.LibraryStaffs.Commands.Create;
 
@@ -44,7 +45,7 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
         private readonly ImageServiceBase _imageService;
 
         public CreateLibraryStaffCommandHandler(IMapper mapper, ILibraryStaffRepository libraryStaffRepository,
-                                         LibraryStaffBusinessRules libraryStaffBusinessRules, IUserService userService, IOperationClaimService operationClaimService,IUserOperationClaimService userOperationClaimService, ImageServiceBase imageService)
+                                         LibraryStaffBusinessRules libraryStaffBusinessRules, IUserService userService, IOperationClaimService operationClaimService, IUserOperationClaimService userOperationClaimService, ImageServiceBase imageService)
         {
             _mapper = mapper;
             _libraryStaffRepository = libraryStaffRepository;
@@ -64,13 +65,20 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
                 OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == Roles[i]);
                 await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
             }
-            // Fotoðrafý yükle ve URL'yi al
-            string imageUrl = await _imageService.UploadAsync(request.File);
-
 
             LibraryStaff libraryStaff = _mapper.Map<LibraryStaff>(request);
-            libraryStaff.UserId= user.Id;
-            libraryStaff.ImageUrl = imageUrl; // Resim URL'sini ata
+            libraryStaff.UserId = user.Id;
+
+            // Fotoðrafý yükle ve URL'yi al
+
+            string imageUrl = string.Empty;
+            if (request.File != null)
+            {
+                imageUrl = await _imageService.UploadAsync(request.File);
+                libraryStaff.ImageUrl = imageUrl; // Resim URL'sini ata
+
+            }
+
 
 
             await _libraryStaffRepository.AddAsync(libraryStaff);
