@@ -15,7 +15,7 @@ namespace WebAPI.Controllers;
 public class BooksController : BaseController
 {
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateBookCommand createBookCommand)
+    public async Task<IActionResult> Add([FromForm] CreateBookCommand createBookCommand)
     {
         CreatedBookResponse response = await Mediator.Send(createBookCommand);
 
@@ -23,7 +23,7 @@ public class BooksController : BaseController
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateBookCommand updateBookCommand)
+    public async Task<IActionResult> Update([FromForm] UpdateBookCommand updateBookCommand)
     {
         UpdatedBookResponse response = await Mediator.Send(updateBookCommand);
 

@@ -13,14 +13,16 @@ using Application.Services.UsersService;
 using NArchitecture.Core.Application.Dtos;
 using Application.Services.OperationClaims;
 using Application.Services.UserOperationClaims;
+using Microsoft.AspNetCore.Http;
+using Application.Services.ImageService;
 
 namespace Application.Features.LibraryStaffs.Commands.Create;
 
 public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
+    public IFormFile File { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public string ImageUrl { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public DateTime BirthDate { get; set; }
@@ -39,9 +41,10 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
         private readonly IUserService _userService;
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IOperationClaimService _operationClaimService;
+        private readonly ImageServiceBase _imageService;
 
         public CreateLibraryStaffCommandHandler(IMapper mapper, ILibraryStaffRepository libraryStaffRepository,
-                                         LibraryStaffBusinessRules libraryStaffBusinessRules, IUserService userService, IOperationClaimService operationClaimService,IUserOperationClaimService userOperationClaimService)
+                                         LibraryStaffBusinessRules libraryStaffBusinessRules, IUserService userService, IOperationClaimService operationClaimService,IUserOperationClaimService userOperationClaimService, ImageServiceBase imageService)
         {
             _mapper = mapper;
             _libraryStaffRepository = libraryStaffRepository;
@@ -49,6 +52,7 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
             _userService = userService;
             _userOperationClaimService = userOperationClaimService;
             _operationClaimService = operationClaimService;
+            _imageService = imageService;
         }
 
         public async Task<CreatedLibraryStaffResponse> Handle(CreateLibraryStaffCommand request, CancellationToken cancellationToken)
@@ -60,14 +64,20 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
                 OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == Roles[i]);
                 await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
             }
+            // Fotoðrafý yükle ve URL'yi al
+            string imageUrl = await _imageService.UploadAsync(request.File);
+
 
             LibraryStaff libraryStaff = _mapper.Map<LibraryStaff>(request);
             libraryStaff.UserId= user.Id;
-            
+            libraryStaff.ImageUrl = imageUrl; // Resim URL'sini ata
+
 
             await _libraryStaffRepository.AddAsync(libraryStaff);
 
             CreatedLibraryStaffResponse response = _mapper.Map<CreatedLibraryStaffResponse>(libraryStaff);
+            response.ImageUrl = imageUrl;
+
             return response;
         }
     }

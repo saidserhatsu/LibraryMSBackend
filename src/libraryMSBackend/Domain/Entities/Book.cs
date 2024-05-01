@@ -13,6 +13,7 @@ public class Book : Entity<Guid>
     public Guid PublisherId { get; set; }
     public int CategoryId { get; set; }
     public Guid LocationId { get; set; }
+    public string ImageUrl { get; set; } = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png";
 
 
     public virtual Category Category { get; set; }
@@ -26,6 +27,7 @@ public class Book : Entity<Guid>
         BookReservations = new HashSet<BookReservation>();
         BookIssues = new HashSet<BookIssue>();
         FavoriteBooks = new HashSet<FavoriteBook>();
+        
     }
 
     public virtual ICollection<BookAuthor> BookAuthors { get; set; }

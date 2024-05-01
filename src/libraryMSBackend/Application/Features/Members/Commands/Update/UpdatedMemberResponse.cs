@@ -10,4 +10,5 @@ public class UpdatedMemberResponse : IResponse
     public string PhoneNumber { get; set; }
     public DateTime DateOfBirth { get; set; }
     public bool Subscribe { get; set; }
+    public string ImageUrl { get; set; }
 }

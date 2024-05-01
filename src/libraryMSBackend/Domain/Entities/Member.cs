@@ -10,6 +10,7 @@ public class Member : Entity<Guid>
     public DateTime DateOfBirth { get; set; }
     public bool Subscribe { get; set; }
     public Guid UserId { get; set; }
+    public string ImageUrl { get; set; }
 
     public Member()
     {

@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20240430154808_denemsdasjkdksamdsd")]
-    partial class denemsdasjkdksamdsd
+    [Migration("20240501141255_ass")]
+    partial class ass
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0e19a5be-6546-4c5a-9340-cf1e1748b1b1"),
                             Content = "Content 1",
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(6621),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(3774),
                             Tag = 0,
                             Title = "Kütüphane Üyelikleri"
                         },
@@ -75,7 +75,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e014efc4-0973-4fc1-80bb-464b4d791173"),
                             Content = "Content 2",
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(6641),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(3779),
                             Tag = 1,
                             Title = "Hıdırellez Yarışması"
                         },
@@ -83,7 +83,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f4710162-5b4a-4dfe-9bcf-8951ec64b55e"),
                             Content = "Content 3",
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(6643),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(3780),
                             Tag = 2,
                             Title = "Yeni Kitaplar"
                         },
@@ -91,7 +91,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bf3669a9-a784-4941-bf6e-4893374abb2b"),
                             Content = "Content 4",
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(6645),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(3782),
                             Tag = 1,
                             Title = "Yeni Yıl Etkinliği"
                         },
@@ -99,7 +99,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9c6c985f-b331-4a85-bee5-c7d2a9d57073"),
                             Content = "Content 5",
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(6647),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(3783),
                             Tag = 1,
                             Title = "Bayramlaşma"
                         },
@@ -107,7 +107,7 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7085aa16-5230-42ca-941b-6d73c692053b"),
                             Content = "Content 6",
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(6648),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(3784),
                             Tag = 0,
                             Title = "Kütüphane Açılış Saatleri"
                         });
@@ -150,37 +150,114 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("999b5ec6-5d88-437c-a6a8-8f397772acd3"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(8798),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6015),
                             FirstName = "Mustafa Kemal",
                             LastName = "Atatürk"
                         },
                         new
                         {
                             Id = new Guid("24a402a9-46e6-42f7-9d18-27ed258b8418"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(8800),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6018),
                             FirstName = "Fyodor",
                             LastName = "Dostoyevski"
                         },
                         new
                         {
                             Id = new Guid("f52bd761-cef2-4728-b3a3-b8e1aaa86710"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(8802),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6045),
                             FirstName = "Sun",
                             LastName = "Tzu"
                         },
                         new
                         {
                             Id = new Guid("bfcb46ec-fce6-4305-84fd-8453a0c032c2"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(8804),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6048),
                             FirstName = "Orkun",
                             LastName = "Uçar"
                         },
                         new
                         {
                             Id = new Guid("0a0a0651-d2f9-4c37-a91d-334d850c23db"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 663, DateTimeKind.Utc).AddTicks(8806),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6050),
                             FirstName = "Burak",
                             LastName = "Turna"
+                        },
+                        new
+                        {
+                            Id = new Guid("7d9fbe1e-67b2-4911-bb06-47b042e2245b"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6052),
+                            FirstName = "Sabahattin",
+                            LastName = "Ali"
+                        },
+                        new
+                        {
+                            Id = new Guid("283ba145-e4a5-4e21-8ae3-4a52cd44d399"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6053),
+                            FirstName = "Oğuz",
+                            LastName = "Atay"
+                        },
+                        new
+                        {
+                            Id = new Guid("ac24c21b-f665-4350-8129-9be9f02c2791"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6055),
+                            FirstName = "Yusuf",
+                            LastName = "Atılgan"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bae52f5-6e58-4071-b79c-da1cba7f560b"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6057),
+                            FirstName = "Vedat",
+                            LastName = "Türkali"
+                        },
+                        new
+                        {
+                            Id = new Guid("64919748-c9e3-423b-a9e0-51652edb5fba"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6059),
+                            FirstName = "Jack",
+                            LastName = "London"
+                        },
+                        new
+                        {
+                            Id = new Guid("b5517ee6-ca04-4e72-96cf-a1f9d4a9954e"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6061),
+                            FirstName = "Reşat Nuri",
+                            LastName = "Güntekin"
+                        },
+                        new
+                        {
+                            Id = new Guid("c5b259fb-a635-48b3-9a92-6155c317bc68"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6063),
+                            FirstName = "Yaşar",
+                            LastName = "Kemal"
+                        },
+                        new
+                        {
+                            Id = new Guid("e8e83303-6ab3-4cb7-9573-7be6ab4d1a21"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6064),
+                            FirstName = "Emrah",
+                            LastName = "Serbes"
+                        },
+                        new
+                        {
+                            Id = new Guid("e88f8263-c7f6-4c96-aa5e-969bbc7c7e34"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6066),
+                            FirstName = "Grigory",
+                            LastName = "Petrov"
+                        },
+                        new
+                        {
+                            Id = new Guid("8f75fb32-c516-4c3a-8a96-fa98aede126b"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6068),
+                            FirstName = "Ahmet Hamdi",
+                            LastName = "Tanpınar"
+                        },
+                        new
+                        {
+                            Id = new Guid("46a0ae1a-b4d4-49fa-bc99-302b29a4b7f5"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 311, DateTimeKind.Utc).AddTicks(6069),
+                            FirstName = "Aziz",
+                            LastName = "Nesin"
                         });
                 });
 
@@ -216,6 +293,11 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ISBNCode");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ImageUrl");
 
                     b.Property<Guid>("LocationId")
                         .HasColumnType("uniqueidentifier")
@@ -255,71 +337,181 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("55349e9b-304e-4ede-b5d3-b82d2eb2fbc7"),
-                            BookEdition = 10,
-                            BookTitle = "Nutuk",
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 664, DateTimeKind.Utc).AddTicks(6982),
-                            ISBNCode = "9781234567897",
-                            LocationId = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
-                            PageCount = 100,
+                            BookEdition = 1,
+                            BookTitle = "Yaşar Ne Yaşar Ne Yaşamaz",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(4968),
+                            ISBNCode = "9789759038472",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 343,
                             PublisherId = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
-                            ReleaseDate = 1927,
+                            ReleaseDate = 1977,
                             Status = 1
                         },
                         new
                         {
-                            Id = new Guid("c16ce715-40b7-4bf8-9b7e-f34e21b8e99c"),
-                            BookEdition = 15,
-                            BookTitle = "Savaş Sanatı",
+                            Id = new Guid("1aa5427d-24ac-48ae-8788-a5d8102056eb"),
+                            BookEdition = 1,
+                            BookTitle = "Nutuk",
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 664, DateTimeKind.Utc).AddTicks(6987),
-                            ISBNCode = "4373695632743",
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(4974),
+                            ISBNCode = "9789944888349",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
                             LocationId = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
-                            PageCount = 200,
-                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
+                            PageCount = 343,
+                            PublisherId = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
+                            ReleaseDate = 1977,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("d1d16714-3328-42bd-a2b3-53fe5e03cb41"),
+                            BookEdition = 1,
+                            BookTitle = "Saatleri Ayarlama Enstitüsü",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(4978),
+                            ISBNCode = "9786051414315",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 420,
+                            PublisherId = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
+                            ReleaseDate = 1961,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("8214333a-6ddd-4c4c-8803-dd2efd58cd64"),
+                            BookEdition = 1,
+                            BookTitle = "Kürk Mantolu Madonna",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(4981),
+                            ISBNCode = "9789754700114",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 168,
+                            PublisherId = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
+                            ReleaseDate = 1943,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("9a315107-d02c-4d47-ab72-b48b3cfc0d56"),
+                            BookEdition = 1,
+                            BookTitle = "Tutunamayanlar",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(4985),
+                            ISBNCode = "9789750812705",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 712,
+                            PublisherId = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
+                            ReleaseDate = 1972,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("399c68e7-f2ce-4416-893c-946dd3696ed3"),
+                            BookEdition = 1,
+                            BookTitle = "Aylak Adam",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(4989),
+                            ISBNCode = "9789750805158",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 176,
+                            PublisherId = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
                             ReleaseDate = 1959,
                             Status = 1
                         },
                         new
                         {
-                            Id = new Guid("224b200d-a4cb-4ad0-8957-662dd965794c"),
-                            BookEdition = 21,
-                            BookTitle = "Yeraltından Notlar",
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 664, DateTimeKind.Utc).AddTicks(6990),
-                            ISBNCode = "9472837462176",
-                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
-                            PageCount = 300,
-                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
-                            ReleaseDate = 2000,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("9c5fad3d-7630-4dc5-80f5-4647ceb50830"),
-                            BookEdition = 9,
-                            BookTitle = "Suç ve Ceza",
+                            Id = new Guid("81e99a97-2bfd-4754-9637-978b162bd04e"),
+                            BookEdition = 1,
+                            BookTitle = "Bir Gün Tek Başına",
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 664, DateTimeKind.Utc).AddTicks(6994),
-                            ISBNCode = "6482901846372",
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(4992),
+                            ISBNCode = "9789750736056",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
                             LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
-                            PageCount = 220,
-                            PublisherId = new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"),
-                            ReleaseDate = 1983,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("cbcaea85-df78-4fb5-9219-13bcc50dc1fa"),
-                            BookEdition = 14,
-                            BookTitle = "Metal Fırtına",
-                            CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 664, DateTimeKind.Utc).AddTicks(6998),
-                            ISBNCode = "9473284657234",
-                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
-                            PageCount = 110,
+                            PageCount = 424,
                             PublisherId = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
-                            ReleaseDate = 2004,
+                            ReleaseDate = 1974,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("48f650e8-1cc9-4bac-a77c-59b4b6056dc7"),
+                            BookEdition = 1,
+                            BookTitle = "Beyaz Diş",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(5034),
+                            ISBNCode = "9786052954018",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 240,
+                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
+                            ReleaseDate = 1906,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("0ac0f60e-20d3-47d0-982e-2d642c19e704"),
+                            BookEdition = 1,
+                            BookTitle = "Çalıkuşu",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(5038),
+                            ISBNCode = "9786051414315",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 280,
+                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
+                            ReleaseDate = 1922,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("2e73afc5-80d2-4549-bab8-02b69762dd04"),
+                            BookEdition = 1,
+                            BookTitle = "İnce Memed",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(5042),
+                            ISBNCode = "9789754709117",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 440,
+                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
+                            ReleaseDate = 1955,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("c776b453-d81f-4d5b-82af-845fcd3b08fb"),
+                            BookEdition = 1,
+                            BookTitle = "Gülşah",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(5045),
+                            ISBNCode = "9789750718352",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 360,
+                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
+                            ReleaseDate = 1985,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("a6e2a4ba-ab5f-473d-a47e-b6634c241389"),
+                            BookEdition = 1,
+                            BookTitle = "Beyaz Zambaklar Ülkesinde",
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 312, DateTimeKind.Utc).AddTicks(5048),
+                            ISBNCode = "9786050954201",
+                            ImageUrl = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714568273/ekcesgl02ump0lq0mcoj.png",
+                            LocationId = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
+                            PageCount = 216,
+                            PublisherId = new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"),
+                            ReleaseDate = 1928,
                             Status = 1
                         });
                 });
@@ -356,42 +548,84 @@ namespace Persistence.Migrations
                         new
                         {
                             BookId = new Guid("55349e9b-304e-4ede-b5d3-b82d2eb2fbc7"),
+                            AuthorId = new Guid("46a0ae1a-b4d4-49fa-bc99-302b29a4b7f5"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            BookId = new Guid("1aa5427d-24ac-48ae-8788-a5d8102056eb"),
                             AuthorId = new Guid("999b5ec6-5d88-437c-a6a8-8f397772acd3"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Id = new Guid("00000000-0000-0000-0000-000000000000")
                         },
                         new
                         {
-                            BookId = new Guid("224b200d-a4cb-4ad0-8957-662dd965794c"),
-                            AuthorId = new Guid("24a402a9-46e6-42f7-9d18-27ed258b8418"),
+                            BookId = new Guid("d1d16714-3328-42bd-a2b3-53fe5e03cb41"),
+                            AuthorId = new Guid("8f75fb32-c516-4c3a-8a96-fa98aede126b"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Id = new Guid("00000000-0000-0000-0000-000000000000")
                         },
                         new
                         {
-                            BookId = new Guid("9c5fad3d-7630-4dc5-80f5-4647ceb50830"),
-                            AuthorId = new Guid("24a402a9-46e6-42f7-9d18-27ed258b8418"),
+                            BookId = new Guid("8214333a-6ddd-4c4c-8803-dd2efd58cd64"),
+                            AuthorId = new Guid("7d9fbe1e-67b2-4911-bb06-47b042e2245b"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Id = new Guid("00000000-0000-0000-0000-000000000000")
                         },
                         new
                         {
-                            BookId = new Guid("c16ce715-40b7-4bf8-9b7e-f34e21b8e99c"),
-                            AuthorId = new Guid("f52bd761-cef2-4728-b3a3-b8e1aaa86710"),
+                            BookId = new Guid("9a315107-d02c-4d47-ab72-b48b3cfc0d56"),
+                            AuthorId = new Guid("283ba145-e4a5-4e21-8ae3-4a52cd44d399"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Id = new Guid("00000000-0000-0000-0000-000000000000")
                         },
                         new
                         {
-                            BookId = new Guid("cbcaea85-df78-4fb5-9219-13bcc50dc1fa"),
-                            AuthorId = new Guid("bfcb46ec-fce6-4305-84fd-8453a0c032c2"),
+                            BookId = new Guid("399c68e7-f2ce-4416-893c-946dd3696ed3"),
+                            AuthorId = new Guid("ac24c21b-f665-4350-8129-9be9f02c2791"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Id = new Guid("00000000-0000-0000-0000-000000000000")
                         },
                         new
                         {
-                            BookId = new Guid("cbcaea85-df78-4fb5-9219-13bcc50dc1fa"),
-                            AuthorId = new Guid("0a0a0651-d2f9-4c37-a91d-334d850c23db"),
+                            BookId = new Guid("81e99a97-2bfd-4754-9637-978b162bd04e"),
+                            AuthorId = new Guid("2bae52f5-6e58-4071-b79c-da1cba7f560b"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            BookId = new Guid("48f650e8-1cc9-4bac-a77c-59b4b6056dc7"),
+                            AuthorId = new Guid("64919748-c9e3-423b-a9e0-51652edb5fba"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            BookId = new Guid("0ac0f60e-20d3-47d0-982e-2d642c19e704"),
+                            AuthorId = new Guid("b5517ee6-ca04-4e72-96cf-a1f9d4a9954e"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            BookId = new Guid("2e73afc5-80d2-4549-bab8-02b69762dd04"),
+                            AuthorId = new Guid("c5b259fb-a635-48b3-9a92-6155c317bc68"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            BookId = new Guid("c776b453-d81f-4d5b-82af-845fcd3b08fb"),
+                            AuthorId = new Guid("e8e83303-6ab3-4cb7-9573-7be6ab4d1a21"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            BookId = new Guid("a6e2a4ba-ab5f-473d-a47e-b6634c241389"),
+                            AuthorId = new Guid("e88f8263-c7f6-4c96-aa5e-969bbc7c7e34"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Id = new Guid("00000000-0000-0000-0000-000000000000")
                         });
@@ -604,26 +838,182 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 666, DateTimeKind.Utc).AddTicks(6445),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4566),
                             Name = "Edebiyat"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 666, DateTimeKind.Utc).AddTicks(6447),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4569),
                             Name = "Tarih"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 666, DateTimeKind.Utc).AddTicks(6449),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4571),
                             Name = "Roman"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 666, DateTimeKind.Utc).AddTicks(6450),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4572),
                             Name = "Psikoloji"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4573),
+                            Name = "Felsefe"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4575),
+                            Name = "Bilim Kurgu"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4576),
+                            Name = "Fantastik"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4578),
+                            Name = "Polisiye"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4579),
+                            Name = "Macera"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4581),
+                            Name = "Aşk"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4582),
+                            Name = "Çocuk"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4583),
+                            Name = "Biyografi"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4585),
+                            Name = "Otobiyografi"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4614),
+                            Name = "Gezi"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4617),
+                            Name = "Sanat"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4618),
+                            Name = "Mimari"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4619),
+                            Name = "Müzik"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4621),
+                            Name = "Tiyatro"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4622),
+                            Name = "Dans"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4623),
+                            Name = "Sinema"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4625),
+                            Name = "Şiir"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4626),
+                            Name = "Antoloji"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4628),
+                            Name = "Yemek"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4629),
+                            Name = "Sağlık"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4630),
+                            Name = "Tıp"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4632),
+                            Name = "Eğitim"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4633),
+                            Name = "Ekonomi"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4634),
+                            Name = "İş Dünyası"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4636),
+                            Name = "Hukuk"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 314, DateTimeKind.Utc).AddTicks(4637),
+                            Name = "Politika"
                         });
                 });
 
@@ -931,7 +1321,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("66a89aa8-e8ad-4add-8ec8-df9d372e4833"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 668, DateTimeKind.Utc).AddTicks(4403),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1892),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Tarih Kitapları",
@@ -940,7 +1330,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("6347179f-64d6-4c1d-a3ec-62bc02147d73"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 668, DateTimeKind.Utc).AddTicks(4406),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1896),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Psikoloji Kitapları",
@@ -949,7 +1339,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("6e3709bf-803e-42d6-818c-c82cf15be93b"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 668, DateTimeKind.Utc).AddTicks(4408),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1898),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Edebiyat Kitapları",
@@ -958,11 +1348,110 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("57cac248-2a17-43bf-a584-9d2e7e966457"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 668, DateTimeKind.Utc).AddTicks(4411),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1900),
                             FloorNo = 1,
                             Name = "Merkez Kütüphane",
                             ShelfName = "Roman Kitapları",
                             ShelfNo = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("e6f25590-b816-405f-815f-dd543bcd9bbb"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1901),
+                            FloorNo = 1,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Sanat Kitapları",
+                            ShelfNo = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("9466485b-9c11-433a-b384-7d6382333193"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1903),
+                            FloorNo = 2,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Mimarlık Kitapları",
+                            ShelfNo = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("9985ceeb-f15a-4f6b-8814-67b5f6f50bea"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1904),
+                            FloorNo = 2,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Bilim Kitapları",
+                            ShelfNo = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("d1448ef9-5746-4a25-99b8-eaa1accc7ebc"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1906),
+                            FloorNo = 2,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Teknoloji Kitapları",
+                            ShelfNo = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("173c9483-082d-46e9-9bf3-6ee28f906508"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1907),
+                            FloorNo = 2,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Felsefe Kitapları",
+                            ShelfNo = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("59cd3e7e-e103-4eb3-9f04-6ad7a8407952"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1909),
+                            FloorNo = 2,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "İşletme Kitapları",
+                            ShelfNo = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("c4fa4874-380f-494c-af36-423ccdfd2dea"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1911),
+                            FloorNo = 3,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Ekonomi Kitapları",
+                            ShelfNo = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("80da673f-f14f-4ce2-9d9b-bada572ddf91"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1914),
+                            FloorNo = 3,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Hukuk Kitapları",
+                            ShelfNo = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("ddacb573-f83a-4fdc-ba85-c647378da1bc"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1916),
+                            FloorNo = 3,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Medya ve İletişim Kitapları",
+                            ShelfNo = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("814b3b30-e185-4181-964a-bfa2c162c9ac"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1918),
+                            FloorNo = 3,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Müzik Kitapları",
+                            ShelfNo = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("13b7a063-80a1-4d22-bb03-0f883ef12e85"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(1919),
+                            FloorNo = 3,
+                            Name = "Merkez Kütüphane",
+                            ShelfName = "Sanat ve Tasarım Kitapları",
+                            ShelfNo = 5
                         });
                 });
 
@@ -1018,6 +1507,118 @@ namespace Persistence.Migrations
                     b.HasIndex("PublisherId");
 
                     b.ToTable("Magazines", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8d9c7bb2-6baf-4319-a3a3-a2ac3092c8f1"),
+                            CategoryId = 2,
+                            CreatedDate = new DateTime(2024, 4, 1, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9906),
+                            ISSNCode = "ISSN1234-5678",
+                            MagazineTitle = "Tech Insights",
+                            Number = 1,
+                            PublisherId = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
+                            ReleaseDate = new DateTime(2024, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("33ec09e7-b0fa-4f0d-ad57-168fbaf7797d"),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2024, 4, 11, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9913),
+                            ISSNCode = "ISSN9876-5432",
+                            MagazineTitle = "Health & Wellness",
+                            Number = 2,
+                            PublisherId = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
+                            ReleaseDate = new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("c5939743-2f35-48f8-9858-51f4c1556bf0"),
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 4, 16, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9917),
+                            ISSNCode = "ISSN5555-1234",
+                            MagazineTitle = "Finance Focus",
+                            Number = 3,
+                            PublisherId = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
+                            ReleaseDate = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("3bb08885-5ea5-405d-bcff-3ae7ec0b1911"),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2024, 4, 21, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9920),
+                            ISSNCode = "ISSN7777-4321",
+                            MagazineTitle = "Travel Trends",
+                            Number = 4,
+                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
+                            ReleaseDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("0126025b-b09b-443b-9cb0-f28d61a34a3c"),
+                            CategoryId = 2,
+                            CreatedDate = new DateTime(2024, 4, 6, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9923),
+                            ISSNCode = "ISSN8888-9999",
+                            MagazineTitle = "Foodie Finds",
+                            Number = 5,
+                            PublisherId = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
+                            ReleaseDate = new DateTime(2024, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("44519209-e844-4908-9d92-75db10400dcc"),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2024, 4, 26, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9926),
+                            ISSNCode = "ISSN4444-3333",
+                            MagazineTitle = "Artistic Expressions",
+                            Number = 6,
+                            PublisherId = new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"),
+                            ReleaseDate = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("46a33882-534b-4c1e-8049-14dd03f7a7fa"),
+                            CategoryId = 2,
+                            CreatedDate = new DateTime(2024, 4, 19, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9929),
+                            ISSNCode = "ISSN2222-1111",
+                            MagazineTitle = "Fashion Forward",
+                            Number = 7,
+                            PublisherId = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
+                            ReleaseDate = new DateTime(2024, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("a6df0f9e-9aa2-49c6-bf84-2033ae97355f"),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2024, 4, 23, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9932),
+                            ISSNCode = "ISSN9999-8888",
+                            MagazineTitle = "Sports Spectacle",
+                            Number = 8,
+                            PublisherId = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
+                            ReleaseDate = new DateTime(2024, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("ba3158f1-2c48-47a6-8c64-be115d0b02e1"),
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2024, 4, 28, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9934),
+                            ISSNCode = "ISSN3333-4444",
+                            MagazineTitle = "Science Scopes",
+                            Number = 9,
+                            PublisherId = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
+                            ReleaseDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("f24b9d85-f392-45b1-a8c6-9a42edde0d6a"),
+                            CategoryId = 2,
+                            CreatedDate = new DateTime(2024, 4, 30, 14, 12, 55, 316, DateTimeKind.Utc).AddTicks(9938),
+                            ISSNCode = "ISSN6666-5555",
+                            MagazineTitle = "Music Monthly",
+                            Number = 10,
+                            PublisherId = new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"),
+                            ReleaseDate = new DateTime(2024, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.MagazineAuthor", b =>
@@ -1154,6 +1755,11 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("FirstName");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ImageUrl");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -3274,30 +3880,142 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("cbb7895d-a862-459c-9622-2a2f3f5be99e"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 671, DateTimeKind.Utc).AddTicks(2981),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(660),
                             Language = "TR",
                             Name = "Can Yayınları"
                         },
                         new
                         {
                             Id = new Guid("65584687-00c3-4673-b2da-d7c287e12a7c"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 671, DateTimeKind.Utc).AddTicks(2985),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(663),
                             Language = "TR",
                             Name = "Kapra Yayıncılık"
                         },
                         new
                         {
                             Id = new Guid("96946aaa-597d-4b96-a270-02a46204ebf6"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 671, DateTimeKind.Utc).AddTicks(2987),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(665),
                             Language = "TR",
                             Name = "Alfa Yayınları"
                         },
                         new
                         {
                             Id = new Guid("9acb5f4c-966e-44a4-8ddb-9fe31fa0090e"),
-                            CreatedDate = new DateTime(2024, 4, 30, 15, 48, 7, 671, DateTimeKind.Utc).AddTicks(2988),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(667),
                             Language = "TR",
                             Name = "Timaş Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("ceaac2a8-b341-44cd-928c-d472e38a7f20"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(669),
+                            Language = "TR",
+                            Name = "YKY - Yapı Kredi Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("124589ea-4803-490c-9c86-dd68e59b8825"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(671),
+                            Language = "TR",
+                            Name = "İletişim Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("5bce2c0e-36b7-4098-945e-700fc0a1d0c5"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(673),
+                            Language = "TR",
+                            Name = "Doğan Kitap"
+                        },
+                        new
+                        {
+                            Id = new Guid("b8fea0cc-e29a-4028-8b1b-08126eedcecb"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(674),
+                            Language = "TR",
+                            Name = "Bilgi Yayınevi"
+                        },
+                        new
+                        {
+                            Id = new Guid("8ecae9d5-c9c1-4362-96a2-db0231083372"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(676),
+                            Language = "TR",
+                            Name = "Altın Kitaplar"
+                        },
+                        new
+                        {
+                            Id = new Guid("5d604071-905c-4da5-9277-a8c0d17a717b"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(677),
+                            Language = "TR",
+                            Name = "Everest Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("6bb7922f-079e-41e9-bbd2-1be557f30957"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(678),
+                            Language = "TR",
+                            Name = "Destek Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("6b3d2f37-ca03-40b9-8fe6-c890bfdd9cf3"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(680),
+                            Language = "TR",
+                            Name = "Koridor Yayıncılık"
+                        },
+                        new
+                        {
+                            Id = new Guid("5f503f17-5ca7-4a17-b131-6330c7fd52eb"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(681),
+                            Language = "TR",
+                            Name = "Remzi Kitabevi"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f51e2c8-dd62-49be-a384-6af21e614507"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(682),
+                            Language = "TR",
+                            Name = "Martı Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("d72f299e-e695-49c5-94fb-79e382710b91"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(684),
+                            Language = "TR",
+                            Name = "İthaki Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("46266a6c-ed71-4b7a-8367-340f2f3f8e42"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(685),
+                            Language = "TR",
+                            Name = "Artemis Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("53458011-9e2b-4cf9-9647-3a7364c4e8a2"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(686),
+                            Language = "TR",
+                            Name = "Pegasus Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("3cdebc03-bad8-4657-8ecf-f196b55bf223"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(687),
+                            Language = "TR",
+                            Name = "Epsilon Yayınları"
+                        },
+                        new
+                        {
+                            Id = new Guid("e875fb59-639f-4cd8-b2d3-3e222adb9211"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(689),
+                            Language = "TR",
+                            Name = "Altın Nokta Yayınevi"
+                        },
+                        new
+                        {
+                            Id = new Guid("888f4ec1-6d74-4e7e-ad0e-e75d5cfaad86"),
+                            CreatedDate = new DateTime(2024, 5, 1, 14, 12, 55, 319, DateTimeKind.Utc).AddTicks(690),
+                            Language = "TR",
+                            Name = "İş Bankası Kültür Yayınları"
                         });
                 });
 
@@ -3476,12 +4194,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f70d8fd3-f7fd-46dd-b591-4a23591ec958"),
+                            Id = new Guid("f3c20890-81c1-44ed-8b51-2b071355e32a"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 137, 12, 173, 247, 206, 31, 195, 214, 56, 49, 128, 196, 189, 186, 43, 119, 218, 151, 22, 200, 105, 167, 136, 195, 69, 66, 253, 213, 52, 109, 243, 255, 156, 204, 207, 252, 134, 169, 147, 117, 242, 45, 95, 24, 106, 54, 177, 61, 42, 121, 159, 171, 210, 157, 59, 197, 28, 253, 121, 214, 177, 65, 66, 105 },
-                            PasswordSalt = new byte[] { 137, 230, 255, 133, 132, 177, 187, 176, 144, 242, 31, 250, 40, 143, 167, 251, 212, 183, 16, 249, 114, 81, 37, 94, 163, 89, 213, 140, 89, 44, 185, 48, 116, 117, 54, 69, 1, 213, 172, 248, 236, 7, 205, 173, 59, 101, 29, 234, 66, 198, 99, 66, 218, 127, 11, 133, 135, 171, 172, 238, 48, 157, 34, 209, 48, 233, 202, 84, 181, 169, 1, 57, 129, 79, 93, 177, 228, 116, 64, 236, 239, 176, 47, 161, 198, 94, 50, 214, 159, 203, 144, 177, 62, 189, 117, 67, 187, 225, 102, 174, 84, 49, 79, 235, 183, 168, 222, 52, 38, 211, 242, 249, 100, 182, 90, 151, 138, 109, 80, 149, 41, 130, 248, 62, 5, 140, 204, 10 }
+                            PasswordHash = new byte[] { 252, 138, 249, 170, 255, 35, 87, 101, 123, 91, 145, 217, 10, 192, 11, 209, 72, 114, 168, 184, 60, 232, 59, 165, 118, 125, 91, 1, 30, 47, 111, 178, 208, 14, 174, 14, 2, 177, 133, 84, 197, 91, 38, 24, 130, 132, 43, 99, 193, 68, 132, 34, 242, 157, 122, 113, 200, 250, 238, 66, 36, 54, 90, 54 },
+                            PasswordSalt = new byte[] { 10, 2, 94, 84, 47, 170, 227, 79, 173, 130, 87, 50, 6, 1, 78, 2, 52, 7, 223, 146, 203, 24, 70, 165, 65, 131, 179, 63, 230, 45, 118, 121, 212, 135, 120, 4, 220, 184, 101, 164, 104, 21, 63, 132, 16, 127, 198, 4, 47, 16, 99, 131, 243, 81, 10, 214, 82, 221, 26, 152, 233, 1, 15, 217, 231, 218, 197, 157, 80, 33, 99, 230, 7, 65, 86, 199, 32, 249, 217, 180, 166, 229, 198, 223, 174, 251, 239, 53, 245, 91, 54, 120, 33, 121, 166, 225, 95, 190, 183, 242, 71, 7, 173, 86, 79, 194, 106, 152, 219, 143, 30, 199, 109, 10, 251, 211, 129, 151, 119, 143, 170, 83, 67, 184, 113, 162, 89, 135 }
                         });
                 });
 
@@ -3523,10 +4241,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("48418be7-ac85-4dc5-acc6-6ecfff81b046"),
+                            Id = new Guid("43541219-315c-4ff4-88f5-bcffbbba4c26"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("f70d8fd3-f7fd-46dd-b591-4a23591ec958")
+                            UserId = new Guid("f3c20890-81c1-44ed-8b51-2b071355e32a")
                         });
                 });
 

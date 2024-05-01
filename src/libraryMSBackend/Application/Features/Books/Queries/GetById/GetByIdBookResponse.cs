@@ -16,6 +16,7 @@ public class GetByIdBookResponse : IResponse
     public int PageCount { get; set; }
     public BookStatus Status { get; set; }
     public Guid PublisherId { get; set; }
+    public string ImageUrl { get; set; }
     public int CategoryId { get; set; }
     public GetListLocationListItemDto Location { get; set; }
     public List<GetListAuthorListItemDto> Authors { get; set; }

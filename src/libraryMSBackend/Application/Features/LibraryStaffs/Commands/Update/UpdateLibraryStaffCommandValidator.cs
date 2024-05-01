@@ -9,7 +9,7 @@ public class UpdateLibraryStaffCommandValidator : AbstractValidator<UpdateLibrar
         RuleFor(c => c.Id).NotEmpty();
         RuleFor(c => c.FirstName).NotEmpty();
         RuleFor(c => c.LastName).NotEmpty();
-        RuleFor(c => c.ImageUrl).NotEmpty();
+        //RuleFor(c => c.ImageUrl).NotEmpty();
         RuleFor(c => c.BirthDate).NotEmpty();
     }
 }

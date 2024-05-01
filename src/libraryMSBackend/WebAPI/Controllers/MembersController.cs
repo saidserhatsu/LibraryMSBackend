@@ -17,15 +17,16 @@ namespace WebAPI.Controllers;
 public class MembersController : BaseController
 {
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateMemberCommand createMemberCommand)
+    public async Task<IActionResult> Add([FromForm] CreateMemberCommand createMemberCommand)
     {
         CreatedMemberResponse response = await Mediator.Send(createMemberCommand);
 
         return Created(uri: "", response);
     }
+    
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateMemberCommand updateMemberCommand)
+    public async Task<IActionResult> Update([FromForm] UpdateMemberCommand updateMemberCommand)
     {
         UpdatedMemberResponse response = await Mediator.Send(updateMemberCommand);
 

@@ -11,4 +11,5 @@ public class CreatedMemberResponse : IResponse
     public string Email { get; set; }
     public DateTime DateOfBirth { get; set; }
     public bool Subscribe { get; set; }
+    public string ImageUrl { get; set; }
 }

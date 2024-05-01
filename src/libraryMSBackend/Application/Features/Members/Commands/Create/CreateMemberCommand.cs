@@ -1,5 +1,6 @@
 using Application.Features.Members.Constants;
 using Application.Features.Members.Rules;
+using Application.Services.ImageService;
 using Application.Services.MemberSettings;
 using Application.Services.OperationClaims;
 using Application.Services.Repositories;
@@ -8,6 +9,7 @@ using Application.Services.UsersService;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using MimeKit;
 using NArchitecture.Core.Application.Dtos;
 using NArchitecture.Core.Application.Pipelines.Caching;
@@ -18,6 +20,7 @@ namespace Application.Features.Members.Commands.Create;
 
 public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
+    public IFormFile File { get; set; } // Resim dosyasý
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string PhoneNumber { get; set; }
@@ -40,8 +43,9 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
         private readonly IOperationClaimService _operationClaimService;
         private readonly NArchitecture.Core.Mailing.IMailService _mailService;
         private readonly IMemberSettingService _memberSettingService;
+        private readonly ImageServiceBase _imageService; // ImageServiceBase ekleniyor
         public CreateMemberCommandHandler(IMapper mapper, IMemberRepository memberRepository,
-                                         MemberBusinessRules memberBusinessRules, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService, NArchitecture.Core.Mailing.IMailService mailService, IMemberSettingService memberSettingService)
+                                         MemberBusinessRules memberBusinessRules,ImageServiceBase imageService, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService, NArchitecture.Core.Mailing.IMailService mailService, IMemberSettingService memberSettingService)
         {
             _mapper = mapper;
             _memberRepository = memberRepository;
@@ -51,6 +55,7 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
             _operationClaimService = operationClaimService;
             _mailService = mailService;
             _memberSettingService = memberSettingService;
+            _imageService = imageService;
         }
 
         public async Task<CreatedMemberResponse> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
@@ -64,11 +69,15 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
                 OperationClaim? operationClaim = await _operationClaimService.GetAsync(oc => oc.Name == Roles[i]);
                 await _userOperationClaimService.AddAsync(new UserOperationClaim() { UserId = user.Id, OperationClaimId = operationClaim!.Id });
             }
+            // Resmi yükle ve URL'sini al
+            string imageUrl = await _imageService.UploadAsync(request.File);
 
             Member member = _mapper.Map<Member>(request);
             member.UserId = user.Id;
+            member.ImageUrl = imageUrl; // ImageUrl özelliðini ayarla
 
-           var savedMember= await _memberRepository.AddAsync(member);
+
+            var savedMember = await _memberRepository.AddAsync(member);
 
             MemberSetting memberSetting = await _memberSettingService.AddAsync(new MemberSetting() { MemberId=savedMember.Id });
             member.MemberSetting.Id = memberSetting.Id;
@@ -83,6 +92,7 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
 
 
             CreatedMemberResponse response = _mapper.Map<CreatedMemberResponse>(member);
+            response.ImageUrl = imageUrl; // Yanýt için resim URL'sini ayarla
             return response;
         }
     }

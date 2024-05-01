@@ -15,6 +15,7 @@ public class MemberConfiguration : IEntityTypeConfiguration<Member>
         builder.Property(m => m.LastName).HasColumnName("LastName");
         builder.Property(m => m.PhoneNumber).HasColumnName("PhoneNumber");
         builder.Property(m => m.DateOfBirth).HasColumnName("DateOfBirth");
+        builder.Property(m => m.ImageUrl).HasColumnName("ImageUrl");
         builder.Property(m => m.Subscribe).HasColumnName("Subscribe");
         builder.Property(m => m.UserId).HasColumnName("UserId");
         builder.Property(m => m.UserId).HasColumnName("MemberSettingId");

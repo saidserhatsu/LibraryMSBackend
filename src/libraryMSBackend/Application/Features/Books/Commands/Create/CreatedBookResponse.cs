@@ -11,6 +11,7 @@ public class CreatedBookResponse : IResponse
     public int BookEdition { get; set; }
     public int ReleaseDate { get; set; }
     public int PageCount { get; set; }
+    public string ImageUrl { get; set; }
     public BookStatus Status { get; set; }
     public Guid PublisherId { get; set; }
     public int CategoryId { get; set; }

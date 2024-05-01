@@ -12,6 +12,7 @@ public class GetListMemberListItemDto : IDto
     public string PhoneNumber { get; set; }
     public string Email { get; set; }
     public DateTime DateOfBirth { get; set; }
+    public string ImageUrl { get; set; }
     public bool Subscribe { get; set; }
 
     public List<GetListBookListItemDto> Books { get; set; }

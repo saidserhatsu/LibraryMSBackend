@@ -13,16 +13,16 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class LibraryStaffsController : BaseController
 {
+   
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateLibraryStaffCommand createLibraryStaffCommand)
+    public async Task<IActionResult> Add([FromForm] CreateLibraryStaffCommand createLibraryStaffCommand)
     {
         CreatedLibraryStaffResponse response = await Mediator.Send(createLibraryStaffCommand);
-
         return Created(uri: "", response);
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateLibraryStaffCommand updateLibraryStaffCommand)
+    public async Task<IActionResult> Update([FromForm] UpdateLibraryStaffCommand updateLibraryStaffCommand)
     {
         UpdatedLibraryStaffResponse response = await Mediator.Send(updateLibraryStaffCommand);
 
