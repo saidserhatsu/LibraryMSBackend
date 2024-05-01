@@ -1,4 +1,3 @@
-using Application.Features.Books.Constants;
 using Application.Features.Members.Constants;
 using FluentValidation;
 using NArchitecture.Core.Localization.Abstraction;
@@ -22,7 +21,6 @@ public class CreateMemberCommandValidator : AbstractValidator<CreateMemberComman
         RuleFor(m => m.DateOfBirth)
             .LessThan(DateTime.Today.AddYears(-7)) // En az 7 yýl önce doðmuþ olmalý.
             .WithMessage(GetLocalized("TheBirthdateMustBeAtLeast7YearsAgo").Result);
-        RuleFor(c => c.Subscribe).NotEmpty();
     }
     public async Task<string> GetLocalized(string key)
     {
