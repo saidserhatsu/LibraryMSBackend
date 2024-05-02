@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.FineDues.Constants.FineDuesOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.FineDues.Queries.GetList;
 
@@ -37,6 +38,8 @@ public class GetListFineDueQuery : IRequest<GetListResponse<GetListFineDueListIt
         public async Task<GetListResponse<GetListFineDueListItemDto>> Handle(GetListFineDueQuery request, CancellationToken cancellationToken)
         {
             IPaginate<FineDue> fineDues = await _fineDueRepository.GetListAsync(
+                include: bi => bi.Include(bi => bi.BookIssue).ThenInclude(bi=>bi.Book)
+                 .Include(bi => bi.BookIssue).ThenInclude(bi => bi.Member),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize, 
                 cancellationToken: cancellationToken

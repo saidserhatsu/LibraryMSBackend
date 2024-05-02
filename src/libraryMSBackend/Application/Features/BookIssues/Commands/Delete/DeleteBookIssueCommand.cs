@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using static Application.Features.BookIssues.Constants.BookIssuesOperationClaims;
+using Domain.Enums;
 
 namespace Application.Features.BookIssues.Commands.Delete;
 
@@ -16,34 +17,46 @@ public class DeleteBookIssueCommand : IRequest<DeletedBookIssueResponse>, ISecur
 {
     public Guid Id { get; set; }
 
-    public string[] Roles => [Admin, Write, BookIssuesOperationClaims.Delete];
+    public string[] Roles => new[] { Admin, Write, BookIssuesOperationClaims.Delete };
 
     public bool BypassCache { get; }
     public string? CacheKey { get; }
-    public string[]? CacheGroupKey => ["GetBookIssues"];
+    public string[]? CacheGroupKey => new[] { "GetBookIssues" };
 
     public class DeleteBookIssueCommandHandler : IRequestHandler<DeleteBookIssueCommand, DeletedBookIssueResponse>
     {
         private readonly IMapper _mapper;
         private readonly IBookIssueRepository _bookIssueRepository;
         private readonly BookIssueBusinessRules _bookIssueBusinessRules;
-        
+        private readonly IBookRepository _bookRepository;
 
-        public DeleteBookIssueCommandHandler(IMapper mapper, IBookIssueRepository bookIssueRepository,
-                                         BookIssueBusinessRules bookIssueBusinessRules)
+        public DeleteBookIssueCommandHandler(
+            IMapper mapper,
+            IBookIssueRepository bookIssueRepository,
+            BookIssueBusinessRules bookIssueBusinessRules,
+            IBookRepository bookRepository)
         {
             _mapper = mapper;
             _bookIssueRepository = bookIssueRepository;
             _bookIssueBusinessRules = bookIssueBusinessRules;
+            _bookRepository = bookRepository;
         }
 
         public async Task<DeletedBookIssueResponse> Handle(DeleteBookIssueCommand request, CancellationToken cancellationToken)
         {
+            // Ödünç verme kaydýný alýn
             BookIssue? bookIssue = await _bookIssueRepository.GetAsync(predicate: bi => bi.Id == request.Id, cancellationToken: cancellationToken);
             await _bookIssueBusinessRules.BookIssueShouldExistWhenSelected(bookIssue);
 
-            await _bookIssueRepository.DeleteAsync(bookIssue!);
+            // Kitabý alýn ve durumunu Available olarak güncelleyin
+            var book = await _bookRepository.GetByIdAsync(bookIssue!.BookId);
+            book.Status = BookStatus.Available; // Durumu Available olarak ayarlayýn
+            await _bookRepository.UpdateAsync(book); // Güncellenen durumu kaydedin
 
+            // Ödünç verme kaydýný silin
+            await _bookIssueRepository.DeleteAsync(bookIssue);
+
+            // Silme yanýtýný döndürün
             DeletedBookIssueResponse response = _mapper.Map<DeletedBookIssueResponse>(bookIssue);
             return response;
         }
