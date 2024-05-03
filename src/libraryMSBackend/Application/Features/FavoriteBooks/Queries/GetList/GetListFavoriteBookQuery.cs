@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.FavoriteBooks.Constants.FavoriteBooksOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.FavoriteBooks.Queries.GetList;
 
@@ -37,6 +38,7 @@ public class GetListFavoriteBookQuery : IRequest<GetListResponse<GetListFavorite
         public async Task<GetListResponse<GetListFavoriteBookListItemDto>> Handle(GetListFavoriteBookQuery request, CancellationToken cancellationToken)
         {
             IPaginate<FavoriteBook> favoriteBooks = await _favoriteBookRepository.GetListAsync(
+                include:fb=>fb.Include(fb=>fb.Book).Include(fb=>fb.Member),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize, 
                 cancellationToken: cancellationToken

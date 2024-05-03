@@ -24,4 +24,7 @@ public class SearchCriteria : Entity<Guid>
     public string? MembersEmail { get; set; }
     public string? MemberFirstName { get; set; }
     public string? MemberLastName { get; set; }
+    public string? EBookISBNCode { get; set; }
+    public string? EBookTitle { get; set; }
+    public string? EBookAuthorName { get; set; }
 }

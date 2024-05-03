@@ -16,6 +16,7 @@ using Application.Features.Materials.Queries.GetList;
 using Application.Features.Categories.Queries.GetList;
 using Application.Features.Publishers.Queries.GetList;
 using System.Runtime.CompilerServices;
+using Application.Features.EBooks.Queries.GetList;
 
 namespace Application.Features.Catalogs.Profiles;
 
@@ -41,7 +42,8 @@ public class MappingProfiles : Profile
                         BookEdition=cm.Book.BookEdition,
                         PageCount=cm.Book.PageCount,
                         ReleaseDate=cm.Book.ReleaseDate,
-                        Status=cm.Book.Status,
+                        ImageUrl=cm.Book.ImageUrl,
+                        Status=cm.Book.Status.ToString(),
                         CategoryName=cm.Book.Category.Name,
                         PublisherName=cm.Book.Publisher.Name,
                         Locations = new GetListLocationListItemDto
@@ -52,6 +54,7 @@ public class MappingProfiles : Profile
                             FloorNo = cm.Book.Location.FloorNo,
                             ShelfNo = cm.Book.Location.ShelfNo
                         },
+                        
                         Authors = cm.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
                         {
                             Id = ba.Author.Id,
@@ -80,13 +83,27 @@ public class MappingProfiles : Profile
 
 
                     })))
+
+            
+                .ForMember(dest => dest.EBooks, opt => opt.MapFrom(src => src.CatalogManagements
+                    .Where(cm => cm.EBook != null)
+                    .Select(cm => new GetListEBookListItemDto
+                    {
+
+                        EBookTitle = cm.EBook.EBookTitle ?? string.Empty,
+                        ISBNCode = cm.EBook.ISBNCode ?? string.Empty,
+                        FileUrl = cm.EBook.FileUrl ?? string.Empty,
+                        ImageUrl = cm.EBook.ImageUrl ?? string.Empty,
+                        AuthorName=cm.EBook.AuthorName ?? string.Empty,
+                    })))
+
                 .ForMember(dest => dest.Materials, opt => opt.MapFrom(src => src.CatalogManagements
                     .Where(cm => cm.Material != null)
                     .Select(cm => new GetListMaterialListItemDto
                     {
                         Id = cm.Material.Id,
                         Name = cm.Material.Name,
-                        MaterialType = cm.Material.MaterialType,
+                        MaterialType = cm.Material.MaterialType.ToString(),
                         ReleaseDate=cm.Material.ReleaseDate,
                         CategoryId = cm.Book.Category.Id,
                         CategoryName = cm.Book.Category.Name,

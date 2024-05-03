@@ -1,8 +1,11 @@
-using NArchitecture.Core.Application.Dtos;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Application.Features.EBooks.Queries.GetList;
-
-public class GetListEBookListItemDto : IDto
+namespace Application.Features.EBooks.Queries.FilterSearch;
+public class SearchEbookResponse
 {
     public Guid Id { get; set; }
     public string ISBNCode { get; set; }
