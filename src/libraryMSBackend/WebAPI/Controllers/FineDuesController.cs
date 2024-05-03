@@ -6,6 +6,9 @@ using Application.Features.FineDues.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.FinePayments.Queries.FilterSearch;
+using Domain.Entities;
+using Application.Features.FineDues.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +53,23 @@ public class FineDuesController : BaseController
         GetListFineDueQuery getListFineDueQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListFineDueListItemDto> response = await Mediator.Send(getListFineDueQuery);
         return Ok(response);
+    }
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchFineDues(
+        [FromQuery(Name = "MemberFirstName")] string? memberFirstName, // nullable
+        [FromQuery(Name = "MemberLastName")] string? memberLastName, // nullable
+        [FromQuery] PageRequest pageRequest
+    )
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria { MemberFirstName = memberFirstName, MemberLastName = memberLastName };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchFineDueQuery(searchCriteria, pageRequest);
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

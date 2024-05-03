@@ -22,7 +22,6 @@ public class CreateBookCommand : IRequest<CreatedBookResponse>, ISecuredRequest,
     public int BookEdition { get; set; }
     public int ReleaseDate { get; set; }
     public int PageCount { get; set; }
-    public BookStatus Status { get; set; }
     public Guid PublisherId { get; set; }
     public int CategoryId { get; set; }
     public Guid LocationId { get; set; }
@@ -60,6 +59,7 @@ public class CreateBookCommand : IRequest<CreatedBookResponse>, ISecuredRequest,
 
             // Kitabý oluþtur
             Book book = _mapper.Map<Book>(request);
+            book.Status = BookStatus.Available;
 
             // Eðer resim dosyasý varsa, yükleyin
             if (request.File != null)

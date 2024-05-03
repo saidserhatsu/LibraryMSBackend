@@ -18,7 +18,6 @@ public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
         RuleFor(b => b.ReleaseDate).LessThanOrEqualTo(DateTime.Now.Year)// Geçerli yýl veya önceki bir yýl olmalý
                                    .WithMessage(GetLocalized("ThePublicationDateMustBeThisYearOrThePreviousYear").Result);
         RuleFor(b => b.PageCount).NotEmpty();
-        RuleFor(c => c.Status).NotEmpty();
         RuleFor(c => c.PublisherId).NotEmpty();
         RuleFor(c => c.CategoryId).NotEmpty();
         RuleFor(c => c.LocationId).NotEmpty();
