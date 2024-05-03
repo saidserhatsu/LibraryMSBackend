@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.MaterialAuthors.Constants.MaterialAuthorsOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.MaterialAuthors.Queries.GetList;
 
@@ -37,6 +38,7 @@ public class GetListMaterialAuthorQuery : IRequest<GetListResponse<GetListMateri
         public async Task<GetListResponse<GetListMaterialAuthorListItemDto>> Handle(GetListMaterialAuthorQuery request, CancellationToken cancellationToken)
         {
             IPaginate<MaterialAuthor> materialAuthors = await _materialAuthorRepository.GetListAsync(
+                include:ma=>ma.Include(ma=>ma.Author).Include(ma=>ma.Material),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize, 
                 cancellationToken: cancellationToken

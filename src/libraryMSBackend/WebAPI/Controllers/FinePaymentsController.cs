@@ -1,11 +1,13 @@
 using Application.Features.FinePayments.Commands.Create;
 using Application.Features.FinePayments.Commands.Delete;
 using Application.Features.FinePayments.Commands.Update;
+using Application.Features.FinePayments.Queries.FilterSearch;
 using Application.Features.FinePayments.Queries.GetById;
 using Application.Features.FinePayments.Queries.GetList;
+using Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +52,24 @@ public class FinePaymentsController : BaseController
         GetListFinePaymentQuery getListFinePaymentQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListFinePaymentListItemDto> response = await Mediator.Send(getListFinePaymentQuery);
         return Ok(response);
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchFinePayments(
+        [FromQuery(Name = "MemberFirstName")] string? memberFirstName, // nullable
+        [FromQuery(Name = "MemberLastName")] string? memberLastName, // nullable
+        [FromQuery] PageRequest pageRequest
+    )
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria { MemberFirstName = memberFirstName, MemberLastName = memberLastName };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchFinePaymentQuery(searchCriteria, pageRequest);
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

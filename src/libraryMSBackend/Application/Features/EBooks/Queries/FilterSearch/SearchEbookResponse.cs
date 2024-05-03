@@ -1,8 +1,11 @@
-using NArchitecture.Core.Application.Responses;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Application.Features.EBooks.Commands.Create;
-
-public class CreatedEBookResponse : IResponse
+namespace Application.Features.EBooks.Queries.FilterSearch;
+public class SearchEbookResponse
 {
     public Guid Id { get; set; }
     public string ISBNCode { get; set; }
@@ -11,6 +14,7 @@ public class CreatedEBookResponse : IResponse
     public int ReleaseDate { get; set; }
     public int PageCount { get; set; }
     public int CategoryId { get; set; }
+    public string CategoryName { get; set; }
     public string FileUrl { get; set; }
     public string ImageUrl { get; set; }
 }

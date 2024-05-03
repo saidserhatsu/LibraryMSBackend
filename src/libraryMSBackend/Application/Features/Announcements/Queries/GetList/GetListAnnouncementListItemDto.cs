@@ -8,5 +8,5 @@ public class GetListAnnouncementListItemDto : IDto
     public Guid Id { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }
-    public AnnouncementTag Tag { get; set; }
+    public string Tag { get; set; }
 }

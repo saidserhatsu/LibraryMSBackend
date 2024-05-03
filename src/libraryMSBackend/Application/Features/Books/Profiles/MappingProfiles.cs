@@ -77,7 +77,7 @@ public class MappingProfiles : Profile
       .ForMember(dest => dest.Materials, opt => opt.MapFrom(src => src.Category.Materials
       .Select(ba => new GetListMaterialListItemDto
       {
-          MaterialType = ba.MaterialType,
+          MaterialType = ba.MaterialType.ToString(),
           Name = ba.Name,
           ReleaseDate = ba.ReleaseDate,
       }

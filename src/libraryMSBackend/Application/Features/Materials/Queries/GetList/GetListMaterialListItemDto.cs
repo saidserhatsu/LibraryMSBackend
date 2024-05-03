@@ -7,7 +7,7 @@ public class GetListMaterialListItemDto : IDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public MaterialTypes MaterialType { get; set; }
+    public string MaterialType { get; set; }
     public int ReleaseDate { get; set; }
     public Guid PublisherId { get; set; }
     public int? CategoryId { get; set; }

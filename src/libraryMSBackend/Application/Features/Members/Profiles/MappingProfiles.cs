@@ -38,9 +38,11 @@ public class MappingProfiles : Profile
                   BookTitle = m.Book.BookTitle,
                   BookEdition = m.Book.BookEdition,
                   ReleaseDate = m.Book.ReleaseDate,
-                  Status = m.Book.Status,
+                  Status = m.Book.Status.ToString(),
                   CategoryName = m.Book.Category.Name,
                   PublisherName = m.Book.Publisher.Name,
+                  ImageUrl=m.Book.ImageUrl,
+                  PageCount = m.Book.PageCount,   
                   Locations = new GetListLocationListItemDto
                   {
                       Id = m.Book.Id,
@@ -65,8 +67,10 @@ public class MappingProfiles : Profile
                  BookTitle = m.Book.BookTitle,
                  BookEdition = m.Book.BookEdition,
                  ReleaseDate = m.Book.ReleaseDate,
-                 Status = m.Book.Status,
+                 Status = m.Book.Status.ToString(),
                  CategoryName = m.Book.Category.Name,
+                 PageCount = m.Book.PageCount, 
+                 ImageUrl=m.Book.ImageUrl,
                  PublisherName = m.Book.Publisher.Name,
                  Locations = new GetListLocationListItemDto
                  {
@@ -93,9 +97,11 @@ public class MappingProfiles : Profile
                  BookTitle = m.Book.BookTitle,
                  BookEdition = m.Book.BookEdition,
                  ReleaseDate = m.Book.ReleaseDate,
-                 Status = m.Book.Status,
+                 Status = m.Book.Status.ToString(),
                  CategoryName = m.Book.Category.Name,
                  PublisherName = m.Book.Publisher.Name,
+                 ImageUrl= m.Book.ImageUrl,
+                 PageCount=m.Book.PageCount,
                  Locations = new GetListLocationListItemDto
                  {
                      Id = m.Book.Id,

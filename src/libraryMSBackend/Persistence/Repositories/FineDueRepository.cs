@@ -1,5 +1,6 @@
 using Application.Services.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Persistence.Repositories;
 using Persistence.Contexts;
 
@@ -10,4 +11,7 @@ public class FineDueRepository : EfRepositoryBase<FineDue, Guid, BaseDbContext>,
     public FineDueRepository(BaseDbContext context) : base(context)
     {
     }
+    private DbSet<FineDue> FineDues => Context.Set<FineDue>(); // DbSet eriþimi
+
+    public IQueryable<FineDue> Table => FineDues.AsQueryable(); // IQueryable eriþimi
 }

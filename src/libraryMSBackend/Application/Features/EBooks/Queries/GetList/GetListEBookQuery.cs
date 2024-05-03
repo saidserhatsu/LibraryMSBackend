@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.EBooks.Constants.EBooksOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.EBooks.Queries.GetList;
 
@@ -37,8 +38,9 @@ public class GetListEBookQuery : IRequest<GetListResponse<GetListEBookListItemDt
         public async Task<GetListResponse<GetListEBookListItemDto>> Handle(GetListEBookQuery request, CancellationToken cancellationToken)
         {
             IPaginate<EBook> eBooks = await _eBookRepository.GetListAsync(
+                include: eb => eb.Include(eb => eb.Category),
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
             );
 

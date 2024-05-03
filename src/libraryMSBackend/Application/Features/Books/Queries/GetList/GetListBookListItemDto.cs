@@ -14,7 +14,7 @@ public class GetListBookListItemDto : IDto
     public int ReleaseDate { get; set; }
     public int PageCount { get; set; }
     public string ImageUrl { get; set; }
-    public BookStatus Status { get; set; }
+    public string Status { get; set; }
     public string CategoryName { get; set; }
     public string PublisherName { get; set; }
 

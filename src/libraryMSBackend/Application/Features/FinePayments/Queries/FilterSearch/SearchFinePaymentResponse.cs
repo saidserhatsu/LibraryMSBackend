@@ -1,8 +1,12 @@
-using NArchitecture.Core.Application.Dtos;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Application.Features.FinePayments.Queries.GetList;
+namespace Application.Features.FinePayments.Queries.FilterSearch;
 
-public class GetListFinePaymentListItemDto : IDto
+public class SearchFinePaymentResponse
 {
     public Guid Id { get; set; }
     public decimal PaymentAmount { get; set; }
