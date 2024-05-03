@@ -12,4 +12,5 @@ public class UpdatedEBookResponse : IResponse
     public int PageCount { get; set; }
     public int CategoryId { get; set; }
     public string FileUrl { get; set; }
+    public string ImageUrl { get; set; }
 }

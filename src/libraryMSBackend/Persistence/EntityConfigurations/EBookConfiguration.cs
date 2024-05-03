@@ -13,6 +13,7 @@ public class EBookConfiguration : IEntityTypeConfiguration<EBook>
         builder.Property(eb => eb.Id).HasColumnName("Id").IsRequired();
         builder.Property(eb => eb.ISBNCode).HasColumnName("ISBNCode");
         builder.Property(eb => eb.EBookTitle).HasColumnName("EBookTitle");
+        builder.Property(eb => eb.ImageUrl).HasColumnName("ImageUrl");
         builder.Property(eb => eb.AuthorName).HasColumnName("AuthorName");
         builder.Property(eb => eb.ReleaseDate).HasColumnName("ReleaseDate");
         builder.Property(eb => eb.PageCount).HasColumnName("PageCount");

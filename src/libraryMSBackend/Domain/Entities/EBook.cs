@@ -17,6 +17,7 @@ public class EBook : Entity<Guid>
     public int PageCount { get; set; }
     public int CategoryId { get; set; }
     public string FileUrl { get; set; }
+    public string ImageUrl { get; set; } = "https://res.cloudinary.com/dafqsbtn7/image/upload/v1714747440/mzc4vzmdoa2kpkkesfi4.jpg";
 
     public virtual Category Category { get; set; }
     public virtual ICollection<CatalogManagement> CatalogManagements { get; set; }
