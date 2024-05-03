@@ -14,4 +14,15 @@ public class MemberRepository : EfRepositoryBase<Member, Guid, BaseDbContext>, I
     private DbSet<Member> Members => Context.Set<Member>(); // DbSet eriþimi
 
     public IQueryable<Member> Table => Members.AsQueryable(); // IQueryable eriþimi
+
+    public async Task<Member> GetByMemberIdAsync(Guid memberId)
+    {
+        var member = await Members.FirstOrDefaultAsync(b => b.Id == memberId);
+        if (member == null)
+        {
+            throw new KeyNotFoundException($"No Member found with ID {memberId}");
+
+        }
+        return member;
+    }
 }

@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.FinePayments.Constants.FinePaymentsOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.FinePayments.Queries.GetList;
 
@@ -37,10 +38,11 @@ public class GetListFinePaymentQuery : IRequest<GetListResponse<GetListFinePayme
         public async Task<GetListResponse<GetListFinePaymentListItemDto>> Handle(GetListFinePaymentQuery request, CancellationToken cancellationToken)
         {
             IPaginate<FinePayment> finePayments = await _finePaymentRepository.GetListAsync(
+                include: fp => fp.Include(fp => fp.Member),
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
-            );
+            ); 
 
             GetListResponse<GetListFinePaymentListItemDto> response = _mapper.Map<GetListResponse<GetListFinePaymentListItemDto>>(finePayments);
             return response;

@@ -14,7 +14,7 @@ namespace WebAPI.Controllers;
 public class AnnouncementsController : BaseController
 {
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateAnnouncementCommand createAnnouncementCommand)
+    public async Task<IActionResult> Add([FromForm] CreateAnnouncementCommand createAnnouncementCommand)
     {
         CreatedAnnouncementResponse response = await Mediator.Send(createAnnouncementCommand);
 
@@ -22,7 +22,7 @@ public class AnnouncementsController : BaseController
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateAnnouncementCommand updateAnnouncementCommand)
+    public async Task<IActionResult> Update([FromForm] UpdateAnnouncementCommand updateAnnouncementCommand)
     {
         UpdatedAnnouncementResponse response = await Mediator.Send(updateAnnouncementCommand);
 

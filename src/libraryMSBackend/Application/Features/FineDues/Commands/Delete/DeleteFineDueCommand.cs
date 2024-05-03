@@ -3,6 +3,7 @@ using Application.Features.FineDues.Constants;
 using Application.Features.FineDues.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using AutoMapper.Execution;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
@@ -36,13 +37,17 @@ public class DeleteFineDueCommand
         private readonly IBookIssueRepository _bookIssueRepository;
         private readonly IBookRepository _bookRepository; // Yeni kitap repository
         private readonly FineDueBusinessRules _fineDueBusinessRules;
+        private readonly IMemberRepository _memberRepository;
+        private readonly IFinePaymentRepository _finePaymentRepository;
 
         public DeleteFineDueCommandHandler(
             IMapper mapper,
             IFineDueRepository fineDueRepository,
             IBookIssueRepository bookIssueRepository,
             IBookRepository bookRepository, // Constructor'da ekleme
-            FineDueBusinessRules fineDueBusinessRules
+            FineDueBusinessRules fineDueBusinessRules,
+            IMemberRepository memberRepository,
+            IFinePaymentRepository finePaymentRepository
         )
         {
             _mapper = mapper;
@@ -50,6 +55,9 @@ public class DeleteFineDueCommand
             _bookIssueRepository = bookIssueRepository;
             _bookRepository = bookRepository; // Constructor'da saklama
             _fineDueBusinessRules = fineDueBusinessRules;
+            _memberRepository = memberRepository;
+            _finePaymentRepository = finePaymentRepository;
+
         }
 
         public async Task<DeletedFineDueResponse> Handle(DeleteFineDueCommand request, CancellationToken cancellationToken)
@@ -59,7 +67,7 @@ public class DeleteFineDueCommand
 
             await _fineDueBusinessRules.FineDueShouldExistWhenSelected(fineDue);
 
-            // Ýliþkili BookIssue kaydýný al ve kitabýn durumunu Available yap
+            // Ýliþkili BookIssue kaydýný al 
             var bookIssue = await _bookIssueRepository.GetAsync(
                 bi => bi.Id == fineDue.BookIssueId,
                 cancellationToken: cancellationToken
@@ -77,6 +85,23 @@ public class DeleteFineDueCommand
 
                 await _bookIssueRepository.DeleteAsync(bookIssue); // BookIssue'yu silin
             }
+
+            if (bookIssue != null)
+            {
+                //Ýliþkili MemberId'yi al
+                var member = await _memberRepository.GetByMemberIdAsync(bookIssue.MemberId);
+                var finePayment = new FinePayment
+                {
+                    Id = Guid.NewGuid(), // Otomatik benzersiz anahtar
+                    MemberId = member.Id,
+                    PaymentAmount = fineDue.FineTotal,
+                    CreatedDate = DateTime.Now
+                };
+
+                await _finePaymentRepository.AddAsync(finePayment, cancellationToken);
+            }
+
+
 
             // FineDue'yu silin
             await _fineDueRepository.DeleteAsync(fineDue, cancellationToken: cancellationToken);

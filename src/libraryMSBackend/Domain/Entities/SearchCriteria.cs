@@ -1,15 +1,14 @@
-﻿using NArchitecture.Core.Persistence.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NArchitecture.Core.Persistence.Repositories;
 
 namespace Domain.Entities;
-public class SearchCriteria:Entity<Guid>
+
+public class SearchCriteria : Entity<Guid>
 {
-  
-  
     public string? BookTitle { get; set; } // Nullable
     public string? MagazineTitle { get; set; }
     public string? MaterialName { get; set; }
@@ -23,7 +22,6 @@ public class SearchCriteria:Entity<Guid>
     public string? LocationsName { get; set; }
     public string? LocationsShelfName { get; set; }
     public string? MembersEmail { get; set; }
-
-
+    public string? MemberFirstName { get; set; }
+    public string? MemberLastName { get; set; }
 }
-
