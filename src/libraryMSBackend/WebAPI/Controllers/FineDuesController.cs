@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Application.Features.FinePayments.Queries.FilterSearch;
 using Domain.Entities;
 using Application.Features.FineDues.Queries.FilterSearch;
+using Domain.Enums;
+using Application.Features.FineDues.Queries.Statistics;
 
 namespace WebAPI.Controllers;
 
@@ -72,4 +74,12 @@ public class FineDuesController : BaseController
 
         return Ok(result);
     }
+
+    [HttpGet("finedue/statistics")]
+    public async Task<IActionResult> GetFineDueMoneyStatistics()
+    {
+        var result = await Mediator.Send(new FineDueMoneyStatisticsQuery());
+        return Ok(result);
+    }
+
 }

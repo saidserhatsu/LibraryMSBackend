@@ -11,7 +11,9 @@ public class BookIssueRepository : EfRepositoryBase<BookIssue, Guid, BaseDbConte
     public BookIssueRepository(BaseDbContext context) : base(context)
     {
     }
+    private DbSet<BookIssue> BookIssues => Context.Set<BookIssue>(); // DbSet eriþimi
 
+    public IQueryable<BookIssue> Table => BookIssues.AsQueryable(); // IQueryable eriþimi
     public async Task<int> GetBookCountByMemberIdAsync(Guid memberId)
     {
         // Üyenin sahip olduðu kitaplarýn sayýsýný döndür

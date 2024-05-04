@@ -6,6 +6,7 @@ using Application.Features.BookIssues.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.BookIssues.Queries.Statistics;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +51,12 @@ public class BookIssuesController : BaseController
         GetListBookIssueQuery getListBookIssueQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListBookIssueListItemDto> response = await Mediator.Send(getListBookIssueQuery);
         return Ok(response);
+    }
+
+    [HttpGet("monthly-statistics")]
+    public async Task<IActionResult> GetBookIssueMonthlyStatistics()
+    {
+        var result = await Mediator.Send(new BookIssueMonthlyStatisticsQuery());
+        return Ok(result);
     }
 }

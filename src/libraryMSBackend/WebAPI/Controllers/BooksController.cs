@@ -7,6 +7,7 @@ using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Entities;
+using Domain.Enums;
 
 namespace WebAPI.Controllers;
 
@@ -83,6 +84,12 @@ public class BooksController : BaseController
         var query = new SearchBooksQuery(searchCriteria, pageRequest);
         var result = await Mediator.Send(query);
 
+        return Ok(result);
+    }
+    [HttpGet("book/statistics")]
+    public async Task<IActionResult> GetBookStatistics([FromQuery] BookStatus status)
+    {
+        var result = await Mediator.Send(new BookStatisticsQuery(status));
         return Ok(result);
     }
 

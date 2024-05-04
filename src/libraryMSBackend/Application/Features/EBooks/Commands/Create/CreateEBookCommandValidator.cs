@@ -12,6 +12,5 @@ public class CreateEBookCommandValidator : AbstractValidator<CreateEBookCommand>
         RuleFor(c => c.ReleaseDate).NotEmpty();
         RuleFor(c => c.PageCount).NotEmpty();
         RuleFor(c => c.CategoryId).NotEmpty();
-        RuleFor(c => c.FileUrl).NotEmpty();
     }
 }

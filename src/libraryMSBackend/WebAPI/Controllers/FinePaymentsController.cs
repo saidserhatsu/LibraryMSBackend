@@ -4,6 +4,7 @@ using Application.Features.FinePayments.Commands.Update;
 using Application.Features.FinePayments.Queries.FilterSearch;
 using Application.Features.FinePayments.Queries.GetById;
 using Application.Features.FinePayments.Queries.GetList;
+using Application.Features.FinePayments.Queries.Statistics;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
@@ -71,5 +72,12 @@ public class FinePaymentsController : BaseController
         var result = await Mediator.Send(query);
 
         return Ok(result);
+    }
+
+    [HttpGet("finePaymentMoney-statistics")] 
+    public async Task<IActionResult> GetFinePaymentMoneyStatistics()
+    {
+        var result = await Mediator.Send(new FinePaymentMoneyStatisticsQuery());
+        return Ok(result); 
     }
 }

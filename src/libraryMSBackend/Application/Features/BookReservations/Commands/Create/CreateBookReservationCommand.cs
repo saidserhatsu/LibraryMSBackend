@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using static Application.Features.BookReservations.Constants.BookReservationsOperationClaims;
+using Domain.Enums;
 
 namespace Application.Features.BookReservations.Commands.Create;
 
@@ -53,6 +54,9 @@ public class CreateBookReservationCommand : IRequest<CreatedBookReservationRespo
 
             // Kitap rezerve edilmemiþse, devam et
             BookReservation bookReservation = _mapper.Map<BookReservation>(request);
+            var book = await _bookRepository.GetByIdAsync(request.BookId);
+            book.Status = BookStatus.Reserved;
+            await _bookRepository.UpdateAsync(book);
             await _bookReservationRepository.AddAsync(bookReservation);
 
             CreatedBookReservationResponse response = _mapper.Map<CreatedBookReservationResponse>(bookReservation);

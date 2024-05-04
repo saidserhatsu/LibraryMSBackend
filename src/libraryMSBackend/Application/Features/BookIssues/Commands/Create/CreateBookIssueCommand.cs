@@ -52,8 +52,15 @@ public class CreateBookIssueCommand : IRequest<CreatedBookIssueResponse> , ISecu
 
             // Book is being issued, so set the status to Borrowed
             var book = await _bookRepository.GetByIdAsync(request.BookId);
+            if (book.Status==BookStatus.Available)
+            {
             book.Status = BookStatus.Borrowed; // Change the status to Borrowed
             await _bookRepository.UpdateAsync(book); // Save the status change
+            }
+            else
+            {
+                throw new Exception("Bu kitap rezerve edilmiþ");
+            }
 
             await _bookIssueRepository.AddAsync(bookIssue);
 
