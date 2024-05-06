@@ -1,31 +1,28 @@
-using Application.Features.Members.Constants;
 using Application.Features.Members.Rules;
+using Application.Services.ImageService;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
-using static Application.Features.Members.Constants.MembersOperationClaims;
-using Microsoft.AspNetCore.Http;
-using Application.Services.ImageService;
 
 namespace Application.Features.Members.Commands.Update;
 
-public class UpdateMemberCommand : IRequest<UpdatedMemberResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class UpdateMemberCommand : IRequest<UpdatedMemberResponse>, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
     public IFormFile? File { get; set; } // Resim dosyasý için
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string PhoneNumber { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? PhoneNumber { get; set; }
     public DateTime DateOfBirth { get; set; }
     public bool Subscribe { get; set; }
 
 
-    public string[] Roles => [Admin, Write, MembersOperationClaims.Update];
+    //public string[] Roles => [Admin, Write, MembersOperationClaims.Update];
 
     public bool BypassCache { get; }
     public string? CacheKey { get; }
@@ -40,7 +37,7 @@ public class UpdateMemberCommand : IRequest<UpdatedMemberResponse>, ISecuredRequ
 
 
         public UpdateMemberCommandHandler(IMapper mapper, IMemberRepository memberRepository,
-                                         MemberBusinessRules memberBusinessRules,ImageServiceBase imageService)
+                                         MemberBusinessRules memberBusinessRules, ImageServiceBase imageService)
         {
             _mapper = mapper;
             _memberRepository = memberRepository;
