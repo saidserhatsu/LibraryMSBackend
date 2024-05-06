@@ -40,6 +40,11 @@ public class CatalogManagementConfiguration : IEntityTypeConfiguration<CatalogMa
             .WithMany(m => m.CatalogManagements)
             .HasForeignKey(cm => cm.EBookId);
 
+        builder
+            .HasOne(cm => cm.Catalog)
+            .WithMany(m => m.CatalogManagements)
+            .HasForeignKey(cm => cm.CatalogId);
+
         builder.HasQueryFilter(cm => !cm.DeletedDate.HasValue);
     }
 }

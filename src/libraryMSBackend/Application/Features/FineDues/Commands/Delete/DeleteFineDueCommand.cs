@@ -79,8 +79,11 @@ public class DeleteFineDueCommand
                 var book = await _bookRepository.GetByIdAsync(bookIssue.BookId);
                 if (book != null)
                 {
+                    if (book.Status==BookStatus.Borrowed)
+                    {
                     book.Status = BookStatus.Available; // Durumu Available yapýn
                     await _bookRepository.UpdateAsync(book); // Kitap durumunu kaydedin
+                    }
                 }
 
                 await _bookIssueRepository.DeleteAsync(bookIssue); // BookIssue'yu silin

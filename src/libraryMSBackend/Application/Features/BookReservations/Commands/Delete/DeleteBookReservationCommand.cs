@@ -15,7 +15,6 @@ namespace Application.Features.BookReservations.Commands.Delete
 {
     public class DeleteBookReservationCommand
         : IRequest<DeletedBookReservationResponse>,
-            ISecuredRequest,
             ICacheRemoverRequest,
             ILoggableRequest,
             ITransactionalRequest

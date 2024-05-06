@@ -46,7 +46,8 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
             new Category() { Id = 27, Name = "Ekonomi", CreatedDate = DateTime.UtcNow },
             new Category() { Id = 28, Name = "Ýþ Dünyasý", CreatedDate = DateTime.UtcNow },
             new Category() { Id = 29, Name = "Hukuk", CreatedDate = DateTime.UtcNow },
-            new Category() { Id = 30, Name = "Politika", CreatedDate = DateTime.UtcNow }
+            new Category() { Id = 30, Name = "Politika", CreatedDate = DateTime.UtcNow },
+            new Category() { Id = 31, Name = "Kiþisel Geliþim", CreatedDate = DateTime.UtcNow }
             );
 
         builder.HasQueryFilter(c => !c.DeletedDate.HasValue);

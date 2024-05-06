@@ -13,7 +13,7 @@ using Domain.Enums;
 
 namespace Application.Features.BookReservations.Commands.Create;
 
-public class CreateBookReservationCommand : IRequest<CreatedBookReservationResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class CreateBookReservationCommand : IRequest<CreatedBookReservationResponse>,  ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid BookId { get; set; }
     public Guid MemberId { get; set; }

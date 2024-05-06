@@ -50,8 +50,12 @@ public class DeleteBookIssueCommand : IRequest<DeletedBookIssueResponse>, ISecur
 
             // Kitabý alýn ve durumunu Available olarak güncelleyin
             var book = await _bookRepository.GetByIdAsync(bookIssue!.BookId);
-            book.Status = BookStatus.Available; // Durumu Available olarak ayarlayýn
-            await _bookRepository.UpdateAsync(book); // Güncellenen durumu kaydedin
+            if (book.Status == BookStatus.Borrowed)
+            {
+                book.Status = BookStatus.Available; // Durumu Available yapýn
+                await _bookRepository.UpdateAsync(book); // Kitap durumunu kaydedin
+            }
+            
 
             // Ödünç verme kaydýný silin
             await _bookIssueRepository.DeleteAsync(bookIssue);

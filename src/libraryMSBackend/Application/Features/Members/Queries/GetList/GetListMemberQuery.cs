@@ -38,10 +38,14 @@ public class GetListMemberQuery : IRequest<GetListResponse<GetListMemberListItem
         public async Task<GetListResponse<GetListMemberListItemDto>> Handle(GetListMemberQuery request, CancellationToken cancellationToken)
         {
             IPaginate<Member> members = await _memberRepository.GetListAsync(
-                 include: b => b.Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
+                 include: b => b.IgnoreQueryFilters() // Soft delete filtrelerini atlar
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Category)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher)
-                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.BookAuthors).ThenInclude(b => b.Author),
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.BookAuthors).ThenInclude(b => b.Author)
+                 .Include(b => b.BookIssues).ThenInclude(b => b.FineDues)
+                 .Include(b=>b.FinePayments)
+                 .Include(b=>b.FavoriteBooks).ThenInclude(b=>b.Book),
                  index: request.PageRequest.PageIndex,
                  size: request.PageRequest.PageSize,
                  cancellationToken: cancellationToken

@@ -13,6 +13,9 @@ using Application.Features.Authors.Queries.GetList;
 using System.Linq;
 using Application.Features.Magazines.Queries.FilterSearch;
 using Application.Features.Members.Queries.FilterSearch;
+using Application.Features.FavoriteBooks.Queries.GetList;
+using Application.Features.FineDues.Queries.GetList;
+using Application.Features.FinePayments.Queries.GetList;
 
 namespace Application.Features.Members.Profiles;
 
@@ -30,6 +33,46 @@ public class MappingProfiles : Profile
         CreateMap<Member, GetListMemberListItemDto>().ReverseMap();
 
         CreateMap<Member, GetListMemberListItemDto>()
+            .ForMember(dest => dest.FinePayments, opt =>
+        opt.MapFrom(src => src.FinePayments != null
+            ? src.FinePayments.Select(fp => new GetListFinePaymentListItemDto
+            {
+                Id = fp.Id,
+                PaymentAmount = fp.PaymentAmount,
+                MemberId = fp.MemberId,
+                MemberFirstName = fp.Member.FirstName,
+                MemberLastName = fp.Member.LastName,
+                MemberEmail = fp.Member.Email
+            }).ToList()
+            : new List<GetListFinePaymentListItemDto>()))
+
+
+            .ForMember(dest => dest.FineDues, opt =>
+        opt.MapFrom(src => src.BookIssues
+            .SelectMany(bi => bi.FineDues, (bi, fd) => new GetListFineDueListItemDto
+            {
+                Id = fd.Id,
+                FineTotal = fd.FineTotal,
+                BookIssueId = fd.BookIssueId,
+                FineDate = fd.FineDate,
+                BookIssueMemberFirstName = bi.Member.FirstName,
+                BookIssueMemberLastName = bi.Member.LastName,
+                BookIssueBookBookTitle = bi.Book.BookTitle,
+                BookIssueReturnDate = bi.ReturnDate.ToString() ?? "Unknown"
+            }).ToList()))
+
+
+            .ForMember(dest => dest.Favorites, opt =>
+        opt.MapFrom(src => src.FavoriteBooks != null ?
+        src.FavoriteBooks.Select(fb => new GetListFavoriteBookListItemDto
+        {
+            Id = fb.Id,
+            BookId = fb.BookId,
+            BookBookTitle = fb.Book.BookTitle,
+            MemberId = fb.MemberId,
+            MemberFirstName = fb.Member.FirstName,
+            MemberLastName = fb.Member.LastName
+        }).ToList() : new List<GetListFavoriteBookListItemDto>()))
               .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues
               .Select(m => new GetListBookListItemDto
               {
@@ -50,7 +93,7 @@ public class MappingProfiles : Profile
                       ShelfName = m.Book.Location.ShelfName,
                       FloorNo = m.Book.Location.FloorNo,
                       ShelfNo = m.Book.Location.ShelfNo
-                  },
+                  } ,
                   Authors = m.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
                   {
                       Id = ba.Author.Id,

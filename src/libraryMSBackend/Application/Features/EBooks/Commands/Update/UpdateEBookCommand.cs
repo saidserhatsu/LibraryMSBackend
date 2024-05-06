@@ -11,6 +11,7 @@ using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using Microsoft.AspNetCore.Http; // IFormFile için
 using static Application.Features.EBooks.Constants.EBooksOperationClaims;
+using Application.Services.PDFService;
 
 namespace Application.Features.EBooks.Commands.Update;
 
@@ -23,68 +24,69 @@ public class UpdateEBookCommand : IRequest<UpdatedEBookResponse>, ISecuredReques
     public int ReleaseDate { get; set; }
     public int PageCount { get; set; }
     public int CategoryId { get; set; }
-    public string FileUrl { get; set; }
-    public IFormFile? File { get; set; } // Resim dosyasý eklendi
+    public IFormFile? PdfFile { get; set; } // PDF dosyasý için
+    public IFormFile? ImageFile { get; set; } // Resim dosyasý için
 
-    public string[] Roles => new[] { Admin, Write, EBooksOperationClaims.Update };
-
+    public string[] Roles => new[] { "Admin", "Write", "EBooksOperationClaims.Update" };
     public bool BypassCache { get; }
     public string? CacheKey { get; }
     public string[]? CacheGroupKey => new[] { "GetEBooks" };
+}
 
-    public class UpdateEBookCommandHandler : IRequestHandler<UpdateEBookCommand, UpdatedEBookResponse>
+
+public class UpdateEBookCommandHandler : IRequestHandler<UpdateEBookCommand, UpdatedEBookResponse>
+{
+    private readonly IMapper _mapper;
+    private readonly IEBookRepository _eBookRepository;
+    private readonly EBookBusinessRules _eBookBusinessRules;
+    private readonly PDFServiceBase _pdfService; // PDF hizmeti eklendi
+    private readonly ImageServiceBase _imageService; // Resim hizmeti de var
+
+    public UpdateEBookCommandHandler(
+        IMapper mapper,
+        IEBookRepository eBookRepository,
+        EBookBusinessRules eBookBusinessRules,
+        PDFServiceBase pdfService, // PDF hizmeti Constructor'a eklendi
+        ImageServiceBase imageService // Resim hizmeti Constructor'a eklendi
+    )
     {
-        private readonly IMapper _mapper;
-        private readonly IEBookRepository _eBookRepository;
-        private readonly EBookBusinessRules _eBookBusinessRules;
-        private readonly ImageServiceBase _imageService; // Resim hizmeti eklendi
+        _mapper = mapper;
+        _eBookRepository = eBookRepository;
+        _eBookBusinessRules = eBookBusinessRules;
+        _pdfService = pdfService; // PDF hizmeti Constructor'da saklanýyor
+        _imageService = imageService; // Resim hizmeti Constructor'da saklanýyor
+    }
 
-        public UpdateEBookCommandHandler(
-            IMapper mapper,
-            IEBookRepository eBookRepository,
-            EBookBusinessRules eBookBusinessRules,
-            ImageServiceBase imageService // Resim hizmeti Constructor'a eklendi
-        )
+    public async Task<UpdatedEBookResponse> Handle(UpdateEBookCommand request, CancellationToken cancellationToken)
+    {
+        var eBook = await _eBookRepository.GetAsync(
+            eb => eb.Id == request.Id,
+            cancellationToken: cancellationToken
+        );
+
+        await _eBookBusinessRules.EBookShouldExistWhenSelected(eBook);
+
+        // Yeni PDF dosyasý varsa, yükleyin ve gerekirse eski dosyayý silin
+        if (request.PdfFile != null) // PDF dosyasý için kontrol
         {
-            _mapper = mapper;
-            _eBookRepository = eBookRepository;
-            _eBookBusinessRules = eBookBusinessRules;
-            _imageService = imageService; // Resim hizmetini saklayýn
-        }
+            var newPdfUrl = await _pdfService.UploadAsync(request.PdfFile); // Yeni PDF dosyasýný yükleyin
 
-        public async Task<UpdatedEBookResponse> Handle(UpdateEBookCommand request, CancellationToken cancellationToken)
-        {
-            // EBook'u bulun
-            var eBook = await _eBookRepository.GetAsync(
-                eb => eb.Id == request.Id,
-                cancellationToken: cancellationToken
-            );
-            await _eBookBusinessRules.EBookShouldExistWhenSelected(eBook);
-
-            // Yeni resim dosyasý varsa, eski resmi silip yeni resmi yükleyin
-            if (request.File != null)
+            if (!string.IsNullOrEmpty(eBook.FileUrl)) // Eðer eski PDF URL'si varsa
             {
-                string newImageUrl = await _imageService.UploadAsync(request.File); // Yeni resmi yükleyin
-
-                // Eski bir resim varsa, silin
-                if (!string.IsNullOrEmpty(eBook.ImageUrl))
-                {
-                    await _imageService.DeleteAsync(eBook.ImageUrl); // Eski resmi silin
-                }
-
-                // Yeni resim URL'sini ayarlayýn
-                eBook.ImageUrl = newImageUrl;
+                await _pdfService.DeleteAsync(eBook.FileUrl); // Eski PDF'yi silin
             }
 
-            // EBook'u güncelleyin
-            _mapper.Map(request, eBook);
-            await _eBookRepository.UpdateAsync(eBook!);
-
-            // Yanýtý oluþturup döndürün
-            var response = _mapper.Map<UpdatedEBookResponse>(eBook);
-            response.ImageUrl = eBook.ImageUrl; // Yanýta resim URL'sini ekleyin
-
-            return response;
+            eBook.FileUrl = newPdfUrl; // Yeni PDF URL'sini ayarlayýn
         }
+
+        // Güncellenen EBook
+        _mapper.Map(request, eBook); // Diðer alanlarý güncelleyin
+        await _eBookRepository.UpdateAsync(eBook); // EBook'u güncelleyin
+
+        var response = _mapper.Map<UpdatedEBookResponse>(eBook); // Yanýtý oluþturun
+        response.FileUrl = eBook.FileUrl; // PDF URL'sini yanýta ekleyin
+        response.ImageUrl = eBook.ImageUrl; // Resim URL'sini yanýta ekleyin
+
+        return response; // Yanýtý döndürün
     }
 }

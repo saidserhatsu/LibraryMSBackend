@@ -34,8 +34,8 @@ public class BookAuthorConfiguration : IEntityTypeConfiguration<BookAuthor>
             new BookAuthor() { BookId = Guid.Parse("48f650e8-1cc9-4bac-a77c-59b4b6056dc7"), AuthorId = Guid.Parse("64919748-c9e3-423b-a9e0-51652edb5fba") },
             new BookAuthor() { BookId = Guid.Parse("0ac0f60e-20d3-47d0-982e-2d642c19e704"), AuthorId = Guid.Parse("b5517ee6-ca04-4e72-96cf-a1f9d4a9954e") },
             new BookAuthor() { BookId = Guid.Parse("2e73afc5-80d2-4549-bab8-02b69762dd04"), AuthorId = Guid.Parse("c5b259fb-a635-48b3-9a92-6155c317bc68") },
-            new BookAuthor() { BookId = Guid.Parse("c776b453-d81f-4d5b-82af-845fcd3b08fb"), AuthorId = Guid.Parse("e8e83303-6ab3-4cb7-9573-7be6ab4d1a21") },
-            new BookAuthor() { BookId = Guid.Parse("a6e2a4ba-ab5f-473d-a47e-b6634c241389"), AuthorId = Guid.Parse("e88f8263-c7f6-4c96-aa5e-969bbc7c7e34") }
+            new BookAuthor() { BookId = Guid.Parse("c776b453-d81f-4d5b-82af-845fcd3b08fb"), AuthorId = Guid.Parse("e8e83303-6ab3-4cb7-9573-7be6ab4d1a21") }
+            
             );
       
     }

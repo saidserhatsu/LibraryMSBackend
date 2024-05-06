@@ -12,7 +12,7 @@ using static Application.Features.BookReservations.Constants.BookReservationsOpe
 
 namespace Application.Features.BookReservations.Commands.Update;
 
-public class UpdateBookReservationCommand : IRequest<UpdatedBookReservationResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class UpdateBookReservationCommand : IRequest<UpdatedBookReservationResponse>, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
     public Guid BookId { get; set; }

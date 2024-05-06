@@ -1,4 +1,7 @@
 using Application.Features.Books.Queries.GetList;
+using Application.Features.FavoriteBooks.Queries.GetList;
+using Application.Features.FineDues.Queries.GetList;
+using Application.Features.FinePayments.Queries.GetList;
 using NArchitecture.Core.Application.Dtos;
 
 namespace Application.Features.Members.Queries.GetList;
@@ -16,4 +19,7 @@ public class GetListMemberListItemDto : IDto
     public bool Subscribe { get; set; }
 
     public List<GetListBookListItemDto> Books { get; set; }
+    public List<GetListFavoriteBookListItemDto> Favorites { get; set; }
+    public List<GetListFineDueListItemDto> FineDues { get; set; }
+    public List<GetListFinePaymentListItemDto> FinePayments { get; set; }
 }
