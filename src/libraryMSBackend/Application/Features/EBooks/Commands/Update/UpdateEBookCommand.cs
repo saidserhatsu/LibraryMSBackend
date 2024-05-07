@@ -65,8 +65,23 @@ public class UpdateEBookCommandHandler : IRequestHandler<UpdateEBookCommand, Upd
         );
 
         await _eBookBusinessRules.EBookShouldExistWhenSelected(eBook);
+        // Yeni Ýmage  varsa yükleyin ve gerekirse eski dosyayý sil
+        if (request.ImageFile != null) // Ýmage dosyasý için kontrol
+        {
+            // Yeni resmi yükle ve URL'sini al
+            string newImageUrl = await _imageService.UploadAsync(request.ImageFile);
 
-        // Yeni PDF dosyasý varsa, yükleyin ve gerekirse eski dosyayý silin
+            // Eski resmi sil (varsa)
+            if (!string.IsNullOrEmpty(eBook.ImageUrl))
+            {
+                await _imageService.DeleteAsync(eBook.ImageUrl);
+            }
+
+            // Yeni resim URL'sini ayarla
+            eBook.ImageUrl = newImageUrl;
+        }
+
+        // Yeni PDF dosyasý varsa, yükleyin ve gerekirse eski dosyayý sil
         if (request.PdfFile != null) // PDF dosyasý için kontrol
         {
             var newPdfUrl = await _pdfService.UploadAsync(request.PdfFile); // Yeni PDF dosyasýný yükleyin

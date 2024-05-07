@@ -50,16 +50,16 @@ public class CreateBookIssueCommand : IRequest<CreatedBookIssueResponse> , ISecu
 
             BookIssue bookIssue = _mapper.Map<BookIssue>(request);
 
-            // Book is being issued, so set the status to Borrowed
+            //Kitap boþtaysa (Available) kitabý al
             var book = await _bookRepository.GetByIdAsync(request.BookId);
             if (book.Status==BookStatus.Available)
             {
-            book.Status = BookStatus.Borrowed; // Change the status to Borrowed
-            await _bookRepository.UpdateAsync(book); // Save the status change
+            book.Status = BookStatus.Borrowed;
+            await _bookRepository.UpdateAsync(book); 
             }
             else
             {
-                throw new Exception("Bu kitap rezerve edilmiþ");
+                throw new Exception("Bu kitap rezerve edilmiþ veya alýnmýþ durumda");
             }
 
             await _bookIssueRepository.AddAsync(bookIssue);
