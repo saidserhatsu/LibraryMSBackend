@@ -1,3 +1,4 @@
+using Application.Features.BookReservations.Queries.GetList;
 using Application.Features.Books.Queries.GetList;
 using Application.Features.FavoriteBooks.Queries.GetList;
 using Application.Features.MemberSettings.Queries.GetList;
@@ -21,4 +22,5 @@ public class GetByIdMemberResponse : IResponse
     public List<GetListBookListItemDto> Books { get; set; }
     public List<GetListFavoriteBookListItemDto> FavoriteBooks { get; set; }
 
+    public List<GetListBookReservationListItemDto> Reservations { get; set; }
 }

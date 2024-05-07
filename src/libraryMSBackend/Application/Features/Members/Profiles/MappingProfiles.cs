@@ -1,21 +1,20 @@
-using Application.Features.Members.Commands.Create;
-using Application.Features.Members.Commands.Delete;
-using Application.Features.Members.Commands.Update;
-using Application.Features.Members.Queries.GetById;
-using Application.Features.Members.Queries.GetList;
-using AutoMapper;
-using NArchitecture.Core.Application.Responses;
-using Domain.Entities;
-using NArchitecture.Core.Persistence.Paging;
-using Application.Features.Books.Queries.GetList;
-using Application.Features.Locations.Queries.GetList;
 using Application.Features.Authors.Queries.GetList;
-using System.Linq;
-using Application.Features.Magazines.Queries.FilterSearch;
-using Application.Features.Members.Queries.FilterSearch;
+using Application.Features.BookReservations.Queries.GetList;
+using Application.Features.Books.Queries.GetList;
 using Application.Features.FavoriteBooks.Queries.GetList;
 using Application.Features.FineDues.Queries.GetList;
 using Application.Features.FinePayments.Queries.GetList;
+using Application.Features.Locations.Queries.GetList;
+using Application.Features.Members.Commands.Create;
+using Application.Features.Members.Commands.Delete;
+using Application.Features.Members.Commands.Update;
+using Application.Features.Members.Queries.FilterSearch;
+using Application.Features.Members.Queries.GetById;
+using Application.Features.Members.Queries.GetList;
+using AutoMapper;
+using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Features.Members.Profiles;
 
@@ -84,8 +83,8 @@ public class MappingProfiles : Profile
                   Status = m.Book.Status.ToString(),
                   CategoryName = m.Book.Category.Name,
                   PublisherName = m.Book.Publisher.Name,
-                  ImageUrl=m.Book.ImageUrl,
-                  PageCount = m.Book.PageCount,   
+                  ImageUrl = m.Book.ImageUrl,
+                  PageCount = m.Book.PageCount,
                   Locations = new GetListLocationListItemDto
                   {
                       Id = m.Book.Id,
@@ -93,7 +92,7 @@ public class MappingProfiles : Profile
                       ShelfName = m.Book.Location.ShelfName,
                       FloorNo = m.Book.Location.FloorNo,
                       ShelfNo = m.Book.Location.ShelfNo
-                  } ,
+                  },
                   Authors = m.Book.BookAuthors.Select(ba => new GetListAuthorListItemDto
                   {
                       Id = ba.Author.Id,
@@ -112,8 +111,8 @@ public class MappingProfiles : Profile
                  ReleaseDate = m.Book.ReleaseDate,
                  Status = m.Book.Status.ToString(),
                  CategoryName = m.Book.Category.Name,
-                 PageCount = m.Book.PageCount, 
-                 ImageUrl=m.Book.ImageUrl,
+                 PageCount = m.Book.PageCount,
+                 ImageUrl = m.Book.ImageUrl,
                  PublisherName = m.Book.Publisher.Name,
                  Locations = new GetListLocationListItemDto
                  {
@@ -129,7 +128,18 @@ public class MappingProfiles : Profile
                      FirstName = ba.Author.FirstName,
                      LastName = ba.Author.LastName
                  }).ToList()
-             })));
+             })))
+             .ForMember(dest => dest.Reservations, opt => opt.MapFrom(src => src.BookReservations.Select(r => new GetListBookReservationListItemDto
+             {
+                 Id = r.Id,
+                 BookId = r.BookId,
+                 MemberId = r.MemberId,
+                 MemberFirstName = r.Member.FirstName,
+                 MemberLastName = r.Member.LastName,
+                 BookBookTitle = r.Book.BookTitle,
+                 BookStatus = r.Book.Status.ToString(),
+                 RequestDate = r.RequestDate
+             }).ToList()));
         CreateMap<Member, SearchMembersResponse>()
          .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
          .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.BookIssues
@@ -143,8 +153,8 @@ public class MappingProfiles : Profile
                  Status = m.Book.Status.ToString(),
                  CategoryName = m.Book.Category.Name,
                  PublisherName = m.Book.Publisher.Name,
-                 ImageUrl= m.Book.ImageUrl,
-                 PageCount=m.Book.PageCount,
+                 ImageUrl = m.Book.ImageUrl,
+                 PageCount = m.Book.PageCount,
                  Locations = new GetListLocationListItemDto
                  {
                      Id = m.Book.Id,
