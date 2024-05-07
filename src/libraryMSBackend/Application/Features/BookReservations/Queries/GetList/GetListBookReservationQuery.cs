@@ -1,27 +1,20 @@
-using Application.Features.BookReservations.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.BookReservations.Constants.BookReservationsOperationClaims;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.BookReservations.Queries.GetList;
 
-public class GetListBookReservationQuery : IRequest<GetListResponse<GetListBookReservationListItemDto>>,  ICachableRequest
+public class GetListBookReservationQuery : IRequest<GetListResponse<GetListBookReservationListItemDto>>
 {
     public PageRequest PageRequest { get; set; }
 
     public string[] Roles => [Admin, Read];
-
-    public bool BypassCache { get; }
-    public string? CacheKey => $"GetListBookReservations({PageRequest.PageIndex},{PageRequest.PageSize})";
-    public string? CacheGroupKey => "GetBookReservations";
     public TimeSpan? SlidingExpiration { get; }
 
     public class GetListBookReservationQueryHandler : IRequestHandler<GetListBookReservationQuery, GetListResponse<GetListBookReservationListItemDto>>
@@ -38,9 +31,9 @@ public class GetListBookReservationQuery : IRequest<GetListResponse<GetListBookR
         public async Task<GetListResponse<GetListBookReservationListItemDto>> Handle(GetListBookReservationQuery request, CancellationToken cancellationToken)
         {
             IPaginate<BookReservation> bookReservations = await _bookReservationRepository.GetListAsync(
-                include: bi => bi.Include(bi=>bi.Book).Include(bi=>bi.Member),
+                include: bi => bi.Include(bi => bi.Book).Include(bi => bi.Member),
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
             );
 
