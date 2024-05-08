@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.EBooks.Constants.EBooksOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.EBooks.Queries.GetById;
 
@@ -30,7 +31,10 @@ public class GetByIdEBookQuery : IRequest<GetByIdEBookResponse>, ISecuredRequest
 
         public async Task<GetByIdEBookResponse> Handle(GetByIdEBookQuery request, CancellationToken cancellationToken)
         {
-            EBook? eBook = await _eBookRepository.GetAsync(predicate: eb => eb.Id == request.Id, cancellationToken: cancellationToken);
+            EBook? eBook = await _eBookRepository.GetAsync(
+                include: eb => eb.Include(eb => eb.Category),
+                predicate: eb => eb.Id == request.Id, cancellationToken: cancellationToken
+                );
             await _eBookBusinessRules.EBookShouldExistWhenSelected(eBook);
 
             GetByIdEBookResponse response = _mapper.Map<GetByIdEBookResponse>(eBook);

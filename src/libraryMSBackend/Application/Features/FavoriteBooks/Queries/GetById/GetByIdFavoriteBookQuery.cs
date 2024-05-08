@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.FavoriteBooks.Constants.FavoriteBooksOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.FavoriteBooks.Queries.GetById;
 
@@ -30,7 +31,10 @@ public class GetByIdFavoriteBookQuery : IRequest<GetByIdFavoriteBookResponse>, I
 
         public async Task<GetByIdFavoriteBookResponse> Handle(GetByIdFavoriteBookQuery request, CancellationToken cancellationToken)
         {
-            FavoriteBook? favoriteBook = await _favoriteBookRepository.GetAsync(predicate: fb => fb.Id == request.Id, cancellationToken: cancellationToken);
+            FavoriteBook? favoriteBook = await _favoriteBookRepository.GetAsync(
+                include: fb => fb.Include(fb => fb.Book).Include(fb => fb.Member),
+                predicate: fb => fb.Id == request.Id, cancellationToken: cancellationToken
+                );
             await _favoriteBookBusinessRules.FavoriteBookShouldExistWhenSelected(favoriteBook);
 
             GetByIdFavoriteBookResponse response = _mapper.Map<GetByIdFavoriteBookResponse>(favoriteBook);

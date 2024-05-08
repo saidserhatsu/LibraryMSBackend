@@ -11,5 +11,7 @@ public class GetByIdEBookResponse : IResponse
     public int ReleaseDate { get; set; }
     public int PageCount { get; set; }
     public int CategoryId { get; set; }
+    public string CategoryName { get; set; }
     public string FileUrl { get; set; }
+    public string ImageUrl { get; set; }
 }

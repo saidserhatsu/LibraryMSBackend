@@ -8,10 +8,8 @@ public class GetByIdAnnouncementResponse : IResponse
     public Guid Id { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }
-    public AnnouncementTag Tag { get; set; }
+    public string Tag { get; set; }
+    public string ImageUrl { get; set; }
 
-    public DateTime CreatedDate { get; set; }
-
-    public DateTime? UpdatedDate { get; set; }
 
 }

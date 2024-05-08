@@ -32,7 +32,7 @@ public class GetByIdBookIssueQuery : IRequest<GetByIdBookIssueResponse>
         public async Task<GetByIdBookIssueResponse> Handle(GetByIdBookIssueQuery request, CancellationToken cancellationToken)
         {
             BookIssue? bookIssue = await _bookIssueRepository.GetAsync(predicate: bi => bi.Id == request.Id, cancellationToken: cancellationToken,
-                include: bi => bi.Include(bi => bi.FineDues)
+                include: bi => bi.Include(bi => bi.FineDues).Include(bi => bi.Book).Include(bi => bi.Member).Include(bi => bi.LibraryStaff)
                 );
             await _bookIssueBusinessRules.BookIssueShouldExistWhenSelected(bookIssue);
 

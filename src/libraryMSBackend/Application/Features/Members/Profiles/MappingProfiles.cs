@@ -84,7 +84,7 @@ public class MappingProfiles : Profile
                   CategoryName = m.Book.Category.Name,
                   PublisherName = m.Book.Publisher.Name,
                   ImageUrl = m.Book.ImageUrl,
-                  PageCount = m.Book.PageCount,
+                  PageCount = m.Book.PageCount, 
                   Locations = new GetListLocationListItemDto
                   {
                       Id = m.Book.Id,

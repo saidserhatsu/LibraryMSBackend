@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.BookReservations.Constants.BookReservationsOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.BookReservations.Queries.GetById;
 
@@ -30,7 +31,10 @@ public class GetByIdBookReservationQuery : IRequest<GetByIdBookReservationRespon
 
         public async Task<GetByIdBookReservationResponse> Handle(GetByIdBookReservationQuery request, CancellationToken cancellationToken)
         {
-            BookReservation? bookReservation = await _bookReservationRepository.GetAsync(predicate: br => br.Id == request.Id, cancellationToken: cancellationToken);
+            BookReservation? bookReservation = await _bookReservationRepository.GetAsync(
+                include: bi => bi.Include(bi => bi.Book).Include(bi => bi.Member),
+                predicate: br => br.Id == request.Id, cancellationToken: cancellationToken
+                );
             await _bookReservationBusinessRules.BookReservationShouldExistWhenSelected(bookReservation);
 
             GetByIdBookReservationResponse response = _mapper.Map<GetByIdBookReservationResponse>(bookReservation);
