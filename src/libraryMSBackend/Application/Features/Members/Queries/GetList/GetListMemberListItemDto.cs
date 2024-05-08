@@ -23,5 +23,5 @@ public class GetListMemberListItemDto : IDto
     public List<GetListFavoriteBookListItemDto> Favorites { get; set; }
     public List<GetListFineDueListItemDto> FineDues { get; set; }
     public List<GetListFinePaymentListItemDto> FinePayments { get; set; }
-    public List<GetListBookIssueListItemDto> Bookýssues { get; set; }
+    public List<GetListBookIssueListItemDto> BookIssues { get; set; }
 }
