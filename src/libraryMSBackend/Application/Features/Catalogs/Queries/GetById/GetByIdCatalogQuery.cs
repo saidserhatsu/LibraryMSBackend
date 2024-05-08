@@ -1,20 +1,15 @@
-using Application.Features.Catalogs.Constants;
 using Application.Features.Catalogs.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
-using static Application.Features.Catalogs.Constants.CatalogsOperationClaims;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Catalogs.Queries.GetById;
 
-public class GetByIdCatalogQuery : IRequest<GetByIdCatalogResponse>, ISecuredRequest
+public class GetByIdCatalogQuery : IRequest<GetByIdCatalogResponse>
 {
     public Guid Id { get; set; }
-
-    public string[] Roles => [Admin, Read];
 
     public class GetByIdCatalogQueryHandler : IRequestHandler<GetByIdCatalogQuery, GetByIdCatalogResponse>
     {
