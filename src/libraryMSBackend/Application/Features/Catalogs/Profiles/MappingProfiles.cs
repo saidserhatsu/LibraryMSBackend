@@ -17,6 +17,8 @@ using Application.Features.Categories.Queries.GetList;
 using Application.Features.Publishers.Queries.GetList;
 using System.Runtime.CompilerServices;
 using Application.Features.EBooks.Queries.GetList;
+using Application.Features.Categories.Queries.FilterSearch;
+using Application.Features.Catalogs.Queries.FilterSearch;
 
 namespace Application.Features.Catalogs.Profiles;
 
@@ -200,7 +202,8 @@ public class MappingProfiles : Profile
                     })));
 
 
-
+        CreateMap<Catalog, SearchCatalogsResponse>()
+        .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
 
 
 

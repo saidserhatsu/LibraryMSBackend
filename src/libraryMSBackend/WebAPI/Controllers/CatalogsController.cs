@@ -6,6 +6,9 @@ using Application.Features.Catalogs.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Categories.Queries.FilterSearch;
+using Domain.Entities;
+using Application.Features.Catalogs.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -14,7 +17,7 @@ namespace WebAPI.Controllers;
 public class CatalogsController : BaseController
 {
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateCatalogCommand createCatalogCommand)
+    public async Task<IActionResult> Add([FromForm] CreateCatalogCommand createCatalogCommand)
     {
         CreatedCatalogResponse response = await Mediator.Send(createCatalogCommand);
 
@@ -22,7 +25,7 @@ public class CatalogsController : BaseController
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateCatalogCommand updateCatalogCommand)
+    public async Task<IActionResult> Update([FromForm] UpdateCatalogCommand updateCatalogCommand)
     {
         UpdatedCatalogResponse response = await Mediator.Send(updateCatalogCommand);
 
@@ -50,5 +53,25 @@ public class CatalogsController : BaseController
         GetListCatalogQuery getListCatalogQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListCatalogListItemDto> response = await Mediator.Send(getListCatalogQuery);
         return Ok(response);
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchCatalogs(
+   [FromQuery(Name = "Name")] string? name,  // nullable
+   [FromQuery] PageRequest pageRequest)
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria
+        {
+            CatalogName = name
+        };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchCatalogsQuery(searchCriteria, pageRequest);
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

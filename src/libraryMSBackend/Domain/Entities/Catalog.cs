@@ -9,6 +9,7 @@ namespace Domain.Entities;
 public class Catalog : Entity<Guid>
 {
     public string Name { get; set; }
+    public string ImageUrl { get; set; }
     public Catalog()
     {
         CatalogManagements = new HashSet<CatalogManagement>();

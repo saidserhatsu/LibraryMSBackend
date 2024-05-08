@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using static Application.Features.Catalogs.Constants.CatalogsOperationClaims;
+using Application.Services.ImageService;
 
 namespace Application.Features.Catalogs.Commands.Update;
 
@@ -28,13 +29,15 @@ public class UpdateCatalogCommand : IRequest<UpdatedCatalogResponse>, ISecuredRe
         private readonly IMapper _mapper;
         private readonly ICatalogRepository _catalogRepository;
         private readonly CatalogBusinessRules _catalogBusinessRules;
+        private readonly ImageServiceBase _imageService; // Resim hizmeti eklendi
 
         public UpdateCatalogCommandHandler(IMapper mapper, ICatalogRepository catalogRepository,
-                                         CatalogBusinessRules catalogBusinessRules)
+                                         CatalogBusinessRules catalogBusinessRules, ImageServiceBase imageService )// Resim servisi eklendi)
         {
             _mapper = mapper;
             _catalogRepository = catalogRepository;
             _catalogBusinessRules = catalogBusinessRules;
+            _imageService = imageService;
         }
 
         public async Task<UpdatedCatalogResponse> Handle(UpdateCatalogCommand request, CancellationToken cancellationToken)

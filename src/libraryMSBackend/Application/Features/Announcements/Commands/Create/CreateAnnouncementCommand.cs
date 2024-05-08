@@ -26,7 +26,6 @@ public class CreateAnnouncementCommand
     public string Content { get; set; }
     public AnnouncementTag Tag { get; set; }
     public IFormFile? File { get; set; } // Resim dosyasý eklenmiþ
-
     public string[] Roles => new[] { Admin, Write, AnnouncementsOperationClaims.Create };
 
     public bool BypassCache { get; }

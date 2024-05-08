@@ -38,7 +38,7 @@ public class GetListCatalogQuery : IRequest<GetListResponse<GetListCatalogListIt
         public async Task<GetListResponse<GetListCatalogListItemDto>> Handle(GetListCatalogQuery request, CancellationToken cancellationToken)
         {
             IPaginate<Catalog> catalogs = await _catalogRepository.GetListAsync(
-                include: cm => cm.Include(cm=>cm.CatalogManagements).ThenInclude(cm=>cm.Book).ThenInclude(cm => cm.BookAuthors).ThenInclude(cm => cm.Author)
+                 include: cm => cm.Include(cm=>cm.CatalogManagements).ThenInclude(cm=>cm.Book).ThenInclude(cm => cm.BookAuthors).ThenInclude(cm => cm.Author)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Magazine)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Material)
                 .Include(cm=>cm.CatalogManagements).ThenInclude(cm=>cm.Book).ThenInclude(cm=>cm.Category)

@@ -113,12 +113,6 @@ public class MappingProfiles : Profile
                    MemberId = bý.Member.Id,
                    MemberFirstName = bý.Member.FirstName,
                    MemberLastName = bý.Member.LastName,
-                
-                   
-
-
-
-
               })));
 
         CreateMap<Member, GetByIdMemberResponse>()
