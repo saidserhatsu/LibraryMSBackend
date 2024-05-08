@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.Materials.Constants.MaterialsOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Materials.Queries.GetById;
 
@@ -30,7 +31,11 @@ public class GetByIdMaterialQuery : IRequest<GetByIdMaterialResponse>, ISecuredR
 
         public async Task<GetByIdMaterialResponse> Handle(GetByIdMaterialQuery request, CancellationToken cancellationToken)
         {
-            Material? material = await _materialRepository.GetAsync(predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
+
+            Material? material = await _materialRepository.GetAsync(
+                 include: b => b.Include(b => b.Category).Include(b => b.Publisher),
+                predicate: m => m.Id == request.Id, cancellationToken: cancellationToken
+                );
             await _materialBusinessRules.MaterialShouldExistWhenSelected(material);
 
             GetByIdMaterialResponse response = _mapper.Map<GetByIdMaterialResponse>(material);

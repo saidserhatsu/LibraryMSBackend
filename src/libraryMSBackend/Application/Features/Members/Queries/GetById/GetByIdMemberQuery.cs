@@ -31,12 +31,15 @@ public class GetByIdMemberQuery : IRequest<GetByIdMemberResponse>, ISecuredReque
         public async Task<GetByIdMemberResponse> Handle(GetByIdMemberQuery request, CancellationToken cancellationToken)
         {
             Member? member = await _memberRepository.GetAsync(
-                 include: b => b.Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
+                include: b => b.IgnoreQueryFilters() // Soft delete filtrelerini atlar
+                 .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Location)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Category)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.Publisher)
                  .Include(b => b.BookIssues).ThenInclude(b => b.Book).ThenInclude(b => b.BookAuthors).ThenInclude(b => b.Author)
-                 .Include(b => b.MemberSetting)
-                 .Include(b => b.FavoriteBooks).ThenInclude(fb => fb.Book)
+                 .Include(b => b.BookIssues).ThenInclude(b => b.FineDues)
+                 .Include(b => b.FinePayments)
+                 .Include(b=>b.MemberSetting)
+                 .Include(b => b.FavoriteBooks).ThenInclude(b => b.Book)
                  .Include(b => b.BookReservations).ThenInclude(r => r.Book).ThenInclude(b => b.Location),
                 predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
             await _memberBusinessRules.MemberShouldExistWhenSelected(member);

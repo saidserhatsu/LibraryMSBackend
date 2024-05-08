@@ -17,7 +17,7 @@ public class GetListBookIssueListItemDto : IDto
     public string LibraryStaffFirstName { get; set; }
     public string LibraryStaffLastName { get; set; }
     public DateTime ReturnDate { get; set; }
-    public Guid FineDueId { get; set; }
+    
 
     public List<GetListFineDueListItemDto> FineDues { get; set; }
 

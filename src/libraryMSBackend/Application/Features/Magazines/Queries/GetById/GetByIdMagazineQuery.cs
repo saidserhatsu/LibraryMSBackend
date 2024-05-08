@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.Magazines.Constants.MagazinesOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Magazines.Queries.GetById;
 
@@ -30,7 +31,10 @@ public class GetByIdMagazineQuery : IRequest<GetByIdMagazineResponse>, ISecuredR
 
         public async Task<GetByIdMagazineResponse> Handle(GetByIdMagazineQuery request, CancellationToken cancellationToken)
         {
-            Magazine? magazine = await _magazineRepository.GetAsync(predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
+            Magazine? magazine = await _magazineRepository.GetAsync(
+                include: b => b.Include(b => b.Publisher).Include(b => b.Category),
+                predicate: m => m.Id == request.Id, cancellationToken: cancellationToken
+                );
             await _magazineBusinessRules.MagazineShouldExistWhenSelected(magazine);
 
             GetByIdMagazineResponse response = _mapper.Map<GetByIdMagazineResponse>(magazine);

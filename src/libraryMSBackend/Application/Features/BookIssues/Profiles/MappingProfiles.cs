@@ -24,15 +24,22 @@ public class MappingProfiles : Profile
         CreateMap<BookIssue, UpdatedBookIssueResponse>().ReverseMap();
         CreateMap<BookIssue, DeleteBookIssueCommand>().ReverseMap();
         CreateMap<BookIssue, DeletedBookIssueResponse>().ReverseMap();
-        CreateMap<BookIssue, GetByIdBookIssueResponse>()
-            .ForMember(dest => dest.FineDues, opt => opt.MapFrom(src => src.FineDues.Select(m => new GetListFineDueListItemDto
-            {
-                 Id = m.Id,
-                 BookIssueId = m.BookIssueId,
-                 FineDate = m.FineDate,
-                 FineTotal = m.FineTotal
-            }))); 
-        CreateMap<BookIssue, GetListBookIssueListItemDto>();  
+        CreateMap<BookIssue, GetByIdBookIssueResponse>().ReverseMap();
+            //.ForMember(dest => dest.FineDues, opt => opt.MapFrom(src => src.FineDues.Select(m => new GetListFineDueListItemDto
+            //{
+            //     Id = m.Id,
+            //     BookIssueId = m.BookIssueId,
+            //     FineDate = m.FineDate,
+            //     FineTotal = m.FineTotal
+            //})));
+        CreateMap<BookIssue, GetListBookIssueListItemDto>().ReverseMap();
+        //.ForMember(dest => dest.FineDues, opt => opt.MapFrom(src => src.FineDues.Select(m => new GetListFineDueListItemDto
+        //{
+        //    Id = m.Id,
+        //    BookIssueId = m.BookIssueId,
+        //    FineDate = m.FineDate,
+        //    FineTotal = m.FineTotal
+        //})));
         CreateMap<IPaginate<BookIssue>, GetListResponse<GetListBookIssueListItemDto>>().ReverseMap();
     }
 }

@@ -9,6 +9,7 @@ using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using MediatR;
 using static Application.Features.MemberSettings.Constants.MemberSettingsOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.MemberSettings.Queries.GetList;
 
@@ -37,6 +38,7 @@ public class GetListMemberSettingQuery : IRequest<GetListResponse<GetListMemberS
         public async Task<GetListResponse<GetListMemberSettingListItemDto>> Handle(GetListMemberSettingQuery request, CancellationToken cancellationToken)
         {
             IPaginate<MemberSetting> memberSettings = await _memberSettingRepository.GetListAsync(
+             
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize, 
                 cancellationToken: cancellationToken

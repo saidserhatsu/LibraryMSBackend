@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.FinePayments.Constants.FinePaymentsOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.FinePayments.Queries.GetById;
 
@@ -30,7 +31,10 @@ public class GetByIdFinePaymentQuery : IRequest<GetByIdFinePaymentResponse>, ISe
 
         public async Task<GetByIdFinePaymentResponse> Handle(GetByIdFinePaymentQuery request, CancellationToken cancellationToken)
         {
-            FinePayment? finePayment = await _finePaymentRepository.GetAsync(predicate: fp => fp.Id == request.Id, cancellationToken: cancellationToken);
+            FinePayment? finePayment = await _finePaymentRepository.GetAsync(
+                 include: fp => fp.Include(fp => fp.Member),
+                predicate: fp => fp.Id == request.Id, cancellationToken: cancellationToken
+                );
             await _finePaymentBusinessRules.FinePaymentShouldExistWhenSelected(finePayment);
 
             GetByIdFinePaymentResponse response = _mapper.Map<GetByIdFinePaymentResponse>(finePayment);

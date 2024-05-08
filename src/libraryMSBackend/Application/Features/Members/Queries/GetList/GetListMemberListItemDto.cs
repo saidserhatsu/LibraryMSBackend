@@ -1,3 +1,4 @@
+using Application.Features.BookIssues.Queries.GetList;
 using Application.Features.Books.Queries.GetList;
 using Application.Features.FavoriteBooks.Queries.GetList;
 using Application.Features.FineDues.Queries.GetList;
@@ -22,4 +23,5 @@ public class GetListMemberListItemDto : IDto
     public List<GetListFavoriteBookListItemDto> Favorites { get; set; }
     public List<GetListFineDueListItemDto> FineDues { get; set; }
     public List<GetListFinePaymentListItemDto> FinePayments { get; set; }
+    public List<GetListBookIssueListItemDto> Bookýssues { get; set; }
 }

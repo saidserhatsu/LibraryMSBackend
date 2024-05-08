@@ -27,4 +27,6 @@ public class SearchCriteria : Entity<Guid>
     public string? EBookISBNCode { get; set; }
     public string? EBookTitle { get; set; }
     public string? EBookAuthorName { get; set; }
+    public string?  AnnouncementTitle { get; set; } 
+
 }

@@ -1,6 +1,9 @@
+using Application.Features.BookIssues.Queries.GetList;
 using Application.Features.BookReservations.Queries.GetList;
 using Application.Features.Books.Queries.GetList;
 using Application.Features.FavoriteBooks.Queries.GetList;
+using Application.Features.FineDues.Queries.GetList;
+using Application.Features.FinePayments.Queries.GetList;
 using Application.Features.MemberSettings.Queries.GetList;
 using NArchitecture.Core.Application.Responses;
 
@@ -21,6 +24,10 @@ public class GetByIdMemberResponse : IResponse
     public GetListMemberSettingListItemDto MemberSetting { get; set; }
     public List<GetListBookListItemDto> Books { get; set; }
     public List<GetListFavoriteBookListItemDto> FavoriteBooks { get; set; }
-
+    public List<GetListBookIssueListItemDto> Bookýssues { get; set; }
     public List<GetListBookReservationListItemDto> Reservations { get; set; }
+    public List<GetListFineDueListItemDto> FineDues { get; set; }
+
+    public List<GetListFinePaymentListItemDto> FinePayments { get; set; }
+
 }
