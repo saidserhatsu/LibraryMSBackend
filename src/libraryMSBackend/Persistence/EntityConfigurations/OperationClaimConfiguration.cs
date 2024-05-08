@@ -29,6 +29,7 @@ using Application.Features.MemberSettings.Constants;
 using Application.Features.CatalogManagements.Constants;
 using Application.Features.SearchCriterias.Constants;
 using Application.Features.FavoriteBooks.Constants;
+using Application.Features.FeedBacks.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -816,6 +817,34 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
                 new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Create },
                 new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Update },
                 new() { Id = ++lastId, Name = FavoriteBooksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region FeedBacks CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Read },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Write },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Create },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Update },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region FeedBacks CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Admin },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Read },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Write },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Create },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Update },
+                new() { Id = ++lastId, Name = FeedBacksOperationClaims.Delete },
             ]
         );
         #endregion

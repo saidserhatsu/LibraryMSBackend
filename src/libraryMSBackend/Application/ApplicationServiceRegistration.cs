@@ -45,6 +45,7 @@ using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
 using NArchitecture.Core.Security.JWT;
 using System.Reflection;
+using Application.Services.FeedBacks;
 
 namespace Application;
 
@@ -119,6 +120,8 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ICatalogManagementService, CatalogManagementManager>();
         services.AddScoped<IEBookService, EBookManager>();
         services.AddScoped<IFavoriteBookService, FavoriteBookManager>();
+        services.AddScoped<IFeedBackService, FeedBackManager>();
+        services.AddScoped<IFeedBackService, FeedBackManager>();
         return services;
     }
 
