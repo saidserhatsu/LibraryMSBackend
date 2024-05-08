@@ -16,7 +16,6 @@ using AutoMapper;
 using Domain.Entities;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using System.Collections.Immutable;
 
 namespace Application.Features.Members.Profiles;
 
@@ -87,7 +86,7 @@ public class MappingProfiles : Profile
                   PublisherName = m.Book.Publisher.Name,
                   ImageUrl = m.Book.ImageUrl,
                   PageCount = m.Book.PageCount,
-                   
+
                   Locations = new GetListLocationListItemDto
                   {
                       Id = m.Book.Id,
@@ -103,22 +102,16 @@ public class MappingProfiles : Profile
                       LastName = ba.Author.LastName
                   }).ToList()
               })))
-              .ForMember(dest => dest.Bookýssues, opt => opt.MapFrom(src => src.BookIssues.Select(bý => new GetListBookIssueListItemDto
-               {
-                   Id = bý.Id,
-                   ReturnDate = bý.ReturnDate,
-                   BookId = bý.Book.Id,
-                   BookBookTitle = bý.Book.BookTitle,
-                   BookStatus = bý.Book.Status.ToString(),
-                   MemberId = bý.Member.Id,
-                   MemberFirstName = bý.Member.FirstName,
-                   MemberLastName = bý.Member.LastName,
-                
-                   
-
-
-
-
+              .ForMember(dest => dest.BookIssues, opt => opt.MapFrom(src => src.BookIssues.Select(bi => new GetListBookIssueListItemDto
+              {
+                  Id = bi.Id,
+                  ReturnDate = bi.ReturnDate,
+                  BookId = bi.Book.Id,
+                  BookBookTitle = bi.Book.BookTitle,
+                  BookStatus = bi.Book.Status.ToString(),
+                  MemberId = bi.Member.Id,
+                  MemberFirstName = bi.Member.FirstName,
+                  MemberLastName = bi.Member.LastName,
               })));
 
         CreateMap<Member, GetByIdMemberResponse>()
@@ -149,16 +142,16 @@ public class MappingProfiles : Profile
                      FirstName = ba.Author.FirstName,
                      LastName = ba.Author.LastName
                  }).ToList()
-             }))).ForMember(dest => dest.Bookýssues, opt => opt.MapFrom(src => src.BookIssues.Select(bý => new GetListBookIssueListItemDto
+             }))).ForMember(dest => dest.BookIssues, opt => opt.MapFrom(src => src.BookIssues.Select(bi => new GetListBookIssueListItemDto
              {
-                 Id = bý.Id,
-                 ReturnDate = bý.ReturnDate,
-                 BookId = bý.Book.Id,
-                 BookBookTitle = bý.Book.BookTitle,
-                 BookStatus = bý.Book.Status.ToString(),
-                 MemberId = bý.Member.Id,
-                 MemberFirstName = bý.Member.FirstName,
-                 MemberLastName = bý.Member.LastName,
+                 Id = bi.Id,
+                 ReturnDate = bi.ReturnDate,
+                 BookId = bi.Book.Id,
+                 BookBookTitle = bi.Book.BookTitle,
+                 BookStatus = bi.Book.Status.ToString(),
+                 MemberId = bi.Member.Id,
+                 MemberFirstName = bi.Member.FirstName,
+                 MemberLastName = bi.Member.LastName,
 
 
 

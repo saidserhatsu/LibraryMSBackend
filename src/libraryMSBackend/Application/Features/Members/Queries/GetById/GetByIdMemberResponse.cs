@@ -24,7 +24,7 @@ public class GetByIdMemberResponse : IResponse
     public GetListMemberSettingListItemDto MemberSetting { get; set; }
     public List<GetListBookListItemDto> Books { get; set; }
     public List<GetListFavoriteBookListItemDto> FavoriteBooks { get; set; }
-    public List<GetListBookIssueListItemDto> Bookýssues { get; set; }
+    public List<GetListBookIssueListItemDto> BookIssues { get; set; }
     public List<GetListBookReservationListItemDto> Reservations { get; set; }
     public List<GetListFineDueListItemDto> FineDues { get; set; }
 
