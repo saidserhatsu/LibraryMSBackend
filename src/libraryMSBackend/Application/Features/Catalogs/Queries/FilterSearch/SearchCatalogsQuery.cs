@@ -45,7 +45,6 @@ namespace Application.Features.Catalogs.Queries.FilterSearch
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Material)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Category)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Publisher)
-                .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.EBook)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Location);
 
             // Katalog adına göre arama
