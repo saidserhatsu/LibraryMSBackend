@@ -5,4 +5,5 @@ namespace Application.Services.Repositories;
 
 public interface ILibraryStaffRepository : IAsyncRepository<LibraryStaff, Guid>, IRepository<LibraryStaff, Guid>
 {
+    Task<int> CountAsync();
 }

@@ -7,5 +7,6 @@ public interface IMemberRepository : IAsyncRepository<Member, Guid>, IRepository
 {
     IQueryable<Member> Table { get; } // Bu özellik, IQueryable eriþimini saðlar.
     Task<Member> GetByMemberIdAsync(Guid memberId);
+    Task<int> CountAsync();
 
 }

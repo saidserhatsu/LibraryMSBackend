@@ -6,4 +6,5 @@ namespace Application.Services.Repositories;
 public interface IMagazineRepository : IAsyncRepository<Magazine, Guid>, IRepository<Magazine, Guid>
 {
     IQueryable<Magazine> Table { get; } // Bu özellik, IQueryable eriþimini saðlar.
+    Task<int> CountAsync();
 }

@@ -65,7 +65,7 @@ namespace Application.Features.BookReservations.Commands.Delete
                 await _bookRepository.UpdateAsync(book);
 
                 // Rezervasyonu sil
-                await _bookReservationRepository.DeleteAsync(bookReservation!);
+                await _bookReservationRepository.DeleteAsync(bookReservation!,true);
 
                 // Yanýtý dön
                 DeletedBookReservationResponse response = _mapper.Map<DeletedBookReservationResponse>(bookReservation);

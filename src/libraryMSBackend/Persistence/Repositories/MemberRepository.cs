@@ -25,4 +25,9 @@ public class MemberRepository : EfRepositoryBase<Member, Guid, BaseDbContext>, I
         }
         return member;
     }
+    public async Task<int> CountAsync()
+    {
+        // Kitap sayýsýný saymak için gerekli kod
+        return await Context.Members.CountAsync();
+    }
 }

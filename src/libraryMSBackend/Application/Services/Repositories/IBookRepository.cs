@@ -12,6 +12,8 @@ public interface IBookRepository : IAsyncRepository<Book, Guid>, IRepository<Boo
 {
 
     IQueryable<Book> Table { get; } // Bu özellik, IQueryable eriþimini saðlar.
+
+    Task<int> CountAsync();
     Task<Book> GetByIdAsync(Guid bookId);
 
 

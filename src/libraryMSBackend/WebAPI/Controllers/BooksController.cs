@@ -86,11 +86,18 @@ public class BooksController : BaseController
 
         return Ok(result);
     }
-    [HttpGet("book/statistics")]
-    public async Task<IActionResult> GetBookStatistics([FromQuery] BookStatus status)
+    [HttpGet("statistics")]
+    public async Task<IActionResult> GetBookStatistics()
     {
-        var result = await Mediator.Send(new BookStatisticsQuery(status));
-        return Ok(result);
+        var statistics = new Dictionary<BookStatus, int>();
+
+        foreach (BookStatus status in Enum.GetValues(typeof(BookStatus)))
+        {
+            var result = await Mediator.Send(new BookStatisticsQuery(status));
+            statistics.Add(status, result);
+        }
+
+        return Ok(statistics);
     }
 
 }

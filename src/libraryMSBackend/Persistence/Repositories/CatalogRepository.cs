@@ -14,4 +14,9 @@ public class CatalogRepository : EfRepositoryBase<Catalog, Guid, BaseDbContext>,
     private DbSet<Catalog> Catalogs => Context.Set<Catalog>(); // DbSet eriþimi
 
     public IQueryable<Catalog> Table => Catalogs.AsQueryable(); // IQueryable eriþimi
+    public async Task<int> CountAsync()
+    {
+        // Kitap sayýsýný saymak için gerekli kod
+        return await Context.Catalogs.CountAsync();
+    }
 }

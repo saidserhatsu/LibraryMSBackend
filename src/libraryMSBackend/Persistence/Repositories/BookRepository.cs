@@ -2,6 +2,7 @@ using Application.Services.Repositories;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Persistence.Repositories;
+using Nest;
 using Persistence.Contexts;
 
 namespace Persistence.Repositories;
@@ -26,5 +27,10 @@ public class BookRepository : EfRepositoryBase<Book, Guid, BaseDbContext>, IBook
         }
 
         return book;
+    }
+    public async Task<int> CountAsync()
+    {
+        // Kitap sayýsýný saymak için gerekli kod
+        return await Context.Books.CountAsync();
     }
 }

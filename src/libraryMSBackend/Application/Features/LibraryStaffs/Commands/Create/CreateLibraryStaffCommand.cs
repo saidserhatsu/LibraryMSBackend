@@ -16,6 +16,7 @@ using Application.Services.UserOperationClaims;
 using Microsoft.AspNetCore.Http;
 using Application.Services.ImageService;
 using AutoMapper.Execution;
+using Application.Services.AuthenticatorService;
 
 namespace Application.Features.LibraryStaffs.Commands.Create;
 
@@ -43,9 +44,10 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IOperationClaimService _operationClaimService;
         private readonly ImageServiceBase _imageService;
+        private readonly IAuthenticatorService _authenticatorService;
 
         public CreateLibraryStaffCommandHandler(IMapper mapper, ILibraryStaffRepository libraryStaffRepository,
-                                         LibraryStaffBusinessRules libraryStaffBusinessRules, IUserService userService, IOperationClaimService operationClaimService, IUserOperationClaimService userOperationClaimService, ImageServiceBase imageService)
+                                         LibraryStaffBusinessRules libraryStaffBusinessRules, IUserService userService, IOperationClaimService operationClaimService, IUserOperationClaimService userOperationClaimService, ImageServiceBase imageService, IAuthenticatorService authenticatorService)
         {
             _mapper = mapper;
             _libraryStaffRepository = libraryStaffRepository;
@@ -54,11 +56,22 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
             _userOperationClaimService = userOperationClaimService;
             _operationClaimService = operationClaimService;
             _imageService = imageService;
+            _authenticatorService = authenticatorService;
         }
 
         public async Task<CreatedLibraryStaffResponse> Handle(CreateLibraryStaffCommand request, CancellationToken cancellationToken)
         {
             User user = await _userService.Register(new UserForRegisterDto() { Email = request.Email, Password = request.Password });
+
+            // E-posta kimlik doðrulama kodu oluþtur
+            EmailAuthenticator emailAuthenticator = await _authenticatorService.CreateEmailAuthenticator(user);
+
+            // E-posta ile kimlik doðrulama kodunu gönder
+            await _authenticatorService.SendAuthenticatorCode(user);
+
+            // Kullanýcýnýn kimlik doðrulama kodunu doðrulamasýný bekleyin
+            // Kodun doðrulanmasýný saðlamak için VerifyAuthenticatorCode yöntemini kullanabilirsiniz
+
             string[] Roles = UserDefaultRoles.Roles;
             for (int i = 0; i < Roles.Length; i++)
             {
@@ -70,16 +83,12 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
             libraryStaff.UserId = user.Id;
 
             // Fotoðrafý yükle ve URL'yi al
-
             string imageUrl = string.Empty;
             if (request.File != null)
             {
                 imageUrl = await _imageService.UploadAsync(request.File);
                 libraryStaff.ImageUrl = imageUrl; // Resim URL'sini ata
-
             }
-
-
 
             await _libraryStaffRepository.AddAsync(libraryStaff);
 

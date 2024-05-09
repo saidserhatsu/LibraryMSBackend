@@ -19,4 +19,9 @@ public class MagazineRepository : EfRepositoryBase<Magazine, Guid, BaseDbContext
     private DbSet<Magazine> Magazines => Context.Set<Magazine>(); // DbSet eriþimi
 
     public IQueryable<Magazine> Table => Magazines.AsQueryable(); // IQueryable eriþimi
+    public async Task<int> CountAsync()
+    {
+        // Kitap sayýsýný saymak için gerekli kod
+        return await Context.Magazines.CountAsync();
+    }
 }

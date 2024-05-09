@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Application.Features.Categories.Queries.FilterSearch;
 using Domain.Entities;
 using Application.Features.Members.Queries.FilterSearch;
+using Application.Features.Members.Queries.Statistics;
 
 namespace WebAPI.Controllers;
 
@@ -74,5 +75,11 @@ public class MembersController : BaseController
         var result = await Mediator.Send(query);
 
         return Ok(result);
+    }
+    [HttpGet("general-number")]
+    public async Task<IActionResult> GetGeneralStatistics()
+    {
+        var generalStatistics = await Mediator.Send(new GeneralNumberStaticQuery());
+        return Ok(generalStatistics);
     }
 }
