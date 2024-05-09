@@ -10,6 +10,7 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using MimeKit;
 using NArchitecture.Core.Application.Dtos;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
@@ -87,12 +88,12 @@ public class CreateMemberCommand : IRequest<CreatedMemberResponse>, ICacheRemove
             member.MemberSetting.Id = memberSetting.Id;
 
 
-            //_mailService.SendMail(new NArchitecture.Core.Mailing.Mail
-            //{
-            //    Subject = "Test Mail",
-            //    HtmlBody = "Welcome to the Tobeto Public Library",
-            //    ToList = [new MailboxAddress($"{member.FirstName} {member.LastName}", $"{member.Email}")]
-            //});
+            _mailService.SendMail(new NArchitecture.Core.Mailing.Mail
+            {
+                Subject = "Test Mail",
+                HtmlBody = "Welcome to the Tobeto Public Library",
+                ToList = [new MailboxAddress($"{member.FirstName} {member.LastName}", $"{member.Email}")]
+            });
 
 
             CreatedMemberResponse response = _mapper.Map<CreatedMemberResponse>(member);
