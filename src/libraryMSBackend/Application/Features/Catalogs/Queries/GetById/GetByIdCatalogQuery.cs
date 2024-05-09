@@ -31,6 +31,7 @@ public class GetByIdCatalogQuery : IRequest<GetByIdCatalogResponse>
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Magazine)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Material)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Category)
+                .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.BookAuthors).ThenInclude(cm => cm.Author)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Publisher)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Location),
                 predicate: c => c.Id == request.Id, cancellationToken: cancellationToken

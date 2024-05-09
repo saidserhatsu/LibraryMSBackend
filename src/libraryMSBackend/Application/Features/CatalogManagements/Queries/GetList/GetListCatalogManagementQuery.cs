@@ -38,9 +38,10 @@ public class GetListCatalogManagementQuery : IRequest<GetListResponse<GetListCat
         public async Task<GetListResponse<GetListCatalogManagementListItemDto>> Handle(GetListCatalogManagementQuery request, CancellationToken cancellationToken)
         {
             IPaginate<CatalogManagement> catalogManagements = await _catalogManagementRepository.GetListAsync(
-                include: b => b.Include(b => b.Book).ThenInclude(b => b.BookAuthors).ThenInclude(b => b.Author),
+                include: b => b.Include(b => b.Book).ThenInclude(b => b.BookAuthors).ThenInclude(b => b.Author)
+                .Include(b => b.Material).Include(b => b.Magazine).Include(b => b.Catalog).Include(b => b.Book),
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
             );
 

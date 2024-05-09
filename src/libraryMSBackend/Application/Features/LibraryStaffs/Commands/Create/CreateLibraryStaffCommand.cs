@@ -68,12 +68,12 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
         {
             User user = await _userService.Register(new UserForRegisterDto() { Email = request.Email, Password = request.Password });
 
-            // E-posta kimlik doðrulama kodu oluþtur
+            //E - posta kimlik doðrulama kodu oluþtur
             EmailAuthenticator emailAuthenticator = await _authenticatorService.CreateEmailAuthenticator(user);
             EmailAuthenticator addedEmailAuthenticator = await _emailAuthenticatorRepository.AddAsync(emailAuthenticator);
 
-            // E-posta ile kimlik doðrulama kodunu gönder
-            //await _authenticatorService.SendAuthenticatorCode(user);
+            //E - posta ile kimlik doðrulama kodunu gönder
+           await _authenticatorService.SendAuthenticatorCode(user);
 
             var toEmailList = new List<MailboxAddress> { new(name: user.Email, user.Email) };
 
@@ -83,7 +83,7 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
                     ToList = toEmailList,
                     Subject = "Verify Your Email - NArchitecture",
                     TextBody =
-                        $"Click for verify: localhost:4200/ActivationKey?{addedEmailAuthenticator.ActivationKey}"
+                     $"Click for verify: localhost:4200/ActivationKey?{addedEmailAuthenticator.ActivationKey}"
                 }
             );
             //$"Click for verify: localhost:4200/ActivationKey?{addedEmailAuthenticator.ActivationKey}"
