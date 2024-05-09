@@ -8,4 +8,5 @@ public class GetByIdFineDueResponse : IResponse
     public decimal FineTotal { get; set; }
     public Guid BookIssueId { get; set; }
     public DateTime FineDate { get; set; }
+    public string MemberEmail { get; set; }
 }

@@ -37,6 +37,7 @@ public class GetListCatalogQuery : IRequest<GetListResponse<GetListCatalogListIt
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Magazine)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Material)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Category)
+                .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.BookAuthors).ThenInclude(cm=>cm.Author)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Publisher)
                 .Include(cm => cm.CatalogManagements).ThenInclude(cm => cm.Book).ThenInclude(cm => cm.Location),
                 index: request.PageRequest.PageIndex,

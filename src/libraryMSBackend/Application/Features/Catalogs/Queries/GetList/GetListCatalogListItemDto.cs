@@ -1,3 +1,4 @@
+using Application.Features.Authors.Queries.GetList;
 using Application.Features.Books.Queries.GetList;
 using Application.Features.CatalogManagements.Queries.GetList;
 using Application.Features.Categories.Queries.GetList;
@@ -21,5 +22,8 @@ public class GetListCatalogListItemDto : IDto
     public List<GetListBookListItemDto> Books { get; set; }
     public List<GetListMagazineListItemDto> Magazines { get; set; }
     public List<GetListMaterialListItemDto> Materials { get; set; }
+    public List<GetListAuthorListItemDto> Authors { get; set; }
+    //public List<Guid> CatalogManagementIds { get; set; }
+    public List<GetListCatalogManagementListItemDto> CatalogManagements { get; set; } // Yeni alan
 
 }

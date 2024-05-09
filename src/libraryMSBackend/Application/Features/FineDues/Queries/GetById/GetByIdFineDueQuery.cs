@@ -6,6 +6,7 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.FineDues.Constants.FineDuesOperationClaims;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.FineDues.Queries.GetById;
 
@@ -30,7 +31,10 @@ public class GetByIdFineDueQuery : IRequest<GetByIdFineDueResponse>
 
         public async Task<GetByIdFineDueResponse> Handle(GetByIdFineDueQuery request, CancellationToken cancellationToken)
         {
-            FineDue? fineDue = await _fineDueRepository.GetAsync(predicate: fd => fd.Id == request.Id, cancellationToken: cancellationToken);
+            FineDue? fineDue = await _fineDueRepository.GetAsync(
+                include: bi => bi.Include(bi => bi.BookIssue).ThenInclude(bi=>bi.Member),
+                predicate: fd => fd.Id == request.Id, cancellationToken: cancellationToken
+                );
             await _fineDueBusinessRules.FineDueShouldExistWhenSelected(fineDue);
 
             GetByIdFineDueResponse response = _mapper.Map<GetByIdFineDueResponse>(fineDue);

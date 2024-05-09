@@ -83,10 +83,10 @@ public class CreateLibraryStaffCommand : IRequest<CreatedLibraryStaffResponse>, 
                     ToList = toEmailList,
                     Subject = "Verify Your Email - NArchitecture",
                     TextBody =
-                        $"Your ActivationKey : {HttpUtility.UrlEncode(addedEmailAuthenticator.ActivationKey)}"
+                        $"Click for verify: localhost:4200/ActivationKey?{addedEmailAuthenticator.ActivationKey}"
                 }
             );
-
+            //$"Click for verify: localhost:4200/ActivationKey?{addedEmailAuthenticator.ActivationKey}"
             // Kullanýcýnýn kimlik doðrulama kodunu doðrulamasýný bekleyin
             // Kodun doðrulanmasýný saðlamak için VerifyAuthenticatorCode yöntemini kullanabilirsiniz
 
