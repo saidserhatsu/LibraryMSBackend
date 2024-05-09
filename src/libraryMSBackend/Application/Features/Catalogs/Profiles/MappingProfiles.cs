@@ -85,21 +85,6 @@ public class MappingProfiles : Profile
                     })))
 
 
-                .ForMember(dest => dest.EBooks, opt => opt.MapFrom(src => src.CatalogManagements
-                    .Where(cm => cm.EBook != null)
-                    .Select(cm => new GetListEBookListItemDto
-                    {
-                        Id=cm.EBook.Id,
-                        CategoryId=cm.EBook.CategoryId, 
-                        CategoryName = cm.EBook.Category.Name,
-                        PageCount = cm.EBook.PageCount,
-                        ReleaseDate=cm.EBook.ReleaseDate,
-                        EBookTitle = cm.EBook.EBookTitle ?? string.Empty,
-                        ISBNCode = cm.EBook.ISBNCode ?? string.Empty,
-                        FileUrl = cm.EBook.FileUrl ?? string.Empty,
-                        ImageUrl = cm.EBook.ImageUrl ?? string.Empty,
-                        AuthorName = cm.EBook.AuthorName ?? string.Empty,
-                    })))
 
                 .ForMember(dest => dest.Materials, opt => opt.MapFrom(src => src.CatalogManagements
                     .Where(cm => cm.Material != null)
@@ -169,22 +154,6 @@ public class MappingProfiles : Profile
 
                     })))
 
-            
-                .ForMember(dest => dest.EBooks, opt => opt.MapFrom(src => src.CatalogManagements
-                    .Where(cm => cm.EBook != null)
-                    .Select(cm => new GetListEBookListItemDto
-                    {
-                        Id = cm.EBook.Id,
-                        CategoryId = cm.EBook.CategoryId,
-                        CategoryName = cm.EBook.Category.Name,
-                        PageCount = cm.EBook.PageCount,
-                        ReleaseDate = cm.EBook.ReleaseDate,
-                        EBookTitle = cm.EBook.EBookTitle ?? string.Empty,
-                        ISBNCode = cm.EBook.ISBNCode ?? string.Empty,
-                        FileUrl = cm.EBook.FileUrl ?? string.Empty,
-                        ImageUrl = cm.EBook.ImageUrl ?? string.Empty,
-                        AuthorName=cm.EBook.AuthorName ?? string.Empty,
-                    })))
 
                 .ForMember(dest => dest.Materials, opt => opt.MapFrom(src => src.CatalogManagements
                     .Where(cm => cm.Material != null)

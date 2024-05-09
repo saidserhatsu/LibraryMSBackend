@@ -17,5 +17,4 @@ public class GetByIdCatalogResponse : IResponse
     public List<GetListBookListItemDto> Books { get; set; }
     public List<GetListMagazineListItemDto> Magazines { get; set; }
     public List<GetListMaterialListItemDto> Materials { get; set; }
-    public List<GetListEBookListItemDto> EBooks { get; set; }
 }
