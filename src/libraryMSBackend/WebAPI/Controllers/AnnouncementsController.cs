@@ -6,6 +6,9 @@ using Application.Features.Announcements.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Authors.Queries.FilterSearch;
+using Domain.Entities;
+using Application.Features.Announcements.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +53,24 @@ public class AnnouncementsController : BaseController
         GetListAnnouncementQuery getListAnnouncementQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListAnnouncementListItemDto> response = await Mediator.Send(getListAnnouncementQuery);
         return Ok(response);
+    }
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchAuthors(
+   [FromQuery(Name = "AnnouncementTitle")] string? announcementTitle,  // nullable
+   [FromQuery] PageRequest pageRequest)
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria
+        {
+           AnnouncementTitle = announcementTitle,
+        };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchAnnouncementsQuery(searchCriteria, pageRequest);
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

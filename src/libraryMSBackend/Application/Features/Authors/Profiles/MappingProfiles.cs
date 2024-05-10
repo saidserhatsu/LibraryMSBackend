@@ -7,6 +7,7 @@ using AutoMapper;
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
+using Application.Features.Authors.Queries.FilterSearch;
 
 namespace Application.Features.Authors.Profiles;
 
@@ -22,6 +23,9 @@ public class MappingProfiles : Profile
         CreateMap<Author, DeletedAuthorResponse>().ReverseMap();
         CreateMap<Author, GetByIdAuthorResponse>().ReverseMap();
         CreateMap<Author, GetListAuthorListItemDto>().ReverseMap();
+        CreateMap<Author, SearchAuthorsResponse>()
+            .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
+            .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName));
         CreateMap<IPaginate<Author>, GetListResponse<GetListAuthorListItemDto>>().ReverseMap();
     }
 }

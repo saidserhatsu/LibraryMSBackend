@@ -20,4 +20,5 @@ public class SearchBooksResponse
     public List<GetListAuthorListItemDto> Authors { get; set; }
     public List<GetListMaterialAuthorListItemDto> Materials { get; set; }
     public List<GetListMagazineListItemDto> Magazines { get; set; }
+    public GetListLocationListItemDto Location { get; set; }
 }

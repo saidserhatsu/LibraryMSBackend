@@ -16,6 +16,7 @@ public class GetListBookListItemDto : IDto
     public string ImageUrl { get; set; }
     public string Status { get; set; }
     public string CategoryName { get; set; }
+    public Guid PublisherId { get; set; }
     public string PublisherName { get; set; }
 
     public GetListLocationListItemDto Locations { get; set; }

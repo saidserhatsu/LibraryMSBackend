@@ -17,6 +17,7 @@ public class GetByIdBookResponse : IResponse
     public string ImageUrl { get; set; }
     public string Status { get; set; }
     public string CategoryName { get; set; }
+    public Guid PublisherId { get; set; }
     public string PublisherName { get; set; }
     public GetListLocationListItemDto Location { get; set; }
     public List<GetListAuthorListItemDto> Authors { get; set; }

@@ -56,6 +56,7 @@ public class MappingProfiles : Profile
         //           })));
 
         CreateMap<Book, SearchBooksResponse>()
+      .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
       .ForMember(dest => dest.ISBNCode, opt => opt.MapFrom(src => src.ISBNCode))
       .ForMember(dest => dest.BookTitle, opt => opt.MapFrom(src => src.BookTitle))
       .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.BookAuthors

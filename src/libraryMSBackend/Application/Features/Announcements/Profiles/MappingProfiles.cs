@@ -7,6 +7,8 @@ using AutoMapper;
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
+using Application.Features.Authors.Queries.FilterSearch;
+using Application.Features.Announcements.Queries.FilterSearchh;
 
 namespace Application.Features.Announcements.Profiles;
 
@@ -22,6 +24,8 @@ public class MappingProfiles : Profile
         CreateMap<Announcement, DeletedAnnouncementResponse>().ReverseMap();
         CreateMap<Announcement, GetByIdAnnouncementResponse>().ReverseMap();
         CreateMap<Announcement, GetListAnnouncementListItemDto>().ReverseMap();
+        CreateMap<Announcement, SearchAnnouncementsResponse>()
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title));
         CreateMap<IPaginate<Announcement>, GetListResponse<GetListAnnouncementListItemDto>>().ReverseMap();
     }
 }

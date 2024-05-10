@@ -6,6 +6,9 @@ using Application.Features.Authors.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Categories.Queries.FilterSearch;
+using Domain.Entities;
+using Application.Features.Authors.Queries.FilterSearch;
 
 namespace WebAPI.Controllers;
 
@@ -50,5 +53,27 @@ public class AuthorsController : BaseController
         GetListAuthorQuery getListAuthorQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListAuthorListItemDto> response = await Mediator.Send(getListAuthorQuery);
         return Ok(response);
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchAuthors(
+   [FromQuery(Name = "AuthorFirstName")] string? firstName,  // nullable
+   [FromQuery(Name = "AuthorLastName")] string? lastName,  // nullable
+   [FromQuery] PageRequest pageRequest)
+    {
+        // Arama kriterleri oluþtur
+        var searchCriteria = new SearchCriteria
+        {
+            AuthorName = firstName,
+            AuthorSurname = lastName,
+        };
+
+        // MediatR query'sini oluþtur
+        var query = new SearchAuthorsQuery(searchCriteria, pageRequest);
+
+        // Query'yi gönder ve sonuçlarý al
+        var result = await Mediator.Send(query);
+
+        return Ok(result);
     }
 }

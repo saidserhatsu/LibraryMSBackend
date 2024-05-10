@@ -39,7 +39,9 @@ public class SearchBooksQueryHandler : IRequestHandler<SearchBooksQuery, GetList
     {
         // Başlangıç noktası
         var query = _bookRepository.Table;
-
+        query = query.Include(b => b.Category).Include(b => b.Location).Include(b => b.Publisher)
+            .Include(b => b.BookAuthors).ThenInclude(b => b.Author);
+           
         // Kitap başlığına göre filtreleme
         if (!string.IsNullOrEmpty(request.Criteria.BookTitle))
         {
