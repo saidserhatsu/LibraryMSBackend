@@ -7,4 +7,5 @@ public interface IBookIssueRepository : IAsyncRepository<BookIssue, Guid>, IRepo
 {
     IQueryable<BookIssue> Table { get; } // Bu özellik, IQueryable eriþimini saðlar.
     Task<int> GetBookCountByMemberIdAsync(Guid memberId);
+    Task<List<BookIssue>> GetOverdueBookIssuesAsync();
 }

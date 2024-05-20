@@ -1,5 +1,8 @@
 using Application;
+using Hangfire;
+using Hangfire.SqlServer;
 using Infrastructure;
+using Infrastructure.BackgroundJops.Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -34,6 +37,24 @@ builder.Services.AddApplicationServices(
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddInfrastructureServices();
 builder.Services.AddHttpContextAccessor();
+#region Hangfire
+
+string? connectionString = builder.Configuration.GetSection("ConnectionStrings:BaseDb").Value;
+builder.Services.AddHangfire(config =>
+{
+    var option = new SqlServerStorageOptions()
+    {
+        PrepareSchemaIfNecessary = true,
+        QueuePollInterval = TimeSpan.FromMinutes(5),
+        CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+        SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+        UseRecommendedIsolationLevel = true,
+        DisableGlobalLocks = true,
+    };
+    config.UseSqlServerStorage(connectionString, option)
+    .WithJobExpirationTimeout(TimeSpan.FromHours(24));//12 saatte bir yap
+});
+#endregion
 
 const string tokenOptionsConfigurationSection = "TokenOptions";
 TokenOptions tokenOptions =
@@ -113,5 +134,21 @@ WebApiConfiguration webApiConfiguration =
 app.UseCors(opt => opt.WithOrigins(webApiConfiguration.AllowedOrigins).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
 app.UseResponseLocalization();
+
+#region Hangfire
+
+app.UseHangfireDashboard("/hangfire",new DashboardOptions()
+{
+    DashboardTitle="LMS Hangfire Dashboard",
+    AppPath="Home",
+    //Authorization = new[] {new HangfireDashboardAuthorizationFilter()},Hangfire iþlemlerini belirli yetki veya yetkiler dahilinde kullanýmýna izin vermek istediðimizde UseHangfireDashboard konfigürasyonu içerisinde Authorization özelliði ile ayarlayabiliriz.
+});
+app.UseHangfireServer();
+
+
+RecurringJobs.CalculateMemberDebt();
+
+
+#endregion
 
 app.Run();

@@ -42,7 +42,7 @@ async Task UserPenalties()
         {
             double penaltyAmount = daysDifference * 3;
 
-            // FineDue kontrolü
+
             var existingBookIssue = await AsyncGet<GetByIdBookIssueResponse>($"{baseurl}api/BookIssues/{bookIssueId}");
             foreach (var FineDue in existingBookIssue.FineDues)
             {

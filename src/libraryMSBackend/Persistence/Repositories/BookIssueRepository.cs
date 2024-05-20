@@ -20,4 +20,8 @@ public class BookIssueRepository : EfRepositoryBase<BookIssue, Guid, BaseDbConte
         return await Context.Set<BookIssue>()
                              .CountAsync(b => b.MemberId == memberId);  
     }
+    public async Task<List<BookIssue>> GetOverdueBookIssuesAsync()
+    {
+        return await Context.Set<BookIssue>().Where(b => b.ReturnDate < DateTime.Now).ToListAsync();
+    }
 }
